@@ -17,6 +17,7 @@
 | [ui-ux](../ui-ux/README.md) | 设计决策 + Figma |
 | [agent](../agent/README.md) | Tool-using Agent（Py+TS） |
 | [ops](../ops/README.md) | 部署·密钥·回滚·健康·CI |
+| [nextjs](../nextjs/README.md) | App Router 全栈 Web |
 
 ## Wave 执行序
 
@@ -24,13 +25,14 @@
 
 | 序 | 目录 | 说明 | 状态 |
 |----|------|------|------|
-| 1 | `ops` | 部署·密钥·回滚·健康·CI（Compose+Kamal+GHA） | DONE |
+| 1 | `ops` | Compose+Kamal+GHA | DONE |
 
 ### Wave 2 — Web / 数据 / 身份
 
 | 序 | 目录 | 说明 | 状态 |
 |----|------|------|------|
-| 2 | `nextjs` | App Router；与 Vite `react` 分册 | **进行中** |
+| 2 | `nextjs` | App Router；与 Vite `react` 分册 | DONE |
+| 3 | `postgres` | 建模·迁移·事务·RLS | **进行中** |
 | 3 | `postgres` | 建模·迁移·事务·RLS |
 | 4 | `auth` | 会话/OAuth/JWT/跨端鉴权边界 |
 | 5 | `graphql` | Schema-first API（对位 REST 册） |

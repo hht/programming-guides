@@ -6,8 +6,8 @@
 |------|------|
 | [**meta/**](./meta/how-to-write-guides.md) | 如何写指南 |
 | [**react/**](./react/README.md) | Vite SPA |
-| [**nextjs/**](./nextjs/README.md) | Next.js App Router（进行中） |
-| [**go/**](./go/README.md) | Go HTTP API |
+| [**nextjs/**](./nextjs/README.md) | Next.js App Router |
+| [**ops/**](./ops/README.md) | 部署·回滚·健康 |
 | [**fastapi/**](./fastapi/README.md) | FastAPI |
 | [**ui-ux/**](./ui-ux/README.md) | UI/UX + Figma |
 | [**agent/**](./agent/README.md) | Agent Py+TS |
