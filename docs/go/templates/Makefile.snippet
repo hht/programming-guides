@@ -1,0 +1,19 @@
+# Snippet — adapt in target repo Makefile（命令字符串与 ../commands.md 同文）
+.PHONY: sqlc test lint check build migrate-up test-integration
+sqlc:
+	sqlc generate
+test:
+	go test ./...
+lint:
+	golangci-lint run
+check: sqlc test lint
+build:
+	go build -o bin/api ./cmd/api
+migrate-up:
+	migrate -path migrations -database "$$DATABASE_URL" up
+# 集成测：compose → migrate → tag 测 → down（DATABASE_URL 见 09 / env.example）
+test-integration:
+	docker compose -f docker-compose.test.yml up -d --wait
+	migrate -path migrations -database "$$DATABASE_URL" up
+	go test ./... -tags=integration -count=1
+	docker compose -f docker-compose.test.yml down
