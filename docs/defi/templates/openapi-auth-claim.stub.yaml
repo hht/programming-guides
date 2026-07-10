@@ -1,0 +1,136 @@
+openapi: 3.0.3
+info:
+  title: Auth + Claim minimum API
+  version: 0.1.0
+  description: >
+    Stub for agent alignment. Backend may extend paths but MUST preserve
+    semantics for nonce single-use, verify domain, claim binding, confirm idempotency.
+paths:
+  /auth/nonce:
+    get:
+      operationId: getAuthNonce
+      parameters:
+        - in: query
+          name: address
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Server-generated nonce
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [nonce, expiresAt]
+                properties:
+                  nonce: { type: string, minLength: 8 }
+                  expiresAt: { type: string, format: date-time }
+  /auth/verify:
+    post:
+      operationId: verifySiwe
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [message, signature]
+              properties:
+                message: { type: string }
+                signature: { type: string }
+      responses:
+        '200':
+          description: JWT for address in message
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [token, address, expiresAt]
+                properties:
+                  token: { type: string }
+                  address: { type: string }
+                  expiresAt: { type: string, format: date-time }
+        '401':
+          description: Invalid signature / nonce / domain
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorBody' }
+        '403':
+          description: Banned
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorBody' }
+  /claim/signature:
+    post:
+      operationId: getClaimSignature
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [address]
+              properties:
+                address: { type: string }
+                kind: { type: string, enum: [team, community] }
+      responses:
+        '200':
+          description: Bound signature package
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [address, amount, deadline, nonce, signature, contractArgs]
+                properties:
+                  address: { type: string }
+                  amount: { type: string, description: uint256 decimal string }
+                  deadline: { type: integer }
+                  nonce: { type: string }
+                  signature: { type: string }
+                  contractArgs:
+                    type: array
+                    items: {}
+        '401':
+          description: Session expired
+  /claim/confirm:
+    post:
+      operationId: confirmClaim
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [address, txHash, nonce]
+              properties:
+                address: { type: string }
+                txHash: { type: string }
+                nonce: { type: string }
+      responses:
+        '200':
+          description: Idempotent confirm
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status:
+                    type: string
+                    enum: [success, confirm_failed, already_confirmed]
+                  retryable: { type: boolean }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    ErrorBody:
+      type: object
+      required: [code, message]
+      properties:
+        code: { type: string }
+        message: { type: string }

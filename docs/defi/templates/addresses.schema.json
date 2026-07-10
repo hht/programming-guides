@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ChainAddresses",
+  "type": "object",
+  "required": ["env", "chainId", "contracts", "tokens"],
+  "additionalProperties": false,
+  "properties": {
+    "env": {
+      "type": "string",
+      "enum": ["development", "staging", "prod"],
+      "description": "Must match VITE_APP_ENV at runtime (development may skip pair assert)"
+    },
+    "chainId": { "type": "integer", "minimum": 1 },
+    "contracts": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["address"],
+        "additionalProperties": false,
+        "properties": {
+          "address": {
+            "type": "string",
+            "pattern": "^0x[a-fA-F0-9]{40}$"
+          },
+          "kind": {
+            "type": "string",
+            "enum": ["proxy", "entrypoint", "standalone"],
+            "default": "standalone"
+          },
+          "implementationOnly": {
+            "type": "boolean",
+            "description": "If true, MUST NOT be used for writeContract"
+          }
+        }
+      }
+    },
+    "tokens": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["address", "decimals", "symbol"],
+        "properties": {
+          "address": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" },
+          "decimals": { "type": "integer", "minimum": 0, "maximum": 255 },
+          "symbol": { "type": "string", "minLength": 1 },
+          "approveResetToZero": { "type": "boolean", "default": false }
+        }
+      }
+    }
+  }
+}
