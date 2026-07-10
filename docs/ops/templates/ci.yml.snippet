@@ -1,0 +1,12 @@
+# Snippet — pin actions by commit SHA in real workflows
+name: ci
+on: pull_request
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@<commit-sha>
+      - name: app-check
+        run: echo "run language guide check"
+      - name: docker-build
+        run: docker build -t app:test .
