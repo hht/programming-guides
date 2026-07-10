@@ -1,0 +1,3 @@
+{"id":"happy-echo","input":"Return {\"ok\":true,\"n\":1}","expected":{"status":"ok","error_code":null,"output":{"ok":true,"n":1}},"allowed_tools":[],"max_turns":2}
+{"id":"invalid-output","input":"Return the string NOT_JSON when schema requires object","expected":{"status":"error","error_code":"output_invalid"},"allowed_tools":[],"max_turns":3}
+{"id":"budget","input":"Call noop then continue","expected":{"status":"error","error_code":"budget_exceeded"},"allowed_tools":["noop"],"max_turns":1}

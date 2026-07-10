@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/agent/gold-case.schema.json",
+  "type": "object",
+  "required": ["id", "input", "expected", "allowed_tools", "max_turns"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "input": { "type": "string", "minLength": 1 },
+    "expected": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "enum": ["ok", "error"] },
+        "error_code": { "type": ["string", "null"] },
+        "output": true
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "ok" } } },
+          "then": { "required": ["output"] }
+        },
+        {
+          "if": { "properties": { "status": { "const": "error" } } },
+          "then": { "required": ["error_code"] }
+        }
+      ]
+    },
+    "allowed_tools": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "max_turns": { "type": "integer", "minimum": 1, "maximum": 64 },
+    "max_tool_calls": { "type": "integer", "minimum": 1, "maximum": 256, "default": 16 }
+  }
+}

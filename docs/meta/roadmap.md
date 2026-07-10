@@ -11,6 +11,8 @@
 | [go](./go/README.md) | Go HTTP API |
 | [node-cli](./node-cli/README.md) | Node TUI CLI |
 | [defi](./defi/README.md) | EVM DeFi 前端 |
+| [fastapi](./fastapi/README.md) | Python HTTP API |
+| [ui-ux](./ui-ux/README.md) | 设计决策 + Figma 交付 |
 
 ## 待写（执行序）
 
@@ -19,8 +21,8 @@
 | 序 | 目录 | 说明 | 状态 |
 |----|------|------|------|
 | 1 | `fastapi` | Python HTTP API；对位 go | DONE |
-| 2 | `ui-ux` | HIG/Material/WCAG；Figma 交付 | **进行中** |
-| 3 | `agent` | Py+TS 一本两栈；金标同构 | 排队 |
+| 2 | `ui-ux` | HIG/Material/WCAG；Figma 交付 | DONE |
+| 3 | `agent` | Py+TS 一本两栈；金标同构 | **进行中** |
 | 4 | `ops` | 部署·密钥·回滚·健康检查·CI | 排队 |
 
 ### Wave 2 — P1

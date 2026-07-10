@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "check-inputs": "node -e \"console.log('fill INPUTS predicates manually or script')\"",
+    "check-schema": "node scripts/check-gold-schema.mjs",
+    "check-acceptance": "node -e \"console.log('tick docs/agent/11 in target repo copy')\"",
+    "lint": "eslint . && tsc --noEmit",
+    "test": "vitest run",
+    "eval": "vitest run evals",
+    "check": "pnpm check-inputs && pnpm check-schema && pnpm lint && pnpm test && pnpm check-acceptance",
+    "check-release": "pnpm check && pnpm eval"
+  }
+}
