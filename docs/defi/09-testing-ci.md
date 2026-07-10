@@ -4,7 +4,7 @@
 
 ## 单测落点
 
-`tests/unit/*.test.mjs`（或 `*.test.ts`，与 `package.json` 的 `test:unit` 一致即可；**全仓统一一种**）。
+`tests/unit/*.test.ts`（与 TS 栈一致；**全仓统一**；禁止再开 `*.mjs` 平行套）。
 
 ## 单测 case → 期望（最少集）
 
@@ -39,6 +39,6 @@
 | 何时 | 命令 | 成功 |
 |------|------|------|
 | 每个 PR | `pnpm check` | exit 0 |
-| main/release | `pnpm test:e2e` + `pnpm audit` | exit 0 |
+| main/release | `pnpm test:e2e`；`pnpm audit`（exit 0 **或** 仓内 `docs/audit-exceptions.md` 已记录 CVE+理由+到期日） | 见左 |
 
 见 [commands.md](./commands.md)。**发版必须 e2e=0**（与 [11](./11-world-class-acceptance.md) 一致；书面冒烟不可替代 e2e，除非 INPUTS 书面豁免并记录风险）。

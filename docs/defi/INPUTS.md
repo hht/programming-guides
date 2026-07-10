@@ -44,7 +44,7 @@ VITE_API_BASE_URL=
 VITE_WC_PROJECT_ID=
 VITE_RPC_56=
 VITE_SIWE_DOMAIN=         # 公开域名，如 app.example.com
-VITE_SENTRY_DSN=          # 可后补，发版前必填
+VITE_SENTRY_DSN=          # 可选；第三方可观测不进必勾验收
 ```
 
 地址表 JSON/TS 必须含字段 `env: development|staging|prod`（见 schema）。  

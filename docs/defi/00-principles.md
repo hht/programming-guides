@@ -42,17 +42,15 @@ Web3 前端的「正确性」特指：
 | Query key | `src/api/query-keys.ts` | 字符串魔法散落 |
 | 文案 | `i18n/messages/` | 组件内硬编码用户可见文案（除调试） |
 
-## 成功标准（新项目「超越」的定义）
+## 成功标准（新项目「超越」— 与 [11](./11-world-class-acceptance.md) 一致）
 
-相对「能连上钱包、能点 Swap」的 demo，本指南要求至少：
+相对「能连上钱包、能点 Swap」的 demo，须同时：
 
-- [ ] 合约层 **codegen + 地址表**，页面零裸 ABI
-- [ ] 钱路径单测覆盖：链错误、用户拒签、模拟失败、unknown latch
-- [ ] SIWE 服务端校验 nonce/domain（若有后端）
-- [ ] CI：`tsc` + lint + 架构边界 + 钱路径单测
-- [ ] 发版：钱路径 e2e exit 0（书面冒烟不可替代，除非 INPUTS 书面豁免）
-- [ ] 错误监控（Sentry 等）接上链上/会话失败
+- [ ] **超越 a**：`05` / `11` 中两条对照句不变量已落地（receipt 成功才算成功；unknown latch fail-closed）  
+- [ ] **超越 b**：发版钱路径 e2e 场景×断言（`09`）exit 0  
+- [ ] 合约层 codegen + 地址表；钱路径单测；有后端则 SIWE 服务端校验；CI `check`  
 
+**不**把 Sentry/第三方可观测当作超越或必勾（见元指南；`08.3` 仅参考）。
 ## 反模式速查
 
 | 反模式 | 后果 | 正确做法 |

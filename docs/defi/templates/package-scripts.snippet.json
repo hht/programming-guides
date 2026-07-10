@@ -5,7 +5,7 @@
     "dev": "vite",
     "build": "pnpm contracts:generate && tsc -b && vite build",
     "lint:architecture": "depcruise src --config .dependency-cruiser.cjs",
-    "test:unit": "node --test tests/unit/*.test.mjs",
+    "test:unit": "vitest run tests/unit",
     "test:e2e": "playwright test",
     "check": "pnpm contracts:generate && tsc -b && eslint src --max-warnings 0 && pnpm lint:architecture && pnpm test:unit"
   }
