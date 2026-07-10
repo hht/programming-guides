@@ -2,4 +2,5 @@
 
 | 目录 | 用途 |
 |------|------|
-| [**defi/**](./defi/README.md) | React 19 + EVM DeFi 前端指南（含 templates） |
+| [**meta/**](./meta/how-to-write-guides.md) | 如何编写世界级开发指南（元流程） |
+| [**defi/**](./defi/README.md) | React 19 + EVM DeFi 前端指南（领域实例） |
