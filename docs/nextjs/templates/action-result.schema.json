@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["ok"],
+      "properties": {
+        "ok": { "const": true },
+        "data": true
+      }
+    },
+    {
+      "type": "object",
+      "required": ["ok", "error"],
+      "properties": {
+        "ok": { "const": false },
+        "error": { "type": "string" },
+        "code": { "type": "string" }
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "check-inputs": "node -e \"console.log('INPUTS predicates')\"",
+    "check-acceptance": "node -e \"console.log('tick 11')\"",
+    "lint": "eslint . && tsc --noEmit",
+    "test": "vitest run",
+    "build": "next build",
+    "check": "pnpm check-inputs && pnpm lint && pnpm test && pnpm build && pnpm check-acceptance",
+    "e2e": "playwright test",
+    "check-release": "pnpm check && pnpm e2e"
+  }
+}

@@ -2,4 +2,6 @@
 
 | 文档 | 用途 |
 |------|------|
-| [how-to-write-guides.md](./how-to-write-guides.md) | 新品类指南的编写流程、标杆选择、对抗 LOOP、产出模板 |
+| [../../AGENTS.md](../../AGENTS.md) | 通用世界级工程契约（方法 SSOT） |
+| [how-to-write-guides.md](./how-to-write-guides.md) | 新品类指南编写流程、标杆、对抗 LOOP |
+| [roadmap.md](./roadmap.md) | 覆盖面与执行序（含扩展候选池） |
