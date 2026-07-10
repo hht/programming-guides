@@ -18,8 +18,8 @@
 
 | 序 | 目录 | 说明 | 状态 |
 |----|------|------|------|
-| 1 | `fastapi` | Python HTTP API；对位 go | **DONE（对抗 5/5 PASS）** |
-| 2 | `ui-ux` | HIG/Material/WCAG；Figma 交付 | 排队 |
+| 1 | `fastapi` | Python HTTP API；对位 go | DONE |
+| 2 | `ui-ux` | HIG/Material/WCAG；Figma 交付 | **进行中** |
 | 3 | `agent` | Py+TS 一本两栈；金标同构 | 排队 |
 | 4 | `ops` | 部署·密钥·回滚·健康检查·CI | 排队 |
 
