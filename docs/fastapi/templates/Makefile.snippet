@@ -1,0 +1,19 @@
+# Snippet — copy to repo Makefile（命令字符串与 ../commands.md 同文）
+.PHONY: sync migrate test lint typecheck check test-integration openapi run
+sync:
+	uv sync
+migrate:
+	uv run alembic upgrade head
+test:
+	uv run pytest
+lint:
+	uv run ruff check . && uv run ruff format --check .
+typecheck:
+	uv run mypy app
+check: sync lint typecheck test
+test-integration:
+	export DATABASE_URL=postgresql+asyncpg://app:app@localhost:5432/app_test && docker compose -f docker-compose.test.yml up -d --wait && uv run alembic upgrade head && uv run pytest -m integration && docker compose -f docker-compose.test.yml down
+openapi:
+	uv run python -c "from app.main import create_app; import json; json.dump(create_app().openapi(), open('openapi.json','w'), indent=2)"
+run:
+	uv run uvicorn app.main:app --host 0.0.0.0 --port 8000
