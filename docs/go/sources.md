@@ -55,3 +55,10 @@ P0 > P1 > P1w > E。冲突时先进优先（元指南 §3.4）。
 | Gin/Echo 更「全家桶」流行 | **采用 chi**（stdlib `http.Handler` 兼容，先进边界清晰） |
 | GORM 更流行 | **采用 sqlc+pgx**（SQL 与类型显式，先进优先） |
 | zap 仍流行 | **采用 log/slog**（stdlib；禁无理由再引 zap） |
+
+## 对抗
+
+| 日期 | ROUND | SCORE | model |
+|------|-------|-------|-------|
+| 2026-07-11 | gate+framework MUST 重审 | 5/5 | grok-4.5-fast-xhigh |
+

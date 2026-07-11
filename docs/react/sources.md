@@ -61,3 +61,10 @@ P0 > P1 > P1w > E。
 | B 标杆仍用旧 React Router | 能力面映射；实现版本跟 P0 TanStack Router |
 | C 用 Refine 数据层 | **约定自建 TanStack Query**，学其资源/通知模式不绑框架 |
 | lodash 下载更高 vs es-toolkit | **采用 es-toolkit**（新项目默认；禁新增 lodash） |
+
+## 对抗
+
+| 日期 | ROUND | SCORE | model |
+|------|-------|-------|-------|
+| 2026-07-11 | gate+framework MUST 重审 | 5/5 | grok-4.5-fast-xhigh |
+

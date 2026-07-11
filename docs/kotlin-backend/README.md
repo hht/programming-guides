@@ -23,7 +23,7 @@
 5. 按 [07](./07-auth.md) / [08](./08-quality.md) 接鉴权与质量 
 6. 复制 templates：`Makefile.snippet`→`Makefile`；`docker-compose.test.yml.example`→`docker-compose.test.yml`；`env.example`→`.env.example`；可选 `gradle-libs.versions.toml.example`→`gradle/libs.versions.toml` 
 7. [commands.md](./commands.md)：`make check`；发版前 **`make test-integration`** 
-8. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) 全勾 
+8. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D** 勾（**C 仅维护者**） 
 
 ## 文档索引
 

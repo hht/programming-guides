@@ -8,4 +8,4 @@
 6. [ ] 主表单 Zod+RHF+shadcn 
 7. [ ] date-fns / es-toolkit 已用在真实路径（非空依赖） 
 8. [ ] `pnpm check` 与 e2e 矩阵 
-9. [ ] 11 验收全勾 
+9. [ ] 11 验收 **A+B+D** 勾（C 仅维护者）

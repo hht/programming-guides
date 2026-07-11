@@ -62,3 +62,10 @@
 | Catalyst 快速「上 Mac」 | **原生 macOS target**；Catalyst 非默认 |
 | IceCubes 第三方栈丰富 | 学结构与态；**不**把其依赖并集当必做 |
 | Swift Testing vs 仅 XCTest | **Swift Testing 先进默认**；XCTest 可并存 |
+
+## 对抗
+
+| 日期 | ROUND | SCORE | model |
+|------|-------|-------|-------|
+| 2026-07-11 | gate+framework MUST 重审 | 5/5 | grok-4.5-fast-xhigh |
+

@@ -26,7 +26,7 @@ type Querier interface {
 | 情况 | 行为 |
 |------|------|
 | migrate 失败 | 进程退出 1 |
-| 唯一违反 | 映射 CONFLICT |
+| 唯一违反 | 默认映射 CONFLICT（经 `05` 的 `apierrors.From`）。**例外**：幂等键表 `idempotency_keys` 上并发 `23505` → **必须**走 `05` 步骤 5 的 Rollback→再 SELECT 回放，**禁止**当业务 CONFLICT |
 | 连接耗尽 | INTERNAL + 日志 |
 
 ## 单测探针

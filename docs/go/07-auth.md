@@ -12,7 +12,7 @@
 | 无鉴权 | 无 Auth 中间件 |
 | Bearer JWT | `jwt/v5`；HS256+`JWT_SECRET` 或 RS256+**`JWT_PUBLIC_KEY_PEM`**（PEM）；校验 iss/aud/exp；缺/坏票→401；**`sub`→`ctxKeySubject`**；OpenAPI scheme 名 **`bearerAuth`** |
 | Session cookie | 见下节 |
-| 外部 IdP | JWKS 或 introspection（INPUTS）；**`sub`→`ctxKeySubject`**；scheme **`bearerAuth`** |
+| 外部 IdP | JWKS 或 introspection（INPUTS）；env 键见 `templates/env.example`（`IDP_*`）；**`sub`→`ctxKeySubject`**；scheme **`bearerAuth`** |
 
 受保护路由：`r.Group` + Auth（**decode 之前**）。 
 `UNAUTHORIZED`=未带票；`FORBIDDEN`=票有效但 CSRF/权限失败。

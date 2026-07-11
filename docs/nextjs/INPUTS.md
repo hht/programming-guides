@@ -10,9 +10,9 @@
 | 5 | **鉴权** | □ 无（`05` 跳过授权；发版矩阵 #4=`N/A`）□ Cookie 会话（名=`session`；步骤见 `07`）。**禁止**勾选后留空；非 Cookie → **停**，另开/等 `docs/auth`（本册不验收） |
 | 5b | **授权**（仅 §5=Cookie） | □ 仅会话即全权（无细粒度）□ 有角色/权限表（路径或角色→允许操作）。未勾=BLOCKED |
 | 5c | **私有 path 前缀**（仅 §5=Cookie） | 默认 `/` 下除登录与公开 path 外均私有；或显式前缀列表（例 `/app`）。须与 middleware `matcher` 一致 |
-| 5d | **会话载荷**（仅 §5=Cookie） | 默认 **signed cookie**：claims 仅允许 `sub`（Subject id 字符串）+ `exp`（unix 秒）；算法 HMAC-SHA256 + `SESSION_SECRET`；`maxAge` 默认 7d。禁止另增未文档化 claim。若改 opaque+DB → **停**，改走 `docs/auth` |
+| 5d | **会话载荷**（仅 §5=Cookie） | 默认 **signed cookie**：claims 仅允许 `sub`（Subject id 字符串）+ `exp`（unix 秒）；算法 HMAC-SHA256 + `SESSION_SECRET`；`maxAge` 默认 7d。**token 串格式（SSOT）**：`base64url(JSON.stringify({sub,exp})) + "." + base64url(HMAC-SHA256(utf8(payloadSegment), SESSION_SECRET))`（两段、无第三段；校验时对第一段重算 HMAC 恒定时间比较，再查 `exp`）。禁止另增未文档化 claim。若改 opaque+DB → **停**，改走 `docs/auth` |
 | 5e | **登录表单字段**（仅 §5=Cookie） | 默认 `email` + `password`（字段名固定）；改字段须写明列表。签发入参=校验通过后的 `sub` |
-| 5f | **身份校验 SSOT**（仅 §5=Cookie） | 须勾且仅一：□ **DB 用户表**（表名+`password_hash` 列名；校验=`email` 查行 + 核哈希，算法默认 **argon2id**；`sub`=主键字符串）□ **对接 docs/auth**（书面路径）□ **单用户环境**（`LOGIN_EMAIL`+`LOGIN_PASSWORD_HASH` env；`sub` 固定字符串 **`demo`**；仅 staging/demo，prod 禁）。未勾=BLOCKED |
+| 5f | **身份校验 SSOT**（仅 §5=Cookie） | 须勾且仅一：□ **DB 用户表**（表名+`password_hash` 列名；校验=`email` 查行 + 核哈希，算法默认 **argon2id**；`sub`=主键字符串）□ **对接 docs/auth**（书面路径）□ **单用户环境**（`LOGIN_EMAIL`+`LOGIN_PASSWORD_HASH` env；`LOGIN_PASSWORD_HASH`=**argon2id** 编码串（与 DB 路径同算法；可用 `@node-rs/argon2` / `argon2` 库 `verify`）；`sub` 固定字符串 **`demo`**；仅 staging/demo，prod 禁）。未勾=BLOCKED |
 | 6 | **环境变量名** | `NEXT_PUBLIC_*` 与服务端密钥名成对；含 `SESSION_SECRET`（若 Cookie）；无明文 |
 | 7 | **部署目标** | □ Vercel □ Node 自托管。须写 staging/prod 健康检查 URL（含 scheme）；密钥名与 §6 同表。**禁止**未文档化「其它」空过 |
 | 8 | **设计** | Figma/handoff 或 `N/A` |

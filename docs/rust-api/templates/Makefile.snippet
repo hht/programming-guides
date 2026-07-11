@@ -1,15 +1,16 @@
 # Snippet — adapt in target repo Makefile（命令字符串与 ../commands.md 同文）
-.PHONY: migrate-up sqlx-prepare test lint check build test-integration
+.PHONY: migrate-up sqlx-prepare test fmt lint check build test-integration
 migrate-up:
 	sqlx migrate run
 sqlx-prepare:
 	cargo sqlx prepare
 test:
 	SQLX_OFFLINE=true cargo test
-lint:
+fmt:
 	cargo fmt --check
+lint:
 	cargo clippy -- -D warnings
-check: lint test
+check: fmt lint test
 build:
 	SQLX_OFFLINE=true cargo build --release
 # 集成测：compose → migrate → integration 测 → down（DATABASE_URL 见 09 / env.example）

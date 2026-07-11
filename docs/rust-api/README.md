@@ -22,7 +22,7 @@
 4. 按 [04](./04-errors-and-validation.md) / [05](./05-request-lifecycle.md) / [06](./06-persistence.md) 实现核心路径（**自写，勿抄业务模块**） 
 5. 按 [07](./07-auth.md) / [08](./08-quality.md) 接鉴权与质量 
 6. 复制 [templates/Makefile.snippet](./templates/Makefile.snippet) → 仓根 `Makefile`；复制 [templates/docker-compose.test.yml.example](./templates/docker-compose.test.yml.example) → `docker-compose.test.yml` 
-7. [commands.md](./commands.md) 绿 + [11](./11-world-class-acceptance.md) 全勾 
+7. [commands.md](./commands.md) 绿 + [11](./11-world-class-acceptance.md) **A+B+D** 勾（**C 仅维护者**） 
 
 ## 文档索引
 

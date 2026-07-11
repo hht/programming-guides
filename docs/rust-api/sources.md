@@ -61,3 +61,10 @@ P0 学习（非 B 共有切条）：**axum examples**、**tokio** 教程 — 中
 | warp / rocket 仍可见 | **采用 axum**（本指南品类默认；禁平行第二套） |
 | `println!` / `log` 箱默认 | **采用 tracing**（async 友好；禁无理由再引第二套日志门面作默认） |
 | Loco 一键脚手架 vs 自建分层 | **学 Loco 工程面**；实现按本册 `02` 自建，**禁**双 SSOT 框架 |
+
+## 对抗
+
+| 日期 | ROUND | SCORE | model |
+|------|-------|-------|-------|
+| 2026-07-11 | gate+framework MUST 重审 | 5/5 | grok-4.5-fast-xhigh |
+

@@ -9,7 +9,8 @@
 | `test` | `vitest run` | PR | 0 |
 | `build` | `next build` | PR/发版 | 0 |
 | `check-acceptance` | 自检 [11](./11-world-class-acceptance.md) **A+B+D**（跳过 C；C 仅维护者） | PR | OK |
-| `check` | check-inputs + fmt + lint + typecheck + test + build + check-acceptance | PR | 0 |
+| `secrets-scan` | 扫 `.env*` / `env.example` / CI 注入：`NEXT_PUBLIC_*` 名或值不得含 `SECRET`/`PASSWORD`/`PRIVATE_KEY`/`API_KEY` 等密钥语义（实现仓脚本；命中 → exit 1） | PR | 0 |
+| `check` | check-inputs + fmt + lint + typecheck + test + build + secrets-scan + check-acceptance | PR | 0 |
 | `e2e` | playwright：`09` 矩阵 1–4 中非 N/A 项（§5=无则跳过 #4） | 发版 | 0 |
 | `check-release` | check + e2e | 发版 | 0 |
 | `check-guide` | `11` **C** 节（维护者） | 维护 | OK |

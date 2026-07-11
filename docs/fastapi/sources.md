@@ -55,3 +55,10 @@ P0 > P1 > P1w > E。冲突时先进优先（元指南 §3.4）。
 | Poetry / pip-tools 仍流行 | **采用 uv**（锁文件 + 速度；先进优先） |
 | Django REST 更「企业」 | **采用 FastAPI**（本指南品类；异步与 OpenAPI 一等） |
 | sync Session 更简单 | **采用 async**（`AsyncSession`；禁默认同步阻塞路由） |
+
+## 对抗
+
+| 日期 | ROUND | SCORE | model |
+|------|-------|-------|-------|
+| 2026-07-11 | gate+framework MUST 重审 | 5/5 | grok-4.5-fast-xhigh |
+

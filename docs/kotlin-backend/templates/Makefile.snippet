@@ -1,10 +1,12 @@
 # Snippet — adapt in target repo Makefile（命令字符串与 ../commands.md 同文）
-.PHONY: test lint check build migrate test-integration run
+.PHONY: test fmt lint check build migrate test-integration run
 test:
 	./gradlew test -PexcludeTags=integration
+fmt:
+	./gradlew ktlintCheck
 lint:
-	./gradlew detekt ktlintCheck
-check: lint test
+	./gradlew detekt
+check: lint fmt test
 build:
 	./gradlew installDist
 migrate:

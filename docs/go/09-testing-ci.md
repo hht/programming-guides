@@ -35,5 +35,5 @@
 
 | 触发 | 命令 |
 |------|------|
-| PR | `make check`（= `sqlc generate` + `go test ./...` + `golangci-lint run`） |
+| PR | `make check`（与 [commands.md](./commands.md) 同文：`sqlc generate && go test ./... && test -z "$(gofmt -l .)" && golangci-lint run`） |
 | 发版 | `make check` + `make test-integration`（矩阵 1–5） |

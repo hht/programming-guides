@@ -1,12 +1,14 @@
 # Snippet — adapt in target repo Makefile（命令字符串与 ../commands.md 同文）
-.PHONY: sqlc test lint check build migrate-up test-integration
+.PHONY: sqlc test fmt lint check build migrate-up test-integration
 sqlc:
 	sqlc generate
 test:
 	go test ./...
+fmt:
+	test -z "$$(gofmt -l .)"
 lint:
 	golangci-lint run
-check: sqlc test lint
+check: sqlc test fmt lint
 build:
 	go build -o bin/api ./cmd/api
 migrate-up:

@@ -31,7 +31,7 @@
 mkdir <name> && cd <name>
 uv init
 # 布局规定为仓根 app/（勿用 src 布局）：创建 app/__init__.py 等按 02；pyproject 中
-# [project] name 自定；若 uv 生成了 src/，删除并改为包路径 app
+# [project] name **必须**为 `app`（与 INPUTS §1 / 导入包同文）；若 uv 生成了 src/，删除并改为包路径 app
 uv add fastapi "uvicorn[standard]" pydantic pydantic-settings sqlalchemy asyncpg alembic structlog httpx
 uv add --dev pytest pytest-asyncio ruff mypy
 # 若 INPUTS 选 Bearer JWT：

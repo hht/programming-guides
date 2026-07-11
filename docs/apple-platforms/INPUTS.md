@@ -18,6 +18,7 @@
 | 9 | **错误码 → UI** | 至少：`NETWORK` / `UNAUTHORIZED` / `NOT_FOUND` / `VALIDATION` / `CANCELLED` / `UNKNOWN` → 用户可见态（toast / inline / full-screen） |
 | 10 | **导航根** | 根形态：□ 单 `NavigationStack` □ `Tab` + 每 Tab 一栈 □ 其它（须图 + 理由）。深链 URL scheme / Universal Link：**有则列路由表；无则写 `N/A — no deep link`** |
 | 10b | **同 Route 重复 push** | 互斥任选一种：□ **允许**栈内重复同 Route □ **去重**（已在栈则 pop 到该 Route 或忽略二次 push——择一写明谓词）。默认未勾 → **允许** |
+| 10c | **忙态门闸**（`05` 步骤 2） | 互斥任选一种：□ **丢弃**新 intent（默认）□ **排队**。`submitting`/`loading` 且 intent 非取消/非强制刷新时生效；取消 intent 始终可入 |
 | 11 | **Mac 面（§1 含 Mac 时必填）** | 主窗口策略（单窗 / 多窗）；菜单栏命令表（至少 Quit / 偏好 / 主操作）；键盘快捷键表。§1 无 Mac → 本行 `N/A` |
 | 12 | **无障碍与动态字体** | □ 遵守 HIG：VoiceOver 标签计划 + Dynamic Type；裁剪须写明一行理由 |
 | 13 | **测试设备矩阵** | 发版至少：1× iPhone 模拟器 +（若 iPad）1× iPad +（若 Mac）1× macOS；列 Xcode scheme 名 |

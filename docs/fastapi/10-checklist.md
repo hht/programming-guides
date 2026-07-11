@@ -10,4 +10,4 @@
 - [ ] `make openapi` 
 - [ ] `make check` 绿 
 - [ ] `make test-integration`（`09` **适用**矩阵行） 
-- [ ] `11` 验收勾选 
+- [ ] `11` 验收 **A+B+D** 勾选（C 仅维护者）

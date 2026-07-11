@@ -14,7 +14,7 @@
 | # | 步骤 | 规格 |
 |---|------|------|
 | 1 | **Intent 进入** | 用户手势、`.task`、系统回调 → `Store.send(intent)`（或词表等价具名方法）。View **不**直接调用 repository。 |
-| 2 | **门闸** | 若 `submitting`/`loading` 且 intent 非取消/非强制刷新 → **丢弃或排队**（INPUTS 选定一种；默认丢弃防双提交）。取消 intent 始终可入。 |
+| 2 | **门闸** | 若 `submitting`/`loading` 且 intent 非取消/非强制刷新 → 按 INPUTS **§10c**（默认 **丢弃**防双提交）。取消 intent 始终可入。 |
 | 3 | **更新相位** | MainActor：先置 `loading` 或 `submitting`；必要时清 `error`。 |
 | 4 | **执行副作用** | 启动 **可取消** `Task`（存 token / 用 `.task` id）：网络、磁盘、重计算在 **非 MainActor**（`07`）。协作检查 `Task.isCancelled` / `try Task.checkCancellation()`。 |
 | 5 | **更新 Model** | 成功：写入 Model；失败：映射错误码（INPUTS §9）；取消：走 `CANCELLED`，不覆盖为 `NETWORK`。 |

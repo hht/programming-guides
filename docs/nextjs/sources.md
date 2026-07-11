@@ -40,3 +40,10 @@
 |------|------|
 | T3 默认 tRPC | 本册 Server Actions |
 | 与 Vite react 混栈 | 分册 |
+
+## 对抗
+
+| 日期 | ROUND | SCORE | model |
+|------|-------|-------|-------|
+| 2026-07-11 | gate+framework MUST 重审 | 5/5 | grok-4.5-fast-xhigh |
+

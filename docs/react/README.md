@@ -20,7 +20,7 @@
 3. 按 [03](./03-routing-and-layouts.md) 落地路由与壳 
 4. 按 [04](./04-data-fetching.md) / [05](./05-mutation-lifecycle.md) / [06](./06-forms-and-ui.md) 实现核心路径（**自写，勿抄业务模块**） 
 5. 按 [07](./07-client-state-auth-env.md) / [08](./08-quality-a11y-perf.md) 接会话、质量门禁 
-6. [commands.md](./commands.md) 绿 + [11](./11-world-class-acceptance.md) 全勾 
+6. [commands.md](./commands.md) 绿 + [11](./11-world-class-acceptance.md) **A+B+D** 勾（**C 仅维护者**）
 
 ## 文档索引
 

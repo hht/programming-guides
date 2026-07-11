@@ -68,14 +68,14 @@
 
 | 序 | 语言 | 状态 | 主挂靠 |
 |----|------|------|--------|
-| 1 | typescript | FOCUSED | react / nextjs |
-| 2 | go | FOCUSED | go |
-| 3 | python | FOCUSED | fastapi |
-| 4 | rust | FOCUSED | rust-api |
-| 5 | kotlin | FOCUSED | kotlin-backend |
-| 6 | swift | FOCUSED | apple-platforms |
+| 1 | typescript | **PASS** | react / nextjs |
+| 2 | go | **PASS** | go |
+| 3 | python | **PASS** | fastapi |
+| 4 | rust | **PASS** | rust-api |
+| 5 | kotlin | **PASS** | kotlin-backend |
+| 6 | swift | **PASS** | apple-platforms |
 
-升 `PASS`：该语言主挂靠应用册对「gate 挂靠 + commands 逐字 + 框架 MUST」变更跑 Full 5/5 后改 README。  
+升 `PASS`：该语言主挂靠应用册对「gate 挂靠 + commands 逐字 + 框架 MUST」变更跑 Full 5/5 后改 README — **2026-07-11 已完成（6/6）**。  
 **不设**语言百科 Wave；**不开** `framework-gates/` 平行树（框架 MUST 在应用册）。
 
 横切能力册（auth / postgres / redis / saas / payments / …）的 **框架 MUST** 已落在各自 `00`；语言层跟宿主 Language Gate，不另开闸。

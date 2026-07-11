@@ -41,3 +41,10 @@
  - [ ] a2. `对照：B 中更弱/未见「Client 边界最小化（默认 RSC）」硬门闸 → 本指南要求默认 RSC、Client 边界最小（见 03/05）` 
  - [ ] b. `09` 矩阵：Playwright 1–4 + check 覆盖 5–6 
  - c. N/A 
+
+## D. 环境
+
+| 项 | 勾选 |
+|----|------|
+| staging/prod 健康检查 URL + §6 环境名成对 | [ ] |
+| 无密钥进入 `NEXT_PUBLIC_*`（`secrets-scan` 绿） | [ ] |

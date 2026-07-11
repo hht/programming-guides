@@ -62,3 +62,10 @@ P0 学习（非 B 共有切条）：**Ktor 文档**、**Exposed**、**coroutines
 | Jackson 仍为 JVM JSON 默认 | **采用 kotlinx.serialization**（与 Kotlin 类型系统同构） |
 | Arrow / 函数式错误轨道（C） | **不指定 Arrow**（C 学边界；默认 `AppError` + StatusPages） |
 | SqlDelight（C）vs Exposed | **采用 Exposed**（与 B/A 可映射；禁默装第二套 ORM） |
+
+## 对抗
+
+| 日期 | ROUND | SCORE | model |
+|------|-------|-------|-------|
+| 2026-07-11 | gate+framework MUST 重审 | 5/5 | grok-4.5-fast-xhigh |
+

@@ -22,10 +22,12 @@
  （例外：同实体已有完整最终值时可用 `setQueryData` 代替；须在单测断言 `setQueryData` 而非 invalidate，并在 PR 注明例外） 
  2. 若 INPUTS 要求跳转：再 `navigate(...)` 
  **禁止**未 await invalidate 就 navigate（避免列表页读到旧 cache） 
- - `onError`： 
+ - `onError`（`error` 为 `04` 的 `AppError`，用 **`code` 判别**，勿直接读 HTTP 状态）： 
+ - `UNAUTHORIZED` → 清会话 → navigate 登录（与 `07` / 失败表一致） 
  - `VALIDATION` + `error.fields` → `form.setError(path, { message: t(key) })` 
- - 无 `fields` → form root 或 toast `messageKey` 
- - 其它 code → toast 
+ - `VALIDATION` 无 `fields` → **默认** form root `messageKey`（勿仅 toast） 
+ - `NETWORK` / `CONFLICT` / `UNKNOWN` → toast `messageKey` 
+ - **禁止**把「其它 code → toast」盖过 `UNAUTHORIZED`
 5. 进行中：`disabled={isPending}`；mutation 未结束禁止再 fire。 
 
 ## 乐观更新（可选）
@@ -39,8 +41,8 @@
 | Zod 失败 | 不发请求；字段错误 |
 | VALIDATION | 映 `fields`；无 fields 则 root |
 | NETWORK | toast；可再提交 |
-| 401 | 清会话 → login |
-| CONFLICT(409) | 专用文案；可选 refetch |
+| UNAUTHORIZED（HTTP 401 经 `04` 映射） | 清会话 → login；**不得**只 toast |
+| CONFLICT（HTTP 409 → `CONFLICT`） | 专用文案；可选 refetch |
 
 ## 单测探针
 

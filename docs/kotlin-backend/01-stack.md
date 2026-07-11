@@ -55,7 +55,21 @@ gradle init --type kotlin-application --dsl kotlin --java-version 21 --package <
 
 - `plugins`：`kotlin("jvm")`、`kotlin("plugin.serialization")`、`application`、detekt、ktlint 
 - `application { mainClass.set("<package>.ApplicationKt") }`（或等价入口） 
-- 测试：`useJUnitPlatform()` 
+- 测试：`useJUnitPlatform()`；**必须**把 `-PexcludeTags` / `-PincludeTags` 接到 JUnit（否则 `commands` 无效）。根 `build.gradle.kts` 最小同文：
+
+```kotlin
+tasks.test {
+    useJUnitPlatform {
+        val exclude = project.findProperty("excludeTags") as String?
+        val include = project.findProperty("includeTags") as String?
+        if (exclude != null) excludeTags(exclude.split(","))
+        if (include != null) includeTags(include.split(","))
+    }
+}
+```
+
+集成测类标 `@Tag("integration")`（与 `02`/`09` 同文）。
+
 
 入口：`fun main()` → `embeddedServer(Netty, ...)` 或 `EngineMain`；**可测路径**必须抽出 `fun Application.module()`（或 `createApplication(): Application`）供 test host 安装。
 

@@ -1,12 +1,16 @@
 {
   "scripts": {
     "check-inputs": "node -e \"console.log('INPUTS predicates')\"",
-    "check-acceptance": "node -e \"console.log('tick 11')\"",
-    "lint": "eslint . && tsc --noEmit",
+    "fmt": "pnpm exec prettier --check .",
+    "lint": "pnpm exec eslint .",
+    "typecheck": "pnpm exec tsc -b --pretty false",
     "test": "vitest run",
     "build": "next build",
-    "check": "pnpm check-inputs && pnpm lint && pnpm test && pnpm build && pnpm check-acceptance",
+    "check-acceptance": "node -e \"console.log('tick 11 A+B+D')\"",
+    "secrets-scan": "node -e \"console.log('scan NEXT_PUBLIC_* for secret semantics')\"",
+    "check": "pnpm check-inputs && pnpm fmt && pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm secrets-scan && pnpm check-acceptance",
     "e2e": "playwright test",
-    "check-release": "pnpm check && pnpm e2e"
+    "check-release": "pnpm check && pnpm e2e",
+    "check-guide": "node -e \"console.log('tick 11-C maintainer')\""
   }
 }
