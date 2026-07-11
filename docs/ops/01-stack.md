@@ -1,8 +1,8 @@
-# 01 — 默认栈（钉死）
+# 01 — 默认栈
 
 ## 选栈总则
 
-先进且可映射：不可变镜像 + 声明式部署 + CI 门禁 > 「手工 SSH 改文件」。  
+先进且可映射：不可变镜像 + 声明式部署 + CI 门禁 > 「手工 SSH 改文件」。 
 **禁止**默认上完整 K8s 百科（路线图 DEFER）；单机/小集群用 Compose + Kamal。
 
 ## 栈表
@@ -16,7 +16,7 @@
 | 密钥 | GitHub Secrets + 主机 env | 禁提交 `.env` 真值 |
 | IaC 云资源 | **可选** OpenTofu；默认 N/A | 有云资源才开 |
 
-## 远程 vs 本地（钉死）
+## 远程 vs 本地
 
 | INPUTS §3 | 发布器 |
 |-----------|--------|
@@ -27,8 +27,8 @@
 
 ## 脚手架
 
-1. 应用仓加 `Dockerfile` + `compose.yaml` + `.github/workflows/`。  
-2. Kamal：`kamal init` 后按 INPUTS 填 `config/deploy.yml`（实现自写）。  
+1. 应用仓加 `Dockerfile` + `compose.yaml` + `.github/workflows/`。 
+2. Kamal：`kamal init` 后按 INPUTS 填 `config/deploy.yml`（实现自写）。 
 3. 版本：…；脚手架须含 `02` 树中 `ops/` 与 workflows 落点。
 
 ## 冲突
@@ -37,4 +37,4 @@
 |------|--------|------|
 | 裸机 systemd 无容器 | 不用作默认 | 难复现 |
 | 完整 K8s | DEFER | 超出本册范围 |
-| 最新 action `@v4` 浮动 | **钉 SHA** | 供应链 |
+| 最新 action `@v4` 浮动 | **采用 SHA** | 供应链 |

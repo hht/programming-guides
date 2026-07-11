@@ -2,23 +2,23 @@
 
 ## 不变量
 
-- **每条 Job 必填 `idempotency_key`**（INPUTS §3）；无键不得入队。  
-- Handler 必须保证：**同一 key 的有效业务副作用至多一次**（at-least-once 下重复 execute 安全）。  
+- **每条 Job 必填 `idempotency_key`**（INPUTS §3）；无键不得入队。 
+- Handler 必须保证：**同一 key 的有效业务副作用至多一次**（at-least-once 下重复 execute 安全）。 
 - 入队唯一约束防重复行；**不等于**已执行成功——执行侧仍要「成功标记」。
 
 ## 步骤规格（实现自写）
 
-1. **键设计**  
-   - 含业务维度：`{aggregate}:{id}:{action}`（例 `order:42:fulfill`）；禁仅随机 UUID（无业务去重语义）除非 INPUTS 书面「每次必新意图」。  
-2. **入队去重**  
-   - DB 唯一约束 / Streams 旁路键；冲突 → `JOB_DUPLICATE`（默认）或 coalesce。  
-3. **执行去重**  
-   - 开始或提交副作用时写入 **`job_results(idempotency_key, status, result_ref)`**（或业务表条件更新）。  
-   - 已 `succeeded` → execute 短路 → ack。  
-4. **与可见性重入**  
-   - 超时重 claim 可能并行窗口：用唯一约束 / 行锁 / 条件更新保证只有一胜；败者 ack 空操作或 dead 视策略（默认 **空操作 ack**）。  
-5. **禁止**  
-   - 「靠最大努力少重试」代替幂等；「仅入队去重」无执行标记。
+1. **键设计** 
+ - 含业务维度：`{aggregate}:{id}:{action}`（例 `order:42:fulfill`）；禁仅随机 UUID（无业务去重语义）除非 INPUTS 写明「每次必新意图」。 
+2. **入队去重** 
+ - DB 唯一约束 / Streams 旁路键；冲突 → `JOB_DUPLICATE`（默认）或 coalesce。 
+3. **执行去重** 
+ - 开始或提交副作用时写入 **`job_results(idempotency_key, status, result_ref)`**（或业务表条件更新）。 
+ - 已 `succeeded` → execute 短路 → ack。 
+4. **与可见性重入** 
+ - 超时重 claim 可能并行窗口：用唯一约束 / 行锁 / 条件更新保证只有一胜；败者 ack 空操作或 dead 视策略（默认 **空操作 ack**）。 
+5. **禁止** 
+ - 「靠最大努力少重试」代替幂等；「仅入队去重」无执行标记。
 
 ## 失败分类 / 默认值
 

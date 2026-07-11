@@ -2,7 +2,7 @@
 
 ## 品类
 
-业务 **批处理数据管线**：按约定 **抽取 → 变换 → 装载 → 校验**；默认由 [workers-queue](../workers-queue/README.md) 承载执行 / 重试 / 死信。**流式非默认**（仅 INPUTS）。**非**编排器百科、非托管 ELT 控制面绑死。
+业务 **批处理数据管线**：按约定 **抽取 → 变换 → 装载 → 校验**；默认由 [workers-queue](../workers-queue/README.md) 承载执行 / 重试 / 死信。**流式非默认**（仅 INPUTS）。**非**编排器百科、不把托管 ELT 控制面当作唯一方案。
 
 核心路径：**Batch Job Lifecycle**（`extract → transform → load → verify`）。
 
@@ -18,11 +18,11 @@
 
 | ID | 仓库 | 等级 | 学什么 | 不学什么 | 品类匹配一句 |
 |----|------|------|--------|----------|--------------|
-| A | [airbytehq/airbyte](https://github.com/airbytehq/airbyte) | P1 | 源→目标同步 Job、连接配置、可调度离散运行 | 绑死 Airbyte 控制面 / 云产品为默认 SSOT | 配置源与目标后跑同步把数据拉进仓 |
-| B | [dbt-labs/dbt-core](https://github.com/dbt-labs/dbt-core) | P1 | SQL 变换模型、data test 作完成门闸、版本化变换 | 钉 dbt 为唯一变换引擎；忽略 extract/load | 仓内变换 + 测试通过才算模型可信 |
-| C | [meltano/meltano](https://github.com/meltano/meltano) | P1 | 声明式 ELT 流水线、插件化抽取/装载、可调度跑批 | 绑死 Meltano CLI 为唯一 runner | 用声明配置跑通 extract/load（+ 变换）批任务 |
+| A | [airbytehq/airbyte](https://github.com/airbytehq/airbyte) | P1 | 源→目标同步 Job、连接配置、可调度离散运行 | 照搬 Airbyte 控制面 / 云产品为默认 SSOT | 配置源与目标后跑同步把数据拉进仓 |
+| B | [dbt-labs/dbt-core](https://github.com/dbt-labs/dbt-core) | P1 | SQL 变换模型、data test 作完成门闸、版本化变换 | 约定 dbt 为唯一变换引擎；忽略 extract/load | 仓内变换 + 测试通过才算模型可信 |
+| C | [meltano/meltano](https://github.com/meltano/meltano) | P1 | 声明式 ELT 流水线、插件化抽取/装载、可调度跑批 | 照搬 Meltano CLI 为唯一 runner | 用声明配置跑通 extract/load（+ 变换）批任务 |
 
-映射学习（非 B 共有证据源、不钉默认）：[apache/airflow](https://github.com/apache/airflow)、[dagster-io/dagster](https://github.com/dagster-io/dagster) — **仅当 INPUTS 条件启用编排**时对照 DAG/asset 语义；默认 runner 仍为 workers-queue。Singer SPEC（P0）作抽取/水位消息对照，不钉 Singer 运行时为唯一实现。
+映射学习（非 B 共有证据源、不作默认）：[apache/airflow](https://github.com/apache/airflow)、[dagster-io/dagster](https://github.com/dagster-io/dagster) — **仅当 INPUTS 条件启用编排**时对照 DAG/asset 语义；默认 runner 仍为 workers-queue。Singer SPEC（P0）作抽取/水位消息对照，不指定 Singer 运行时为唯一实现。
 
 ## 共有能力切条（用户 / 数据消费者可感知）
 
@@ -48,7 +48,7 @@
 | VerifyCheck 硬门闸（超越） | B,C 更强 / A 更弱 | 工程 | `07` / `11` a1 | 超越 |
 | workers-queue 默认 runner | 对齐本仓 + 超越 a2 | 工程 | `08`/`01` | 必做（默认） |
 | Airflow/Dagster 条件章 | 映射学习 | 工程 | `08` | 条件 |
-| 流式四步映射钉死 | 品类边界 | 工程 | `08`/INPUTS | 条件 |
+| 流式四步映射写明 | 品类边界 | 工程 | `08`/INPUTS | 条件 |
 | 禁裸 cron 伪管线 | 工程 | 工程 | `00`/`01` | 必做/超越 |
 | 托管 APM / 云控制面 | A | 参考 | — | 参考 |
 
@@ -56,7 +56,7 @@
 
 | 冲突 | 裁决 |
 |------|------|
-| Airflow 星标与生态更大 | **不钉为默认 runner**；条件启用；学 DAG 依赖与重试，成功定义仍以 `05`+`07` 为准 |
+| Airflow 星标与生态更大 | **不作默认 runner**；条件启用；学 DAG 依赖与重试，成功定义仍以 `05`+`07` 为准 |
 | Dagster asset 思想先进 | 同左；与 Airflow **互斥**；未满足 INPUTS 条件禁止引入 |
 | Airbyte/Meltano 控制面开箱即用 | **标杆学习**；默认自研薄 Batch Job + workers-queue，避免双 SSOT |
 | dbt 是否默认变换 | **否**；默认应用内变换；dbt 仅 INPUTS §13 |

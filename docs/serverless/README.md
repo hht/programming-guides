@@ -1,10 +1,10 @@
 # Serverless — Functions / 边缘运行时指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **Functions / 边缘运行时**：触发、冷/热启动、handler、响应 / 超时 / 重试。  
-> **默认栈**：**Cloudflare Workers + TypeScript**（**钉死**默认边缘；先进优先）。  
-> **备选（INPUTS 互斥）**：**OpenNext / Vercel Functions**（全栈 Next 部署面）。  
-> **条件（INPUTS 勾选）**：**AWS Lambda**（Node/TS 或映射学习；**不**与 Workers 双默认）。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **Functions / 边缘运行时**：触发、冷/热启动、handler、响应 / 超时 / 重试。 
+> **默认栈**：**Cloudflare Workers + TypeScript**（**写明**默认边缘；先进优先）。 
+> **备选（INPUTS 互斥）**：**OpenNext / Vercel Functions**（全栈 Next 部署面）。 
+> **条件（INPUTS 勾选）**：**AWS Lambda**（Node/TS 或映射学习；**不**与 Workers 双默认）。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -17,11 +17,11 @@
 
 ## Agent 执行协议
 
-1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；按「平台互斥」只读适用章  
-2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`）  
-3. 必读 [03](./03-platform-and-entry.md) + [04](./04-trigger-and-routing.md) + [05](./05-invocation-lifecycle.md)；落地 [06](./06-cold-warm-and-budget.md) / [07](./07-timeout-retry-idempotency.md) / [08](./08-response-secrets-bindings.md)  
-4. [commands.md](./commands.md) `check` 绿  
-5. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者）  
+1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；按「平台互斥」只读适用章 
+2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`） 
+3. 必读 [03](./03-platform-and-entry.md) + [04](./04-trigger-and-routing.md) + [05](./05-invocation-lifecycle.md)；落地 [06](./06-cold-warm-and-budget.md) / [07](./07-timeout-retry-idempotency.md) / [08](./08-response-secrets-bindings.md) 
+4. [commands.md](./commands.md) `check` 绿 
+5. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者） 
 
 ## 索引
 

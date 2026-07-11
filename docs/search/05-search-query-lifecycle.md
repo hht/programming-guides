@@ -14,31 +14,31 @@
 
 ### 1. parse
 
-- 输入：原始用户字符串 + 可选 filters（类型、时间窗等，须在 INPUTS 白名单）。  
-- 输出：`SearchQuery { text, filters, limit, cursor|offset, locale? }`。  
-- 空白/`length > max`（默认 max **200** 字符，INPUTS 可改）：→ 步骤 5 `validation`。  
-- 将 `text` 转为 `tsquery`：默认 `websearch_to_tsquery(config, text)`；空 tsquery → 步骤 5 `empty`（非 error）。  
+- 输入：原始用户字符串 + 可选 filters（类型、时间窗等，须在 INPUTS 白名单）。 
+- 输出：`SearchQuery { text, filters, limit, cursor|offset, locale? }`。 
+- 空白/`length > max`（默认 max **200** 字符，INPUTS 可改）：→ 步骤 5 `validation`。 
+- 将 `text` 转为 `tsquery`：默认 `websearch_to_tsquery(config, text)`；空 tsquery → 步骤 5 `empty`（非 error）。 
 - **禁**字符串拼进 SQL；参数绑定。
 
 ### 2. authorize scope
 
-- 输入：认证主体（或匿名）+ `SearchQuery`。  
-- 输出：`SearchScope` = 可安全下推的可见性谓词（`tenant_id = $1`、`visibility = public OR owner_id = $user` 等）。  
-- 未登录且实体非公开 → **`forbidden`**（步骤 5），**不**查索引；此为匿名出口 SSOT（与 INPUTS §5 / `09` 一致；禁止改 empty）。  
+- 输入：认证主体（或匿名）+ `SearchQuery`。 
+- 输出：`SearchScope` = 可安全下推的可见性谓词（`tenant_id = $1`、`visibility = public OR owner_id = $user` 等）。 
+- 未登录且实体非公开 → **`forbidden`**（步骤 5），**不**查索引；此为匿名出口 SSOT（与 INPUTS §5 / `09` 一致；禁止改 empty）。 
 - Scope 必须进入步骤 3 的查询（`WHERE` / RLS / 引擎 filter / scoped API key）；**禁止**「查全库再丢弃不可见 hit」作为唯一控制。
 
 ### 3. query index
 
-- 在 `SearchScope` 内执行 FTS：`search_vector @@ query`（+ filters）。  
-- `limit`/`offset|cursor` 按 INPUTS §6；默认 limit **20**，硬顶 **50**。  
-- `SET LOCAL statement_timeout`（默认 **3s** 在线检索；INPUTS 可改）。  
-- 超时/引擎不可用 → 步骤 5 `unavailable`/`timeout`。  
+- 在 `SearchScope` 内执行 FTS：`search_vector @@ query`（+ filters）。 
+- `limit`/`offset|cursor` 按 INPUTS §6；默认 limit **20**，硬顶 **50**。 
+- `SET LOCAL statement_timeout`（默认 **3s** 在线检索；INPUTS 可改）。 
+- 超时/引擎不可用 → 步骤 5 `unavailable`/`timeout`。 
 - 本步只取 **id + 排序信号**（rank / score），不把整行大字段当唯一真相展示。
 
 ### 4. rank/hydrate
 
-- 排序：默认 `ts_rank_cd(search_vector, query) DESC`，其次主键稳定次序；细则见 `06`。  
-- Hydrate：用命中 id **批量**读权威表（同 scope）；缺行（已删）→ 从结果剔除，不报 500。  
+- 排序：默认 `ts_rank_cd(search_vector, query) DESC`，其次主键稳定次序；细则见 `06`。 
+- Hydrate：用命中 id **批量**读权威表（同 scope）；缺行（已删）→ 从结果剔除，不报 500。 
 - 响应：`hits[]`（业务投影）+ 命中元数据：**默认 `total`**；若 INPUTS §6 改选则仅 `has_more`（互斥，禁止两者并行作契约）。
 
 ### 5. empty/error
@@ -56,14 +56,14 @@
 
 ```text
 function search(raw, principal):
-  q = parse(raw)                    # 1
-  if q.invalid: return validation
-  scope = authorize(principal, q)   # 2
-  if scope.denied: return forbidden
-  ids = queryIndex(scope, q)        # 3
-  hits = rankHydrate(ids, scope, q) # 4
-  if hits.length == 0: return empty # 5
-  return ok(hits)
+ q = parse(raw) # 1
+ if q.invalid: return validation
+ scope = authorize(principal, q) # 2
+ if scope.denied: return forbidden
+ ids = queryIndex(scope, q) # 3
+ hits = rankHydrate(ids, scope, q) # 4
+ if hits.length == 0: return empty # 5
+ return ok(hits)
 ```
 
 ## 单测探针（case → 期望）

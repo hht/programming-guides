@@ -2,10 +2,10 @@
 
 ## 必做
 
-- `cargo fmt --check`  
-- `cargo clippy -- -D warnings`  
-- `cargo test`  
-- 生产：tracing JSON；`APP_ENV=prod` 时禁默认 `debug`/`trace` 刷屏  
+- `cargo fmt --check` 
+- `cargo clippy -- -D warnings` 
+- `cargo test` 
+- 生产：tracing JSON；`APP_ENV=prod` 时禁默认 `debug`/`trace` 刷屏 
 
 ## 宜做 / 参考
 

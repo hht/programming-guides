@@ -1,6 +1,6 @@
 # templates
 
-> 仅允许：JSON Schema、env 例、本 README、登记表形状。  
+> 仅允许：JSON Schema、env 例、本 README、登记表形状。 
 > **禁止**可运行业务实现；**禁止**某家商业 APM 的 DSN 必填样板冒充默认栈。
 
 | 文件 | 用途 |

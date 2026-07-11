@@ -1,6 +1,6 @@
 # 08 — 跨应用册边界
 
-> **本册 = 鉴权 SSOT。**  
+> **本册 = 鉴权 SSOT。** 
 > `docs/react`、`docs/nextjs`、`docs/go`、`docs/fastapi` 只描述框架接线；**会话语义、Gate、Cookie、OAuth、失败码以本册为准**。冲突时改应用册引用，不平行发明第二套。
 
 ## 边界表
@@ -19,18 +19,18 @@
 
 ### nextjs
 
-- Cookie：`cookies().set/get/delete`；保护：middleware 或布局内 Gate。  
-- 未登录页：redirect（INPUTS）；API Route：401。  
+- Cookie：`cookies().set/get/delete`；保护：middleware 或布局内 Gate。 
+- 未登录页：redirect（INPUTS）；API Route：401。 
 - 详见应用册 `07-auth-env-cookies.md` — **须指向本册**，不得与本册 Cookie 默认冲突。
 
 ### react（SPA）
 
-- 同站 Cookie + CSRF 头；禁 localStorage JWT 主会话。  
+- 同站 Cookie + CSRF 头；禁 localStorage JWT 主会话。 
 - 登录态 UI：`login` / `logout` / `session-expired`（`02`）。
 
 ### go
 
-- `internal/session` 门闸；写方法 CSRF；OpenAPI `securitySchemes` 与会话路径。  
+- `internal/session` 门闸；写方法 CSRF；OpenAPI `securitySchemes` 与会话路径。 
 - 应用册 `07-auth.md` 的 Session 分支 **对齐** 本册；细规格以本册更新为准。
 
 ### fastapi
@@ -39,7 +39,7 @@
 
 ## 禁止
 
-- 应用册另钉「默认 JWT localStorage」覆盖本册。  
+- 应用册另行约定「默认 JWT localStorage」覆盖本册。 
 - 两册各写一套过期语义而不互相引用。
 
 ## 单测探针

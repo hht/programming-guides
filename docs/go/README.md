@@ -1,8 +1,8 @@
 # Go HTTP API 开发指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**从零实现世界级门槛的 Go HTTP API。  
-> **默认栈**：Go ≥1.23 + **chi/v5** + **pgx/v5** + **sqlc** + **golang-migrate** + **log/slog** + testify + golangci-lint。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**从零实现世界级门槛的 Go HTTP API。 
+> **默认栈**：Go ≥1.23 + **chi/v5** + **pgx/v5** + **sqlc** + **golang-migrate** + **log/slog** + testify + golangci-lint。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -15,13 +15,13 @@
 
 ## Agent 执行协议
 
-1. 校验 [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或列缺口（停）  
-2. 按 [01](./01-stack.md) 建模块；目录按 [02](./02-directory-and-naming.md)  
-3. 按 [03](./03-http-server.md) 落地 server/路由/超时/优雅退出  
-4. 按 [04](./04-errors-and-validation.md) / [05](./05-request-lifecycle.md) / [06](./06-persistence.md) 实现核心路径（**自写，勿抄业务模块**）  
-5. 按 [07](./07-auth.md) / [08](./08-quality.md) 接鉴权与质量  
-6. 复制 [templates/Makefile.snippet](./templates/Makefile.snippet) → 仓根 `Makefile`；复制 [templates/docker-compose.test.yml.example](./templates/docker-compose.test.yml.example) → `docker-compose.test.yml`  
-7. [commands.md](./commands.md) 绿 + [11](./11-world-class-acceptance.md) 全勾  
+1. 校验 [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或列缺口（停） 
+2. 按 [01](./01-stack.md) 建模块；目录按 [02](./02-directory-and-naming.md) 
+3. 按 [03](./03-http-server.md) 落地 server/路由/超时/优雅退出 
+4. 按 [04](./04-errors-and-validation.md) / [05](./05-request-lifecycle.md) / [06](./06-persistence.md) 实现核心路径（**自写，勿抄业务模块**） 
+5. 按 [07](./07-auth.md) / [08](./08-quality.md) 接鉴权与质量 
+6. 复制 [templates/Makefile.snippet](./templates/Makefile.snippet) → 仓根 `Makefile`；复制 [templates/docker-compose.test.yml.example](./templates/docker-compose.test.yml.example) → `docker-compose.test.yml` 
+7. [commands.md](./commands.md) 绿 + [11](./11-world-class-acceptance.md) 全勾 
 
 ## 文档索引
 

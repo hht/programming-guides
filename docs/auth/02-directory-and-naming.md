@@ -2,25 +2,25 @@
 
 > 命名强制块：[naming-business-first.md](../meta/naming-business-first.md)。**Pass 1 业务语义先于 Pass 2 语法。**
 
-## 树（钉死词根；路径可按应用册微调，**词根不可改**）
+## 树（写明词根；路径可按应用册微调，**词根不可改**）
 
 ```text
 <repo>/
-  UBIQUITOUS_LANGUAGE.md
-  # --- 按应用册 ---
-  # Next / React：features/session/ 或 app 内 session 边界
-  # Go：internal/session/（门闸、签发、撤销）
-  # FastAPI：session/ 包（门闸依赖、签发）
-  migrations/                 # sessions 表（或等价）
-  # 禁：auth_manager/、dto/、handleLogin.ts 作领域主名
+ UBIQUITOUS_LANGUAGE.md
+ # --- 按应用册 ---
+ # Next / React：features/session/ 或 app 内 session 边界
+ # Go：internal/session/（门闸、签发、撤销）
+ # FastAPI：session/ 包（门闸依赖、签发）
+ migrations/ # sessions 表（或等价）
+ # 禁：auth_manager/、dto/、handleLogin.ts 作领域主名
 ```
 
 ## 依赖方向
 
 ```text
 HTTP/Edge → Session Gate → (可选) Authorize → 业务用例
-                ↓
-         Session Store (PG / 将来 Redis)
+ ↓
+ Session Store (PG / 将来 Redis)
 OAuth callback → 校验 code+PKCE → 签发本应用 Session → Set-Cookie
 ```
 
@@ -44,7 +44,7 @@ OAuth callback → 校验 code+PKCE → 签发本应用 Session → Set-Cookie
 |------|------|----------|----------|
 | Authorize | 已认证后的权限检查 | `Authorize` / `requirePermission` | `AuthzManager`；与 Gate 合并成 `AuthManager` |
 | Session | 服务端会话记录 | `Session` | AuthToken 混用当会话实体 |
-| Subject | 已认证主体 id | `subject` / `Subject` | userId 分叉（择一钉死） |
+| Subject | 已认证主体 id | `subject` / `Subject` | userId 分叉（择一写明） |
 | Session Gate | 验会话并注入身份 | `SessionGate` / `requireSession` | `AuthManager`、`handleAuth` |
 | Login | 建立会话 | `Login` / `login` | `signIn` 若词表未收则禁并行 |
 | Logout | 撤销会话 | `Logout` / `logout` | `signOut` 同上 |

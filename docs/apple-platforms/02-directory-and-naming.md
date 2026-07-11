@@ -2,26 +2,26 @@
 
 > 命名强制块：[naming-business-first.md](../meta/naming-business-first.md)。**Pass 1 业务语义先于 Pass 2 语法。**
 
-## 树（钉死词根；路径可微调，**词根不可改**）
+## 树（写明词根；路径可微调，**词根不可改**）
 
 ```text
 <repo>/
-  UBIQUITOUS_LANGUAGE.md
-  App/                          # @main App 入口（薄）
-  Features/
-    <Capability>/               # 业务能力名 = Pass1 词根（例：Timeline、Vault、Machine）
-      <Capability>Screen.swift  # SwiftUI View
-      <Capability>Store.swift   # @Observable 状态 + intent
-      <Capability>Model.swift   # 领域模型（非 *Dto）
-  Navigation/                   # 路由类型、根栈、深链解析
-  Shared/
-    Networking/                 # API client（非业务名则保持 Shared）
-    DesignSystem/               # 颜色/字体/控件（对位 ui-ux）
-  Mac/                          # 仅 macOS：菜单、窗口命令、快捷键（#if os(macOS)）
-  Resources/                    # Assets、本地化
-  Tests/
-    <Capability>StoreTests.swift
-  # 禁：Managers/、*Service 作 Features 主名、DTO/、Handlers/
+ UBIQUITOUS_LANGUAGE.md
+ App/ # @main App 入口（薄）
+ Features/
+ <Capability>/ # 业务能力名 = Pass1 词根（例：Timeline、Vault、Machine）
+ <Capability>Screen.swift # SwiftUI View
+ <Capability>Store.swift # @Observable 状态 + intent
+ <Capability>Model.swift # 领域模型（非 *Dto）
+ Navigation/ # 路由类型、根栈、深链解析
+ Shared/
+ Networking/ # API client（非业务名则保持 Shared）
+ DesignSystem/ # 颜色/字体/控件（对位 ui-ux）
+ Mac/ # 仅 macOS：菜单、窗口命令、快捷键（#if os(macOS)）
+ Resources/ # Assets、本地化
+ Tests/
+ <Capability>StoreTests.swift
+ # 禁：Managers/、*Service 作 Features 主名、DTO/、Handlers/
 ```
 
 多平台：共享源进同一 target membership 或 SPM 共享库；平台专属文件用 `#if os(...)` 或独立 `Mac/` 目录。
@@ -30,8 +30,8 @@
 
 ```text
 App → Features → Shared
-         ↓
-    Navigation（路由类型可被 Features 引用；Features 不反向依赖具体 Screen 图）
+ ↓
+ Navigation（路由类型可被 Features 引用；Features 不反向依赖具体 Screen 图）
 View → 发送 Intent → Store → 更新 Model → 派生 ViewState → View 渲染
 副作用（网络/磁盘）← Store 启动 Task；取消随生命周期
 ```
@@ -45,7 +45,7 @@ View → 发送 Intent → Store → 更新 Model → 派生 ViewState → View 
 | 状态 | 含义 | 落点 |
 |------|------|------|
 | `default` / `idle` | 有数据可交互，或首屏未触发加载 | Screen 主内容 |
-| `loading` | 首次或刷新进行中 | Progress / redacted / overlay（INPUTS 钉一种） |
+| `loading` | 首次或刷新进行中 | Progress / redacted / overlay（INPUTS 选定一种） |
 | `empty` | 成功但无条目 | Empty 文案 + 主 CTA |
 | `error` | 加载/提交失败 | 错误文案 + Retry intent |
 | `submitting` | 写操作进行中 | 主按钮 disabled；防双提交 |
@@ -87,5 +87,5 @@ View → 发送 Intent → Store → 更新 Model → 派生 ViewState → View 
 | 函数 / intent case 关联值 | camelCase |
 | 文件 | 与主类型同名 PascalCase（Swift 惯例） |
 | 错误码 | `SCREAMING_SNAKE` 与词表一致 |
-| Bundle / scheme | 产品钉；staging 可用 `.staging` 后缀 |
+| Bundle / scheme | 产品约定；staging 可用 `.staging` 后缀 |
 | 资源名 | 资产用语义名；禁 `img1` |

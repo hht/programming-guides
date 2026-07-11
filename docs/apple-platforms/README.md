@@ -1,8 +1,8 @@
 # Apple Platforms — iOS + Mac 原生指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**从零落地世界级 **SwiftUI 原生**（iPhone / iPad / Mac）体验：状态驱动 UI、可测数据流、可取消副作用。  
-> **默认栈**：**Swift 6** + **SwiftUI**（禁 UIKit 作默认主路径；UIKit 仅桥接）+ **Observation / `@Observable`**（先进，优于 Combine 默认）+ **Structured Concurrency** + **NavigationStack** + **Swift Testing**（先进；可与 XCTest 并存）+ Mac 同代码基（`#available` / 目标条件）。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**从零落地世界级 **SwiftUI 原生**（iPhone / iPad / Mac）体验：状态驱动 UI、可测数据流、可取消副作用。 
+> **默认栈**：**Swift 6** + **SwiftUI**（禁 UIKit 作默认主路径；UIKit 仅桥接）+ **Observation / `@Observable`**（先进，优于 Combine 默认）+ **Structured Concurrency** + **NavigationStack** + **Swift Testing**（先进；可与 XCTest 并存）+ Mac 同代码基（`#available` / 目标条件）。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -15,12 +15,12 @@
 
 ## Agent 执行协议
 
-1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停  
-2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`；**UI 状态矩阵必做**）  
-3. 落地 [03](./03-targets-and-app-shell.md) / [04](./04-observation-and-stores.md) / [05](./05-view-state-lifecycle.md)（核心）  
-4. 落地 [06](./06-navigation-and-presentation.md) / [07](./07-concurrency-and-side-effects.md)；若目标含 Mac → [08](./08-mac-desktop.md)（无 Mac 目标则 `08` 在报告写 `N/A — Mac not targeted`，但 INPUTS 须显式勾选）  
-5. [commands.md](./commands.md) `check` 绿  
-6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者）  
+1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停 
+2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`；**UI 状态矩阵必做**） 
+3. 落地 [03](./03-targets-and-app-shell.md) / [04](./04-observation-and-stores.md) / [05](./05-view-state-lifecycle.md)（核心） 
+4. 落地 [06](./06-navigation-and-presentation.md) / [07](./07-concurrency-and-side-effects.md)；若目标含 Mac → [08](./08-mac-desktop.md)（无 Mac 目标则 `08` 在报告写 `N/A — Mac not targeted`，但 INPUTS 须显式勾选） 
+5. [commands.md](./commands.md) `check` 绿 
+6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者） 
 
 ## 索引
 
@@ -47,5 +47,5 @@
 
 ```text
 INPUTS → Swift 6 + SwiftUI 栈 → Target/壳 → Store+Observation
-  → View-State Lifecycle（可取消副作用）→ Navigation → Mac 面（若目标）→ check → 验收
+ → View-State Lifecycle（可取消副作用）→ Navigation → Mac 面（若目标）→ check → 验收
 ```

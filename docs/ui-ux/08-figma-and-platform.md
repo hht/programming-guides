@@ -2,18 +2,18 @@
 
 ## Figma 不变量
 
-- Auto Layout 必开  
-- 命名：`<platform>/<task-id>/<screen-id>/<state>`（join key 见 `02`）  
-- 组件：`UI/<Name>/<Variant>`；Variant 名与矩阵列名一致（default/hover/…）  
+- Auto Layout 必开 
+- 命名：`<platform>/<task-id>/<screen-id>/<state>`（join key 见 `02`） 
+- 组件：`UI/<Name>/<Variant>`；Variant 名与矩阵列名一致（default/hover/…） 
 
 ## Figma 步骤
 
-1. 每屏顶层 Frame；宽：Web 1440+375；iOS 390；Android 360；macOS 1280。  
-2. 间距/padding 绑 token。  
-3. 状态用 Variant 或并排 Frame（名=状态列）。  
-4. 注释：主 CTA、字段、动态数据、破坏性确认。  
-5. Agent MCP 出图后必须跑 `commands check`；未过不得完成。  
-6. 写 `design/figma-notes.md`（URL + 列表 + `a11y: PASS`）。  
+1. 每屏顶层 Frame；宽：Web 1440+375；iOS 390；Android 360；macOS 1280。 
+2. 间距/padding 绑 token。 
+3. 状态用 Variant 或并排 Frame（名=状态列）。 
+4. 注释：主 CTA、字段、动态数据、破坏性确认。 
+5. Agent MCP 出图后必须跑 `commands check`；未过不得完成。 
+6. 写 `design/figma-notes.md`（URL + 列表 + `a11y: PASS`）。 
 
 ## 平台适配
 

@@ -10,13 +10,13 @@
 
 ## 硬不变量
 
-1. **应用侧 ContentDocument.status 为业务发布真相**（或与 CMS published 标志经适配器**单向映射**后的投影）；禁止前端「本地假发布」冒充 `published`。  
-2. **公开 Content Delivery 路径不得返回 draft**；预览须独立凭据或鉴权会话（INPUTS §4/§10）。  
-3. **publish 必须先过 validate**；校验失败 → 保持 `draft`（或不离开可编辑态），错误对编辑者可见。  
-4. **CMS 文档 id 仅为外部引用**（`cms_document_id`）；业务主键 / slug 属应用词表。  
-5. **供应商互斥**：INPUTS 钉死恰好一家；换商 = 换 CmsAdapter 映射，**不**改 Lifecycle 步骤名。  
-6. **消费面钉 Delivery**：本册必做 = Delivery 只读消费契约 + 发布门闸；**禁止**把 Studio/Admin 安装百科、插件市场教程当正文 SSOT。  
-7. **deletion-first**：无平行第二套「内容状态枚举」；无 `*CmsManager` 领域主名；领域代码不散落直调多家 SDK。  
+1. **应用侧 ContentDocument.status 为业务发布真相**（或与 CMS published 标志经适配器**单向映射**后的投影）；禁止前端「本地假发布」冒充 `published`。 
+2. **公开 Content Delivery 路径不得返回 draft**；预览须独立凭据或鉴权会话（INPUTS §4/§10）。 
+3. **publish 必须先过 validate**；校验失败 → 保持 `draft`（或不离开可编辑态），错误对编辑者可见。 
+4. **CMS 文档 id 仅为外部引用**（`cms_document_id`）；业务主键 / slug 属应用词表。 
+5. **供应商互斥**：INPUTS 择一家；换商 = 换 CmsAdapter 映射，**不**改 Lifecycle 步骤名。 
+6. **消费面约定 Delivery**：本册必做 = Delivery 只读消费契约 + 发布门闸；**禁止**把 Studio/Admin 安装百科、插件市场教程当正文 SSOT。 
+7. **deletion-first**：无平行第二套「内容状态枚举」；无 `*CmsManager` 领域主名；领域代码不散落直调多家 SDK。 
 8. **缓存不得延长「已撤回仍可见」超过 INPUTS TTL/失效契约**（见 `08`）。
 
 ## SSOT 表
@@ -34,13 +34,13 @@
 
 ## 禁止
 
-- 指南仓堆可运行 CMS Studio / 全量 SDK 教程  
-- 公开 API 用 preview token 或返回 draft 正文  
-- validate 失败仍写 `published`  
-- 「Sanity 且 Contentful」双 SSOT  
-- 把本册写成「仅装 Payload/Strapi」运维百科  
+- 指南仓堆可运行 CMS Studio / 全量 SDK 教程 
+- 公开 API 用 preview token 或返回 draft 正文 
+- validate 失败仍写 `published` 
+- 「Sanity 且 Contentful」双 SSOT 
+- 把本册写成「仅装 Payload/Strapi」运维百科 
 
 ## 超越（对照写入 11）
 
-1. `对照：B 中部分演示流用同一 token 读 draft+published 或未强制发布前校验 → 本指南要求 Delivery/Preview 凭据分离，且 publish 必须先过 validate（见 05/06/08）`  
-2. `对照：B 中常把 CMS 原始 JSON 直接当页面模型 → 本指南强制经 CmsAdapter 投影为应用 ContentDocument，SDK 类型不进 features/ 状态机（见 03/04/08）`  
+1. `对照：B 中部分演示流用同一 token 读 draft+published 或未强制发布前校验 → 本指南要求 Delivery/Preview 凭据分离，且 publish 必须先过 validate（见 05/06/08）` 
+2. `对照：B 中常把 CMS 原始 JSON 直接当页面模型 → 本指南强制经 CmsAdapter 投影为应用 ContentDocument，SDK 类型不进 features/ 状态机（见 03/04/08）` 

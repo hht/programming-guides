@@ -2,32 +2,32 @@
 
 ## 不变量
 
-- 领域代码只依赖 **CmsAdapter** 接口；供应商 SDK **不得**泄漏进 `features/` 状态机。  
-- INPUTS §1 钉死**恰好一个**供应商；换商 = 新适配实现 + 映射表，Lifecycle 步骤名不变。  
+- 领域代码只依赖 **CmsAdapter** 接口；供应商 SDK **不得**泄漏进 `features/` 状态机。 
+- INPUTS §1 写明**恰好一个**供应商；换商 = 新适配实现 + 映射表，Lifecycle 步骤名不变。 
 - **Sanity / Contentful / Payload 是互斥映射选项，不是并行默认**；自建须填同等密度表。
 
 ## 适配器契约（实现自写）
 
 ```text
 CmsAdapter:
-  saveDraft(doc: ContentDocumentDraft)
-    → { cms_document_id, status: draft }
-  validate(doc) → { ok: true } | { ok: false, errors: ValidationIssue[] }
-  publish(ref: { cms_document_id | slug, locale? })
-    → { status: published, published_at }
-  unpublish(ref) → { status: draft }   # 或 archived（INPUTS）
-  fetchPublished(query: { slug | id, locale?, content_type })
-    → ContentDocument | NotFound   # Delivery token only
-  fetchPreview(query) → ContentDocument | NotFound  # Preview token / auth only
-  # 可选：
-  verifyWebhook(raw_body, headers, secret) → InvalidateEvent | SignatureError
+ saveDraft(doc: ContentDocumentDraft)
+ → { cms_document_id, status: draft }
+ validate(doc) → { ok: true } | { ok: false, errors: ValidationIssue[] }
+ publish(ref: { cms_document_id | slug, locale? })
+ → { status: published, published_at }
+ unpublish(ref) → { status: draft } # 或 archived（INPUTS）
+ fetchPublished(query: { slug | id, locale?, content_type })
+ → ContentDocument | NotFound # Delivery token only
+ fetchPreview(query) → ContentDocument | NotFound # Preview token / auth only
+ # 可选：
+ verifyWebhook(raw_body, headers, secret) → InvalidateEvent | SignatureError
 ```
 
 ## 步骤规格
 
-1. 按 INPUTS 实现**一个**适配器；注册为唯一 `CMS_PROVIDER`。  
-2. 填写下方对应映射表（未选用的供应商节标 N/A）。  
-3. `fetchPublished` **只**使用 Delivery 凭据；`fetchPreview` **只**使用 Preview/鉴权路径。  
+1. 按 INPUTS 实现**一个**适配器；注册为唯一 `CMS_PROVIDER`。 
+2. 填写下方对应映射表（未选用的供应商节标 N/A）。 
+3. `fetchPublished` **只**使用 Delivery 凭据；`fetchPreview` **只**使用 Preview/鉴权路径。 
 4. `validate` 可本地规则 + 供应商校验合流；**本地必填失败不得被供应商 200 覆盖为 ok**。
 
 ## Sanity 映射例（INPUTS §1=Sanity）
@@ -64,7 +64,7 @@ CmsAdapter:
 
 | 本册概念 | API / 语义 |
 |----------|------------|
-| saveDraft / validate / publish / unpublish | （书面） |
+| saveDraft / validate / publish / unpublish | （须写明） |
 | fetchPublished / fetchPreview | 基址 + 鉴权头 |
 | draft 不可进公开 Delivery | 可验收谓词 |
 | webhook（若启用） | 算法 + 事件名 |

@@ -10,12 +10,12 @@
 | 5b | **RLS 角色**（仅 §5=要） | 应用连接角色名默认 **`app`**（无 `BYPASSRLS`、非表 owner）；迁移 URL 名默认 **`DATABASE_URL_MIGRATE`**（owner/超级用户）。§5=要时 **必须** 提供与 §2 成对的 migrate URL 名（可与 app URL 同主机不同 role）。`commands` `migrate` 只用 migrate URL |
 | 6 | **扩展** | 列表或 `N/A`（例 `pgcrypto`） |
 | 7 | **备份** | RPO/RTO 数字；或 `裁剪：开发 only` |
-| 8 | **应用册** | `go` / `fastapi` / `nextjs` / `N/A`。**`N/A` 时**：事务/RLS 探针宿主钉死为 **`psql` + `db/tests/*.sql`**（由 `test` 脚本调用），禁止无宿主 |
+| 8 | **应用册** | `go` / `fastapi` / `nextjs` / `N/A`。**`N/A` 时**：事务/RLS 探针宿主规定为 **`psql` + `db/tests/*.sql`**（由 `test` 脚本调用），禁止无宿主 |
 | 9 | **错误映射** | SQLSTATE→应用码表或默认见 `05` |
 | 10 | **隔离级别** | 默认 READ COMMITTED；改则写明 |
 | 11 | **钱类型** | □ `bigint` 最小货币单位 □ `numeric(p,s)`（须写 p,s） |
 | 12 | **statement_timeout** | 在线默认 `15s`（见 `05`）。批处理/长任务：写明秒数 **或** `N/A`（无批处理，仅用在线默认） |
-| 13 | **Atlas 迁移目录** | 默认 `file://db/migrations`（与 `02` 一致）；改路径须书面 + 同步 `commands`/`atlas.hcl` |
+| 13 | **Atlas 迁移目录** | 默认 `file://db/migrations`（与 `02` 一致）；改路径须写明，并附 同步 `commands`/`atlas.hcl` |
 
 缺任一项谓词 → 停写。全部满足后输出：
 

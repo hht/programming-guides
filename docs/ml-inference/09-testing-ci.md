@@ -6,7 +6,7 @@
 
 | # | case | 期望 | 适用 |
 |---|------|------|------|
-| 1 | Lifecycle 快乐路径 | authorize→validate→infer→respond；含钉死 artifact_version | 全 |
+| 1 | Lifecycle 快乐路径 | authorize→validate→infer→respond；含写明 artifact_version | 全 |
 | 2 | 无凭证 | `unauthorized`；infer=0 | 全 |
 | 3 | 非法 input | `validation_failed`；infer=0 | 全 |
 | 4 | 超 body | `payload_too_large` | 全 |
@@ -29,7 +29,7 @@
 | 2 | Lifecycle 快乐路径（stub runtime） | 与单测 1 一致 |
 | 3 | 未授权 / 校验失败 / 配额 | 单测 2–6 |
 | 4 | 超时 | 单测 8 |
-| 5 | 版本钉死 | 单测 7、11、12 |
+| 5 | 版本 | 单测 7、11、12 |
 | 6 | `check` | exit 0 |
 
 PR：`check`。发版：同 + 矩阵适用行。

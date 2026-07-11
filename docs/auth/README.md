@@ -1,8 +1,8 @@
 # Auth — 会话与身份指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **会话 Cookie 和/或 OAuth/OIDC** 登录、Session Gate、受保护资源 fail-closed。  
-> **默认栈**：Web 第一方 = **Opaque server-side session** + `HttpOnly`+`Secure`+`SameSite` Cookie（名默认 `session`）；会话存 **Postgres**（`hash(token)`，禁明文）；Redis 可选路径见 [docs/redis](../redis/README.md)（默认仍 PG）；OAuth/OIDC = Authorization Code + **PKCE**（禁 Implicit）；TS 参考库 **better-auth**；Go = 自研薄 session+OIDC 客户端或对接 IdP；Python = **Authlib** + 自管 session。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **会话 Cookie 和/或 OAuth/OIDC** 登录、Session Gate、受保护资源 fail-closed。 
+> **默认栈**：Web 第一方 = **Opaque server-side session** + `HttpOnly`+`Secure`+`SameSite` Cookie（名默认 `session`）；会话存 **Postgres**（`hash(token)`，禁明文）；Redis 可选路径见 [docs/redis](../redis/README.md)（默认仍 PG）；OAuth/OIDC = Authorization Code + **PKCE**（禁 Implicit）；TS 参考库 **better-auth**；Go = 自研薄 session+OIDC 客户端或对接 IdP；Python = **Authlib** + 自管 session。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -15,12 +15,12 @@
 
 ## Agent 执行协议
 
-1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；按「模式裁剪」只读必读章  
-2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`）  
-3. 按模式落地 [03](./03-sessions-and-cookies.md) / [04](./04-credentials-and-oauth.md) / [05](./05-session-gate-lifecycle.md)（D 用 Bearer Gate 变体）  
-4. 按 INPUTS「模式裁剪」落地 [06](./06-tokens-and-api-clients.md) / [07](./07-csrf-cors-security.md) / [08](./08-cross-app-boundary.md)（裁剪表标 N/A 的章跳过）  
-5. [commands.md](./commands.md) `check` 绿  
-6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者）  
+1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；按「模式裁剪」只读必读章 
+2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`） 
+3. 按模式落地 [03](./03-sessions-and-cookies.md) / [04](./04-credentials-and-oauth.md) / [05](./05-session-gate-lifecycle.md)（D 用 Bearer Gate 变体） 
+4. 按 INPUTS「模式裁剪」落地 [06](./06-tokens-and-api-clients.md) / [07](./07-csrf-cors-security.md) / [08](./08-cross-app-boundary.md)（裁剪表标 N/A 的章跳过） 
+5. [commands.md](./commands.md) `check` 绿 
+6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者） 
 
 ## 索引
 

@@ -2,8 +2,8 @@
 
 ## 不变量
 
-- 响应 JSON 统一：`{"code":"...","message":"...","fields":{optional}}`  
-- `code` ∈ INPUTS 表；HTTP status 由 code 映射（单处 `apierrors.HTTPStatus(code)`）  
+- 响应 JSON 统一：`{"code":"...","message":"...","fields":{optional}}` 
+- `code` ∈ INPUTS 表；HTTP status 由 code 映射（单处 `apierrors.HTTPStatus(code)`） 
 
 ## 默认映射
 
@@ -18,10 +18,10 @@
 
 ## 步骤规格
 
-1. 解码：`json.NewDecoder(r.Body).Decode`；未知字段策略钉死：**DisallowUnknownFields**（默认开）。  
-2. 校验：手写或 `go-playground/validator` — **默认手写小函数 + 表驱动**；若引入 validator 须全仓统一。畸形 JSON（语法错误）与未知字段一律 **`VALIDATION` 400**。  
-3. `fields`：字段 path → 人类可读或 message key（与前端约定）。  
-4. `INTERNAL`：`slog.ErrorContext` 记 `err`；响应 `message` 固定 **`internal error`**。  
+1. 解码：`json.NewDecoder(r.Body).Decode`；未知字段策略写明：**DisallowUnknownFields**（默认开）。 
+2. 校验：手写或 `go-playground/validator` — **默认手写小函数 + 表驱动**；若引入 validator 须全仓统一。畸形 JSON（语法错误）与未知字段一律 **`VALIDATION` 400**。 
+3. `fields`：字段 path → 人类可读或 message key（与前端约定）。 
+4. `INTERNAL`：`slog.ErrorContext` 记 `err`；响应 `message` 固定 **`internal error`**。 
 
 ## 单测探针
 

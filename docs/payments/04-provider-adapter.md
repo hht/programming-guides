@@ -2,27 +2,27 @@
 
 ## 不变量
 
-- 领域代码只依赖 **ProviderAdapter** 接口；提供商 SDK **不得**泄漏进 `features/` 状态机。  
-- INPUTS §1 钉死**恰好一个**提供商；换商 = 新适配实现 + 映射表，Lifecycle 步骤名不变。  
+- 领域代码只依赖 **ProviderAdapter** 接口；提供商 SDK **不得**泄漏进 `features/` 状态机。 
+- INPUTS §1 写明**恰好一个**提供商；换商 = 新适配实现 + 映射表，Lifecycle 步骤名不变。 
 - **Stripe 是映射示例，不是指南唯一默认**；选其它商时本节 Stripe 表可 N/A，但须填「其它」表至同等验收密度。
 
 ## 适配器契约（实现自写）
 
 ```text
 ProviderAdapter:
-  createIntent(input: { amount, currency, idempotency_key, metadata })
-    → { provider_intent_id, client_confirm_params }
-  parseConfirmResult(client_or_return_payload) → { provider_intent_id, provider_status }  # 非终态权威
-  verifyWebhook(raw_body, headers, secret) → ProviderEvent | SignatureError
-  mapEvent(event) → { intent_ref, lifecycle_transition }  # settled | failed | refunded | ignore
-  createRefund(input) → { provider_refund_id }   # 可选同步；终态仍以 webhook 为准（默认）
+ createIntent(input: { amount, currency, idempotency_key, metadata })
+ → { provider_intent_id, client_confirm_params }
+ parseConfirmResult(client_or_return_payload) → { provider_intent_id, provider_status } # 非终态权威
+ verifyWebhook(raw_body, headers, secret) → ProviderEvent | SignatureError
+ mapEvent(event) → { intent_ref, lifecycle_transition } # settled | failed | refunded | ignore
+ createRefund(input) → { provider_refund_id } # 可选同步；终态仍以 webhook 为准（默认）
 ```
 
 ## 步骤规格
 
-1. 按 INPUTS 实现**一个**适配器；注册为唯一 `PAYMENT_PROVIDER`。  
-2. 填写下方映射表（Stripe 例可直接勾选用；其它商复制空表填写）。  
-3. `mapEvent` **忽略**未知事件（no-op + 可观测日志）；**禁止**未知事件改状态。  
+1. 按 INPUTS 实现**一个**适配器；注册为唯一 `PAYMENT_PROVIDER`。 
+2. 填写下方映射表（Stripe 例可直接勾选用；其它商复制空表填写）。 
+3. `mapEvent` **忽略**未知事件（no-op + 可观测日志）；**禁止**未知事件改状态。 
 4. metadata 至少回传应用 `payment_intent_id`（或幂等键），以便 webhook 反查行。
 
 ## Stripe 映射例（INPUTS §1=Stripe 时）
@@ -35,7 +35,7 @@ ProviderAdapter:
 | verifyWebhook | 原始 body + `Stripe-Signature` + endpoint secret → `constructEvent` |
 | settled 事件 | `payment_intent.succeeded`（及 Checkout `checkout.session.completed` 若用 Session，须再确认 PI succeeded） |
 | failed 事件 | `payment_intent.payment_failed` |
-| refunded 事件 | `charge.refunded` / `refund.updated`（钉死一；须能关联回 Intent） |
+| refunded 事件 | `charge.refunded` / `refund.updated`（择一；须能关联回 Intent） |
 
 > 上表字段名以 Stripe 当前公开文档为准；升级 API 时只改本映射，不改 `05` 步骤编号。
 
@@ -43,8 +43,8 @@ ProviderAdapter:
 
 | 本册概念 | 提供商 API / 事件名 |
 |----------|---------------------|
-| createIntent | （书面） |
-| client_confirm_params | （书面） |
+| createIntent | （须写明） |
+| client_confirm_params | （须写明） |
 | verifyWebhook | 算法 + 头字段名 + secret 名 |
 | settled / failed / refunded | 事件名表 |
 

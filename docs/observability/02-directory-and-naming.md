@@ -4,17 +4,17 @@
 
 ```text
 # 实现仓建议落点（按应用册微调；词根不变）
-internal/telemetry/          # 或 src/shared/telemetry/ — TracerProvider / Meter / Logger 装配（基础设施名允许）
-  resource.go|ts|py          # Resource：service.name 等
-  propagate.*                # 注入/提取 correlation + W3C
-features/<capability>/       # 业务能力内：emit 业务相关 span/metric/log 字段
-  <entity>/
+internal/telemetry/ # 或 src/shared/telemetry/ — TracerProvider / Meter / Logger 装配（基础设施名允许）
+ resource.go|ts|py # Resource：service.name 等
+ propagate.* # 注入/提取 correlation + W3C
+features/<capability>/ # 业务能力内：emit 业务相关 span/metric/log 字段
+ <entity>/
 ops/
-  telemetry.md               # 可选：查询模板 / 告警钩子（非 SaaS 必装说明）
+ telemetry.md # 可选：查询模板 / 告警钩子（非 SaaS 必装说明）
 UBIQUITOUS_LANGUAGE.md
 ```
 
-依赖方向：`features/<业务> → telemetry 装配 → OTLP exporter`；**禁** handler 内直接 `console.log` 无字段契约冒充交付。  
+依赖方向：`features/<业务> → telemetry 装配 → OTLP exporter`；**禁** handler 内直接 `console.log` 无字段契约冒充交付。 
 字段 / metric 名 SSOT：本册 `06`/`07` + 目标仓词表；禁第二份「log util」分叉方言。
 
 UI 状态矩阵：本品类默认 **N/A**（基础设施）；若错误页展示 `correlation_id`，文案词根对齐词表。
@@ -23,10 +23,10 @@ UI 状态矩阵：本品类默认 **N/A**（基础设施）；若错误页展示
 
 ### Pass 1 — 业务语义（必做）
 
-1. 目标仓建或更新 `UBIQUITOUS_LANGUAGE.md`（Term / 含义 / 代码符号 / 禁同义词）。  
-2. **metric 名、span 名、日志事件名** = 业务能力/实体词根（`checkout`、`order.pay`），禁 `data`、`tmp`、`helper`、`process*`。  
-3. **禁**技术翻译名进领域模块主名：`*TelemetryManager`、`*ObservabilityService`、`handleLog*`（装配层可用 `Telemetry` / `TracerProvider` 等基础设施例外）。  
-4. **禁**同义词分叉：`correlation_id` / `request_id` / `trace_id` — 词表钉清三者关系（本册默认：`correlation_id`=应用相关键；`trace_id`=W3C/OTel；对外可只暴露其一，见 INPUTS §2/§7）。  
+1. 目标仓建或更新 `UBIQUITOUS_LANGUAGE.md`（Term / 含义 / 代码符号 / 禁同义词）。 
+2. **metric 名、span 名、日志事件名** = 业务能力/实体词根（`checkout`、`order.pay`），禁 `data`、`tmp`、`helper`、`process*`。 
+3. **禁**技术翻译名进领域模块主名：`*TelemetryManager`、`*ObservabilityService`、`handleLog*`（装配层可用 `Telemetry` / `TracerProvider` 等基础设施例外）。 
+4. **禁**同义词分叉：`correlation_id` / `request_id` / `trace_id` — 词表写清三者关系（本册默认：`correlation_id`=应用相关键；`trace_id`=W3C/OTel；对外可只暴露其一，见 INPUTS §2/§7）。 
 5. 对外错误体若含 id，字段名冻结在词表。
 
 | 概念 | 正例 | 反例 |

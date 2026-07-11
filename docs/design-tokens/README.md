@@ -1,14 +1,14 @@
 # Design Tokens — Token 工程指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **source → transform → consume** Token 流水线。  
-> **默认栈**：**W3C Design Tokens（DTCG）** 作源格式 + **Style Dictionary**（当前主线，DTCG）作唯一变换工具链。**禁止**平行第二套色名 / 第二套 token 源 / 第二套 transform。  
-> **对位**：[ui-ux](../ui-ux/README.md) 管设计决策与 Figma；本册管工程 Apply。设计侧写 SSOT = `design/tokens.md`（Variables 同名镜像），与本册 **语义 token 路径同名**。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **source → transform → consume** Token 流水线。 
+> **默认栈**：**W3C Design Tokens（DTCG）** 作源格式 + **Style Dictionary**（当前主线，DTCG）作唯一变换工具链。**禁止**平行第二套色名 / 第二套 token 源 / 第二套 transform。 
+> **对位**：[ui-ux](../ui-ux/README.md) 管设计决策与 Figma；本册管工程 Apply。设计侧写 SSOT = `design/tokens.md`（Variables 同名镜像），与本册 **语义 token 路径同名**。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
 
-把设计决策中的颜色 / 字阶 / 间距 / 圆角 / 阴影钉成**单一源 token**，经可重复变换进入 UI 运行时，组件只消费语义名，禁止散落第二套色名或裸 hex。
+把设计决策中的颜色 / 字阶 / 间距 / 圆角 / 阴影约定成**单一源 token**，经可重复变换进入 UI 运行时，组件只消费语义名，禁止散落第二套色名或裸 hex。
 
 ## 核心正确性路径
 
@@ -18,12 +18,12 @@
 
 ## Agent 执行协议
 
-1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；与 [ui-ux INPUTS](../ui-ux/INPUTS.md) 品牌/深色项对齐或书面裁剪  
-2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md` token 词表节）  
-3. [03](./03-token-model-and-color-ssot.md) / [04](./04-source-tokens.md) / [05](./05-token-apply-lifecycle.md)  
-4. [06](./06-transform.md) / [07](./07-consume-in-ui.md) / [08](./08-ui-ux-and-platforms.md)  
-5. [commands.md](./commands.md) `check` 绿  
-6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者）  
+1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；与 [ui-ux INPUTS](../ui-ux/INPUTS.md) 品牌/深色项对齐或写明裁剪 
+2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md` token 词表节） 
+3. [03](./03-token-model-and-color-ssot.md) / [04](./04-source-tokens.md) / [05](./05-token-apply-lifecycle.md) 
+4. [06](./06-transform.md) / [07](./07-consume-in-ui.md) / [08](./08-ui-ux-and-platforms.md) 
+5. [commands.md](./commands.md) `check` 绿 
+6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者） 
 
 ## 索引
 

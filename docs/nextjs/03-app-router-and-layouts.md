@@ -2,15 +2,15 @@
 
 ## 不变量
 
-- 文件约定路由；`layout.tsx` 嵌套；`loading.tsx`/`error.tsx` 按段提供  
-- 根 layout 含 `html`/`body`；字体与主题一次性注入  
+- 文件约定路由；`layout.tsx` 嵌套；`loading.tsx`/`error.tsx` 按段提供 
+- 根 layout 含 `html`/`body`；字体与主题一次性注入 
 
 ## 步骤
 
-1. 按 INPUTS §2 建 segment。  
-2. 共享壳放 `(app)/layout.tsx`；营销可 `(marketing)`。  
-3. 每主路径段：`loading.tsx` + `error.tsx`（或上浮到父级并注明）。  
-4. 元数据：`export const metadata` 或 `generateMetadata`。  
+1. 按 INPUTS §2 建 segment。 
+2. 共享壳放 `(app)/layout.tsx`；营销可 `(marketing)`。 
+3. 每主路径段：`loading.tsx` + `error.tsx`（或上浮到父级并注明）。 
+4. 元数据：`export const metadata` 或 `generateMetadata`。 
 
 ## 失败
 

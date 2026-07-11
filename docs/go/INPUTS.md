@@ -7,13 +7,13 @@
 | # | 项 | 验收 |
 |---|-----|------|
 | 1 | **身份** | module path（例 `github.com/org/api`）、服务名、公开 Base URL（staging/prod） |
-| 2 | **OpenAPI 3.x** | 落盘仓根 **`openapi.yaml`**；主资源 CRUD + 错误 shape；若鉴权≠无：须含 `components.securitySchemes` + 受保护 operation 的 `security` |  
-| 3 | **主写用例** | 一条用户可感知写操作（创建/更新/删除名 + 成功 status + 响应字段） |  
-| 4 | **数据模型** | 表/字段/约束；Postgres 版本下限 |  
-| 5 | **环境变量** | 至少 `APP_ENV`、`HTTP_ADDR`、`DATABASE_URL`；成对 staging/prod |  
-| 6 | **鉴权** | **四选一**（互斥）：□ 无鉴权（仅内网） □ Bearer JWT（issuer/audience；HMAC→`JWT_SECRET`+默认 alg **HS256**，或 RS256+`JWT_PUBLIC_KEY_PEM`；**`sub`→`ctxKeySubject`**） □ Session cookie（cookie 名；**HttpOnly=true**；**Secure**=`APP_ENV!=development`；**Path=/**；**Max-Age** 对齐 `expires_at`；**SameSite 默认 Lax**；表默认 `sessions(id PK text, subject text NOT NULL, expires_at timestamptz NOT NULL, csrf_token text NOT NULL)`；CSRF 见 `07`） □ 外部 IdP（须钉 JWKS **或** introspection 二选一 + issuer + 凭证；**`sub`→`ctxKeySubject`**） |
-| 7 | **错误码表** | 默认可勾选沿用 `04` 映射表；若自定义须列 code→HTTP；响应 shape 必须符合 [templates/error-response.schema.json](./templates/error-response.schema.json) |  
-| 8 | **幂等** | □ 不要  □ 要：请求头 **`Idempotency-Key`**；表 `idempotency_keys(key PK, response_status int, response_body jsonb, created_at timestamptz)`；TTL 默认 **24h** |  
+| 2 | **OpenAPI 3.x** | 落盘仓根 **`openapi.yaml`**；主资源 CRUD + 错误 shape；若鉴权≠无：须含 `components.securitySchemes` + 受保护 operation 的 `security` | 
+| 3 | **主写用例** | 一条用户可感知写操作（创建/更新/删除名 + 成功 status + 响应字段） | 
+| 4 | **数据模型** | 表/字段/约束；Postgres 版本下限 | 
+| 5 | **环境变量** | 至少 `APP_ENV`、`HTTP_ADDR`、`DATABASE_URL`；成对 staging/prod | 
+| 6 | **鉴权** | **四选一**（互斥）：□ 无鉴权（仅内网） □ Bearer JWT（issuer/audience；HMAC→`JWT_SECRET`+默认 alg **HS256**，或 RS256+`JWT_PUBLIC_KEY_PEM`；**`sub`→`ctxKeySubject`**） □ Session cookie（cookie 名；**HttpOnly=true**；**Secure**=`APP_ENV!=development`；**Path=/**；**Max-Age** 对齐 `expires_at`；**SameSite 默认 Lax**；表默认 `sessions(id PK text, subject text NOT NULL, expires_at timestamptz NOT NULL, csrf_token text NOT NULL)`；CSRF 见 `07`） □ 外部 IdP（须写明 JWKS **或** introspection 二选一 + issuer + 凭证；**`sub`→`ctxKeySubject`**） |
+| 7 | **错误码表** | 默认可勾选沿用 `04` 映射表；若自定义须列 code→HTTP；响应 shape 必须符合 [templates/error-response.schema.json](./templates/error-response.schema.json) | 
+| 8 | **幂等** | □ 不要 □ 要：请求头 **`Idempotency-Key`**；表 `idempotency_keys(key PK, response_status int, response_body jsonb, created_at timestamptz)`；TTL 默认 **24h** | 
 
 ## 若适用
 

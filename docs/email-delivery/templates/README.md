@@ -1,6 +1,6 @@
 # templates
 
-> 仅允许：JSON Schema、状态矩阵 md、SQL schema 例、env 例、`package-scripts.snippet.json`、本 README。  
+> 仅允许：JSON Schema、状态矩阵 md、SQL schema 例、env 例、`package-scripts.snippet.json`、本 README。 
 > **禁止**可运行发信业务实现（无 provider `.ts` / `.go` / `.py` 模块、无真密钥）。
 
 | 文件 | 用途 |

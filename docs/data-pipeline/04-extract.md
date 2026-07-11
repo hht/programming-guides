@@ -2,26 +2,26 @@
 
 ## 不变量
 
-- Extract **只读源**（或源系统允许的导出 API）；禁止在 extract 内写 Destination 业务表。  
-- 输出进入 **暂存**（对象前缀或 staging schema）；带 `run_id`。  
+- Extract **只读源**（或源系统允许的导出 API）；禁止在 extract 内写 Destination 业务表。 
+- 输出进入 **暂存**（对象前缀或 staging schema）；带 `run_id`。 
 - 失败可重试；部分写入暂存须可丢弃或按 run_id 隔离清理。
 
 ## 步骤规格（实现自写）
 
-1. 将 BatchRun `state → running`，`stage = extract`。  
-2. 按 INPUTS §3 连接 Source；应用水位/窗口谓词拉数。  
-3. 写入暂存：路径或表名含 `pipeline_name` + `run_id`；记录字节数/行数摘要到 BatchRun。  
-4. 源不可达 / 超时 / 鉴权失败 → `EXTRACT_FAILED`（默认 **transient**，除非 4xx 永久鉴权错）。  
+1. 将 BatchRun `state → running`，`stage = extract`。 
+2. 按 INPUTS §3 连接 Source；应用水位/窗口谓词拉数。 
+3. 写入暂存：路径或表名含 `pipeline_name` + `run_id`；记录字节数/行数摘要到 BatchRun。 
+4. 源不可达 / 超时 / 鉴权失败 → `EXTRACT_FAILED`（默认 **transient**，除非 4xx 永久鉴权错）。 
 5. 成功 → 暂存句柄（URI / staging 表名）交给 transform；**不**标 succeeded。
 
 ### 伪代码（规格级）
 
 ```text
 extract(run, source, watermark) -> staging_ref:
-  rows = source.read(since=watermark, window=run.window)
-  staging_ref = staging.write(run.id, rows)
-  run.metrics.extract_rows = count(rows)
-  return staging_ref
+ rows = source.read(since=watermark, window=run.window)
+ staging_ref = staging.write(run.id, rows)
+ run.metrics.extract_rows = count(rows)
+ return staging_ref
 ```
 
 ## 失败分类 / 默认值

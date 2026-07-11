@@ -2,26 +2,26 @@
 
 ## 不变量
 
-- 发版产物按 INPUTS §2 OS 裁剪；未勾选的 OS **不进**必做发版矩阵。  
-- **Mac 原生主路径** = [apple-platforms](../apple-platforms/README.md)；本册打包不等于「取代 SwiftUI Mac」。  
+- 发版产物按 INPUTS §2 OS 裁剪；未勾选的 OS **不进**必做发版矩阵。 
+- **Mac 原生主路径** = [apple-platforms](../apple-platforms/README.md)；本册打包不等于「取代 SwiftUI Mac」。 
 - 签名 / 公证 / SmartScreen 等按平台文档；密钥不入库。
 
 ## 步骤规格（实现自写）
 
-1. **构建**  
-   - `pnpm tauri build`（或官方等价）；CI 按 OS matrix。  
-   - 前端生产构建进 `frontendDist`；禁打包进 `.env` 秘密。
+1. **构建** 
+ - `pnpm tauri build`（或官方等价）；CI 按 OS matrix。 
+ - 前端生产构建进 `frontendDist`；禁打包进 `.env` 秘密。
 
-2. **标识与版本**  
-   - `identifier`、版本号与变更记录策略书面；与更新通道（若有）一致。
+2. **标识与版本** 
+ - `identifier`、版本号与变更记录策略写明；与更新通道（若有）一致。
 
-3. **自动更新（若 INPUTS §15）**  
-   - 端点 staging/prod 成对；验签公钥策略钉死；失败 → 可继续用旧版，不崩主流程。  
-   - 未启用 → 本章更新节 N/A。
+3. **自动更新（若 INPUTS §15）** 
+ - 端点 staging/prod 成对；验签公钥策略须写明；失败 → 可继续用旧版，不崩主流程。 
+ - 未启用 → 本章更新节 N/A。
 
-4. **平台差异**  
-   - 路径、文件对话框、全局快捷键：经 capability + command，避免 `#ifdef` 散落前端。  
-   - Linux 额外依赖（WebView）写入实现仓 README 运维说明（非第三方 APM 必勾）。
+4. **平台差异** 
+ - 路径、文件对话框、全局快捷键：经 capability + command，避免 `#ifdef` 散落前端。 
+ - Linux 额外依赖（WebView）写入实现仓 README 运维说明（非第三方 APM 必勾）。
 
 5. **与 apple-platforms 边界表**
 

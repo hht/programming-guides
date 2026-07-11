@@ -12,11 +12,11 @@
 
 | ID | 仓库或文档 | 等级 | 学什么 | 不学什么 | 品类匹配一句 |
 |----|------------|------|--------|----------|--------------|
-| A | [medusajs/medusa](https://github.com/medusajs/medusa) | P1 | Payment Session / Provider 插件、捕获与退款边界、失败可查询 | 绑死 Medusa 模块目录或整站电商 | 商户侧发起支付并由提供商完成资金流 |
+| A | [medusajs/medusa](https://github.com/medusajs/medusa) | P1 | Payment Session / Provider 插件、捕获与退款边界、失败可查询 | 照搬 Medusa 模块目录或整站电商 | 商户侧发起支付并由提供商完成资金流 |
 | B | [saleor/saleor](https://github.com/saleor/saleor) | P1 | Payment / Transaction 状态、退款、结账失败可见 | 抄 Saleor GraphQL 当唯一 API | 结账支付与交易状态对用户/商户可见 |
-| C | [Stripe Payment Intents](https://docs.stripe.com/payments/payment-intents) | P1w | Intent 生命周期、confirm、Webhook 验签、收据/拒付文档 | 把 Stripe 钉为指南唯一不可换默认；堆 SDK 百科 | 服务端 Intent + 客户端确认 + 签名 Webhook |
+| C | [Stripe Payment Intents](https://docs.stripe.com/payments/payment-intents) | P1w | Intent 生命周期、confirm、Webhook 验签、收据/拒付文档 | 把 Stripe 定为指南唯一不可换默认；堆 SDK 百科 | 服务端 Intent + 客户端确认 + 签名 Webhook |
 
-映射学习（非 B 共有证据源、不钉唯一默认）：Adyen Checkout 文档、PayPal Orders API、Paddle Billing — 仅当 INPUTS 选其它商时对照事件语义。
+映射学习（非 B 共有证据源、不作唯一默认）：Adyen Checkout 文档、PayPal Orders API、Paddle Billing — 仅当 INPUTS 选其它商时对照事件语义。
 
 ## 共有能力切条（用户可感知）
 
@@ -52,5 +52,5 @@
 | Stripe 文档最全 vs 禁唯一商 | **抽象 Intent + 适配器**为默认栈；Stripe = INPUTS 可选映射例 |
 | 客户端 return_url 当已付 | **禁止**单独 settle；须 webhook 或服务端权威 retrieve 合流 |
 | 支付状态与订阅状态混表 | **分册 SSOT**：本册 Intent；saas `BillingStatus`；仅映射函数连接 |
-| Hosted vs Embedded | INPUTS 互斥钉死一；默认不强制，但须写清 PCI 责任 |
+| Hosted vs Embedded | INPUTS 互斥任选其一；默认不强制，但须写清 PCI 责任 |
 | 开源电商 ≠ SaaS 席位 | 席位/计划不升格为本册共有；对接走 saas |

@@ -1,28 +1,28 @@
 # 06 — 分布式锁
 
-> P0：[Distributed locks with Redis](https://redis.io/docs/manual/patterns/distributed-locks/)（及 redis.io docs 现行等价页）。  
-> 本册默认：**单实例 Redis 上的安全互斥**（`SET NX EX` + token）；**不是**完整 Redlock 多节点共识课。多节点 Redlock 仅当 INPUTS 书面选用并接受其争议边界。
+> P0：[Distributed locks with Redis](https://redis.io/docs/manual/patterns/distributed-locks/)（及 redis.io docs 现行等价页）。 
+> 本册默认：**单实例 Redis 上的安全互斥**（`SET NX EX` + token）；**不是**完整 Redlock 多节点共识课。多节点 Redlock 仅当 INPUTS 写明选用并接受其争议边界。
 
 ## 不变量
 
-- 获取：`SET lock_key token NX EX ttl`（`token` = 高熵持有者标识，≥128 bit）。  
-- 释放：**仅当当前值 == token** 时删除（原子：Lua `if redis.call("GET",KEYS[1])==ARGV[1] then return redis.call("DEL",KEYS[1]) else return 0 end`）。  
-- **禁裸 `DEL lock_key`**（可误删他人锁）。  
+- 获取：`SET lock_key token NX EX ttl`（`token` = 高熵持有者标识，≥128 bit）。 
+- 释放：**仅当当前值 == token** 时删除（原子：Lua `if redis.call("GET",KEYS[1])==ARGV[1] then return redis.call("DEL",KEYS[1]) else return 0 end`）。 
+- **禁裸 `DEL lock_key`**（可误删他人锁）。 
 - 锁 TTL ≥ 临界区最坏耗时上界；超时未完成 → 视为丢失，调用方须幂等/可重入设计外的失败处理。
 
 ## 步骤规格（实现自写）
 
-1. **Acquire**  
-   - `token = random()`。  
-   - `ok = SET key token NX EX ttl`；`ok` 假 → `LOCK_NOT_ACQUIRED`（可重试带 backoff，次数 INPUTS 或默认 ≤3）。  
-2. **Hold**  
-   - 临界区内业务；**不**在持锁时做无界外部等待。  
-   - 可选续期（watchdog）仅当 INPUTS 勾选；默认不续期，靠足够 TTL。  
-3. **Release**  
-   - 执行 token 校验删除脚本；返回 0 → `LOCK_NOT_HELD`（已过期被他人获取或 token 错）。  
-   - **禁止** `DEL` 无校验。  
-4. **键名**  
-   - `{prefix}lock:{resource}`；resource 业务词根 + id。
+1. **Acquire** 
+ - `token = random()`。 
+ - `ok = SET key token NX EX ttl`；`ok` 假 → `LOCK_NOT_ACQUIRED`（可重试带 backoff，次数 INPUTS 或默认 ≤3）。 
+2. **Hold** 
+ - 临界区内业务；**不**在持锁时做无界外部等待。 
+ - 可选续期（watchdog）仅当 INPUTS 勾选；默认不续期，靠足够 TTL。 
+3. **Release** 
+ - 执行 token 校验删除脚本；返回 0 → `LOCK_NOT_HELD`（已过期被他人获取或 token 错）。 
+ - **禁止** `DEL` 无校验。 
+4. **键名** 
+ - `{prefix}lock:{resource}`；resource 业务词根 + id。
 
 ## 失败分类 / 默认值
 

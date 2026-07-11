@@ -1,6 +1,6 @@
 # templates
 
-> 仅允许：SQL schema 例、env 例、状态矩阵 md、package-scripts 片段、本 README。  
+> 仅允许：SQL schema 例、env 例、状态矩阵 md、package-scripts 片段、本 README。 
 > **禁止**可运行业务实现（无 extractor `.py` / DAG `.py` 业务模块）。
 
 | 文件 | 用途 |

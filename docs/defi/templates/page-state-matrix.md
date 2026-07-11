@@ -10,8 +10,8 @@
 
 ## 逐页 Definition of Done
 
-- [ ] 三态齐全且映射 frame 标题（INPUTS）  
-- [ ] CTA disabled 来自 domain 门闸  
-- [ ] 钱路径符合 [05](../05-read-write-money-path.md)  
-- [ ] 用户可见文案全部 i18n；PC/H5 同 key  
-- [ ] 该页门闸失败理由可测  
+- [ ] 三态齐全且映射 frame 标题（INPUTS） 
+- [ ] CTA disabled 来自 domain 门闸 
+- [ ] 钱路径符合 [05](../05-read-write-money-path.md) 
+- [ ] 用户可见文案全部 i18n；PC/H5 同 key 
+- [ ] 该页门闸失败理由可测 

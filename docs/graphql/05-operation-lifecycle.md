@@ -1,15 +1,15 @@
 # 05 — Operation Lifecycle（核心）
 
-> **全文唯一核心正确性路径。**  
+> **全文唯一核心正确性路径。** 
 > 解析 → 校验 document → 鉴权 → resolve → 错误映射 → 响应。
 
 ## 不变量
 
-- 每个 GraphQL HTTP 请求 **只** 经本生命周期；禁止 resolver「假设已鉴权」。  
-- 鉴权对接 **docs/auth Session Gate**（或 INPUTS Bearer）；失败 **fail-closed**。  
+- 每个 GraphQL HTTP 请求 **只** 经本生命周期；禁止 resolver「假设已鉴权」。 
+- 鉴权对接 **docs/auth Session Gate**（或 INPUTS Bearer）；失败 **fail-closed**。 
 - 超越：① staging/prod introspection 关或受控；② Mutation 必须鉴权+输入校验（见 `06`、`07`、`11`）。
 
-## 步骤规格（编号钉死）
+## 步骤规格（编号固定）
 
 | # | 步骤 | 规格 |
 |---|------|------|
@@ -35,14 +35,14 @@
 
 ```text
 lifecycle(req):
-  doc = parse(req.body.query)            // fail → VALIDATION_FAILED
-  validate(doc, schema)                  // fail → VALIDATION_FAILED
-  if persisted && !allowlisted(doc) → reject VALIDATION_FAILED
-  subject = sessionGate(req)             // or bearer
-  if isMutation(doc) && !subject → reject UNAUTHENTICATED
-  if isQuery(doc) && !subject && !inPublicAllowlist(doc) → reject UNAUTHENTICATED
-  result = execute(schema, doc, context={subject}, variables)
-  return mapErrors(result)               // extensions.code
+ doc = parse(req.body.query) // fail → VALIDATION_FAILED
+ validate(doc, schema) // fail → VALIDATION_FAILED
+ if persisted && !allowlisted(doc) → reject VALIDATION_FAILED
+ subject = sessionGate(req) // or bearer
+ if isMutation(doc) && !subject → reject UNAUTHENTICATED
+ if isQuery(doc) && !subject && !inPublicAllowlist(doc) → reject UNAUTHENTICATED
+ result = execute(schema, doc, context={subject}, variables)
+ return mapErrors(result) // extensions.code
 ```
 
 ## 单测探针（case → 期望）

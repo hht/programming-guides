@@ -12,7 +12,7 @@
 
 ## 切换语言勾选
 
-- [ ] 切换中 `loading-messages` 可感知或骨架  
-- [ ] ready 后主路径文案已换  
-- [ ] `document.documentElement.lang`（及 RTL `dir` 若适用）已更新  
-- [ ] 缺 key 不进入 ready 假成功  
+- [ ] 切换中 `loading-messages` 可感知或骨架 
+- [ ] ready 后主路径文案已换 
+- [ ] `document.documentElement.lang`（及 RTL `dir` 若适用）已更新 
+- [ ] 缺 key 不进入 ready 假成功 

@@ -14,7 +14,7 @@
 | ID | 仓库或文档 | 等级 | 学什么 | 不学什么 | 品类匹配一句 |
 |----|------------|------|--------|----------|--------------|
 | A | [open-telemetry/opentelemetry-demo](https://github.com/open-telemetry/opentelemetry-demo) | P1 | 多信号、传播、OTLP 演示与关联 | 抄整站微服务业务 | 演示应用端到端 traces/metrics/logs |
-| B | [grafana/faro](https://github.com/grafana/faro) | P1 | Web 端收集、会话/错误与遥测管道习惯 | 绑死 Grafana Cloud 商业面 | 前端可观测 SDK / 管道 |
+| B | [grafana/faro](https://github.com/grafana/faro) | P1 | Web 端收集、会话/错误与遥测管道习惯 | 照搬 Grafana Cloud 商业面 | 前端可观测 SDK / 管道 |
 | C | [OpenTelemetry Docs](https://opentelemetry.io/docs/) | P1w | 语义约定、context 传播、信号模型 | 当唯一实现样板 | 官方如何接日志/指标/追踪 |
 
 > 降级说明：开源应用面以 A+B 为主；官方文档 C 补足语义与传播共有描述（符合元指南「1–2 开源 + P1w 补至 3」）。
@@ -47,6 +47,6 @@
 | 冲突 | 裁决 |
 |------|------|
 | Sentry 等下载量高 vs OTel | **默认 OTel + OTLP**；商业 APM 仅参考 |
-| Faro 偏 Grafana 生态 | 学收集与前端管道；**不**把 Grafana Cloud 钉必装 |
+| Faro 偏 Grafana 生态 | 学收集与前端管道；**不**把 Grafana Cloud 约定必装 |
 | 只埋点不关联 / 仅 metrics | **不合格**；须 `05` query 可关联（有 logs）；禁「仅 metrics」裁剪 |
 | 其他领域指南是否必装 APM | **否**；本册可选，他册仍不把 APM 当必勾 |

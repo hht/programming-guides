@@ -7,7 +7,7 @@
 | # | 项 | 验收（合格谓词） |
 |---|-----|------------------|
 | 1 | **用户任务** | 含：角色 + 动作 + 可观察成功标准；非空 |
-| 2 | **平台** | 主平台四选一（字面量钉死）：`web` / `ios` / `android` / `macos`（小写；与 Figma `<platform>` 一致） |
+| 2 | **平台** | 主平台四选一（字面量固定）：`web` / `ios` / `android` / `macos`（小写；与 Figma `<platform>` 一致） |
 | 2b | **导航壳**（按平台必选一） | `web`：□顶栏 □侧栏；`android`：□navigation-bar □navigation-rail □navigation-drawer；`ios`：□tab+stack（默认勾此项，改须写理由）；`macos`：□sidebar+toolbar（默认）；互斥单选，未选=BLOCKED |
 | 3 | **关键流程** | ≥1 主路径步骤列表；含成功/失败出口 |
 | 3b | **屏幕/Frame 清单** | 表：`screen-id` \| 目的 \| 主 CTA \| 必交付状态（至少 default+loading+error 或注明 N/A） |

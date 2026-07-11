@@ -1,4 +1,4 @@
-# 01 — 默认栈（钉死）
+# 01 — 默认栈
 
 ## 栈表
 
@@ -19,17 +19,17 @@
 | 密码（仅 Session） | **at.favre.lib:bcrypt**（或 argon2-jvm） | 默认 **bcrypt**；与 INPUTS 表一致 |
 | UUID | `java.util.UUID` | RequestID |
 
-**禁止开口**：Spring Boot / WebFlux 任选、Jackson 默认、Hibernate/JPA 默认、jdbi 默认、ktor CIO 作默认引擎（生产钉 Netty）、无理由第二套 lint。
+**禁止开口**：Spring Boot / WebFlux 任选、Jackson 默认、Hibernate/JPA 默认、jdbi 默认、ktor CIO 作默认引擎（生产约定 Netty）、无理由第二套 lint。
 
 ## 冲突裁决（先进优先）
 
 | 冲突 | 裁决 |
 |------|------|
-| **Spring Boot 更「企业流行」** | **钉 Ktor**（协程一等、插件边界清晰、轻；Spring **不进**默认；若产品强制 Spring → **另册**，勿改本栈表） |
-| Hibernate/JPA 更流行 | **钉 Exposed**（Kotlin DSL + 显式事务；与 Ktor suspend 同构） |
-| jdbi 更接近 sqlc / SQL-first | **钉 Exposed**（本册先进默认；jdbi 不进默认，勿双栈） |
-| Jackson 仍为 JVM 默认 | **钉 kotlinx.serialization**（与 Kotlin 类型系统同构；禁默装 Jackson） |
-| Micronaut / http4k 亦先进 | **钉 Ktor**（本指南品类单默认；禁开口） |
+| **Spring Boot 更「企业流行」** | **采用 Ktor**（协程一等、插件边界清晰、轻；Spring **不进**默认；若产品强制 Spring → **另册**，勿改本栈表） |
+| Hibernate/JPA 更流行 | **采用 Exposed**（Kotlin DSL + 显式事务；与 Ktor suspend 同构） |
+| jdbi 更接近 sqlc / SQL-first | **采用 Exposed**（本册先进默认；jdbi 不进默认，勿双栈） |
+| Jackson 仍为 JVM 默认 | **采用 kotlinx.serialization**（与 Kotlin 类型系统同构；禁默装 Jackson） |
+| Micronaut / http4k 亦先进 | **采用 Ktor**（本指南品类单默认；禁开口） |
 
 ## 脚手架
 
@@ -39,7 +39,7 @@ mkdir <name> && cd <name>
 gradle init --type kotlin-application --dsl kotlin --java-version 21 --package <package>
 # 或等价：手写 settings.gradle.kts / build.gradle.kts / gradle/libs.versions.toml
 
-# 依赖（经 catalog 钉版本；键名见 templates/gradle-libs.versions.toml.example）：
+# 依赖（经 catalog 约定版本；键名见 templates/gradle-libs.versions.toml.example）：
 # ktor-server-netty, ktor-server-content-negotiation, ktor-serialization-kotlinx-json
 # ktor-server-status-pages, ktor-server-call-id, ktor-server-call-logging, ktor-server-auth（按需）
 # exposed-core, exposed-jdbc, exposed-java-time, postgresql, HikariCP, flyway-core
@@ -52,9 +52,9 @@ gradle init --type kotlin-application --dsl kotlin --java-version 21 --package <
 
 `build.gradle.kts` 须含：
 
-- `plugins`：`kotlin("jvm")`、`kotlin("plugin.serialization")`、`application`、detekt、ktlint  
-- `application { mainClass.set("<package>.ApplicationKt") }`（或等价入口）  
-- 测试：`useJUnitPlatform()`  
+- `plugins`：`kotlin("jvm")`、`kotlin("plugin.serialization")`、`application`、detekt、ktlint 
+- `application { mainClass.set("<package>.ApplicationKt") }`（或等价入口） 
+- 测试：`useJUnitPlatform()` 
 
 入口：`fun main()` → `embeddedServer(Netty, ...)` 或 `EngineMain`；**可测路径**必须抽出 `fun Application.module()`（或 `createApplication(): Application`）供 test host 安装。
 

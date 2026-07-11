@@ -2,29 +2,29 @@
 
 > 命名强制块：[naming-business-first.md](../meta/naming-business-first.md)。**Pass 1 业务语义先于 Pass 2 语法。**
 
-## 树（钉死词根；路径可按应用册微调，**词根不可改**）
+## 树（写明词根；路径可按应用册微调，**词根不可改**）
 
 ```text
 <repo>/
-  UBIQUITOUS_LANGUAGE.md
-  # Web 例：
-  src/
-    motion/                      # 或 features/<surface>/motion/
-      registry.md                # 关键动效登记（对齐 templates/motion-registry）
-      frame-budgets.json         # 对齐 templates/frame-budget.schema.json
-      # 禁：animationManager/、handleAnimate.ts、dto/
-  # 样式：与应用册一致（CSS / Tailwind）；动画 class 用业务名词根
-  # 原生：见 apple-platforms / android-compose；仍保留 registry + budgets 语义文件
+ UBIQUITOUS_LANGUAGE.md
+ # Web 例：
+ src/
+ motion/ # 或 features/<surface>/motion/
+ registry.md # 关键动效登记（对齐 templates/motion-registry）
+ frame-budgets.json # 对齐 templates/frame-budget.schema.json
+ # 禁：animationManager/、handleAnimate.ts、dto/
+ # 样式：与应用册一致（CSS / Tailwind）；动画 class 用业务名词根
+ # 原生：见 apple-platforms / android-compose；仍保留 registry + budgets 语义文件
 ```
 
 ## 依赖方向
 
 ```text
 产品 UI / 路由
-    → Motion Registry（哪些表面有关键动效）
-    → Property Whitelist（03）
-    → Frame Budget（04）
-    → Frame Budget Lifecycle（05）：measure → pass | degrade（07）
+ → Motion Registry（哪些表面有关键动效）
+ → Property Whitelist（03）
+ → Frame Budget（04）
+ → Frame Budget Lifecycle（05）：measure → pass | degrade（07）
 测量工具（06）只读产出证据；禁止业务绕过 Lifecycle 直接「加库提速」
 ```
 
@@ -47,7 +47,7 @@
 | Term | 含义 | 代码符号 | 禁同义词 |
 |------|------|----------|----------|
 | Frame Budget | 单帧时间上限（ms） | `FrameBudget` / `frame_budget_ms` | `PerfLimit` 分叉 |
-| Target Fps | 目标帧率 | `TargetFps` / `target_fps` | `refreshRate` 混用未钉 |
+| Target Fps | 目标帧率 | `TargetFps` / `target_fps` | `refreshRate` 混用未约定 |
 | Motion | 一条用户可感知动效 | `Motion` | `Anim`/`Fx` 无词表并行 |
 | Property Whitelist | 允许动画的属性集 | `PropertyWhitelist` | `AnimatableProps` 若未收录 |
 | Frame Budget Lifecycle | 目标→白名单→测→减配 | `FrameBudgetLifecycle` | `PerfPipeline`、`handlePerf` |

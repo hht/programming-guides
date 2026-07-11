@@ -1,4 +1,4 @@
-# 01 — 默认栈（钉死）
+# 01 — 默认栈
 
 ## 选栈总则
 
@@ -32,7 +32,7 @@
 | 流行候选 | 本指南 | 理由 |
 |----------|--------|------|
 | LangChain / LangGraph | **不用作默认** | 边界厚、类型弱于 Pydantic AI / AI SDK |
-| OpenAI Agents SDK（双语言） | 可映射学 handoff；默认仍上表 | 金标同构不绑死 SDK API |
+| OpenAI Agents SDK（双语言） | 可映射学 handoff；默认仍上表 | 金标同构不把它当作唯一 SDK API |
 | 自研裸 fetch 循环 | 仅 INPUTS 明示「无框架」 | 默认用框架拿 tool 校验 |
 
 ## 金标同构

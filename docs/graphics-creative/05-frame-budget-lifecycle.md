@@ -1,19 +1,19 @@
 # 05 — Frame Budget Lifecycle（核心）
 
-> **全文唯一核心正确性路径。**  
+> **全文唯一核心正确性路径。** 
 > 目标 fps → 动画属性白名单 → 测量 → 超预算则减配。
 
 ## 不变量
 
-- 每条**关键** Motion **只**经本生命周期；禁止「先上线再看掉帧」。  
-- 失败 **fail-closed 到减配**：超预算不得以 Full 档合并；须 `degraded` 或移除动效。  
+- 每条**关键** Motion **只**经本生命周期；禁止「先上线再看掉帧」。 
+- 失败 **fail-closed 到减配**：超预算不得以 Full 档合并；须 `degraded` 或移除动效。 
 - 超越：① 只动画白名单属性；② 每条关键动效有帧预算数字；③ 超预算强制减配阶梯（见 `07`、`11`）。
 
-## 步骤规格（编号钉死）
+## 步骤规格（编号固定）
 
 | # | 步骤 | 规格 |
 |---|------|------|
-| 1 | **钉目标 fps** | 读 INPUTS §2；写入该 Motion 的 `target_fps` 与 `frame_budget_ms`（`04` 表）。未钉 → 阻塞。 |
+| 1 | **约定目标 fps** | 读 INPUTS §2；写入该 Motion 的 `target_fps` 与 `frame_budget_ms`（`04` 表）。未约定 → 阻塞。 |
 | 2 | **属性白名单** | 属性列表 ⊆ `03`（或 `08` 等价）。违规 → `WHITELIST_VIOLATION`，改写或降级出关键路径。 |
 | 3 | **实现** | Web：CSS transition/animation 或 rAF；触发可用 IO。**禁止**为通过本步引入 Framer/GSAP/Lottie 默认依赖。时长/缓动用 `04` 默认或 INPUTS。 |
 | 4 | **测量** | 按 `06`：对关键路径录制 Performance / Instruments / GPU；读帧时间或掉帧证据。无证据 → 不得标 `pass`。 |
@@ -37,15 +37,15 @@
 
 ```text
 frameBudgetLifecycle(motion):
-  assert motion.target_fps && motion.frame_budget_ms   // else BUDGET_UNSPECIFIED
-  assert motion.properties ⊆ Whitelist                 // else WHITELIST_VIOLATION
-  implement(motion)                                    // CSS/rAF/IO；无默认重库
-  evidence = measure(motion, tool=INPUTS)              // else MEASURE_MISSING
-  if exceeds(evidence, motion.frame_budget_ms, motion.main_thread_budget_ms):
-    motion = degrade(motion)                           // 07
-    return frameBudgetLifecycle(motion)                // re-measure
-  motion.status = pass | degraded
-  return allowShip(motion)
+ assert motion.target_fps && motion.frame_budget_ms // else BUDGET_UNSPECIFIED
+ assert motion.properties ⊆ Whitelist // else WHITELIST_VIOLATION
+ implement(motion) // CSS/rAF/IO；无默认重库
+ evidence = measure(motion, tool=INPUTS) // else MEASURE_MISSING
+ if exceeds(evidence, motion.frame_budget_ms, motion.main_thread_budget_ms):
+ motion = degrade(motion) // 07
+ return frameBudgetLifecycle(motion) // re-measure
+ motion.status = pass | degraded
+ return allowShip(motion)
 ```
 
 ## 单测探针（case → 期望）

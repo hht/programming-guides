@@ -1,8 +1,8 @@
 # GraphQL — Schema-first API 指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **Schema-first GraphQL**：SDL 契约、类型安全读写、可分类错误、写路径鉴权+校验。  
-> **默认栈**：**GraphQL SDL** 为契约 SSOT（禁 code-first 作默认）+ **GraphQL Yoga** + **graphql**（js）+ **graphql-eslint**（持久化操作可选）+ 客户端 **Typed document**（**graphql-codegen**）。**禁止** Pothos / code-first 作默认；**禁止** GraphQL 当无鉴权万能 CRUD；鉴权对接 [docs/auth](../auth/README.md) **Session Gate**。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **Schema-first GraphQL**：SDL 契约、类型安全读写、可分类错误、写路径鉴权+校验。 
+> **默认栈**：**GraphQL SDL** 为契约 SSOT（禁 code-first 作默认）+ **GraphQL Yoga** + **graphql**（js）+ **graphql-eslint**（持久化操作可选）+ 客户端 **Typed document**（**graphql-codegen**）。**禁止** Pothos / code-first 作默认；**禁止** GraphQL 当无鉴权万能 CRUD；鉴权对接 [docs/auth](../auth/README.md) **Session Gate**。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -15,12 +15,12 @@
 
 ## Agent 执行协议
 
-1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停  
-2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`）  
-3. [03](./03-schema-and-sdl.md) / [04](./04-operations-and-codegen.md) / [05](./05-operation-lifecycle.md)  
-4. [06](./06-authz-and-mutations.md) / [07](./07-errors-and-security.md) / [08](./08-client-and-app-boundary.md)  
-5. [commands.md](./commands.md) `check` 绿  
-6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者）  
+1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停 
+2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`） 
+3. [03](./03-schema-and-sdl.md) / [04](./04-operations-and-codegen.md) / [05](./05-operation-lifecycle.md) 
+4. [06](./06-authz-and-mutations.md) / [07](./07-errors-and-security.md) / [08](./08-client-and-app-boundary.md) 
+5. [commands.md](./commands.md) `check` 绿 
+6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者） 
 
 ## 索引
 

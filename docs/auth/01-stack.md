@@ -1,4 +1,4 @@
-# 01 — 默认栈（钉死）
+# 01 — 默认栈
 
 > 选栈：**先进优先**；流行度仅佐证。冲突见 [sources.md](./sources.md)。
 
@@ -6,7 +6,7 @@
 
 **Opaque server-side session** + Cookie（`HttpOnly`/`Secure`/`SameSite`，名 `session`）存 **Postgres**（`hash(token)`）；OAuth/OIDC = **Authorization Code + PKCE**；TS → **better-auth**；Go → 自研薄 session + OIDC 客户端或对接 IdP；Python → **Authlib** + 自管 session。
 
-## 分层钉死
+## 分层写明
 
 | 层 | 默认 | 禁止 / 备注 |
 |----|------|-------------|
@@ -18,7 +18,7 @@
 | TS 库 | **better-auth**（先进） | 不强制抄其目录；契约以本册为准 |
 | Go | 自研薄 session + OIDC 客户端，或对接 IdP | 禁半吊子自写加密协议替代 HTTPS |
 | Python | **Authlib**（OAuth）+ 自管 session | — |
-| IdP（可选） | INPUTS 可勾 **Ory Kratos** | **禁止**钉死 Keycloak 为唯一默认 |
+| IdP（可选） | INPUTS 可勾 **Ory Kratos** | **禁止**将 Keycloak 规定为唯一默认 |
 
 ## 脚手架（按应用册）
 
@@ -28,7 +28,7 @@
 | Go | `docs/go` 脚手架 + `internal/session`（业务名）门闸中间件 |
 | Python | `docs/fastapi` 脚手架 + Authlib OAuth 客户端 + session 表 |
 
-锁版本：应用仓 lockfile 锁定；本指南不钉 semver 数字，钉**能力边界**。
+锁版本：应用仓 lockfile 锁定；本指南不指定具体 semver 数字，约定**能力边界**。
 
 ## 环境
 

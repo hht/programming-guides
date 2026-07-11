@@ -11,5 +11,5 @@
 | `check` | inputs 谓词 + gold schema + lint + test + **acceptance（11 可勾）**；**不含**全量 live eval | exit 0 |
 | `check-release` | `check` + `eval` | exit 0 |
 
-Python 例：`uv run ruff` / `uv run pytest` / `uv run python -m agent.eval`。  
+Python 例：`uv run ruff` / `uv run pytest` / `uv run python -m agent.eval`。 
 TypeScript 例：`pnpm lint` / `pnpm test` / `pnpm eval`。

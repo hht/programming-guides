@@ -28,7 +28,7 @@
 | 5 | 导航往返 | push 详情 pop 回列表态正确 | 全 |
 | 6 | Mac 菜单主命令 | 与按钮同一结果（窗内可见） | **仅**目标含 Mac |
 | 7 | Mac 快捷键 | INPUTS 表键位触发同一 Intent | **仅** Mac |
-| 8 | Dynamic Type / VoiceOver 抽样 | 主 CTA 可聚焦；动态字体不截断关键标题（宜做） | 全（裁剪须 INPUTS 书面） |
+| 8 | Dynamic Type / VoiceOver 抽样 | 主 CTA 可聚焦；动态字体不截断关键标题（宜做） | 全（裁剪须在 INPUTS 写明） |
 
 ## CI
 

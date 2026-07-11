@@ -1,6 +1,6 @@
 # color-semantic-names.md
 
-> 语义色名 **SSOT 种子**。实现仓可增用途名，**禁止**平行同义第二套。  
+> 语义色名 **SSOT 种子**。实现仓可增用途名，**禁止**平行同义第二套。 
 > 与 [ui-ux templates/tokens.example.md](../../ui-ux/templates/tokens.example.md) 对齐。
 
 | token path | 用途 | 禁同义词（不得作正式消费名） |
@@ -15,6 +15,6 @@
 
 ## 规则
 
-1. 新增行 = 新**用途**；不是给同一用途起第二个名字。  
-2. 迁移：改 call site → 删禁同义词 → lint 加禁串。  
+1. 新增行 = 新**用途**；不是给同一用途起第二个名字。 
+2. 迁移：改 call site → 删禁同义词 → lint 加禁串。 
 3. primitive palette（`color.palette.*`）可存在；**UI 默认不引用** palette 路径。

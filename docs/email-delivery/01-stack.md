@@ -1,10 +1,10 @@
-# 01 — 栈（钉死）
+# 01 — 栈
 
 | 层 | 选择 |
 |----|------|
-| **模板** | 版本化 **HTML + plain text**（或 MJML→HTML 构建步，INPUTS 书面）；变量契约 JSON Schema / 类型；**仓库或 DB 版本表二选一钉死**（默认：仓库 `templates/email/<template_id>/vN/`） |
+| **模板** | 版本化 **HTML + plain text**（或 MJML→HTML 构建步，INPUTS 写明）；变量契约 JSON Schema / 类型；**仓库或 DB 版本表二选一写明**（默认：仓库 `templates/email/<template_id>/vN/`） |
 | **投递真相** | 应用侧 **email_messages**（或等价）表/记录 + [06](./06-provider-ack-and-delivery-state.md) 状态机 |
-| **供应商适配** | 单一 `EmailProvider` 端口；INPUTS 钉死实现：**Resend** / **Postmark** / **Amazon SES** / 其它书面 — **HTTP API 优先**；官方 SDK 可选但不得双 SSOT |
+| **供应商适配** | 单一 `EmailProvider` 端口；INPUTS 约定实现：**Resend** / **Postmark** / **Amazon SES** / 其它书面 — **HTTP API 优先**；官方 SDK 可选但不得双 SSOT |
 | **异步（推荐）** | 对齐 [workers-queue](../workers-queue/README.md)：默认 **PG SKIP LOCKED** 或 INPUTS 选 Streams；队列名例 `email.send` |
 | **同步（可选）** | 仅 INPUTS 勾选同步直发；仍须写投递记录 + 幂等 + 可测状态转移 |
 | 禁止冒充 | **`setTimeout` / 内存队列** 不得进入验收路径 |
@@ -32,4 +32,4 @@
 
 ## 冲突裁决（写入 sources）
 
-流行度（某家 ESP 下载/SDK stars）**不**单独定胜负；**模板 SSOT + 幂等 + 投递状态机**优先。供应商只是 INPUTS 钉死的适配目标。
+流行度（某家 ESP 下载/SDK stars）**不**单独定胜负；**模板 SSOT + 幂等 + 投递状态机**优先。供应商只是 INPUTS 约定的适配目标。

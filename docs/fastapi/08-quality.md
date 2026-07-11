@@ -2,10 +2,10 @@
 
 ## 必做
 
-- `uv run ruff check` + `uv run ruff format --check`  
-- `uv run mypy app`  
-- `uv run pytest`  
-- 生产：structlog JSON；`APP_ENV=prod` 时默认 info，禁把 secrets 打进日志  
+- `uv run ruff check` + `uv run ruff format --check` 
+- `uv run mypy app` 
+- `uv run pytest` 
+- 生产：structlog JSON；`APP_ENV=prod` 时默认 info，禁把 secrets 打进日志 
 
 ## 宜做 / 参考
 

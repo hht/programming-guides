@@ -1,4 +1,4 @@
-# 01 — 栈（钉死）
+# 01 — 栈
 
 | 层 | 选择 |
 |----|------|
@@ -6,7 +6,7 @@
 | **Next.js App Router（默认）** | **`next-intl`**（locale 路由 + RSC/CSR 消息；底层 ICU） |
 | **Vite SPA / react 册（默认）** | **`react-intl`**（`react-intl` + `@formatjs/intl`） |
 | **检测（Next）** | `next-intl` middleware / 请求 locale；对齐 Next 官方 i18n 路由概念 |
-| **检测（Vite SPA）** | 显式 preference（cookie/localStorage 键名 INPUTS 钉）→ `Accept-Language` → 默认 locale |
+| **检测（Vite SPA）** | 显式 preference（cookie/localStorage 键名 INPUTS 约定）→ `Accept-Language` → 默认 locale |
 | **格式化** | `Intl.*`（Number/DateTime/RelativeTime/List）；与当前 resolved locale 一致 |
 | **映射学习（非默认）** | **i18next** / `react-i18next`：学 namespace 与检测插件；**不**替换上表。Lingui / paraglide：学类型生成，改选须 INPUTS |
 
@@ -14,15 +14,15 @@
 
 ## 宿主 → 运行时（互斥）
 
-实现仓按 INPUTS §1 **钉死一行**；跨宿主 monorepo 可各包一行，禁止同包双库。
+实现仓按 INPUTS §1 **选定一行**；跨宿主 monorepo 可各包一行，禁止同包双库。
 
-| 宿主 | 钉死运行时 | 消息 SSOT |
+| 宿主 | 写明运行时 | 消息 SSOT |
 |------|------------|-----------|
 | Next.js App Router | `next-intl` | `messages/*.json`（ICU） |
 | Vite SPA（react） | `react-intl` | 同上形状 |
-| 其它 | INPUTS 书面单库 | 仍须 ICU JSON + 本册 Lifecycle |
+| 其它 | INPUTS 写明单库 | 仍须 ICU JSON + 本册 Lifecycle |
 
-若 INPUTS 书面改选（例 Next 改用 FormatJS 裸装），须：① 冲突表理由；② 仍映射 Lifecycle；③ **不得**与 i18next 双 SSOT。
+若 INPUTS 写明改选（例 Next 改用 FormatJS 裸装），须：① 冲突表理由；② 仍映射 Lifecycle；③ **不得**与 i18next 双 SSOT。
 
 ## 脚手架
 
@@ -50,6 +50,6 @@
 
 ## 冲突裁决（写入 sources）
 
-- **流行度（i18next）不单独定胜负**；**ICU SSOT + 缺 key 可强制失败**优先 → 默认 FormatJS 系。  
-- Next 生态以 **`next-intl`** 为 App Router 先进默认（RSC 消息、middleware）；非「下载量第一」改判。  
-- Vite SPA 钉 **`react-intl`**，与 next-intl **共享消息文件形状**，避免两套目录方言。  
+- **流行度（i18next）不单独定胜负**；**ICU SSOT + 缺 key 可强制失败**优先 → 默认 FormatJS 系。 
+- Next 生态以 **`next-intl`** 为 App Router 先进默认（RSC 消息、middleware）；非「下载量第一」改判。 
+- Vite SPA 约定 **`react-intl`**，与 next-intl **共享消息文件形状**，避免两套目录方言。 

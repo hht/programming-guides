@@ -4,18 +4,18 @@
 
 ## 不变量
 
-- 向量是**附加召回**，不替换 `05` 主路径；混合检索须钉融合规则。  
-- 扩展：`CREATE EXTENSION vector`（pgvector）；列类型 `vector(D)`，D=INPUTS 维度。  
-- 嵌入模型与维度变更 = 全量重嵌 + 迁移，禁止静默截断。  
+- 向量是**附加召回**，不替换 `05` 主路径；混合检索须写明融合规则。 
+- 扩展：`CREATE EXTENSION vector`（pgvector）；列类型 `vector(D)`，D=INPUTS 维度。 
+- 嵌入模型与维度变更 = 全量重嵌 + 迁移，禁止静默截断。 
 - **不写**模型训练、微调、数据集百科；只写「调用已选嵌入 API/服务 → 存向量 → 查询」。
 
 ## 步骤规格（实现自写）
 
-1. INPUTS §10：模型、维度、度量（默认 **cosine** ↔ `vector_cosine_ops`）。  
-2. 迁移：列 + 索引（默认 **HNSW**；小数据可用 ivfflat，须写选因）。  
-3. 写路径：权威文档变更 → 异步/同步生成 embedding → 更新列（同步策略对齐 `04`）。  
-4. 查询：`parse` 得到 text → 嵌成 query vector → scope 内 `ORDER BY embedding <=> $q`（或对应算子）LIMIT K。  
-5. 混合（若启用）：默认 **cascade**（FTS 有命中则只用 FTS；FTS empty 再向量）。**仅**当 INPUTS §10 书面勾选 `rrf/加权` 并写公式与权重时改用该路径；禁止未文档化隐式混合。  
+1. INPUTS §10：模型、维度、度量（默认 **cosine** ↔ `vector_cosine_ops`）。 
+2. 迁移：列 + 索引（默认 **HNSW**；小数据可用 ivfflat，须写选因）。 
+3. 写路径：权威文档变更 → 异步/同步生成 embedding → 更新列（同步策略对齐 `04`）。 
+4. 查询：`parse` 得到 text → 嵌成 query vector → scope 内 `ORDER BY embedding <=> $q`（或对应算子）LIMIT K。 
+5. 混合（若启用）：默认 **cascade**（FTS 有命中则只用 FTS；FTS empty 再向量）。**仅**当 INPUTS §10 书面勾选 `rrf/加权` 并写公式与权重时改用该路径；禁止未文档化隐式混合。 
 6. 仍须走 `authorize scope`；向量召回不得绕过可见性。
 
 ## 失败分类 / 默认值

@@ -1,6 +1,6 @@
 # 08 — 客户端与应用册边界
 
-> **本册 = GraphQL 契约与 Operation Lifecycle SSOT。**  
+> **本册 = GraphQL 契约与 Operation Lifecycle SSOT。** 
 > `docs/react`、`docs/nextjs`、`docs/go`、`docs/fastapi` 只描述框架接线与 UI；**SDL、错误码、Lifecycle、Mutation 鉴权规则以本册为准**。会话语义以 [docs/auth](../auth/README.md) 为准。
 
 ## 边界表
@@ -19,19 +19,19 @@
 
 ### nextjs / react
 
-- 浏览器：同站 Cookie 会话（auth）；GraphQL fetch **credentials include**（若 Cookie）；禁 localStorage JWT 主会话（auth 不变量）。  
-- operations 放应用源码树；codegen 产出入 `generated/`。  
+- 浏览器：同站 Cookie 会话（auth）；GraphQL fetch **credentials include**（若 Cookie）；禁 localStorage JWT 主会话（auth 不变量）。 
+- operations 放应用源码树；codegen 产出入 `generated/`。 
 - RSC/Server Action：若服务端打 GraphQL，仍走同一 Lifecycle 与鉴权，禁「内部旁路无 Gate」。
 
 ### go / fastapi
 
-- 可非 Yoga：须遵守本册 SDL、错误码、Lifecycle、Mutation 鉴权；sources 映射成本自负。  
+- 可非 Yoga：须遵守本册 SDL、错误码、Lifecycle、Mutation 鉴权；sources 映射成本自负。 
 - 与 auth 中间件顺序：Gate → GraphQL execute。
 
 ## 禁止
 
-- 应用册另钉 code-first 默认覆盖本册。  
-- 客户端跳过 Typed document 用无类型字符串当主路径。  
+- 应用册另行约定 code-first 默认覆盖本册。 
+- 客户端跳过 Typed document 用无类型字符串当主路径。 
 - 两册各写一套 `extensions.code` 而不互相引用。
 
 ## 单测探针（case → 期望）

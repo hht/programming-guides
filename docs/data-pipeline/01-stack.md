@@ -1,4 +1,4 @@
-# 01 — 栈（钉死）
+# 01 — 栈
 
 | 层 | 选择 |
 |----|------|
@@ -17,7 +17,7 @@
 
 ```bash
 # --- 默认：batch + workers-queue ---
-# 1) 对齐 workers-queue：INPUTS 钉 PG SKIP LOCKED 或 Streams；队列名 = pipeline.*
+# 1) 对齐 workers-queue：INPUTS 约定 PG SKIP LOCKED 或 Streams；队列名 = pipeline.*
 # 2) 复制 templates/schema.batch_runs.sql.example → 迁移（BatchRun / VerifyCheck 结果）
 # 3) 配置 staging/prod 源/目标连接名（值不入库）
 # 4) Worker handler：按 05 顺序调用 extract→transform→load→verify；失败分类见 05/08
@@ -32,7 +32,7 @@
 
 # --- 条件：streaming（仅 INPUTS §1）---
 # 1) 消费循环仍实现 08 映射四步；verify 可微批窗口
-# 2) Runner 仍须能重试/死信（workers-queue 或书面等价）
+# 2) Runner 仍须能重试/死信（workers-queue 或写明等价）
 ```
 
 ## 版本
@@ -44,8 +44,8 @@
 | Airflow（若勾选） | 跟部署面当前稳定大版本；补丁跟安全公告 |
 | Dagster（若勾选） | 跟官方稳定发行；锁在实现仓 |
 | dbt（若勾选） | dbt-core 跟 P1 标杆大版本策略；适配器与目标仓匹配 |
-| 客户端 / 语言 | 跟应用册；ETL 脚本默认可 Python **≥3.12** 或应用同语言 — INPUTS 书面钉一种 |
+| 客户端 / 语言 | 跟应用册；ETL 脚本默认可 Python **≥3.12** 或应用同语言 — INPUTS 择一写明 |
 
 ## 冲突裁决（写入 sources）
 
-编排器下载量与生态（Airflow）**不**单独定胜负；**与应用同库可运维的薄 runner（workers-queue）优先**。Airflow/Dagster 在「多仓依赖图 / 资产平台」条件满足时再钉。ELT 产品（Airbyte/Meltano）作**标杆学习**，默认不绑其控制面为 SSOT。
+编排器下载量与生态（Airflow）**不**单独定胜负；**与应用同库可运维的薄 runner（workers-queue）优先**。Airflow/Dagster 在「多仓依赖图 / 资产平台」条件满足时再约定。ELT 产品（Airbyte/Meltano）作**标杆学习**，默认不绑其控制面为 SSOT。

@@ -13,5 +13,5 @@
 | `package-scripts.snippet.json` | 建议 scripts 名 |
 | `page-state-matrix.md` | 页面三态 / DoD 规格 |
 
-**禁止**在本目录堆 Swap/Claim/Approve/Provider 等业务实现代码。  
+**禁止**在本目录堆 Swap/Claim/Approve/Provider 等业务实现代码。 
 实现由 agent 在目标仓库按正文指南自行编写；正文里最多给 **类型签名 / 伪代码步骤**，不给完整模块。

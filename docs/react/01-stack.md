@@ -1,4 +1,4 @@
-# 01 — 默认栈（钉死）
+# 01 — 默认栈
 
 ## 栈表
 
@@ -22,7 +22,7 @@
 | 测试 | **Vitest** + **@testing-library/react** + **Playwright** | |
 | Lint | ESLint flat + typescript-eslint | |
 
-**禁止开口**：Next.js / Remix / React Router 与 TanStack Router 任选 — **只钉本表**。
+**禁止开口**：Next.js / Remix / React Router 与 TanStack Router 任选 — **只约定本表**。
 
 ## 脚手架（按序）
 
@@ -31,7 +31,7 @@ pnpm create vite@latest <name> --template react-ts
 cd <name>
 pnpm install
 # Tailwind v4 + Vite 插件按官网当前步骤
-pnpm dlx shadcn@latest init   # style: new-york；CSS variables: yes
+pnpm dlx shadcn@latest init # style: new-york；CSS variables: yes
 pnpm add @tanstack/react-router @tanstack/react-query zustand zod react-hook-form @hookform/resolvers date-fns es-toolkit lucide-react
 pnpm add -D @tanstack/router-plugin @tanstack/react-query-devtools vitest @testing-library/react @testing-library/jest-dom @testing-library/user-event jsdom playwright @playwright/test
 # 按需 shadcn 组件：

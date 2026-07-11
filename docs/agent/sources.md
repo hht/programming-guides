@@ -13,9 +13,9 @@
 
 | ID | 仓库 | 品类匹配 | 学什么 | 不学什么 |
 |----|------|----------|--------|----------|
-| A | [pydantic/pydantic-ai](https://github.com/pydantic/pydantic-ai) | 类型安全 Python Agent | tool 类型、输出模型、测试 | 绑死其全部生态插件 |
+| A | [pydantic/pydantic-ai](https://github.com/pydantic/pydantic-ai) | 类型安全 Python Agent | tool 类型、输出模型、测试 | 照搬全部生态插件 |
 | B | [openai/openai-agents-python](https://github.com/openai/openai-agents-python) | 轻量多 Agent/工具循环 | handoff、会话、护栏思路 | 必须双语言同 SDK |
-| C | [vercel/ai](https://github.com/vercel/ai) | TS Agent/工具/结构化输出 | `tool`/`generateObject`、多步 | 绑死 Next.js 全家桶 |
+| C | [vercel/ai](https://github.com/vercel/ai) | TS Agent/工具/结构化输出 | `tool`/`generateObject`、多步 | 照搬 Next.js 全家桶 |
 
 ## 能力切条 → 共有
 

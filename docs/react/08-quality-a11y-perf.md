@@ -2,9 +2,9 @@
 
 ## 必做
 
-- ESLint + `tsc -b` + Vitest 进 `pnpm check`  
-- 依赖：`pnpm audit`（豁免写入 `docs/audit-exceptions.md`）  
-- 生产构建：`pnpm build`；SPA fallback 由托管配置（nginx try_files / CDN）——**部署清单进 INPUTS 或 README，不绑某云**  
+- ESLint + `tsc -b` + Vitest 进 `pnpm check` 
+- 依赖：`pnpm audit`（豁免写入 `docs/audit-exceptions.md`） 
+- 生产构建：`pnpm build`；SPA fallback 由托管配置（nginx try_files / CDN）——**部署清单进 INPUTS 或 README，不绑某云** 
 
 ## 无障碍 / 性能（宜做）
 

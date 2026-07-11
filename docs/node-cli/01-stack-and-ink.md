@@ -1,4 +1,4 @@
-# 01 — 默认栈（钉死）
+# 01 — 默认栈
 
 ## 栈
 
@@ -28,24 +28,24 @@ pnpm create pastel-app <name>
 
 # 2) 进入仓库，统一包管理与引擎
 cd <name>
-pnpm import   # 若生成的是 npm lock，转为 pnpm；否则 pnpm install
+pnpm import # 若生成的是 npm lock，转为 pnpm；否则 pnpm install
 ```
 
 手动等价（脚手架不可用时）：
 
-1. `pnpm init` + `"type":"module"` + `engines.node: ">=22"`  
-2. `pnpm add pastel ink react zod @inkjs/ui`  
-3. `pnpm add -D typescript @types/react @types/node vitest ink-testing-library @sindresorhus/tsconfig`  
-4. 按 Pastel README 建 `source/cli.ts`、`source/commands/index.tsx`  
+1. `pnpm init` + `"type":"module"` + `engines.node: ">=22"` 
+2. `pnpm add pastel ink react zod @inkjs/ui` 
+3. `pnpm add -D typescript @types/react @types/node vitest ink-testing-library @sindresorhus/tsconfig` 
+4. 按 Pastel README 建 `source/cli.ts`、`source/commands/index.tsx` 
 5. `package.json`：`"bin": { "<cli-name>": "./build/cli.js" }`，入口文件首行 `#!/usr/bin/env node`
 
 ## 锁版本
 
-- 应用依赖：`^` 主版本内；发版前 `pnpm outdated` 人工确认  
+- 应用依赖：`^` 主版本内；发版前 `pnpm outdated` 人工确认 
 - 禁止无理由 pin 到 fork 的 ink（标杆 B 的 fork **不**采用）
 
 ## React 注意
 
-- 无 DOM：禁止 `document` / `window`  
-- 副作用用 Ink hooks（`useInput` / `useApp` / `useStdout`）；清理在 unmount  
+- 无 DOM：禁止 `document` / `window` 
+- 副作用用 Ink hooks（`useInput` / `useApp` / `useStdout`）；清理在 unmount 
 - 不默认引入 React Compiler（终端 reconciler 非浏览器；若将来官方支持再开）

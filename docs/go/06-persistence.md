@@ -2,24 +2,24 @@
 
 ## 不变量
 
-- Schema 变更只进 `migrations/`  
-- 查询只进 `sql/queries/` → `sqlc generate`  
-- 运行时用 `pgxpool`；`DATABASE_URL` 必填  
+- Schema 变更只进 `migrations/` 
+- 查询只进 `sql/queries/` → `sqlc generate` 
+- 运行时用 `pgxpool`；`DATABASE_URL` 必填 
 
 ## 步骤规格
 
-1. `migrations/0001_init.up.sql` + `.down.sql`；CI/启动 `migrate up`。  
-2. `sqlc.yaml` 指向 queries；生成包 `internal/db`。  
+1. `migrations/0001_init.up.sql` + `.down.sql`；CI/启动 `migrate up`。 
+2. `sqlc.yaml` 指向 queries；生成包 `internal/db`。 
 3. Service 依赖接口：
 
 ```text
 type Querier interface {
-  // sqlc 生成方法子集，便于 mock
+ // sqlc 生成方法子集，便于 mock
 }
 ```
 
-4. 事务：`pgx.Tx` 实现同一 Querier（sqlc 支持）；service 内开启。  
-5. 连接池：`MaxConns` 默认 **10**（可配置）；`Ping` 用于 `/readyz`。  
+4. 事务：`pgx.Tx` 实现同一 Querier（sqlc 支持）；service 内开启。 
+5. 连接池：`MaxConns` 默认 **10**（可配置）；`Ping` 用于 `/readyz`。 
 
 ## 失败分类
 

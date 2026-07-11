@@ -14,7 +14,7 @@
 
 | ID | 仓库 | 品类匹配 | 学什么 | 不学什么 |
 |----|------|----------|--------|----------|
-| A | [basecamp/kamal](https://github.com/basecamp/kamal) | 应用远程部署 | 部署/回滚/配件 | 绑死 Rails |
+| A | [basecamp/kamal](https://github.com/basecamp/kamal) | 应用远程部署 | 部署/回滚/配件 | 照搬 Rails |
 | B | [docker/compose](https://github.com/docker/compose) | 声明式多容器 | 本地/单机编排 | 当唯一生产编排 |
 | C | [actions/starter-workflows](https://github.com/actions/starter-workflows) | CI 工作流模式 | CI/CD 骨架 | 照抄无关语言 |
 
@@ -35,7 +35,7 @@
 |------|------|------|
 | 健康门闸硬停 | `05`/`06` | 必做（超越） |
 | PREV 回滚默认 | `05`/`06` | 必做（超越） |
-| Action 钉 SHA | `04`/`08` | 必做 |
+| Action 约定 SHA | `04`/`08` | 必做 |
 | APM | — | 参考 |
 
 ## 冲突

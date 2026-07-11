@@ -1,8 +1,8 @@
 # Data Pipeline — ETL / 批处理数据管线指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **批处理数据管线**：抽取、变换、装载、校验。  
-> **默认栈**：**批处理优先**；一次 **Batch Job** 由 [workers-queue](../workers-queue/README.md) **Job Lifecycle** 承载执行 / 重试 / 死信；落地区对齐 [postgres](../postgres/README.md) 与可选 [object-storage](../object-storage/README.md)。**Airflow / Dagster 仅条件启用**（INPUTS 互斥钉死恰好一家编排器时）。**流式不是默认**；若启用，钉死等价四步映射（见 `08`），**禁止**与批处理双 SSOT。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **批处理数据管线**：抽取、变换、装载、校验。 
+> **默认栈**：**批处理优先**；一次 **Batch Job** 由 [workers-queue](../workers-queue/README.md) **Job Lifecycle** 承载执行 / 重试 / 死信；落地区对齐 [postgres](../postgres/README.md) 与可选 [object-storage](../object-storage/README.md)。**Airflow / Dagster 仅条件启用**（INPUTS 互斥任选一家编排器时）。**流式不是默认**；若启用，写明等价四步映射（见 `08`），**禁止**与批处理双 SSOT。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -19,13 +19,13 @@
 
 ## Agent 执行协议
 
-1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；编排器 / 流式互斥已遵守  
-2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`）  
-3. 必读 [03](./03-dataset-and-run-contract.md) + [04](./04-extract.md) + [05](./05-batch-job-lifecycle.md)  
-4. 落地 [06](./06-transform-and-load.md) / [07](./07-verify.md) / [08](./08-runner-orchestration-and-streaming.md)  
-5. 对接 [workers-queue](../workers-queue/README.md)（默认 runner）；若 INPUTS 勾选 Airflow/Dagster → 仅按 `08` 条件章，**Lifecycle 步骤仍以本册 `05` 为 SSOT**  
-6. [commands.md](./commands.md) `check` 绿  
-7. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者）  
+1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；编排器 / 流式互斥已遵守 
+2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`） 
+3. 必读 [03](./03-dataset-and-run-contract.md) + [04](./04-extract.md) + [05](./05-batch-job-lifecycle.md) 
+4. 落地 [06](./06-transform-and-load.md) / [07](./07-verify.md) / [08](./08-runner-orchestration-and-streaming.md) 
+5. 对接 [workers-queue](../workers-queue/README.md)（默认 runner）；若 INPUTS 勾选 Airflow/Dagster → 仅按 `08` 条件章，**Lifecycle 步骤仍以本册 `05` 为 SSOT** 
+6. [commands.md](./commands.md) `check` 绿 
+7. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者） 
 
 ## 索引
 

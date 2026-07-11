@@ -1,6 +1,6 @@
 # templates
 
-> 仅允许：状态矩阵 md、env 例、Gradle 任务名 snippet、本 README。  
+> 仅允许：状态矩阵 md、env 例、Gradle 任务名 snippet、本 README。 
 > **禁止**可运行业务实现（无完整 `*.kt` Feature 模块、无 APK）。
 
 | 文件 | 用途 |

@@ -1,16 +1,16 @@
 # 05 — Screen State Lifecycle（核心）
 
-> **全文唯一核心正确性路径。**  
+> **全文唯一核心正确性路径。** 
 > route focus → load → UiState → 交互 → 失焦取消。
 
 ## 不变量
 
-- 每个用户可感知状态变化 **只** 经本生命周期；禁止 Screen 旁路改业务真相。  
-- UiState **单一不可变真相**（见 `03`）。  
-- **失焦取消 inflight**（超越 a1，细则见 `07`）：blur 后旧请求结果不得写入 UiState。  
+- 每个用户可感知状态变化 **只** 经本生命周期；禁止 Screen 旁路改业务真相。 
+- UiState **单一不可变真相**（见 `03`）。 
+- **失焦取消 inflight**（超越 a1，细则见 `07`）：blur 后旧请求结果不得写入 UiState。 
 - 失败 **可展示、可测**：映射 INPUTS 错误码；禁止静默吞掉后假装 success。
 
-## 步骤规格（编号钉死）
+## 步骤规格（编号固定）
 
 | # | 步骤 | 规格 |
 |---|------|------|
@@ -36,21 +36,21 @@
 
 ```text
 onFocus:
-  controller = new AbortController()
-  generation += 1
-  gen = generation
-  set uiState = { ...uiState, phase: Loading }   // 若矩阵需要
-  result = await repository.load(params, controller.signal)
-  if (aborted || gen != generation) return
-  uiState = mapResult(result)
+ controller = new AbortController()
+ generation += 1
+ gen = generation
+ set uiState = { ...uiState, phase: Loading } // 若矩阵需要
+ result = await repository.load(params, controller.signal)
+ if (aborted || gen != generation) return
+ uiState = mapResult(result)
 
 onBlur / cleanup:
-  controller.abort()
-  // generation 已足以作废晚到响应
+ controller.abort()
+ // generation 已足以作废晚到响应
 
 onEvent(event):
-  if pure: uiState = reduce(uiState, event)
-  else: /* 同 onFocus 取消规则启动 IO */
+ if pure: uiState = reduce(uiState, event)
+ else: /* 同 onFocus 取消规则启动 IO */
 ```
 
 ## 单测探针（case → 期望）

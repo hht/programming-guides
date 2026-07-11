@@ -2,33 +2,33 @@
 
 ## 不变量
 
-- 对外错误 = INPUTS §8 码；serde 稳定字段（例 `code` + 可选 `message` 面向用户）。  
-- **事件**（`emit` / `listen`）只用于通知/进度，**不是**写权限后门；敏感数据默认不进事件 payload。  
+- 对外错误 = INPUTS §8 码；serde 稳定字段（例 `code` + 可选 `message` 面向用户）。 
+- **事件**（`emit` / `listen`）只用于通知/进度，**不是**写权限后门；敏感数据默认不进事件 payload。 
 - 密钥与会话：若有登录，SSOT = [docs/auth](../auth/README.md)；桌面不另造「localStorage JWT 主会话」。
 
 ## 步骤规格（实现自写）
 
 ### A. 错误
 
-1. Rust 侧统一 `AppError`（或枚举）实现 `Serialize` / `thiserror`；`#[tauri::command]` 返回 `Result<T, AppError>`。  
-2. 前端 `invoke` reject → 解析 `code`；未知码 → 当 `INTERNAL` 展示。  
+1. Rust 侧统一 `AppError`（或枚举）实现 `Serialize` / `thiserror`；`#[tauri::command]` 返回 `Result<T, AppError>`。 
+2. 前端 `invoke` reject → 解析 `code`；未知码 → 当 `INTERNAL` 展示。 
 3. 日志可含细节；UI 文案不含绝对路径、token、堆栈。
 
 ### B. 事件（可选）
 
-1. 仅 INPUTS 声明的事件名（业务词根，如 `library_import_progress`）。  
-2. Payload 白名单字段；禁把密钥、完整文件内容默认广播。  
+1. 仅 INPUTS 声明的事件名（业务词根，如 `library_import_progress`）。 
+2. Payload 白名单字段；禁把密钥、完整文件内容默认广播。 
 3. 订阅随组件卸载清理；避免泄漏。
 
 ### C. 密钥与秘密
 
-1. 环境变量名成对（INPUTS §9）；值不入库。  
-2. 需要本机密钥链时：经 **command** + capability，不经宽松前端插件默认。  
+1. 环境变量名成对（INPUTS §9）；值不入库。 
+2. 需要本机密钥链时：经 **command** + capability，不经宽松前端插件默认。 
 3. 禁止：把 refresh token / 私钥写入可被 XSS 读取的前端存储当主凭证。
 
 ### D. 鉴权（若适用）
 
-1. 对接 auth 册模式；桌面第一方若用 Cookie/深链，写清与 WebView 存储边界。  
+1. 对接 auth 册模式；桌面第一方若用 Cookie/深链，写清与 WebView 存储边界。 
 2. 未认证调用受保护 command → `FORBIDDEN` / `UNAUTHENTICATED`（码表可扩）。
 
 ## 失败分类 / 默认值

@@ -2,26 +2,26 @@
 
 ## 不变量
 
-- **TIMEOUT** 对调用方可感知（默认 HTTP 504 + code `TIMEOUT`）。  
-- **写路径**必填幂等维度；冲突默认 **reject**。  
-- HTTP 同步默认 **不**由平台自动重试业务；异步按 `max_attempts` + 退避。  
+- **TIMEOUT** 对调用方可感知（默认 HTTP 504 + code `TIMEOUT`）。 
+- **写路径**必填幂等维度；冲突默认 **reject**。 
+- HTTP 同步默认 **不**由平台自动重试业务；异步按 `max_attempts` + 退避。 
 - 投递语义默认 **at-least-once**（异步）；禁止无幂等宣称 exactly-once。
 
 ## 步骤规格（实现自写）
 
 ### 1. 超时
 
-1. 读取 INPUTS 墙钟数字；与平台 hard limit 取更紧者。  
-2. Handler / 下游使用同一 deadline。  
+1. 读取 INPUTS 墙钟数字；与平台 hard limit 取更紧者。 
+2. Handler / 下游使用同一 deadline。 
 3. 触发时：中断 → `TIMEOUT`；**不** ack 异步消息为成功（若适用）。
 
 ### 2. 幂等（写）
 
-1. 键来源：HTTP header **`Idempotency-Key`**（默认）或触发表钉死的业务字段。  
-2. 长度默认 **1–128** 可打印 ASCII；超限 → `VALIDATION`。  
-3. 存储：按平台选 KV / D1 / DB / 上游权威源 **一处 SSOT**；记录 status+body 指纹或业务结果句柄。  
-4. 同键重放：返回与首次成功 **等价**响应；副作用计数不增加。  
-5. 冲突策略默认 **reject**（进行中的并发同键 → `CONFLICT` 或排队等到首次完成 — INPUTS 钉一；默认 **reject**）。
+1. 键来源：HTTP header **`Idempotency-Key`**（默认）或触发表中约定的业务字段。 
+2. 长度默认 **1–128** 可打印 ASCII；超限 → `VALIDATION`。 
+3. 存储：按平台选 KV / D1 / DB / 上游权威源 **一处 SSOT**；记录 status+body 指纹或业务结果句柄。 
+4. 同键重放：返回与首次成功 **等价**响应；副作用计数不增加。 
+5. 冲突策略默认 **reject**（进行中的并发同键 → `CONFLICT` 或排队等到首次完成 — INPUTS 择一；默认 **reject**）。
 
 ### 3. 重试
 

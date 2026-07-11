@@ -1,8 +1,8 @@
 # Redis — 缓存 / 锁 / 限流 / 会话存储指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **Redis** 键空间、Cache-Aside、分布式锁、限流与（可选）会话存储。  
-> **默认栈**：Redis **≥7** + 客户端按应用册（**Go=go-redis** · **TS=ioredis** · **Python=redis-py**）+ 键名=业务前缀+实体+id + **TTL 必填**；会话默认仍对齐 [auth](../auth/README.md)（PG）；本册写 Redis session **可选路径**。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **Redis** 键空间、Cache-Aside、分布式锁、限流与（可选）会话存储。 
+> **默认栈**：Redis **≥7** + 客户端按应用册（**Go=go-redis** · **TS=ioredis** · **Python=redis-py**）+ 键名=业务前缀+实体+id + **TTL 必填**；会话默认仍对齐 [auth](../auth/README.md)（PG）；本册写 Redis session **可选路径**。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -15,11 +15,11 @@
 
 ## Agent 执行协议
 
-1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；按「能力裁剪」只读必读章  
-2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`）  
-3. 必读 [03](./03-keyspace-and-ttl.md) + [04](./04-cache-aside-lifecycle.md)；按 INPUTS 能力勾选落地 [05](./05-cache-failure-modes.md) / [06](./06-distributed-locks.md) / [07](./07-rate-limiting.md) / [08](./08-session-store.md)  
-4. [commands.md](./commands.md) `check` 绿  
-5. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者）  
+1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；按「能力裁剪」只读必读章 
+2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`） 
+3. 必读 [03](./03-keyspace-and-ttl.md) + [04](./04-cache-aside-lifecycle.md)；按 INPUTS 能力勾选落地 [05](./05-cache-failure-modes.md) / [06](./06-distributed-locks.md) / [07](./07-rate-limiting.md) / [08](./08-session-store.md) 
+4. [commands.md](./commands.md) `check` 绿 
+5. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者） 
 
 ## 索引
 

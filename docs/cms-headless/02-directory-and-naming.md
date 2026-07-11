@@ -5,19 +5,19 @@
 ```text
 # 实现仓建议落点（按应用册微调；词根不变）
 features/content/
-  draft/                        # 保存草稿
-  validate/                     # 发布前校验（可纯函数）
-  publish/                      # 发布 / 撤回命令
-  delivery/                     # 公开消费（BFF/loader）
-internal/cms/                   # 或 src/shared/cms/
-  cms-adapter.*                 # 薄适配；禁 CmsManager 作领域主名
-  content-status.*              # 纯函数转移（可测）
-  project-content.*             # CMS JSON → ContentDocument 投影
+ draft/ # 保存草稿
+ validate/ # 发布前校验（可纯函数）
+ publish/ # 发布 / 撤回命令
+ delivery/ # 公开消费（BFF/loader）
+internal/cms/ # 或 src/shared/cms/
+ cms-adapter.* # 薄适配；禁 CmsManager 作领域主名
+ content-status.* # 纯函数转移（可测）
+ project-content.* # CMS JSON → ContentDocument 投影
 ops/
-  cms.md                        # 可选：token 轮换 / webhook 说明（非 APM 必勾）
+ cms.md # 可选：token 轮换 / webhook 说明（非 APM 必勾）
 ```
 
-依赖方向：`features/content → cms-adapter → 供应商 SDK/HTTP`；`delivery → fetchPublished → 投影 → UI/页面模型`。  
+依赖方向：`features/content → cms-adapter → 供应商 SDK/HTTP`；`delivery → fetchPublished → 投影 → UI/页面模型`。 
 **禁** 页面组件内直调 Sanity/Contentful/Payload SDK 绕过适配器与状态机。
 
 UI 状态：编辑 / 预览 / 公开页状态名必须用 Pass1 词表（见 `07`/`08`）。
@@ -26,10 +26,10 @@ UI 状态：编辑 / 预览 / 公开页状态名必须用 Pass1 词表（见 `07
 
 ### Pass 1 — 业务语义（必做）
 
-1. 目标仓建或更新 `UBIQUITOUS_LANGUAGE.md`（Term / 含义 / 代码符号 / 禁同义词）。  
-2. **ContentDocument、Draft、Publish、Delivery、Preview** = 业务词根；禁 `CmsDto`、`SanityThing`、`handleContent*` 进领域主模块名。  
-3. **禁**技术翻译名：`*CmsManager`、`*ContentService`、`*DeliveryHelper`（基础设施可用 `CmsAdapter` / `DeliveryClient` 入口例外）。  
-4. **禁**同义词分叉：`draft`/`unpublished`/`wip` 只留 **`draft`**；成功上线 = **`published`**；撤回后回编辑 = **`draft`**（或显式 `archived` 若 INPUTS 启用，须一词一义）。供应商原始状态名只出现在适配器映射表。  
+1. 目标仓建或更新 `UBIQUITOUS_LANGUAGE.md`（Term / 含义 / 代码符号 / 禁同义词）。 
+2. **ContentDocument、Draft、Publish、Delivery、Preview** = 业务词根；禁 `CmsDto`、`SanityThing`、`handleContent*` 进领域主模块名。 
+3. **禁**技术翻译名：`*CmsManager`、`*ContentService`、`*DeliveryHelper`（基础设施可用 `CmsAdapter` / `DeliveryClient` 入口例外）。 
+4. **禁**同义词分叉：`draft`/`unpublished`/`wip` 只留 **`draft`**；成功上线 = **`published`**；撤回后回编辑 = **`draft`**（或显式 `archived` 若 INPUTS 启用，须一词一义）。供应商原始状态名只出现在适配器映射表。 
 5. 对外协议字段（document id、slug、status、locale、updated_at）冻结在词表。
 
 | 概念 | 正例 | 反例 |

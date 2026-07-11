@@ -1,8 +1,8 @@
 # Node CLI × Ink TUI 开发指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**从零实现世界级门槛的 Node 交互式 CLI。  
-> **默认栈**：Node ≥22 + TypeScript strict (ESM) + **Ink 7** + React 19 + **Pastel** + Zod + `@inkjs/ui` + Vitest + `ink-testing-library`。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**从零实现世界级门槛的 Node 交互式 CLI。 
+> **默认栈**：Node ≥22 + TypeScript strict (ESM) + **Ink 7** + React 19 + **Pastel** + Zod + `@inkjs/ui` + Vitest + `ink-testing-library`。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -15,12 +15,12 @@
 
 ## Agent 执行协议
 
-1. 校验 [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或列缺口（有缺口则停）  
-2. 在目标仓库按 [01](./01-stack-and-ink.md) 初始化默认栈；目录按 [02](./02-directory-and-naming.md)  
-3. 按 [03](./03-cli-entry-and-argv.md) 落地入口、`bin`、Zod options  
-4. 按 [04](./04-tui-render-and-input.md) / [05](./05-command-lifecycle.md) / [06](./06-io-exit-and-non-tty.md) 实现核心路径（**自己写代码，勿从本目录抄业务模块**）  
-5. 按 [07](./07-config-auth-and-secrets.md) / [08](./08-packaging-and-release.md) 接配置与发包  
-6. [commands.md](./commands.md) 门禁绿 + [11](./11-world-class-acceptance.md) 全勾  
+1. 校验 [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或列缺口（有缺口则停） 
+2. 在目标仓库按 [01](./01-stack-and-ink.md) 初始化默认栈；目录按 [02](./02-directory-and-naming.md) 
+3. 按 [03](./03-cli-entry-and-argv.md) 落地入口、`bin`、Zod options 
+4. 按 [04](./04-tui-render-and-input.md) / [05](./05-command-lifecycle.md) / [06](./06-io-exit-and-non-tty.md) 实现核心路径（**自己写代码，勿从本目录抄业务模块**） 
+5. 按 [07](./07-config-auth-and-secrets.md) / [08](./08-packaging-and-release.md) 接配置与发包 
+6. [commands.md](./commands.md) 门禁绿 + [11](./11-world-class-acceptance.md) 全勾 
 
 `templates/` 只含 schema / env 名 / 矩阵 / scripts 键名，见 [templates/README.md](./templates/README.md)。
 

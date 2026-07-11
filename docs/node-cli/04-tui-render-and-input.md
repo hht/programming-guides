@@ -2,18 +2,18 @@
 
 ## 不变量
 
-- 所有可见文本在 `<Text>`（或 `@inkjs/ui` 封装）内；布局用 `<Box>` Flexbox  
-- 键盘处理用 Ink `useInput` / 组件自带 input；禁止同时挂两套全局 key 监听抢键  
-- 焦点：多可交互区用 `useFocus` / `useFocusManager`；同时仅一处聚焦  
+- 所有可见文本在 `<Text>`（或 `@inkjs/ui` 封装）内；布局用 `<Box>` Flexbox 
+- 键盘处理用 Ink `useInput` / 组件自带 input；禁止同时挂两套全局 key 监听抢键 
+- 焦点：多可交互区用 `useFocus` / `useFocusManager`；同时仅一处聚焦 
 - 组件卸载时释放 raw mode（依赖 Ink `useApp().exit` / unmount，勿泄漏）
 
 ## 步骤规格
 
-1. 命令组件顶层按 INPUTS 线框拆 `ui/` 区块（Header / Body / Footer 或等价）。  
-2. 列表/选择：优先 `@inkjs/ui` 的 Select；输入：TextInput 类组件（生态或自写）。  
-3. 加载态：Spinner + 短状态文案；禁止无反馈的长 await。  
-4. 错误态：在 TUI 内展示可行动信息；先设 `process.exitCode`，再 `useApp().exit()`（完整顺序见 `05`）；**禁止**在挂载中调用 `process.exit()`。  
-5. 颜色：用 Ink `<Text color>` / 语义色；尊重 `NO_COLOR`（检测后无色）。**禁止**再声明独立 `chalk` 依赖。  
+1. 命令组件顶层按 INPUTS 线框拆 `ui/` 区块（Header / Body / Footer 或等价）。 
+2. 列表/选择：优先 `@inkjs/ui` 的 Select；输入：TextInput 类组件（生态或自写）。 
+3. 加载态：Spinner + 短状态文案；禁止无反馈的长 await。 
+4. 错误态：在 TUI 内展示可行动信息；先设 `process.exitCode`，再 `useApp().exit()`（完整顺序见 `05`）；**禁止**在挂载中调用 `process.exit()`。 
+5. 颜色：用 Ink `<Text color>` / 语义色；尊重 `NO_COLOR`（检测后无色）。**禁止**再声明独立 `chalk` 依赖。 
 6. 宽字符/截断：长行用 Ink 布局或 `cli-truncate` 思维；关键列勿依赖「刚好 80 列」。
 
 ## 失败分类 / 默认值

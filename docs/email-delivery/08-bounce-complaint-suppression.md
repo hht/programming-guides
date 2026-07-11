@@ -2,16 +2,16 @@
 
 ## 不变量
 
-- **hard bounce** 与 **complaint** → 写入 **suppression**（按邮箱规范化地址）；后续发送默认 `EMAIL_SUPPRESSED`。  
-- **soft bounce** → 计次；未达上限可留 `submitted` 或供应商重试；达上限 → 按 INPUTS 升 hard 或 `failed`。  
-- Webhook **必须验签**；失败不写抑制。  
-- 抑制保留默认 **90 天**（INPUTS §9 可改）；过期策略书面（续期/人工）。
+- **hard bounce** 与 **complaint** → 写入 **suppression**（按邮箱规范化地址）；后续发送默认 `EMAIL_SUPPRESSED`。 
+- **soft bounce** → 计次；未达上限可留 `submitted` 或供应商重试；达上限 → 按 INPUTS 升 hard 或 `failed`。 
+- Webhook **必须验签**；失败不写抑制。 
+- 抑制保留默认 **90 天**（INPUTS §9 可改）；过期策略须写明（续期/人工）。
 
 ## 步骤规格（实现自写）
 
 ### 1. 接收事件
 
-1. 验签 → 解析 `provider_message_id` + 事件类型 + 收件人。  
+1. 验签 → 解析 `provider_message_id` + 事件类型 + 收件人。 
 2. 映射：`bounce`（hard/soft）/ `complaint` / `delivered`（delivered 走 `06`，本文件聚焦负面）。
 
 ### 2. 分类
@@ -25,13 +25,13 @@
 
 ### 3. 抑制表
 
-1. 键：规范化 `email`（小写、Unicode 正规化；**禁**过度「Gmail 点忽略」除非 INPUTS 书面）。  
-2. 字段：`reason`、`source_message_id`、`created_at`、`expires_at?`。  
+1. 键：规范化 `email`（小写、Unicode 正规化；**禁**过度「Gmail 点忽略」除非 INPUTS 写明）。 
+2. 字段：`reason`、`source_message_id`、`created_at`、`expires_at?`。 
 3. 发送路径步骤 2 **先查**抑制表。
 
 ### 4. 人工解除（可选）
 
-- 仅运维/支持流程；须审计日志；本册不钉 UI。
+- 仅运维/支持流程；须审计日志；本册不指定 UI。
 
 ## 失败分类 / 默认值
 

@@ -1,4 +1,4 @@
-# 01 — 栈（钉死）
+# 01 — 栈
 
 | 层 | 选择 |
 |----|------|
@@ -19,7 +19,7 @@
 ```bash
 # 官方当前线（以 https://v2.tauri.app/start/create-project/ 为准；版本随 P0）
 pnpm create tauri-app@latest
-# 选项钉死：TypeScript · React · pnpm · Vite
+# 选项写明：TypeScript · React · pnpm · Vite
 # 生成后：
 # 1) 填 INPUTS command/capability 表
 # 2) 配置 capabilities/*.json（templates 例）
@@ -40,6 +40,6 @@ pnpm create tauri-app@latest
 
 | 冲突 | 裁决 |
 |------|------|
-| Hoppscotch 等标杆用 Vue | **默认仍 React**（与仓内 react 册一致、类型面更齐）；Vue 仅 INPUTS §3 书面另钉 |
+| Hoppscotch 等标杆用 Vue | **默认仍 React**（与仓内 react 册一致、类型面更齐）；Vue 仅 INPUTS §3 书面另行约定 |
 | Mac 只做桌面 | **优先 apple-platforms**；本册仅跨端/非 Apple 独占时 |
 | 流行度 Electron | **不**作本册默认；DEFER 见 roadmap |

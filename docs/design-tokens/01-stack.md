@@ -1,4 +1,4 @@
-# 01 — 栈（钉死）
+# 01 — 栈
 
 | 层 | 选择 |
 |----|------|
@@ -15,8 +15,8 @@
 
 ```bash
 # 1) 建 tokens/ 源树（DTCG）；色名表对齐 templates/color-semantic-names.md
-# 2) 复制 templates/style-dictionary.config.example.js 语义到实现仓；钉 platforms
-# 3) package.json scripts：tokens:build / tokens:check-drift（名可 INPUTS 钉）
+# 2) 复制 templates/style-dictionary.config.example.js 语义到实现仓；约定 platforms
+# 3) package.json scripts：tokens:build / tokens:check-drift（名可 INPUTS 约定）
 # 4) 跑 build → 产物进约定路径（例 src/styles/tokens.css）
 # 5) UI 只引用语义变量 / 映射 utility；加 lint：禁第二套色名、禁裸品牌 hex（07）
 # 6) 若启用 ui-ux：核对 design/tokens.md（写 SSOT）与 DTCG 语义路径同名；Variables 须镜像（08）
@@ -34,7 +34,7 @@
 
 | 冲突 | 裁决 |
 |------|------|
-| Tokens Studio / Figma 插件生态更「设计向」 | **工程正式变换仍钉 Style Dictionary**；Figma 只作源导出边界（`04`/`08`） |
+| Tokens Studio / Figma 插件生态更「设计向」 | **工程正式变换仍约定 Style Dictionary**；Figma 只作源导出边界（`04`/`08`） |
 | 仅用 Markdown token 表（ui-ux templates） | **设计草稿可**；进工程仓必须升格 DTCG + SD，不得以 md 表当运行时 SSOT |
 | 流行「手写 theme.css 不跑 SD」 | 允许**仅当** theme.css **是** SD 唯一产物且源仍为 DTCG；禁止人手维护第二份 |
 | 先进性 vs 下载量 | **DTCG 源 + SD 变换**为先进边界；下载量不单独定胜负 |

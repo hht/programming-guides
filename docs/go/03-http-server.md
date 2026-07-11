@@ -2,9 +2,9 @@
 
 ## 不变量
 
-- 自建 `chi.NewRouter()`；**禁止** `http.DefaultServeMux` 挂业务路由  
-- `http.Server` 必须设：`ReadHeaderTimeout`、`ReadTimeout`、`WriteTimeout`、`IdleTimeout`（默认见下）  
-- 优雅退出：`SIGINT`/`SIGTERM` → `Shutdown(ctx)` 有 deadline  
+- 自建 `chi.NewRouter()`；**禁止** `http.DefaultServeMux` 挂业务路由 
+- `http.Server` 必须设：`ReadHeaderTimeout`、`ReadTimeout`、`WriteTimeout`、`IdleTimeout`（默认见下） 
+- 优雅退出：`SIGINT`/`SIGTERM` → `Shutdown(ctx)` 有 deadline 
 
 ## 默认超时（可改但须单处常量）
 
@@ -18,10 +18,10 @@
 
 ## 步骤规格
 
-1. `main`：load config → pgxpool → migrate up（或独立 job；产品钉一种，**默认启动时 migrate up**）→ `server.New` → Listen。  
-2. 中间件顺序（钉死）：`RequestID` → `RealIP` → **Recoverer（panic→INTERNAL JSON，见 05）** → `slog` 访问日志；**Auth 只挂在受保护 `r.Group`**（见 `05`/`07`）。  
-3. 路由：`GET /healthz`（liveness）、`GET /readyz`（查 DB ping）；业务挂 `/v1/...`。  
-4. CORS：仅当浏览器跨域需要时按 INPUTS §12 origin 白名单；默认同站不开 `*`。  
+1. `main`：load config → pgxpool → migrate up（或独立 job；产品选定一种，**默认启动时 migrate up**）→ `server.New` → Listen。 
+2. 中间件顺序：`RequestID` → `RealIP` → **Recoverer（panic→INTERNAL JSON，见 05）** → `slog` 访问日志；**Auth 只挂在受保护 `r.Group`**（见 `05`/`07`）。 
+3. 路由：`GET /healthz`（liveness）、`GET /readyz`（查 DB ping）；业务挂 `/v1/...`。 
+4. CORS：仅当浏览器跨域需要时按 INPUTS §12 origin 白名单；默认同站不开 `*`。 
 
 ## 失败分类
 

@@ -1,8 +1,8 @@
 # React SPA 开发指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**从零实现世界级门槛的 React SPA。  
-> **默认栈**：Node ≥22 + pnpm + Vite + React 19 + TypeScript strict + **TanStack Router** + **TanStack Query** + **Zustand** + **Zod** + **react-hook-form** + **Tailwind CSS v4** + **shadcn/ui** + **date-fns** + **es-toolkit** + Vitest + Playwright。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**从零实现世界级门槛的 React SPA。 
+> **默认栈**：Node ≥22 + pnpm + Vite + React 19 + TypeScript strict + **TanStack Router** + **TanStack Query** + **Zustand** + **Zod** + **react-hook-form** + **Tailwind CSS v4** + **shadcn/ui** + **date-fns** + **es-toolkit** + Vitest + Playwright。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -15,12 +15,12 @@
 
 ## Agent 执行协议
 
-1. 校验 [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或列缺口（停）  
-2. 按 [01](./01-stack.md) 建栈；目录按 [02](./02-directory-and-naming.md)  
-3. 按 [03](./03-routing-and-layouts.md) 落地路由与壳  
-4. 按 [04](./04-data-fetching.md) / [05](./05-mutation-lifecycle.md) / [06](./06-forms-and-ui.md) 实现核心路径（**自写，勿抄业务模块**）  
-5. 按 [07](./07-client-state-auth-env.md) / [08](./08-quality-a11y-perf.md) 接会话、质量门禁  
-6. [commands.md](./commands.md) 绿 + [11](./11-world-class-acceptance.md) 全勾  
+1. 校验 [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或列缺口（停） 
+2. 按 [01](./01-stack.md) 建栈；目录按 [02](./02-directory-and-naming.md) 
+3. 按 [03](./03-routing-and-layouts.md) 落地路由与壳 
+4. 按 [04](./04-data-fetching.md) / [05](./05-mutation-lifecycle.md) / [06](./06-forms-and-ui.md) 实现核心路径（**自写，勿抄业务模块**） 
+5. 按 [07](./07-client-state-auth-env.md) / [08](./08-quality-a11y-perf.md) 接会话、质量门禁 
+6. [commands.md](./commands.md) 绿 + [11](./11-world-class-acceptance.md) 全勾 
 
 ## 文档索引
 

@@ -20,8 +20,8 @@
 | ID | 仓库 | 等级 | 学什么 | 不学什么 | 品类匹配一句 |
 |----|------|------|--------|----------|--------------|
 | A | [typesense/typesense](https://github.com/typesense/typesense) | P1 | 集合 schema、scoped key、typo/相关度、空结果 API 形态 | 默认替换 PG；把整引擎当唯一 SSOT | 专用检索引擎的查询与权限边界 |
-| B | [meilisearch/meilisearch](https://github.com/meilisearch/meilisearch) | P1 | searchable attributes、tenant token、索引设置演进 | 未触发规模就引入；绑死其 DSL | 应用级搜索 API 与多租户过滤 |
-| C | [discourse/discourse](https://github.com/discourse/discourse) | P1 | 应用内搜索与权限/可见性结合、空态与查询体验 | 抄论坛业务域；绑死 Ruby | 业务系统内「可搜且授权」 |
+| B | [meilisearch/meilisearch](https://github.com/meilisearch/meilisearch) | P1 | searchable attributes、tenant token、索引设置演进 | 未触发规模就引入；照搬 DSL | 应用级搜索 API 与多租户过滤 |
+| C | [discourse/discourse](https://github.com/discourse/discourse) | P1 | 应用内搜索与权限/可见性结合、空态与查询体验 | 抄论坛业务域；照搬 Ruby | 业务系统内「可搜且授权」 |
 
 未入选：[outline/outline](https://github.com/outline/outline) — 同品类知识库搜索，与 B/C 重叠；本册以 Discourse 覆盖「应用内授权搜索」。
 

@@ -1,7 +1,7 @@
 # 指南路线图（扩展覆盖）
 
-> 方法契约：[AGENTS.md](../../AGENTS.md)。写指南流程：[how-to-write-guides.md](./how-to-write-guides.md)。  
-> **覆盖原则**：有真实交付面的流行栈/产品形态尽量收进册；**先进优先**定默认栈；同品类不平行第二默认。  
+> 方法契约：[AGENTS.md](../../AGENTS.md)。写指南流程：[how-to-write-guides.md](./how-to-write-guides.md)。 
+> **覆盖原则**：有真实交付面的流行栈/产品形态尽量收进册；**先进优先**定默认栈；同品类不平行第二默认。 
 > 开新本：约按 Wave 序；旧本季检。
 
 ## 已有（DONE）
@@ -64,22 +64,22 @@
 
 ## 候选池（未立项；热度高时升 Wave）
 
-`sveltekit` · `vue-nuxt` · `elixir-phoenix` · `dotnet-api` · `laravel` · `django`（与 fastapi 分册时再钉）· `terraform-opentofu` · `kubernetes-app`（应用部署面，非云百科）· `wasm` · `cli-rust` · `browser-extension` · `shopify-app` · `telegram-bot` · `discord-bot`
+`sveltekit` · `vue-nuxt` · `elixir-phoenix` · `dotnet-api` · `laravel` · `django`（与 fastapi 分册时再约定）· `terraform-opentofu` · `kubernetes-app`（应用部署面，非云百科）· `wasm` · `cli-rust` · `browser-extension` · `shopify-app` · `telegram-bot` · `discord-bot`
 
-升册条件：有可切的用户任务 + ≥2 证据源 + 能钉一条核心正确性路径。
+升册条件：有可切的用户任务 + ≥2 证据源 + 能择一条核心正确性路径。
 
 ## DEFER / NEVER（仍有效）
 
-- 独立 `mac-*` 拆册（进 `apple-platforms`）  
-- Electron 独立本（桌面主路径 = Mac 原生；Tauri 备选）  
-- Flutter 作默认移动本  
-- 拆开的 `agent-py` / `agent-ts`  
-- K8s/云厂商**百科**（应用面可另开薄册）  
-- 同品类第二后端框架「跟风本」  
-- 把 Sentry 等 APM 写进**非 ops/observability** 指南的必勾验收  
+- 独立 `mac-*` 拆册（进 `apple-platforms`） 
+- Electron 独立本（桌面主路径 = Mac 原生；Tauri 备选） 
+- Flutter 作默认移动本 
+- 拆开的 `agent-py` / `agent-ts` 
+- K8s/云厂商**百科**（应用面可另开薄册） 
+- 同品类第二后端框架「跟风本」 
+- 把 Sentry 等 APM 写进**非 ops/observability** 指南的必勾验收 
 
 ## 执行纪律
 
-1. 当前 Wave 未 5/5 PASS 提交前，不跳去写下一本（用户明示插队除外）。  
-2. 新本必须走元指南：标杆 3 → 差距表 → 钉栈 → 对抗 5×。  
+1. 当前 Wave 未 5/5 PASS 提交前，不跳去写下一本（用户明示插队除外）。 
+2. 新本必须走元指南：标杆 3 → 差距表 → 确定默认栈 → 对抗 5×。 
 3. 候选池不自动开工；升 Wave 时改本文件并提交。

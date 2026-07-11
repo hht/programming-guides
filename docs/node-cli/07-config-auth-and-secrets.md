@@ -2,16 +2,16 @@
 
 ## 不变量
 
-- 唯一读点：`source/config/`  
-- 密钥永不 log 到 stdout；debug 日志须 redact  
+- 唯一读点：`source/config/` 
+- 密钥永不 log 到 stdout；debug 日志须 redact 
 - 策略以 INPUTS **§8** 勾选为准（A/B/C）
 
 ## 步骤规格
 
-1. **A 仅 env**：`config/env.ts` 用 Zod 解析 `process.env`；缺必填 → USAGE/ERROR + 列出变量名。  
-2. **B 文件+env**：默认路径钉死（例：`~/.config/<cli-name>/config.json`）；env 覆盖同名键；文件权限建议 `0600`（能设则设）。  
-3. **C token 文件**：路径 + 权限；登录子命令写入；logout 删除；gitignore 本地副本。  
-4. staging/prod：按 INPUTS 勾选的区分方式实现（`MYCLI_ENV` **或** 仅 `MYCLI_API_URL`）；禁止硬编码生产 URL。  
+1. **A 仅 env**：`config/env.ts` 用 Zod 解析 `process.env`；缺必填 → USAGE/ERROR + 列出变量名。 
+2. **B 文件+env**：默认路径固定（例：`~/.config/<cli-name>/config.json`）；env 覆盖同名键；文件权限建议 `0600`（能设则设）。 
+3. **C token 文件**：路径 + 权限；登录子命令写入；logout 删除；gitignore 本地副本。 
+4. staging/prod：按 INPUTS 勾选的区分方式实现（`MYCLI_ENV` **或** 仅 `MYCLI_API_URL`）；禁止硬编码生产 URL。 
 5. 鉴权失败：稳定错误码字符串 + 引导 `auth login`（或等价命令）。
 
 ## 失败分类 / 默认值

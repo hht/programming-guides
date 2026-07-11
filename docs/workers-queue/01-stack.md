@@ -1,8 +1,8 @@
-# 01 — 栈（钉死）
+# 01 — 栈
 
 | 层 | 选择 |
 |----|------|
-| **默认队列后端** | **PostgreSQL ≥16** 队列表 + **`SELECT … FOR UPDATE SKIP LOCKED`**（应用已有 PG 权威源时**钉死**；对齐 [postgres](../postgres/README.md)：迁移 **Atlas**、本地 Compose） |
+| **默认队列后端** | **PostgreSQL ≥16** 队列表 + **`SELECT … FOR UPDATE SKIP LOCKED`**（应用已有 PG 权威源时优先采用；对齐 [postgres](../postgres/README.md)：迁移 **Atlas**、本地 Compose） |
 | **备选后端** | **Redis Streams ≥7** + consumer group（仅当 INPUTS 互斥选 Streams） |
 | 映射学习（非默认） | Sidekiq（Redis+Ruby）、BullMQ（Redis+Node）、River（PG+Go）— 对照 Lifecycle / 重试语义，**不**替换上表裁决 |
 | Worker 运行时 | 与应用册同语言进程或独立 worker 二进制；并发 = INPUTS `WORKER_CONCURRENCY`（默认 **4**） |
@@ -34,4 +34,4 @@
 
 ## 冲突裁决（写入 sources）
 
-流行度（Sidekiq/BullMQ）**不**单独定胜负；**先进 / 与权威源同库可运维**优先 → 有 PG 则 **SKIP LOCKED**。Streams 为无 PG 时的钉死备选。
+流行度（Sidekiq/BullMQ）**不**单独定胜负；**先进 / 与权威源同库可运维**优先 → 有 PG 则 **SKIP LOCKED**。Streams 为无 PG 时的约定备选。

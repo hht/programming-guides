@@ -1,6 +1,6 @@
 # templates
 
-> 仅允许：JSON Schema、状态矩阵 md、env 例、package-scripts snippet、本 README。  
+> 仅允许：JSON Schema、状态矩阵 md、env 例、package-scripts snippet、本 README。 
 > **禁止**可运行业务实现（无 Sanity/Contentful client 模块、无 Studio 配置工程）。
 
 | 文件 | 用途 |

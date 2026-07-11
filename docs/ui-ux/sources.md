@@ -14,7 +14,7 @@
 | ID | 仓库 | 品类匹配 | 学什么 | 不学什么 |
 |----|------|----------|--------|----------|
 | A | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) | 可访问组件与变体思维 | 变体、组合、a11y 默认 | 整站抄视觉皮肤 |
-| B | [material-components/material-web](https://github.com/material-components/material-web) | Material 组件语义 | 状态、密度、主题 token | 绑死 Web Components 实现 |
+| B | [material-components/material-web](https://github.com/material-components/material-web) | Material 组件语义 | 状态、密度、主题 token | 照搬 Web Components 实现 |
 | C | [primer/design](https://github.com/primer/design) | 设计指南开源仓 | 原则、模式文档结构 | GitHub 产品业务 |
 
 ## 能力切条 → 共有
@@ -43,5 +43,5 @@
 
 | 冲突 | 裁决 |
 |------|------|
-| 跟风「AI 生成整页视觉」 | **钉决策生命周期 + 可验收矩阵**；美观人审，不进必勾美学分 |
+| 跟风「AI 生成整页视觉」 | **约定决策生命周期 + 可验收矩阵**；美观人审，不进必勾美学分 |
 | 跨端强行同一导航 | **平台配置优先**（导航可不同，token 可共享） |

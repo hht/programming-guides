@@ -1,18 +1,18 @@
 # 05 — Transaction Lifecycle（核心）
 
-> **全文唯一核心正确性路径。**  
+> **全文唯一核心正确性路径。** 
 > `BEGIN → 写 → 约束/RLS → COMMIT|ROLLBACK`（失败必回滚，禁止脏写对调用方可见）。
 
 ## 不变量
 
-- 跨表不变量 **同事务**（与 `00` 一致）；单表单行约束靠 DB CHECK/UNIQUE，不靠「应用碰巧成对」。  
-- 事务失败路径 **必 ROLLBACK**（或驱动等价 abort）；禁止 catch 后继续用同一连接当成功会话写后续业务。  
-- 隔离级别：INPUTS §10 或默认 **`READ COMMITTED`**；改级别须书面 + 影响说明，禁止无说明升 `SERIALIZABLE`。  
-- 在线事务默认 `SET LOCAL statement_timeout = '15s'`（批处理 / 长迁移由 INPUTS 另钉；禁止默认同用 15s 跑全表批）。  
-- 应用错误码以本文件 **SQLSTATE 默认映射** 为准；INPUTS §9 可覆盖表，不得留「随意字符串」。  
+- 跨表不变量 **同事务**（与 `00` 一致）；单表单行约束靠 DB CHECK/UNIQUE，不靠「应用碰巧成对」。 
+- 事务失败路径 **必 ROLLBACK**（或驱动等价 abort）；禁止 catch 后继续用同一连接当成功会话写后续业务。 
+- 隔离级别：INPUTS §10 或默认 **`READ COMMITTED`**；改级别须写明，并附 影响说明，禁止无说明升 `SERIALIZABLE`。 
+- 在线事务默认 `SET LOCAL statement_timeout = '15s'`（批处理 / 长迁移由 INPUTS 另行约定；禁止默认同用 15s 跑全表批）。 
+- 应用错误码以本文件 **SQLSTATE 默认映射** 为准；INPUTS §9 可覆盖表，不得留「随意字符串」。 
 - 超越：写路径事务失败 **无脏写探针**（见 `09` / `11` a2）。
 
-## 步骤规格（钉死）
+## 步骤规格（须遵守）
 
 | # | 步骤 | 规格 |
 |---|------|------|
@@ -28,24 +28,24 @@
 
 ```text
 run_tx(work):
-  attempt = 0
-  while true:
-    attempt += 1
-    conn = pool.acquire()
-    try:
-      BEGIN
-      SET LOCAL statement_timeout = '15s'   // or INPUTS batch
-      // if RLS: set_config('app.tenant_id', tenant, true)
-      work(conn)
-      COMMIT
-      return ok
-    catch sql as e:
-      ROLLBACK   // always
-      if e.sqlstate in ('40P01', '40001') and attempt < 3:  // 合计最多 3 次
-        continue
-      return map_sqlstate(e)   // table below
-    finally:
-      pool.release(conn)       // never return a live open tx
+ attempt = 0
+ while true:
+ attempt += 1
+ conn = pool.acquire()
+ try:
+ BEGIN
+ SET LOCAL statement_timeout = '15s' // or INPUTS batch
+ // if RLS: set_config('app.tenant_id', tenant, true)
+ work(conn)
+ COMMIT
+ return ok
+ catch sql as e:
+ ROLLBACK // always
+ if e.sqlstate in ('40P01', '40001') and attempt < 3: // 合计最多 3 次
+ continue
+ return map_sqlstate(e) // table below
+ finally:
+ pool.release(conn) // never return a live open tx
 ```
 
 ## 失败分类 / 默认 SQLSTATE 映射
@@ -63,11 +63,11 @@ run_tx(work):
 
 INPUTS §9 可改「应用码」列名以对接宿主 API；**不得**删「必 ROLLBACK」列语义。
 
-## 禁令（钉死）
+## 禁令
 
-- **禁止**在事务内调用不可回滚外部副作用（扣款、发信、推队列）而不做补偿设计；默认：**先提交 DB，再** outbox/队列（对接 [workers-queue](../workers-queue/README.md) 时用 outbox 行同事务写入）。  
-- **禁止** `COMMIT` 后再根据「可能失败的后续步骤」假定行已对用户可见却不处理失败（须有补偿或状态机）。  
-- **禁止**嵌套 `BEGIN` 当独立事务（PG 无真嵌套）；需要部分回滚 → **SAVEPOINT** 须在代码审查注明范围，默认不用。  
+- **禁止**在事务内调用不可回滚外部副作用（扣款、发信、推队列）而不做补偿设计；默认：**先提交 DB，再** outbox/队列（对接 [workers-queue](../workers-queue/README.md) 时用 outbox 行同事务写入）。 
+- **禁止** `COMMIT` 后再根据「可能失败的后续步骤」假定行已对用户可见却不处理失败（须有补偿或状态机）。 
+- **禁止**嵌套 `BEGIN` 当独立事务（PG 无真嵌套）；需要部分回滚 → **SAVEPOINT** 须在代码审查注明范围，默认不用。 
 - **禁止**长事务持有行锁做用户交互等待（禁「打开表单就 BEGIN」）。
 
 ## 单测探针（case → 期望）

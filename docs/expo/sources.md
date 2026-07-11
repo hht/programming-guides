@@ -22,14 +22,14 @@
 
 | 能力 | A | B | C | 判定 |
 |------|---|---|---|------|
-| 移动屏可导航使用（路由） | ✓ | ✓ | ✓/映射 | 必做（本册钉 Expo Router；吞并「有屏幕 UI」） |
+| 移动屏可导航使用（路由） | ✓ | ✓ | ✓/映射 | 必做（本册约定 Expo Router；吞并「有屏幕 UI」） |
 | 屏四态 loading/empty/error/success | ✓/映射 | ✓ | ✓/映射 | 必做 |
 | 调用设备能力（相机/通知等） | ✓ | ✓ | ✓ | 条件必做（INPUTS 声明模块时） |
 | 登录/会话门闸 | 视样本 | 视样本 | — | 条件：INPUTS §6 |
 
-> 上表与 `11`§B 行一一对齐。  
-> TypeScript / Managed / 可测 / UiState 形状 → **工程面 §1.2**（`01`/`09`/`11`§A），不作功能共有。  
-> 「失焦取消 inflight」「原生模块 Expo 兼容书面策略」→ **仅超越**（差距表 + `11`§C a1/a2），**不进本表**。
+> 上表与 `11`§B 行一一对齐。 
+> TypeScript / Managed / 可测 / UiState 形状 → **工程面 §1.2**（`01`/`09`/`11`§A），不作功能共有。 
+> 「失焦取消 inflight」「原生模块 Expo 兼容策略（须写明）」→ **仅超越**（差距表 + `11`§C a1/a2），**不进本表**。
 
 ## 差距表
 
@@ -53,8 +53,8 @@
 | 冲突 | 裁决 |
 |------|------|
 | 裸 React Native CLI / eject 在 C 与部分教程很常见 vs Expo managed | **默认 managed + EAS/CNG**；禁裸 eject 默认（先进工作流 + P0 Expo；流行度不压过） |
-| 自建 React Navigation 根容器 vs Expo Router | **钉 Expo Router**（与当前 Expo 主推对齐；先进文件路由 + 类型化 params） |
-| Redux/MobX 在 RN 历史流行 vs 屏级不可变 UiState | **默认屏级 UiState + onEvent**；全局库仅 INPUTS 书面 |
-| NativeWind / Paper 等 UI 库 | **不进默认栈**；需则 INPUTS 书面（避免第二套样式/组件 SSOT） |
+| 自建 React Navigation 根容器 vs Expo Router | **采用 Expo Router**（与当前 Expo 主推对齐；先进文件路由 + 类型化 params） |
+| Redux/MobX 在 RN 历史流行 vs 屏级不可变 UiState | **默认屏级 UiState + onEvent**；全局库仅当 INPUTS 写明 |
+| NativeWind / Paper 等 UI 库 | **不进默认栈**；需则 INPUTS 写明（避免第二套样式/组件 SSOT） |
 | 用 Expo 替代原生双端主路径 | **否**：本册 = 妥协层；须 INPUTS §1；主路径仍 apple-platforms / android-compose |
 | 标杆示例弱 Lifecycle | 示例可学骨架；**Lifecycle / 失焦取消以本册为准**（超越） |

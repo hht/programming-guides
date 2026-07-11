@@ -2,17 +2,17 @@
 
 ## 不变量
 
-- 唯一路由 SSOT：`src/routes/` + 生成的 `routeTree.gen.ts`  
-- 需登录路由在 `beforeLoad` 检查会话；未登录 → `redirect({ to: '/login' })`  
-- 布局用 pathless layout route（`_app` 等）；营销/登录与 app 壳分离  
+- 唯一路由 SSOT：`src/routes/` + 生成的 `routeTree.gen.ts` 
+- 需登录路由在 `beforeLoad` 检查会话；未登录 → `redirect({ to: '/login' })` 
+- 布局用 pathless layout route（`_app` 等）；营销/登录与 app 壳分离 
 
 ## 步骤规格
 
-1. Vite 配 `@tanstack/router-plugin`；`main.tsx` 挂 `RouterProvider`。  
-2. `__root.tsx`：全局 `QueryClientProvider`、shadcn `Toaster`（sonner）、错误边界。  
-3. 按 INPUTS 路由表建文件；search/params 用 Zod + TanStack `validateSearch`。  
-4. 404：`notFoundComponent`；错误：`errorComponent`。  
-5. 深链：刷新后同 URL 可恢复（依赖 loader/query，不靠仅内存）。  
+1. Vite 配 `@tanstack/router-plugin`；`main.tsx` 挂 `RouterProvider`。 
+2. `__root.tsx`：全局 `QueryClientProvider`、shadcn `Toaster`（sonner）、错误边界。 
+3. 按 INPUTS 路由表建文件；search/params 用 Zod + TanStack `validateSearch`。 
+4. 404：`notFoundComponent`；错误：`errorComponent`。 
+5. 深链：刷新后同 URL 可恢复（依赖 loader/query，不靠仅内存）。 
 
 ## 失败分类
 

@@ -44,12 +44,12 @@ VITE_APP_ENV=staging|prod|development
 VITE_API_BASE_URL=
 VITE_WC_PROJECT_ID=
 VITE_RPC_56=
-VITE_SIWE_DOMAIN=         # 公开域名，如 app.example.com
-VITE_SENTRY_DSN=          # 可选；第三方可观测不进必勾验收
+VITE_SIWE_DOMAIN= # 公开域名，如 app.example.com
+VITE_SENTRY_DSN= # 可选；第三方可观测不进必勾验收
 ```
 
-地址表 JSON/TS 必须含字段 `env: development|staging|prod`（见 schema）。  
-文件约定：`src/contracts/addresses/<env>/<chainId>.ts`（例 `staging/56.ts`）。  
+地址表 JSON/TS 必须含字段 `env: development|staging|prod`（见 schema）。 
+文件约定：`src/contracts/addresses/<env>/<chainId>.ts`（例 `staging/56.ts`）。 
 启动：`VITE_APP_ENV === addresses.env`（`development` 可跳过）；且 API Base 与该 env 成对。禁止 staging 前端打 prod 合约。
 
 ## 5. Figma → 代码映射
@@ -65,6 +65,6 @@ VITE_SENTRY_DSN=          # 可选；第三方可观测不进必勾验收
 
 ## 6. Agent 收到输入后的动作
 
-1. 对照本节打勾；输出「缺口列表」或「INPUTS OK」  
-2. INPUTS OK → 按 [README 执行协议](./README.md) 建仓  
+1. 对照本节打勾；输出「缺口列表」或「INPUTS OK」 
+2. INPUTS OK → 按 [README 执行协议](./README.md) 建仓 
 3. 默认栈：Vite + wagmi + RainbowKit（见 README）

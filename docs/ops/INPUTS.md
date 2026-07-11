@@ -8,7 +8,7 @@
 |---|-----|------------------|
 | 1 | **服务清单** | ≥1 行：`name` \| `port` \| `health_path`（以 `/` 开头） |
 | 1b | **健康 URL 基址** | 每环境完整前缀；本地默认 `http://127.0.0.1:<port>`；完整 URL=`基址+health_path`（本地=host+port+path）；可选 `health_ok_codes`（默认 `200`） |
-| 2 | **目标环境** | □ staging □ production（至少一；prod 须有 staging 或书面豁免） |
+| 2 | **目标环境** | □ staging □ production（至少一；prod 须有 staging 或写明豁免） |
 | 3 | **主机/运行时** | □ 本地 only □ Kamal（填 SSH 主机标识） |
 | 4 | **镜像仓库** | 注册表 URL + 镜像名；或 `local-only` |
 | 5 | **密钥名表** | 名+来源；**同名跨环境**；无明文 |

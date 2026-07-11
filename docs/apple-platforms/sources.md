@@ -31,7 +31,7 @@
 | iPad 适配 | ✓ | —/弱 | ✓ | **条件**：INPUTS 含 iPad |
 | Mac 桌面（窗/菜单级操作） | —/弱 | — | ✓ | **条件**：INPUTS 含 Mac；证据 ≥2 时用 UTM + Whisky/HIG |
 
-> 「可取消异步 / MainActor 回写」→ **仅超越**（差距表 + `11`§C a1/a2），**不进本表**。  
+> 「可取消异步 / MainActor 回写」→ **仅超越**（差距表 + `11`§C a1/a2），**不进本表**。 
 > Observation / Store / Swift Testing → **工程面 §1.2**（`11`§A）。
 
 ## 差距表

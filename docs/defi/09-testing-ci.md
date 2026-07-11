@@ -41,4 +41,4 @@
 | 每个 PR | `pnpm check` | exit 0 |
 | main/release | `pnpm test:e2e`；`pnpm audit`（exit 0 **或** 仓内 `docs/audit-exceptions.md` 已记录 CVE+理由+到期日） | 见左 |
 
-见 [commands.md](./commands.md)。**发版必须 e2e=0**（与 [11](./11-world-class-acceptance.md) 一致；书面冒烟不可替代 e2e，除非 INPUTS 书面豁免并记录风险）。
+见 [commands.md](./commands.md)。**发版必须 e2e=0**（与 [11](./11-world-class-acceptance.md) 一致；书面冒烟不可替代 e2e，除非 INPUTS 写明豁免并记录风险）。

@@ -2,17 +2,17 @@
 
 ## 不变量
 
-- 正式源 = **仓库内 DTCG JSON**（路径见 `02`）。  
-- `design/tokens.md`（启用 ui-ux 时的**写 SSOT**）；Figma Variables **同名镜像**；均须与 semantic 路径 **同名**，不得各写一套。  
+- 正式源 = **仓库内 DTCG JSON**（路径见 `02`）。 
+- `design/tokens.md`（启用 ui-ux 时的**写 SSOT**）；Figma Variables **同名镜像**；均须与 semantic 路径 **同名**，不得各写一套。 
 - 源文件不含生成物；生成物目录可 gitignore 或提交——跟 INPUTS §12，但**真相在源**。
 
 ## 步骤规格（实现自写）
 
 ### 1. 建 DTCG 源
 
-1. 按 `tokens/primitive|semantic|…` 拆分文件（避免单文件巨石）。  
-2. 每个 token：`$type`（`color` | `dimension` | `fontFamily` | …）+ `$value`。  
-3. 语义色优先 **alias** primitive（例 `"$value": "{color.palette.neutral.0}"`），避免复制粘贴 hex。  
+1. 按 `tokens/primitive|semantic|…` 拆分文件（避免单文件巨石）。 
+2. 每个 token：`$type`（`color` | `dimension` | `fontFamily` | …）+ `$value`。 
+3. 语义色优先 **alias** primitive（例 `"$value": "{color.palette.neutral.0}"`），避免复制粘贴 hex。 
 4. 校验：Style Dictionary 能解析；未知 `$type` 不静默吞（升级 SD 或显式 expand）。
 
 ### 2. 最小色与间距种子
@@ -43,8 +43,8 @@
 
 ### 4. 准入门闸
 
-- 新 token：先登词表（Pass1）再写入 JSON。  
-- 重命名：同 PR 改源 + 全 call site + 删旧名。  
+- 新 token：先登词表（Pass1）再写入 JSON。 
+- 重命名：同 PR 改源 + 全 call site + 删旧名。 
 - 禁止：在源中保留 `deprecated` 永久别名而不设删除日。
 
 ## 失败分类 / 默认值
@@ -63,4 +63,4 @@
 | 解析 semantic color | 全部有 `$type: color` 与可解析 `$value` |
 | alias 链 | 无环；终端为具体色值 |
 | 与色名表 | 表内每名在源中存在（或明确 N/A） |
-| ui-ux 同名（若启用） | 设计侧路径集合 = 工程 semantic 集合（允许设计多、工程子集须书面） |
+| ui-ux 同名（若启用） | 设计侧路径集合 = 工程 semantic 集合（允许设计多、工程子集须写明） |

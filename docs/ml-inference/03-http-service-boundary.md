@@ -2,9 +2,9 @@
 
 ## 不变量
 
-- 本册默认交付面 = **同步 HTTP JSON 推理 API**（流式仅 INPUTS §14）。  
-- 边界内：鉴权、校验、配额、超时、调用 runtime、结构化响应。  
-- 边界外（禁止当必做正文）：训练 job、数据集版本百科、特征商店、实验 UI、集群 GPU 调度百科。  
+- 本册默认交付面 = **同步 HTTP JSON 推理 API**（流式仅 INPUTS §14）。 
+- 边界内：鉴权、校验、配额、超时、调用 runtime、结构化响应。 
+- 边界外（禁止当必做正文）：训练 job、数据集版本百科、特征商店、实验 UI、集群 GPU 调度百科。 
 - 每个成功响应必须回显（或可追溯）所用 **`model_id` + `artifact_version`**，防止静默跑错版本。
 
 ## 默认端点
@@ -14,7 +14,7 @@
 | Method / Path | `POST /v1/infer` | 多模型时用 `/v1/models/{model_id}/infer`（INPUTS §16） |
 | Content-Type | `application/json` | 其它 MIME 须白名单 |
 | 认证 | Bearer / API key | 见 INPUTS §2 |
-| 幂等 | 默认**不**要求幂等键 | 推理常非确定性；若产品要去重须 INPUTS 书面 + 键语义 |
+| 幂等 | 默认**不**要求幂等键 | 推理常非确定性；若产品要去重须在 INPUTS 写明 + 键语义 |
 
 ## 请求 / 响应契约（种子）
 

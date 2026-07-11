@@ -14,7 +14,7 @@
 |----|------|------|--------|----------|--------------|
 | A | [discourse/discourse](https://github.com/discourse/discourse) | P1 | 产品侧缓存/Redis 用途边界 | 抄 Rails 整站 | 论坛用 Redis 加速读路径 |
 | B | [mastodon/mastodon](https://github.com/mastodon/mastodon) | P1 | 缓存与侧车 Redis 用法 | 抄联邦协议 | 社交读路径缓存 |
-| C | [outline/outline](https://github.com/outline/outline) | P1 | Node 应用 Redis 会话/缓存习惯 | 绑死 Outline 目录 | 知识库应用 Redis |
+| C | [outline/outline](https://github.com/outline/outline) | P1 | Node 应用 Redis 会话/缓存习惯 | 照搬 Outline 目录 | 知识库应用 Redis |
 
 引擎/客户端事实：P0 Redis docs +（实现时）ioredis/go-redis/redis-py 按应用册；**不**单独充当「用户任务」共有证据源。
 
@@ -37,7 +37,7 @@
 | 写先源后失效 | 正确性/超越 | 工程 | `04` | 必做/超越 |
 | token 锁 | P0 locks | 安全 | `06` | 条件必做/超越 |
 | 固定窗口限流 | B,C | 功能 | `07` | 条件必做 |
-| 读不可达策略钉死 | 工程 | 工程 | `INPUTS`/`04` | 必做 |
+| 读不可达策略须写明 | 工程 | 工程 | `INPUTS`/`04` | 必做 |
 
 ## 冲突
 

@@ -15,9 +15,9 @@
 |----|------|------|--------|----------|--------------|
 | A | [style-dictionary/style-dictionary](https://github.com/style-dictionary/style-dictionary) | P1 | DTCG 源、多平台 transform、css/variables | 把示例主题当产品品牌；双配置并行 | 工程变换流水线 |
 | B | [design-tokens/community-group](https://github.com/design-tokens/community-group) | P1 | `$value`/`$type`、跨工具交换 | 当作唯一运行时；代替 SD | 源格式标准 |
-| C | [primer/design](https://github.com/primer/design) | P1 | 设计 token 文档化、主题/模式叙述 | GitHub 产品业务；绑死 Primer 色名 | 设计侧 token 文档与主题 |
+| C | [primer/design](https://github.com/primer/design) | P1 | 设计 token 文档化、主题/模式叙述 | GitHub 产品业务；照搬 Primer 色名 | 设计侧 token 文档与主题 |
 
-映射学习（非 B 共有证据源、不钉默认）：Material Design Tokens 文档、Tokens Studio、历史 `amzn/style-dictionary` 镜像——仅对照；**正式变换仍钉现行 Style Dictionary**。
+映射学习（非 B 共有证据源、不作默认）：Material Design Tokens 文档、Tokens Studio、历史 `amzn/style-dictionary` 镜像——仅对照；**正式变换仍约定现行 Style Dictionary**。
 
 ## 共有能力切条（用户可感知）
 
@@ -29,9 +29,9 @@
 | 商业 token SaaS / 插件百科 | — | — | — | **参考**；禁当正文 |
 | 第二套平行色名词汇 | — | — | — | **禁止** |
 
-> **共有必做**仅上表用户可感知且 ≥2 **真公开**能力。  
-> **变换到可消费样式/平台产物**：仅 A（Style Dictionary）为产品变换流水线；B（community-group）是格式规范仓、**不可**打变换 ✓ → **不进共有**，见差距表「Style Dictionary 变换」必做。  
-> 色名唯一 + 设计/工程路径同名 **不进共有**（示例常省略）→ 见差距表「超越」与 `11` §C。  
+> **共有必做**仅上表用户可感知且 ≥2 **真公开**能力。 
+> **变换到可消费样式/平台产物**：仅 A（Style Dictionary）为产品变换流水线；B（community-group）是格式规范仓、**不可**打变换 ✓ → **不进共有**，见差距表「Style Dictionary 变换」必做。 
+> 色名唯一 + 设计/工程路径同名 **不进共有**（示例常省略）→ 见差距表「超越」与 `11` §C。 
 > **Material Design Tokens 非标杆 B**，不作共有证据源（仅映射学习）。
 
 ## 差距表
@@ -51,8 +51,8 @@
 
 | 冲突 | 裁决 |
 |------|------|
-| Tokens Studio / 仅 Figma 插件更「设计向」 | **工程正式路径钉 Style Dictionary**；Figma 为源边界 |
-| DTCG vs Style Dictionary 旧 JSON | **钉 DTCG**；旧格式仅迁移窗口 |
+| Tokens Studio / 仅 Figma 插件更「设计向」 | **工程正式路径约定 Style Dictionary**；Figma 为源边界 |
+| DTCG vs Style Dictionary 旧 JSON | **采用 DTCG**；旧格式仅迁移窗口 |
 | ui-ux `tokens.md` vs 工程 DTCG | **运行时/build SSOT = DTCG**；md 为人读/设计对接 |
 | 流行手写 theme.css | 仅当其为 **SD 唯一产物**；禁第二人手维护色表 |
 | 先进性 vs 下载量 | **DTCG + SD**；下载量不单独定胜负 |

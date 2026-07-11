@@ -2,11 +2,11 @@
 
 ## 不变量
 
-- **无数字不成关键动效**：每条关键 Motion 必须有 `target_fps` 与 `frame_budget_ms`。  
-- 默认主档 **60 fps → 16.67 ms/帧**。  
+- **无数字不成关键动效**：每条关键 Motion 必须有 `target_fps` 与 `frame_budget_ms`。 
+- 默认主档 **60 fps → 16.67 ms/帧**。 
 - 主线程 JS/脚本工作默认份额：**≤ 8 ms**（留给样式/合成/系统；对齐「一帧内可完成」工程实践）；其余为合成/GPU。INPUTS 可收紧，不可无理由放宽到 ≥16 ms 却仍声称 60 fps。
 
-## 默认数字表（钉死；改则写 INPUTS）
+## 默认数字表（改则写 INPUTS）
 
 | 档 | `target_fps` | `frame_budget_ms` | `main_thread_budget_ms` | 何时用 |
 |----|--------------|-------------------|-------------------------|--------|
@@ -36,9 +36,9 @@ properties[], duration_ms, measure_tool, status (pass|over_budget|degraded)
 
 ## 步骤规格（实现自写）
 
-1. INPUTS §2 选定主档 fps → 填入所有关键行的 `target_fps` / `frame_budget_ms`。  
-2. 每条关键动效写 `main_thread_budget_ms`（默认 8 @60）。  
-3. `filter`/`clip-path` 复杂项：在同行加 `notes` 标明额外 GPU 风险。  
+1. INPUTS §2 选定主档 fps → 填入所有关键行的 `target_fps` / `frame_budget_ms`。 
+2. 每条关键动效写 `main_thread_budget_ms`（默认 8 @60）。 
+3. `filter`/`clip-path` 复杂项：在同行加 `notes` 标明额外 GPU 风险。 
 4. 发版前 `status` 必须为 `pass` 或已 `degraded` 且减配档预算通过。
 
 ## 失败分类 / 默认值

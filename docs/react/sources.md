@@ -57,7 +57,7 @@ P0 > P1 > P1w > E。
 
 | 冲突 | 裁决 |
 |------|------|
-| `react-router-dom` 更流行 vs TanStack Router | **钉 TanStack Router**（元指南 §3.4 先进优先：params/search/loader 端到端类型） |
+| `react-router-dom` 更流行 vs TanStack Router | **采用 TanStack Router**（元指南 §3.4 先进优先：params/search/loader 端到端类型） |
 | B 标杆仍用旧 React Router | 能力面映射；实现版本跟 P0 TanStack Router |
-| C 用 Refine 数据层 | **钉自建 TanStack Query**，学其资源/通知模式不绑框架 |
-| lodash 下载更高 vs es-toolkit | **钉 es-toolkit**（新项目默认；禁新增 lodash） |
+| C 用 Refine 数据层 | **约定自建 TanStack Query**，学其资源/通知模式不绑框架 |
+| lodash 下载更高 vs es-toolkit | **采用 es-toolkit**（新项目默认；禁新增 lodash） |

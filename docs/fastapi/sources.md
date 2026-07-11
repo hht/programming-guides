@@ -21,8 +21,8 @@ P0 > P1 > P1w > E。冲突时先进优先（元指南 §3.4）。
 
 | ID | 仓库 | 品类匹配 | 学什么 | 不学什么 |
 |----|------|----------|--------|----------|
-| A | [fastapi/full-stack-fastapi-template](https://github.com/fastapi/full-stack-fastapi-template) | 官方 FastAPI+Postgres 全栈模板 | 目录、Alembic、Docker、测试布局 | 整仓抄 React 前端与云产品绑死 |
-| B | [fastapi-users/fastapi-users](https://github.com/fastapi-users/fastapi-users) | FastAPI 用户/鉴权 API | 鉴权路由、依赖注入、密码/JWT 面 | 绑死其具体 ORM 适配器全家桶 |
+| A | [fastapi/full-stack-fastapi-template](https://github.com/fastapi/full-stack-fastapi-template) | 官方 FastAPI+Postgres 全栈模板 | 目录、Alembic、Docker、测试布局 | 整仓抄 React 前端与云产品照搬 |
+| B | [fastapi-users/fastapi-users](https://github.com/fastapi-users/fastapi-users) | FastAPI 用户/鉴权 API | 鉴权路由、依赖注入、密码/JWT 面 | 照搬具体 ORM 适配器全家桶 |
 | C | [zhanymkanov/fastapi-best-practices](https://github.com/zhanymkanov/fastapi-best-practices) | FastAPI 工程约定 | 分层、配置、错误与项目结构共识 | 当可运行业务实现抄袭 |
 
 ## 能力切条 → 共有
@@ -51,7 +51,7 @@ P0 > P1 > P1w > E。冲突时先进优先（元指南 §3.4）。
 
 | 冲突 | 裁决 |
 |------|------|
-| 官方模板默认 SQLModel | **钉 SQLAlchemy 2.0 async + Mapped**（类型与会话边界更清晰；SQLModel 不进默认） |
-| Poetry / pip-tools 仍流行 | **钉 uv**（锁文件 + 速度；先进优先） |
-| Django REST 更「企业」 | **钉 FastAPI**（本指南品类；异步与 OpenAPI 一等） |
-| sync Session 更简单 | **钉 async**（`AsyncSession`；禁默认同步阻塞路由） |
+| 官方模板默认 SQLModel | **采用 SQLAlchemy 2.0 async + Mapped**（类型与会话边界更清晰；SQLModel 不进默认） |
+| Poetry / pip-tools 仍流行 | **采用 uv**（锁文件 + 速度；先进优先） |
+| Django REST 更「企业」 | **采用 FastAPI**（本指南品类；异步与 OpenAPI 一等） |
+| sync Session 更简单 | **采用 async**（`AsyncSession`；禁默认同步阻塞路由） |

@@ -10,13 +10,13 @@
 
 ## 硬不变量
 
-1. **Redis ≥7**；客户端按语言钉死（go-redis / ioredis / redis-py），禁同语言双默认。  
-2. **键 = 业务前缀 + 实体 + id**（见 `02`/`03`）；生产键**必须有 TTL 策略**（INPUTS §6）。  
-3. **写路径**：禁止「只改缓存、不改权威源」，除非 INPUTS §7 显式勾选 **ephemeral-only**。  
-4. **锁**：`SET key token NX EX ttl` 获取；释放须 **持有者 token 校验后删除**（Lua 或等价原子）；**禁裸 `DEL` 锁键**。  
-5. **限流默认**：固定窗口 **`INCR` + 首次 `EXPIRE`**；Redis Cell / 滑动窗口近似为非默认先进选项（须 INPUTS 书面）。  
-6. **会话**：鉴权语义 SSOT 在 [auth](../auth/README.md)；本册仅 Redis 存会话的可选路径；**禁明文 token**；auth 默认仍为 PG。  
-7. **fail-closed（按能力）**：锁未持有不得进临界区；限流超限拒绝；会话不可达 → 对齐 auth fail-closed（未认证）。  
+1. **Redis ≥7**；客户端按语言写明（go-redis / ioredis / redis-py），禁同语言双默认。 
+2. **键 = 业务前缀 + 实体 + id**（见 `02`/`03`）；生产键**必须有 TTL 策略**（INPUTS §6）。 
+3. **写路径**：禁止「只改缓存、不改权威源」，除非 INPUTS §7 显式勾选 **ephemeral-only**。 
+4. **锁**：`SET key token NX EX ttl` 获取；释放须 **持有者 token 校验后删除**（Lua 或等价原子）；**禁裸 `DEL` 锁键**。 
+5. **限流默认**：固定窗口 **`INCR` + 首次 `EXPIRE`**；Redis Cell / 滑动窗口近似为非默认先进选项（须在 INPUTS 写明）。 
+6. **会话**：鉴权语义 SSOT 在 [auth](../auth/README.md)；本册仅 Redis 存会话的可选路径；**禁明文 token**；auth 默认仍为 PG。 
+7. **fail-closed（按能力）**：锁未持有不得进临界区；限流超限拒绝；会话不可达 → 对齐 auth fail-closed（未认证）。 
 8. **deletion-first**：无第二套键约定、无平行「缓存框架」包装层。
 
 ## SSOT 表
@@ -34,13 +34,13 @@
 
 ## 禁止
 
-- 指南仓堆可运行业务缓存/锁模块  
-- 生产无 TTL 的「永久业务键」默许  
-- 写路径只 `SET` 缓存不碰源（非 ephemeral-only）  
-- 释放锁时无 token 校验的 `DEL`  
-- 把 Redis 会话标成 auth 唯一默认（auth 默认 PG）  
+- 指南仓堆可运行业务缓存/锁模块 
+- 生产无 TTL 的「永久业务键」默许 
+- 写路径只 `SET` 缓存不碰源（非 ephemeral-only） 
+- 释放锁时无 token 校验的 `DEL` 
+- 把 Redis 会话标成 auth 唯一默认（auth 默认 PG） 
 
 ## 超越（对照写入 11）
 
-1. `对照：B 中更弱/未见「删锁必须持有者 token 校验」硬门闸 → 本指南要求 SET NX EX + token 校验删除，禁裸 DEL（见 06）`  
-2. `对照：B 中更弱/未见「写路径禁止只改缓存不改源」硬门闸 → 本指南要求更新权威源后再失效/更新缓存，除非 INPUTS 声明 ephemeral-only（见 04）`  
+1. `对照：B 中更弱/未见「删锁必须持有者 token 校验」硬门闸 → 本指南要求 SET NX EX + token 校验删除，禁裸 DEL（见 06）` 
+2. `对照：B 中更弱/未见「写路径禁止只改缓存不改源」硬门闸 → 本指南要求更新权威源后再失效/更新缓存，除非 INPUTS 声明 ephemeral-only（见 04）` 

@@ -32,12 +32,12 @@
 
 > 交付 agent 的 `check` **不**要求本节（见 `commands` → `check-guide`）。
 
-1. [ ] 能力切条  
-2. [ ] 共有判定：能力在 \(B\) 的 ≥2 证据源出现；仅 1 源独有 → 可选  
-3. [ ] 功能面达到：必做 ⊇ 所有共有  
-4. [ ] 工程面勾选  
-5. [ ] 超越 a+b：  
-   - [ ] a1. `对照：B 中更弱/未见「写路径强制 Server Action + Zod + revalidate」硬门闸 → 本指南要求写路径强制 Server Action + Zod + revalidate（见 05）`  
-   - [ ] a2. `对照：B 中更弱/未见「Client 边界最小化（默认 RSC）」硬门闸 → 本指南要求默认 RSC、Client 边界最小（见 03/05）`  
-   - [ ] b. `09` 矩阵：Playwright 1–4 + check 覆盖 5–6  
-   - c. N/A  
+1. [ ] 能力切条 
+2. [ ] 共有判定：能力在 \(B\) 的 ≥2 证据源出现；仅 1 源独有 → 可选 
+3. [ ] 功能面达到：必做 ⊇ 所有共有 
+4. [ ] 工程面勾选 
+5. [ ] 超越 a+b： 
+ - [ ] a1. `对照：B 中更弱/未见「写路径强制 Server Action + Zod + revalidate」硬门闸 → 本指南要求写路径强制 Server Action + Zod + revalidate（见 05）` 
+ - [ ] a2. `对照：B 中更弱/未见「Client 边界最小化（默认 RSC）」硬门闸 → 本指南要求默认 RSC、Client 边界最小（见 03/05）` 
+ - [ ] b. `09` 矩阵：Playwright 1–4 + check 覆盖 5–6 
+ - c. N/A 

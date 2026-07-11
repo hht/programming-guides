@@ -2,7 +2,7 @@
 
 ## 单测
 
-模块旁 `*_tests` 或 `#[cfg(test)]`；集成测：`tests/*.rs` + feature/`IGNORE` 或 env 门闸（钉死：`DATABASE_URL` 存在才跑集成；默认单元测不启 Postgres）。
+模块旁 `*_tests` 或 `#[cfg(test)]`；集成测：`tests/*.rs` + feature/`IGNORE` 或 env 门闸（写明：`DATABASE_URL` 存在才跑集成；默认单元测不启 Postgres）。
 
 | case | 期望 |
 |------|------|
@@ -14,13 +14,13 @@
 
 ## 发版 e2e / 集成（必做矩阵）
 
-跑法（钉死，与 `commands.md` / `templates/Makefile.snippet` 同文）：
+跑法（写明，与 `commands.md` / `templates/Makefile.snippet` 同文）：
 
-1. 复制 `templates/docker-compose.test.yml.example` → 仓根 `docker-compose.test.yml`  
-2. `export DATABASE_URL=postgres://app:app@localhost:5432/app_test?sslmode=disable`（与 compose 例同文）  
-3. `docker compose -f docker-compose.test.yml up -d --wait`  
-4. `sqlx migrate run`  
-5. `cargo test --test integration -- --nocapture`（或 `cargo test --features integration`；仓内钉一种；测内用 `Router` + `oneshot`，或起进程；须覆盖矩阵）  
+1. 复制 `templates/docker-compose.test.yml.example` → 仓根 `docker-compose.test.yml` 
+2. `export DATABASE_URL=postgres://app:app@localhost:5432/app_test?sslmode=disable`（与 compose 例同文） 
+3. `docker compose -f docker-compose.test.yml up -d --wait` 
+4. `sqlx migrate run` 
+5. `cargo test --test integration -- --nocapture`（或 `cargo test --features integration`；仓内选定一种；测内用 `Router` + `oneshot`，或起进程；须覆盖矩阵） 
 6. `docker compose -f docker-compose.test.yml down`
 
 | # | 场景 | 断言 |

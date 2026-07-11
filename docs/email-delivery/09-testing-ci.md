@@ -1,6 +1,6 @@
 # 09 — 测试与 CI
 
-指南**不附**可运行测试源码；实现仓按表自写。Provider 调用用 **fake/adapter stub**；禁 CI 打真实供应商（除非 INPUTS 书面 staging 沙箱 job）。
+指南**不附**可运行测试源码；实现仓按表自写。Provider 调用用 **fake/adapter stub**；禁 CI 打真实供应商（除非 INPUTS 写明 staging 沙箱 job）。
 
 ## 单测探针（case → 期望）
 
@@ -17,7 +17,7 @@
 | 9 | 抑制后发送 | `EMAIL_SUPPRESSED` | 全 |
 | 10 | Webhook 坏签名 | 状态不变 | 全 |
 | 11 | 非法状态转移 | 拒绝 | 全 |
-| 12 | 无 EMAIL_API_KEY（或钉名） | 启动非 0 | 全 |
+| 12 | 无 EMAIL_API_KEY（或约定名） | 启动非 0 | 全 |
 | 13 | setTimeout 伪队列 | lint/审查红灯 | 全 |
 | 14 | workers-queue 重试上限 | Job dead 且消息 `failed` 可查 | 异步 |
 

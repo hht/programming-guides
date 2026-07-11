@@ -1,6 +1,6 @@
 # templates
 
-> 仅允许：状态矩阵 md、env 例、`package-scripts.snippet.json`（仅 scripts 键名与命令字符串）、本 README。  
+> 仅允许：状态矩阵 md、env 例、`package-scripts.snippet.json`（仅 scripts 键名与命令字符串）、本 README。 
 > **禁止**可运行业务实现（无完整 Feature App、无 APK/IPA）。
 
 | 文件 | 用途 |

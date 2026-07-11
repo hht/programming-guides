@@ -2,10 +2,10 @@
 
 ## 必做
 
-- `golangci-lint run`  
-- `go test ./...`  
-- `go vet ./...`（可含在 lint）  
-- 生产：slog JSON；`APP_ENV=prod` 时禁 debug 默认级  
+- `golangci-lint run` 
+- `go test ./...` 
+- `go vet ./...`（可含在 lint） 
+- 生产：slog JSON；`APP_ENV=prod` 时禁 debug 默认级 
 
 ## 宜做 / 参考
 

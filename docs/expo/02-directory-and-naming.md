@@ -2,41 +2,41 @@
 
 > 命名强制块：[naming-business-first.md](../meta/naming-business-first.md)。**Pass 1 业务语义先于 Pass 2 语法。**
 
-## 树（钉死词根；路径可微调，**词根不可改**）
+## 树（写明词根；路径可微调，**词根不可改**）
 
 ```text
 <repo>/
-  UBIQUITOUS_LANGUAGE.md
-  package.json                 # scripts 对齐 commands.md
-  app.json | app.config.ts     # Expo 配置；禁密钥
-  app/                         # Expo Router 文件路由（入口）
-    _layout.tsx                # 根布局
-    index.tsx                  # 起始 route（或 (tabs)/…）
-    <domain>/                  # 段名 = Pass1 词根
-      index.tsx                # 列表/入口 Screen
-      [id].tsx                 # 详情（参数名词表）
-  src/
-    features/<domain>/
-      <Domain>UiState.ts       # 不可变类型
-      <Domain>Event.ts         # 用户/系统事件
-      use<Domain>Screen.ts     # 持有 UiState、消化 Event、focus/blur
-      model/                   # 纯 reduce / 门闸（可测）
-      ui/                      # 展示组件；只读 props = UiState 切片
-    core/
-      designsystem/            # 主题、通用组件（非业务名）
-      data/                    # Repository、HTTP、SecureStore
-      lib/                     # 非业务基础设施（HttpClient 等）
-  # 测试：*.test.ts 旁挂；禁 helpers/ 大口袋当领域主名
-  # 禁：manager/、dto/、handleClick 作领域主名
+ UBIQUITOUS_LANGUAGE.md
+ package.json # scripts 对齐 commands.md
+ app.json | app.config.ts # Expo 配置；禁密钥
+ app/ # Expo Router 文件路由（入口）
+ _layout.tsx # 根布局
+ index.tsx # 起始 route（或 (tabs)/…）
+ <domain>/ # 段名 = Pass1 词根
+ index.tsx # 列表/入口 Screen
+ [id].tsx # 详情（参数名词表）
+ src/
+ features/<domain>/
+ <Domain>UiState.ts # 不可变类型
+ <Domain>Event.ts # 用户/系统事件
+ use<Domain>Screen.ts # 持有 UiState、消化 Event、focus/blur
+ model/ # 纯 reduce / 门闸（可测）
+ ui/ # 展示组件；只读 props = UiState 切片
+ core/
+ designsystem/ # 主题、通用组件（非业务名）
+ data/ # Repository、HTTP、SecureStore
+ lib/ # 非业务基础设施（HttpClient 等）
+ # 测试：*.test.ts 旁挂；禁 helpers/ 大口袋当领域主名
+ # 禁：manager/、dto/、handleClick 作领域主名
 ```
 
 ## 依赖方向
 
 ```text
 app/* (route) → features/<domain>/use*Screen → model（纯）→ data/Repository
-              → features/.../ui → core/designsystem
-              use*Screen → Repository（接口）
-              data → fetch / SecureStore / 原生模块（经兼容表）
+ → features/.../ui → core/designsystem
+ use*Screen → Repository（接口）
+ data → fetch / SecureStore / 原生模块（经兼容表）
 ```
 
 禁止：`ui` / route 文件 → 直接 HTTP；`data` → `ui`；Screen 持有可变业务真相当第二 SSOT。

@@ -1,9 +1,9 @@
 # Desktop Tauri — 跨端桌面指南（备选路径）
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **Tauri 2** 跨端桌面：Capability 最小权限、Command 声明式 allowlist、类型化 invoke 结果。  
-> **默认栈**：**Tauri 2** + **Rust** + 前端 **Vite**（默认 **React 19 + TypeScript**，与 [docs/react](../react/README.md) 对齐；INPUTS 可钉其它前端册须书面）+ **Capability** 权限模型 + `AppManifest::commands` allowlist。  
-> **定位**：跨端桌面的**备选路径**；**Mac 桌面主路径仍是** [apple-platforms](../apple-platforms/README.md)（SwiftUI）。选 Tauri 须在 INPUTS §1 书面理由。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **Tauri 2** 跨端桌面：Capability 最小权限、Command 声明式 allowlist、类型化 invoke 结果。 
+> **默认栈**：**Tauri 2** + **Rust** + 前端 **Vite**（默认 **React 19 + TypeScript**，与 [docs/react](../react/README.md) 对齐；INPUTS 可约定其它前端册须写明）+ **Capability** 权限模型 + `AppManifest::commands` allowlist。 
+> **定位**：跨端桌面的**备选路径**；**Mac 桌面主路径仍是** [apple-platforms](../apple-platforms/README.md)（SwiftUI）。选 Tauri 须在 INPUTS §1 书面理由。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -16,12 +16,12 @@
 
 ## Agent 执行协议
 
-1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；确认已选 Tauri（非默认走 apple-platforms Mac）  
-2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`）  
-3. 必读 [03](./03-app-shell-and-windows.md) + [04](./04-command-lifecycle.md) + [05](./05-capabilities-least-privilege.md) + [06](./06-command-allowlist.md)  
-4. 按需落地 [07](./07-errors-events-and-secrets.md) / [08](./08-packaging-and-platform-boundary.md)  
-5. [commands.md](./commands.md) `check` 绿  
-6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者）  
+1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；确认已选 Tauri（非默认走 apple-platforms Mac） 
+2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`） 
+3. 必读 [03](./03-app-shell-and-windows.md) + [04](./04-command-lifecycle.md) + [05](./05-capabilities-least-privilege.md) + [06](./06-command-allowlist.md) 
+4. 按需落地 [07](./07-errors-events-and-secrets.md) / [08](./08-packaging-and-platform-boundary.md) 
+5. [commands.md](./commands.md) `check` 绿 
+6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者） 
 
 ## 文件树
 
@@ -33,7 +33,7 @@ docs/desktop-tauri/
 ├── 01-stack.md
 ├── 02-directory-and-naming.md
 ├── 03-app-shell-and-windows.md
-├── 04-command-lifecycle.md          # Command Lifecycle（核心）
+├── 04-command-lifecycle.md # Command Lifecycle（核心）
 ├── 05-capabilities-least-privilege.md
 ├── 06-command-allowlist.md
 ├── 07-errors-events-and-secrets.md
@@ -44,11 +44,11 @@ docs/desktop-tauri/
 ├── commands.md
 ├── sources.md
 └── templates/
-    ├── README.md
-    ├── env.example
-    ├── capability.default.example.json
-    ├── command-registry.schema.json
-    └── package-scripts.snippet.json
+ ├── README.md
+ ├── env.example
+ ├── capability.default.example.json
+ ├── command-registry.schema.json
+ └── package-scripts.snippet.json
 ```
 
 ## 索引

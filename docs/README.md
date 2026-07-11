@@ -1,6 +1,6 @@
 # Programming Guides — Docs
 
-根契约：[**AGENTS.md**](../AGENTS.md)。写指南：[**meta/**](./meta/how-to-write-guides.md) · [**业务命名**](./meta/naming-business-first.md) · [**roadmap**](./meta/roadmap.md)。
+根契约：[**AGENTS.md**](../AGENTS.md)。写指南：[**meta/**](./meta/how-to-write-guides.md) · [**对抗审核**](./meta/adversarial-review.md) · [**业务命名**](./meta/naming-business-first.md) · [**roadmap**](./meta/roadmap.md)。
 
 > **状态 SSOT**：各册 DONE / Wave 以 [meta/roadmap.md](./meta/roadmap.md) 为准（Waves 1–6 所列目录均已 DONE）。下表仅索引用途。
 

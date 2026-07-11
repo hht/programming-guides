@@ -2,18 +2,18 @@
 
 ## 不变量
 
-- 默认传输 **WebSocket**；应用负载 **JSON text**；`v` 必填。  
-- 控制面与数据面共用 envelope；`type` 枚举封闭（见下表）。  
-- 未知 `type` / 非法 JSON → `PROTOCOL_ERROR` 并关闭或拒绝该帧（INPUTS 钉：默认关闭连接）。
+- 默认传输 **WebSocket**；应用负载 **JSON text**；`v` 必填。 
+- 控制面与数据面共用 envelope；`type` 枚举封闭（见下表）。 
+- 未知 `type` / 非法 JSON → `PROTOCOL_ERROR` 并关闭或拒绝该帧（INPUTS 约定：默认关闭连接）。
 
 ## 步骤规格（实现自写）
 
-1. 服务端暴露单一升级路径（例 `GET /realtime`）；校验 Origin/Cookie/令牌策略（INPUTS §8）。  
-2. 升级成功后发可选 `type: "hello"`（含 `conn_id`、`heartbeat_interval_s: 25`）。  
-3. 所有后续帧解析为 envelope；校验 [templates/message-envelope.schema.json](./templates/message-envelope.schema.json)。  
-4. 按 `type` 分发：`subscribe` / `unsubscribe` / `auth` / `ping` / `pong` / `ack` / `event` / `error`。  
-5. 出站业务推送一律 `type: "event"`，带 `channel`、`event_id`、`payload`。  
-6. SSE 可选：将同一 `event` 映射为 SSE `data:` 行；`id:` = `event_id`；**不**接受客户端 subscribe 命令帧（改用 query/path 钉死频道，且仍须 authz）。
+1. 服务端暴露单一升级路径（例 `GET /realtime`）；校验 Origin/Cookie/令牌策略（INPUTS §8）。 
+2. 升级成功后发可选 `type: "hello"`（含 `conn_id`、`heartbeat_interval_s: 25`）。 
+3. 所有后续帧解析为 envelope；校验 [templates/message-envelope.schema.json](./templates/message-envelope.schema.json)。 
+4. 按 `type` 分发：`subscribe` / `unsubscribe` / `auth` / `ping` / `pong` / `ack` / `event` / `error`。 
+5. 出站业务推送一律 `type: "event"`，带 `channel`、`event_id`、`payload`。 
+6. SSE 可选：将同一 `event` 映射为 SSE `data:` 行；`id:` = `event_id`；**不**接受客户端 subscribe 命令帧（改用 query/path 写明频道，且仍须 authz）。
 
 ### Envelope 字段（冻结）
 
@@ -24,7 +24,7 @@
 | `channel` | 条件 | subscribe/unsubscribe/event 必填 |
 | `id` | 条件 | 客户端请求关联 id（subscribe 响应回显） |
 | `event_id` | 条件 | 服务端事件唯一 id（投递/ack） |
-| `payload` | 条件 | 业务对象；形状由业务词表钉 |
+| `payload` | 条件 | 业务对象；形状由业务词表约定 |
 | `error` | 条件 | `{ code, message }` |
 | `ts` | 否 | RFC3339；建议事件必带 |
 

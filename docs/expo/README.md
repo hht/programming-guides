@@ -1,9 +1,9 @@
 # Expo — 跨端移动妥协层指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **Expo（React Native）** 应用：文件路由、可测、失焦取消 inflight。  
-> **定位**：跨端移动的**妥协层**；主路径仍为原生 [apple-platforms](../apple-platforms/README.md) / [android-compose](../android-compose/README.md)。仅当 INPUTS 书面选择「单仓双端妥协」时启用本册。  
-> **默认栈**：**Expo SDK 近期稳定版**（安装时以 `expo` 官方当前 stable 为准）+ **Expo Router** + **TypeScript** + **managed / 禁裸 eject 默认**；UI 状态 = 不可变 **UiState**；测试 **Jest** + **RNTL**；原生能力优先 **Expo SDK 模块**，第三方须 **Expo 兼容策略书面声明**。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **Expo（React Native）** 应用：文件路由、可测、失焦取消 inflight。 
+> **定位**：跨端移动的**妥协层**；主路径仍为原生 [apple-platforms](../apple-platforms/README.md) / [android-compose](../android-compose/README.md)。仅当 INPUTS 写明选择「单仓双端妥协」时启用本册。 
+> **默认栈**：**Expo SDK 近期稳定版**（安装时以 `expo` 官方当前 stable 为准）+ **Expo Router** + **TypeScript** + **managed / 禁裸 eject 默认**；UI 状态 = 不可变 **UiState**；测试 **Jest** + **RNTL**；原生能力优先 **Expo SDK 模块**，第三方须 **Expo 兼容策略须写明声明**。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -16,12 +16,12 @@
 
 ## Agent 执行协议
 
-1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停（须书面确认「妥协层」选型）  
-2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`）  
-3. 必读 [03](./03-uistate-and-screen-model.md) + [04](./04-screen-ui-and-state-matrix.md) + [05](./05-screen-state-lifecycle.md)  
-4. 落地 [06](./06-expo-router.md) + [07](./07-blur-cancel-and-native-modules.md) + [08](./08-data-layer.md)  
-5. [commands.md](./commands.md) `check` 绿  
-6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者）  
+1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停（须写明确认「妥协层」选型） 
+2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`） 
+3. 必读 [03](./03-uistate-and-screen-model.md) + [04](./04-screen-ui-and-state-matrix.md) + [05](./05-screen-state-lifecycle.md) 
+4. 落地 [06](./06-expo-router.md) + [07](./07-blur-cancel-and-native-modules.md) + [08](./08-data-layer.md) 
+5. [commands.md](./commands.md) `check` 绿 
+6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者） 
 
 ## 索引
 

@@ -1,6 +1,6 @@
 # templates
 
-> 仅允许：JSON Schema、env 例、capability 例、`package-scripts.snippet.json`、本 README。  
+> 仅允许：JSON Schema、env 例、capability 例、`package-scripts.snippet.json`、本 README。 
 > **禁止**可运行业务实现（无完整 `.rs` / `.tsx` App）。
 
 | 文件 | 用途 |

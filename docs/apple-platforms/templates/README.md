@@ -1,6 +1,6 @@
 # templates
 
-> 仅允许：矩阵 md、xcconfig 例、脚本键名片段、本 README。  
+> 仅允许：矩阵 md、xcconfig 例、脚本键名片段、本 README。 
 > **禁止**可运行业务实现（无完整 `.swift` feature 模块、无可编译 App）。
 
 | 文件 | 用途 |

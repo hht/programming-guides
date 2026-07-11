@@ -1,4 +1,4 @@
-# 01 — 默认栈（钉死）
+# 01 — 默认栈
 
 ## 栈表
 
@@ -37,7 +37,7 @@ go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 go install -tags 'pgx5' github.com/golang-migrate/migrate/v4/cmd/migrate@latest
 ```
 
-`sqlc.yaml`：`engine: postgresql`，`sql_package: pgx/v5`。  
+`sqlc.yaml`：`engine: postgresql`，`sql_package: pgx/v5`。 
 `.golangci.yml`：至少启用上表四 lint；可加严不可删默认四项。
 
 ## 锁版本

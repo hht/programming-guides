@@ -2,13 +2,13 @@
 
 ## 不变量
 
-- `DATABASE_URL` 仅环境；缺则启动失败  
-- 应用池默认：`max = 10`（可改但单处）；生产推荐 PgBouncer transaction 模式（迁移用直连）  
+- `DATABASE_URL` 仅环境；缺则启动失败 
+- 应用池默认：`max = 10`（可改但单处）；生产推荐 PgBouncer transaction 模式（迁移用直连） 
 
 ## 步骤
 
-1. 配置池。  
-2. 健康：`SELECT 1`。  
+1. 配置池。 
+2. 健康：`SELECT 1`。 
 
 ## 探针
 

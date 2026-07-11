@@ -2,9 +2,9 @@
 
 ## 不变量
 
-- **ui-ux** = 设计决策与 Figma 交付 SSOT（Design Decision Lifecycle）。  
-- **design-tokens** = Token Apply Lifecycle（工程）。  
-- 两册对位、**不互相改名吞并**；启用对接时 **语义 token 路径同名**。  
+- **ui-ux** = 设计决策与 Figma 交付 SSOT（Design Decision Lifecycle）。 
+- **design-tokens** = Token Apply Lifecycle（工程）。 
+- 两册对位、**不互相改名吞并**；启用对接时 **语义 token 路径同名**。 
 - 多平台共享 semantic 名；分叉只在 transform 产物与平台控件，不在第二套色名。
 
 ## 步骤规格（实现自写）
@@ -20,9 +20,9 @@
 
 ### 2. 漂移检查（启用 ui-ux 时必做）
 
-1. 导出或列出 `design/tokens.md`（及同名 Variables）路径集合 `D`。  
-2. 列出工程 `tokens/semantic/**` 路径集合 `E`。  
-3. 规则（默认）：`E ⊆ D` 或 `E = D`（INPUTS 钉）；设计多出的可选 token 须标 `design-only` 或尽快进工程。  
+1. 导出或列出 `design/tokens.md`（及同名 Variables）路径集合 `D`。 
+2. 列出工程 `tokens/semantic/**` 路径集合 `E`。 
+3. 规则（默认）：`E ⊆ D` 或 `E = D`（INPUTS 约定）；设计多出的可选 token 须标 `design-only` 或尽快进工程。 
 4. `tokens:check-drift` 含此项则失败即红。
 
 ### 3. 多平台
@@ -36,8 +36,8 @@
 
 ### 4. 禁止的对位错误
 
-- 为「Figma 里叫 Blue/500」而在 UI 正式消费 `blue-500`（应：primitive 可有 palette，UI 用 `color.primary`）。  
-- Web 用 `foreground`、iOS 用 `label` 且无映射表——须单处映射，对外文档仍用本册词表。  
+- 为「Figma 里叫 Blue/500」而在 UI 正式消费 `blue-500`（应：primitive 可有 palette，UI 用 `color.primary`）。 
+- Web 用 `foreground`、iOS 用 `label` 且无映射表——须单处映射，对外文档仍用本册词表。 
 - 把本册写成 Figma 操作百科（归 ui-ux `08`）。
 
 ## 失败分类 / 默认值

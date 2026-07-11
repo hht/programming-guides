@@ -4,22 +4,22 @@
 
 ```text
 # 实现仓建议落点（按应用册微调；词根不变）
-features/checkout/              # 或 features/billing/checkout/
-  create-intent/                # 创建 PaymentIntent
-  confirm/                      # 返回 client 确认参数（非终态）
+features/checkout/ # 或 features/billing/checkout/
+ create-intent/ # 创建 PaymentIntent
+ confirm/ # 返回 client 确认参数（非终态）
 features/payments/
-  webhook/                      # 验签 → 事件映射 → 状态转移
-  refund/                       # 退款边界命令
-  receipt/                      # 收据查询（用户可见）
-internal/payments/              # 或 src/shared/payments/
-  provider-adapter.*            # 薄适配；禁 PaymentManager 作领域主名
-  intent-status.*               # 纯函数转移（可测）
-migrations/                     # payment_intents 表（对齐 postgres）
+ webhook/ # 验签 → 事件映射 → 状态转移
+ refund/ # 退款边界命令
+ receipt/ # 收据查询（用户可见）
+internal/payments/ # 或 src/shared/payments/
+ provider-adapter.* # 薄适配；禁 PaymentManager 作领域主名
+ intent-status.* # 纯函数转移（可测）
+migrations/ # payment_intents 表（对齐 postgres）
 ops/
-  payments.md                   # 可选：对账/重放说明（非 APM 必勾）
+ payments.md # 可选：对账/重放说明（非 APM 必勾）
 ```
 
-依赖方向：`features/checkout → provider-adapter → 提供商 SDK`；`webhook → verify → intent-status →（可选）saas billing 转移`。  
+依赖方向：`features/checkout → provider-adapter → 提供商 SDK`；`webhook → verify → intent-status →（可选）saas billing 转移`。 
 **禁** HTTP handler 内未验签直接 `UPDATE billing_status`。
 
 UI 状态：Checkout / 收据 / 失败页状态名必须用 Pass1 词表（见 `08`）。
@@ -28,10 +28,10 @@ UI 状态：Checkout / 收据 / 失败页状态名必须用 Pass1 词表（见 `
 
 ### Pass 1 — 业务语义（必做）
 
-1. 目标仓建或更新 `UBIQUITOUS_LANGUAGE.md`（Term / 含义 / 代码符号 / 禁同义词）。  
-2. **Intent、Checkout、Receipt、Refund、WebhookEvent** = 业务词根；禁 `PayDto`、`StripeThing`、`handlePayment*` 进领域主模块名。  
-3. **禁**技术翻译名：`*PaymentManager`、`*CheckoutService`、`*WebhookHelper`（基础设施可用 `ProviderAdapter` / `WebhookRouter` 入口例外）。  
-4. **禁**同义词分叉：`settle`/`capture`/`paid`/`succeeded` 词表只留业务终态名——本册默认终态成功 = **`settled`**；失败 = **`failed`**；进行中确认 = **`confirming`**；已创建未确认 = **`requires_confirmation`**（或 `open`）；退款 = **`refunded`** / **`partially_refunded`**。提供商原始状态名只出现在适配器映射表。  
+1. 目标仓建或更新 `UBIQUITOUS_LANGUAGE.md`（Term / 含义 / 代码符号 / 禁同义词）。 
+2. **Intent、Checkout、Receipt、Refund、WebhookEvent** = 业务词根；禁 `PayDto`、`StripeThing`、`handlePayment*` 进领域主模块名。 
+3. **禁**技术翻译名：`*PaymentManager`、`*CheckoutService`、`*WebhookHelper`（基础设施可用 `ProviderAdapter` / `WebhookRouter` 入口例外）。 
+4. **禁**同义词分叉：`settle`/`capture`/`paid`/`succeeded` 词表只留业务终态名——本册默认终态成功 = **`settled`**；失败 = **`failed`**；进行中确认 = **`confirming`**；已创建未确认 = **`requires_confirmation`**（或 `open`）；退款 = **`refunded`** / **`partially_refunded`**。提供商原始状态名只出现在适配器映射表。 
 5. 对外协议字段（intent id、status、amount、currency）冻结在词表。
 
 | 概念 | 正例 | 反例 |

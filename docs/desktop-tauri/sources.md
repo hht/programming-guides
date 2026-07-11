@@ -16,7 +16,7 @@
 |----|------|------|--------|----------|--------------|
 | A | [tauri-apps/tauri](https://github.com/tauri-apps/tauri) | P1 | 官方架构、capability/command 设计意图 | 当业务 App 抄目录 | 跨端桌面壳框架本体 |
 | B | [spacedriveapp/spacedrive](https://github.com/spacedriveapp/spacedrive) | P1 | Rust 核心 + TS 前端桌面、本机能力边界 | 抄分布式文件系统业务 | 跨端文件类桌面产品 |
-| C | [hoppscotch/hoppscotch](https://github.com/hoppscotch/hoppscotch) | P1 | 桌面客户端交付面、多端产品边界 | 绑死 Vue；抄整个 API 客户端 | 开发者工具桌面端 |
+| C | [hoppscotch/hoppscotch](https://github.com/hoppscotch/hoppscotch) | P1 | 桌面客户端交付面、多端产品边界 | 照搬 Vue；抄整个 API 客户端 | 开发者工具桌面端 |
 
 > 用户指定标杆三仓；A 为框架仓时「功能共有」以 B/C 用户可感知能力 + A/P0 工程面共同支撑。前端默认 React 见 `01` 冲突表。
 
@@ -47,7 +47,7 @@
 
 | 冲突 | 裁决 |
 |------|------|
-| Hoppscotch Vue vs 默认 React | **默认 React**（对齐 docs/react）；Vue 仅 INPUTS 书面 |
+| Hoppscotch Vue vs 默认 React | **默认 React**（对齐 docs/react）；Vue 仅当 INPUTS 写明 |
 | Electron 流行 | **不**作本册默认；roadmap DEFER |
-| 仅 Mac | **优先 apple-platforms**；本册须书面跨端理由 |
+| 仅 Mac | **优先 apple-platforms**；本册须写明跨端理由 |
 | tauri 仓当唯一用户任务标杆 | **否**；B/C 补用户可感知面；A+P0 补工程 |

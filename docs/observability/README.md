@@ -1,18 +1,18 @@
 # Observability — 日志 / 指标 / 追踪指南
 
-> **这是工程指南（规格包），不是半成品 APM 项目，也不是某家 SaaS 安装手册。**  
-> **路线图定位：可选册。** 本册教「如何接日志 / 指标 / 追踪」；**其他领域指南仍不把 APM / Sentry 等第三方可观测当必勾**。  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地可关联的遥测规格。  
-> **默认栈**：**OpenTelemetry** 语义约定 + **结构化 JSON 日志**；导出 **OTLP**；后端可换（Jaeger / Grafana Tempo 等），**禁**把某家商业 APM 写进默认必装。  
+> **这是工程指南（规格包），不是半成品 APM 项目，也不是某家 SaaS 安装手册。** 
+> **路线图定位：可选册。** 本册教「如何接日志 / 指标 / 追踪」；**其他领域指南仍不把 APM / Sentry 等第三方可观测当必勾**。 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地可关联的遥测规格。 
+> **默认栈**：**OpenTelemetry** 语义约定 + **结构化 JSON 日志**；导出 **OTLP**；后端可换（Jaeger / Grafana Tempo 等），**禁**把某家商业 APM 写进默认必装。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
 
-为服务/应用接入**日志、指标、追踪**；默认必做 **logs + traces**（metrics 可选）；同一请求可用 **correlation id** 关联查询/告警；规格钉死，不绑商业 APM。
+为服务/应用接入**日志、指标、追踪**；默认必做 **logs + traces**（metrics 可选）；同一请求可用 **correlation id** 关联查询/告警；规格写明，不绑商业 APM。
 
 ## 核心正确性路径
 
-**Telemetry Correlate Lifecycle**（[05](./05-telemetry-correlate-lifecycle.md)）：  
+**Telemetry Correlate Lifecycle**（[05](./05-telemetry-correlate-lifecycle.md)）： 
 `emit log/metric/trace → propagate correlation id → query/alert 可关联`。
 
 ## 本册必做 vs 非必做
@@ -28,12 +28,12 @@
 
 ## Agent 执行协议
 
-1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；按「信号裁剪」只读必读章  
-2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`）  
-3. [03](./03-signals-and-conventions.md) + [04](./04-correlation-context.md)  
-4. 落地 **Telemetry Correlate Lifecycle**（[05](./05-telemetry-correlate-lifecycle.md)）；再按需 [06](./06-structured-logs.md) / [07](./07-metrics-naming.md) / [08](./08-traces-and-otlp.md)  
-5. [commands.md](./commands.md) `check` 绿  
-6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者）  
+1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；按「信号裁剪」只读必读章 
+2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`） 
+3. [03](./03-signals-and-conventions.md) + [04](./04-correlation-context.md) 
+4. 落地 **Telemetry Correlate Lifecycle**（[05](./05-telemetry-correlate-lifecycle.md)）；再按需 [06](./06-structured-logs.md) / [07](./07-metrics-naming.md) / [08](./08-traces-and-otlp.md) 
+5. [commands.md](./commands.md) `check` 绿 
+6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者） 
 
 ## 索引
 

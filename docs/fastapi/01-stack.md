@@ -1,4 +1,4 @@
-# 01 — 默认栈（钉死）
+# 01 — 默认栈
 
 ## 栈表
 
@@ -29,7 +29,7 @@
 ```bash
 mkdir <name> && cd <name>
 uv init
-# 布局钉死为仓根 app/（勿用 src 布局）：创建 app/__init__.py 等按 02；pyproject 中
+# 布局规定为仓根 app/（勿用 src 布局）：创建 app/__init__.py 等按 02；pyproject 中
 # [project] name 自定；若 uv 生成了 src/，删除并改为包路径 app
 uv add fastapi "uvicorn[standard]" pydantic pydantic-settings sqlalchemy asyncpg alembic structlog httpx
 uv add --dev pytest pytest-asyncio ruff mypy

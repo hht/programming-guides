@@ -33,10 +33,10 @@
 | 门禁 | 何时 |
 |------|------|
 | 单元 / Lifecycle | 每 PR `check` |
-| RNTL | 每 PR 或 nightly（commands 写死）；**发版必绿** |
+| RNTL | 每 PR 或 nightly（commands 写明）；**发版必绿** |
 | 矩阵 1–5 + 7 | 发版必绿 |
 | 矩阵 6 | 有鉴权则发版必绿；无则 `N/A` |
 | 矩阵 8 | 有 §10 第三方原生则发版必绿；无则 `N/A` |
-| `expo-doctor` | 建议每 PR；失败策略实现仓钉死（默认 warn→准出前 must） |
+| `expo-doctor` | 建议每 PR；失败策略实现仓写明（默认 warn→准出前 must） |
 | `check-inputs` | 每 PR（含矩阵 + §9/§10） |
 | `check-acceptance` | 每 PR：核对 `11` **A+B+D**（**不含** C） |

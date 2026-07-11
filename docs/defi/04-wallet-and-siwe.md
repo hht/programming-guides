@@ -17,10 +17,10 @@
 
 ## 会话默认（Vite SPA）
 
-- Bearer JWT；按 **地址小写分桶** 存（如 sessionStorage）  
-- 请求头 `Authorization: Bearer`  
-- 切账户 / 401 → 清当前桶并 `needsSignIn`  
-- 全仓一种方案；Next+Cookie 仅 INPUTS 书面要求时改用  
+- Bearer JWT；按 **地址小写分桶** 存（如 sessionStorage） 
+- 请求头 `Authorization: Bearer` 
+- 切账户 / 401 → 清当前桶并 `needsSignIn` 
+- 全仓一种方案；Next+Cookie 仅当 INPUTS 写明要求时改用 
 
 ## SIWE（服务端 P0）
 

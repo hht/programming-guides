@@ -15,7 +15,7 @@
 |----|------|------|--------|----------|--------------|
 | A | [better-auth/better-auth](https://github.com/better-auth/better-auth) | P1 | TS 会话/OAuth 工程形状、插件边界 | 整库当唯一目录圣经 | 会话 + OAuth 登录 |
 | B | [ory/kratos](https://github.com/ory/kratos) | P1 | 身份流、会话、自助恢复；可选 IdP 模式 | 强制全家桶运维 | 会话与身份 API |
-| C | [supabase/auth](https://github.com/supabase/auth) | P1 | Go 鉴权服务、JWT/会话实践 | 绑死 Supabase 托管 | 登录/会话/OAuth |
+| C | [supabase/auth](https://github.com/supabase/auth) | P1 | Go 鉴权服务、JWT/会话实践 | 照搬 Supabase 托管 | 登录/会话/OAuth |
 
 ## 共有能力切条
 
@@ -51,6 +51,6 @@
 |------|------|
 | Supabase Auth 常用 JWT vs Cookie 会话先进默认 | **Web 默认 Opaque Cookie session**；JWT 仅 API/机器（先进性 > 流行抄作业） |
 | 流行「SPA + localStorage access_token」 | **禁止**作本指南浏览器主会话（见超越 a1） |
-| Keycloak 生态常见 | **不**钉唯一默认；Kratos 等可选写入 INPUTS |
+| Keycloak 生态常见 | **不**约定唯一默认；Kratos 等可选写入 INPUTS |
 | Redis 会话流行 | 本册默认 **Postgres**；Redis 可选见 [docs/redis](../redis/README.md) |
 | better-auth 目录习惯 vs 业务命名 | 库可参考；**词表/目录以本册 Pass1 为准** |

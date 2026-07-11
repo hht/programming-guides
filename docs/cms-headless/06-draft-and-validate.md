@@ -2,20 +2,20 @@
 
 ## 不变量
 
-- **draft** = 可编辑、默认可预览、**不可**经公开 Delivery 消费。  
-- **validate** = publish 的硬门闸；失败不得 publish。  
+- **draft** = 可编辑、默认可预览、**不可**经公开 Delivery 消费。 
+- **validate** = publish 的硬门闸；失败不得 publish。 
 - 校验规则以 INPUTS §6 为 SSOT；适配器可叠加供应商校验，但**不能放宽**本地必填。
 
 ## 步骤规格（实现自写）
 
-1. **saveDraft**：写字段快照；更新 `updated_at`；status 保持/回到 `draft`。  
-2. **validate 规则最小集**（须实现）：  
-   - 必填字段非空（按 content_type）  
-   - slug 格式与唯一（作用域：全局或 per-type / per-locale — INPUTS 钉）  
-   - 引用完整性（悬空引用策略按 INPUTS）  
-   - （可选）富文本/HTML 消毒策略书面  
-3. **错误形状**：`ValidationIssue[]`（见 [templates/validation-issue.schema.json](./templates/validation-issue.schema.json)）；message 可 i18n，**code 稳定**。  
-4. **禁止**：仅靠 CMS UI 红框当唯一校验；跳过 validate 的「强制发布」后门（除非 INPUTS 书面 break-glass + 审计）。
+1. **saveDraft**：写字段快照；更新 `updated_at`；status 保持/回到 `draft`。 
+2. **validate 规则最小集**（须实现）： 
+ - 必填字段非空（按 content_type） 
+ - slug 格式与唯一（作用域：全局或 per-type / per-locale — INPUTS 约定） 
+ - 引用完整性（悬空引用策略按 INPUTS） 
+ - （可选）富文本/HTML 消毒策略须写明 
+3. **错误形状**：`ValidationIssue[]`（见 [templates/validation-issue.schema.json](./templates/validation-issue.schema.json)）；message 可 i18n，**code 稳定**。 
+4. **禁止**：仅靠 CMS UI 红框当唯一校验；跳过 validate 的「强制发布」后门（除非 INPUTS 写明 break-glass + 审计）。
 
 ## 失败分类 / 默认值
 

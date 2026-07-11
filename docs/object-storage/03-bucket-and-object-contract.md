@@ -2,9 +2,9 @@
 
 ## 不变量
 
-- 桶默认 **private**；对象默认不可匿名读。  
-- `bucket` 名钉死在 INPUTS（staging/prod 可同名或分名，但成对环境一致策略书面）。  
-- `object_key` 由 **ObjectPutIntent** 生成或校验，含租户/实体/用途前缀；禁止裸客户端路径当唯一门闸。  
+- 桶默认 **private**；对象默认不可匿名读。 
+- `bucket` 名须写明在 INPUTS（staging/prod 可同名或分名，但成对环境一致策略须写明）。 
+- `object_key` 由 **ObjectPutIntent** 生成或校验，含租户/实体/用途前缀；禁止裸客户端路径当唯一门闸。 
 - `Content-Type` 与 `Content-Length`（或上限）在授权时声明，verify 时核对。
 
 ## 桶
@@ -37,12 +37,12 @@ Schema 例：[templates/object-put-intent.schema.json](./templates/object-put-in
 {tenant_id}/{entity}/{entity_id}/{purpose}/{uuid}
 ```
 
-- `uuid` 防覆盖；若业务要求幂等覆盖，INPUTS 钉「同 intent 同 key」并写明覆盖策略。  
+- `uuid` 防覆盖；若业务要求幂等覆盖，INPUTS 约定「同 intent 同 key」并写明覆盖策略。 
 - 禁止用户可控段出现 `../` 或绝对路径。
 
 ## Content-Type 白名单（默认种子）
 
-`image/jpeg` · `image/png` · `image/webp` · `application/pdf` · `text/plain`  
+`image/jpeg` · `image/png` · `image/webp` · `application/pdf` · `text/plain` 
 
 扩展须写入 INPUTS；未知类型 → `object.content_type_denied`。
 

@@ -6,7 +6,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` 树 + 依赖方向 |
 | 命名 / 词表 | [ ] | `02` Pass1 UBIQUITOUS_LANGUAGE + 协议字段冻结 |
-| 代码风格 | [ ] | `01` 钉栈 |
+| 代码风格 | [ ] | `01` 确定默认栈 |
 | 工具链 | [ ] | Vite 脚手架 + lockfile |
 | 门禁 | [ ] | `commands.md`：PR `check` / 发版 e2e |
 | 代码极简 | [ ] | 指南无业务实现；deletion-first |
@@ -30,26 +30,26 @@
 
 ## C. 「达到 / 超越」勾选（复制元指南 §1.3）
 
-1. [ ] 能力切条：差距表功能行均为用户可感知能力  
-2. [ ] 共有判定：能力在 \(B\) 的 ≥2 证据源出现；仅 1 源独有 → 可选  
-3. [ ] 功能面达到：必做 ⊇ 所有共有（上表共有项均交付）  
-4. [ ] 工程面达到：§A 必做维均有章节 + 本页勾选  
-5. [ ] **超越 a+b**：  
-   - [ ] a. ≥2 条更硬不变量（见下方）  
-   - [ ] b. 发版场景×断言矩阵（`09`）  
-   - c. 全 P1w 时才适用（本指南 \(B\) 为开源，**N/A**）
+1. [ ] 能力切条：差距表功能行均为用户可感知能力 
+2. [ ] 共有判定：能力在 \(B\) 的 ≥2 证据源出现；仅 1 源独有 → 可选 
+3. [ ] 功能面达到：必做 ⊇ 所有共有（上表共有项均交付） 
+4. [ ] 工程面达到：§A 必做维均有章节 + 本页勾选 
+5. [ ] **超越 a+b**： 
+ - [ ] a. ≥2 条更硬不变量（见下方） 
+ - [ ] b. 发版场景×断言矩阵（`09`） 
+ - c. 全 P1w 时才适用（本指南 \(B\) 为开源，**N/A**）
 
 ### 超越 a（对照句）
 
-1. `对照：B 中常见「有 hash 即当成功」更弱 → 本指南要求 receipt.status==='success' 才成功；hash≠成功`  
+1. `对照：B 中常见「有 hash 即当成功」更弱 → 本指南要求 receipt.status==='success' 才成功；hash≠成功` 
 2. `对照：B 中少见 unknown 禁止重提 → 本指南要求超时/未知 latch + fail-closed，禁止一键解锁`
 
 ## D. 交付门闸（项目勾选）
 
-- [ ] INPUTS OK；实现在目标仓  
-- [ ] 写路径 simulate→write(request)→wait；inflight+latch；双 chainId  
-- [ ] 地址表 + generate ABI；禁写 implementation  
-- [ ] walletReady ≠ sessionReady（若有后端）  
-- [ ] 每页三态 DoD；文案 i18n  
-- [ ] `pnpm check`=0；发版 e2e=0（INPUTS 书面豁免须附风险；默认不豁免）  
-- [ ] 环境成对（staging/prod API+地址+RPC）  
+- [ ] INPUTS OK；实现在目标仓 
+- [ ] 写路径 simulate→write(request)→wait；inflight+latch；双 chainId 
+- [ ] 地址表 + generate ABI；禁写 implementation 
+- [ ] walletReady ≠ sessionReady（若有后端） 
+- [ ] 每页三态 DoD；文案 i18n 
+- [ ] `pnpm check`=0；发版 e2e=0（INPUTS 写明豁免须附风险；默认不豁免） 
+- [ ] 环境成对（staging/prod API+地址+RPC） 

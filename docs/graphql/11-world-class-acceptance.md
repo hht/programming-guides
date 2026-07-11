@@ -1,6 +1,6 @@
 # 11 — 世界级验收
 
-> §C 为**指南自身**达标（写指南/对抗时勾）。  
+> §C 为**指南自身**达标（写指南/对抗时勾）。 
 > §A + §B + §D 为**实现仓**交付（agent 按 INPUTS 勾）。
 
 ## A. 工程面（§1.2）— 实现仓
@@ -33,19 +33,19 @@
 
 ## C. §1.3 — 指南达标（维护者勾）
 
-1. [ ] 能力切条  
-2. [ ] 共有判定：能力在 \(B\) 的 ≥2 证据源出现；仅 1 源独有 → 可选  
-3. [ ] 功能面达到：指南必做 ⊇ 所有共有  
-4. [ ] 工程面：§1.2 有章节  
-5. [ ] 超越 a+b：  
-   - [ ] a1. `对照：B 中更弱/未见「introspection staging/prod 默认关或受控」硬门闸 → 本指南要求 staging/prod introspection 默认关闭或经显式 allowlist/鉴权受控（见 07、INPUTS §8）`  
-   - [ ] a2. `对照：B 中更弱/未见「写操作必须经鉴权+输入校验、禁公开 mutation 裸奔」硬门闸 → 本指南要求所有 Mutation 经 Session Gate（或等价鉴权）+ 输入校验，禁止未鉴权公开 mutation CRUD（见 06、05）`  
-   - [ ] b. `09` 发版矩阵 1–7  
-   - c. N/A  
+1. [ ] 能力切条 
+2. [ ] 共有判定：能力在 \(B\) 的 ≥2 证据源出现；仅 1 源独有 → 可选 
+3. [ ] 功能面达到：指南必做 ⊇ 所有共有 
+4. [ ] 工程面：§1.2 有章节 
+5. [ ] 超越 a+b： 
+ - [ ] a1. `对照：B 中更弱/未见「introspection staging/prod 默认关或受控」硬门闸 → 本指南要求 staging/prod introspection 默认关闭或经显式 allowlist/鉴权受控（见 07、INPUTS §8）` 
+ - [ ] a2. `对照：B 中更弱/未见「写操作必须经鉴权+输入校验、禁公开 mutation 裸奔」硬门闸 → 本指南要求所有 Mutation 经 Session Gate（或等价鉴权）+ 输入校验，禁止未鉴权公开 mutation CRUD（见 06、05）` 
+ - [ ] b. `09` 发版矩阵 1–7 
+ - c. N/A 
 
 ## D. 实现仓交付门闸（agent 勾）
 
-- [ ] `INPUTS OK`  
-- [ ] Operation Lifecycle 单测绿（`05`/`09`）  
-- [ ] `09` 矩阵 **1–7** 发版绿  
-- [ ] staging/prod 密钥与端点成对（值不在仓）；introspection 策略已兑现  
+- [ ] `INPUTS OK` 
+- [ ] Operation Lifecycle 单测绿（`05`/`09`） 
+- [ ] `09` 矩阵 **1–7** 发版绿 
+- [ ] staging/prod 密钥与端点成对（值不在仓）；introspection 策略已兑现 

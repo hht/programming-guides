@@ -22,7 +22,7 @@ P0 > P1 > P1w > E。冲突时先进优先（元指南 §3.4）。
 | ID | 仓库 | 品类匹配 | 学什么 | 不学什么 |
 |----|------|----------|--------|----------|
 | A | [pocketbase/pocketbase](https://github.com/pocketbase/pocketbase) | Go 单体 HTTP 后端 API | 路由组织、鉴权面、单二进制交付 | 整仓抄 PocketBase 运行时 |
-| B | [supabase/auth](https://github.com/supabase/auth) | 生产级 Go JWT/用户 API | 鉴权端点、错误语义、配置 | 绑死 Supabase 云产品细节 |
+| B | [supabase/auth](https://github.com/supabase/auth) | 生产级 Go JWT/用户 API | 鉴权端点、错误语义、配置 | 照搬 Supabase 云产品细节 |
 | C | [knadh/listmonk](https://github.com/knadh/listmonk) | Go HTTP API + 管理面 | 配置、迁移、handler 分层 | 邮件业务域 |
 
 ## 能力切条 → 共有
@@ -52,6 +52,6 @@ P0 > P1 > P1w > E。冲突时先进优先（元指南 §3.4）。
 
 | 冲突 | 裁决 |
 |------|------|
-| Gin/Echo 更「全家桶」流行 | **钉 chi**（stdlib `http.Handler` 兼容，先进边界清晰） |
-| GORM 更流行 | **钉 sqlc+pgx**（SQL 与类型显式，先进优先） |
-| zap 仍流行 | **钉 log/slog**（stdlib；禁无理由再引 zap） |
+| Gin/Echo 更「全家桶」流行 | **采用 chi**（stdlib `http.Handler` 兼容，先进边界清晰） |
+| GORM 更流行 | **采用 sqlc+pgx**（SQL 与类型显式，先进优先） |
+| zap 仍流行 | **采用 log/slog**（stdlib；禁无理由再引 zap） |

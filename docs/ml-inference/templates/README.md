@@ -1,6 +1,6 @@
 # templates
 
-> 仅允许：JSON Schema、状态/矩阵 md、env 例、`package-scripts.snippet.json`、本 README。  
+> 仅允许：JSON Schema、状态/矩阵 md、env 例、`package-scripts.snippet.json`、本 README。 
 > **禁止**可运行推理业务实现（无 FastAPI `main.py`、无真权重、无真密钥）。
 
 | 文件 | 用途 |

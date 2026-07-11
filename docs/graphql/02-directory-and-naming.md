@@ -1,37 +1,37 @@
 # 02 — 目录与命名
 
-> 命名强制块：[naming-business-first.md](../meta/naming-business-first.md)。**Pass 1 业务语义先于 Pass 2 语法。**  
+> 命名强制块：[naming-business-first.md](../meta/naming-business-first.md)。**Pass 1 业务语义先于 Pass 2 语法。** 
 > **UI 状态**：本册 API → **N/A**（无 login frame 表；会话 UI 属 auth/应用册）。
 
-## 树（钉死词根；路径可按应用册微调，**词根不可改**）
+## 树（写明词根；路径可按应用册微调，**词根不可改**）
 
 ```text
 <repo>/
-  UBIQUITOUS_LANGUAGE.md
-  schema/                      # SDL SSOT（或单文件 schema.graphql）
-    *.graphql
-  # --- 服务（TS 例）---
-  src/
-    graphql/
-      context.ts               # 注入 Subject（经 Session Gate）等
-      resolvers/               # 按领域业务词根分文件（Order、Catalog…）
-      yoga.ts                  # 或 server 入口接线
-  # --- 客户端（对位应用册）---
-  src/
-    graphql/
-      operations/              # *.graphql Typed document 源
-      generated/               # codegen 输出（勿手改）
-  # 禁：graphql_manager/、dto/、handleResolve.ts、pothos/ 作领域主名
+ UBIQUITOUS_LANGUAGE.md
+ schema/ # SDL SSOT（或单文件 schema.graphql）
+ *.graphql
+ # --- 服务（TS 例）---
+ src/
+ graphql/
+ context.ts # 注入 Subject（经 Session Gate）等
+ resolvers/ # 按领域业务词根分文件（Order、Catalog…）
+ yoga.ts # 或 server 入口接线
+ # --- 客户端（对位应用册）---
+ src/
+ graphql/
+ operations/ # *.graphql Typed document 源
+ generated/ # codegen 输出（勿手改）
+ # 禁：graphql_manager/、dto/、handleResolve.ts、pothos/ 作领域主名
 ```
 
 ## 依赖方向
 
 ```text
 HTTP → Yoga → Operation Lifecycle（parse→validate→auth→resolve→map errors）
-                ↓
-         SDL Schema (SSOT)
-                ↓
-         Resolvers（业务用例）→ Domain / DB
+ ↓
+ SDL Schema (SSOT)
+ ↓
+ Resolvers（业务用例）→ Domain / DB
 Client：operations/*.graphql → codegen → Typed document → fetch/Yoga endpoint
 Auth：docs/auth Session Gate → Context.subject
 ```

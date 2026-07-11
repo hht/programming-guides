@@ -1,6 +1,6 @@
 # templates
 
-> 仅允许：JSON Schema、env 例、UI 状态矩阵 md、消息目录形状例、`package-scripts.snippet.json`（仅 scripts 键名与命令字符串）、本 README。  
+> 仅允许：JSON Schema、env 例、UI 状态矩阵 md、消息目录形状例、`package-scripts.snippet.json`（仅 scripts 键名与命令字符串）、本 README。 
 > **禁止**可运行业务页面 / 真翻译平台集成模块。
 
 | 文件 | 用途 |

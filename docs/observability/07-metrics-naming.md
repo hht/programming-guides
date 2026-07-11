@@ -2,23 +2,23 @@
 
 ## 不变量
 
-- 每条 metric **先登记再发射**（INPUTS §6 / 实现仓表）；禁临时无表打点进生产默认。  
-- **Label 白名单** + **基数上限**；无界维（原始 `user_id`、完整 URL、邮箱）**禁**作 label。  
+- 每条 metric **先登记再发射**（INPUTS §6 / 实现仓表）；禁临时无表打点进生产默认。 
+- **Label 白名单** + **基数上限**；无界维（原始 `user_id`、完整 URL、邮箱）**禁**作 label。 
 - 优先 OTel 语义名（如 `http.server.request.duration`）；自定义名稳定、低基数。
 
 ## 步骤规格（实现自写）
 
-1. **登记**  
-   - 字段：`name`、`type`（counter / updowncounter / histogram / gauge）、`unit`、`labels[]`、`cardinality_budget`（估计时间序列上限）、`owner_feature`。  
-   - 可对齐 [templates/metrics-registry.schema.json](./templates/metrics-registry.schema.json)。  
-2. **命名**  
-   - OTel 约定优先；自定义：`{domain}.{operation}.{thing}` 或词表钉死一种；**禁**同义双名。  
-3. **打点**  
-   - 仅从登记表创建 Instrument；label 值 ∈ 枚举或有界集（HTTP method、status class、route 模板）。  
-4. **与 correlation**  
-   - **默认不把 `correlation_id` 当 label**；关联走 logs/traces（生命周期步骤 3）。  
-5. **导出**  
-   - 经 OTLP Periodic Reader（或等价）；端点 INPUTS §4。
+1. **登记** 
+ - 字段：`name`、`type`（counter / updowncounter / histogram / gauge）、`unit`、`labels[]`、`cardinality_budget`（估计时间序列上限）、`owner_feature`。 
+ - 可对齐 [templates/metrics-registry.schema.json](./templates/metrics-registry.schema.json)。 
+2. **命名** 
+ - OTel 约定优先；自定义：`{domain}.{operation}.{thing}` 或词表中约定一种；**禁**同义双名。 
+3. **打点** 
+ - 仅从登记表创建 Instrument；label 值 ∈ 枚举或有界集（HTTP method、status class、route 模板）。 
+4. **与 correlation** 
+ - **默认不把 `correlation_id` 当 label**；关联走 logs/traces（生命周期步骤 3）。 
+5. **导出** 
+ - 经 OTLP Periodic Reader（或等价）；端点 INPUTS §4。
 
 ## 失败分类 / 默认值
 

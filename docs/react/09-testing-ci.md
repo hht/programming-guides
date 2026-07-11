@@ -17,7 +17,7 @@ e2e：`e2e/**/*.spec.ts`（Playwright 默认目录；与单元测试分离）。
 
 ## 发版 e2e（Playwright）
 
-跑法：`pnpm build && pnpm preview` 或 `vite preview` + Playwright `baseURL`。  
+跑法：`pnpm build && pnpm preview` 或 `vite preview` + Playwright `baseURL`。 
 禁依赖真实外网（mock API / MSW / 测试后端）。
 
 | # | 场景 | 断言 |

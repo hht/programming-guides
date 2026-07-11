@@ -12,23 +12,23 @@ Web3 前端的「正确性」特指：
 
 ## 六条硬不变量
 
-1. **连接钱包 ≠ 业务登录**  
-   需要后端身份时，必须 SIWE（或等价）换会话；UI 用 `sessionReady`，不用 `isConnected` 驱动业务 API。
+1. **连接钱包 ≠ 业务登录** 
+ 需要后端身份时，必须 SIWE（或等价）换会话；UI 用 `sessionReady`，不用 `isConnected` 驱动业务 API。
 
-2. **合约调用只走 typed 边界**  
-   禁止在页面里拼 `address` + 手写 ABI 片段。地址表 + 生成 ABI + 薄封装。
+2. **合约调用只走 typed 边界** 
+ 禁止在页面里拼 `address` + 手写 ABI 片段。地址表 + 生成 ABI + 薄封装。
 
-3. **写链必须 Simulate → Write → Wait**  
-   模拟失败不弹钱包；hash 只表示「已提交」；回执确认后才改乐观 UI / 清 latch。
+3. **写链必须 Simulate → Write → Wait** 
+ 模拟失败不弹钱包；hash 只表示「已提交」；回执确认后才改乐观 UI / 清 latch。
 
-4. **金额一律 `bigint`（链上单位）**  
-   展示层才 format；禁止用 `number` 做 wei/金额运算。
+4. **金额一律 `bigint`（链上单位）** 
+ 展示层才 format；禁止用 `number` 做 wei/金额运算。
 
-5. **未知交易结果禁止立即重提**  
-   pending 超时无回执 → latch；默认 fail-closed，禁止一键解锁（见 05）。
+5. **未知交易结果禁止立即重提** 
+ pending 超时无回执 → latch；默认 fail-closed，禁止一键解锁（见 05）。
 
-6. **营销面不加载钱包 SDK**  
-   官网/Landing 与 DApp 分入口或分 chunk；Home 禁 `viem`/`wagmi`/`thirdweb`（用架构 lint 强制）。
+6. **营销面不加载钱包 SDK** 
+ 官网/Landing 与 DApp 分入口或分 chunk；Home 禁 `viem`/`wagmi`/`thirdweb`（用架构 lint 强制）。
 
 ## SSOT 清单（每个项目开工时填表）
 
@@ -46,9 +46,9 @@ Web3 前端的「正确性」特指：
 
 相对「能连上钱包、能点 Swap」的 demo，须同时：
 
-- [ ] **超越 a**：`05` / `11` 中两条对照句不变量已落地（receipt 成功才算成功；unknown latch fail-closed）  
-- [ ] **超越 b**：发版钱路径 e2e 场景×断言（`09`）exit 0  
-- [ ] 合约层 codegen + 地址表；钱路径单测；有后端则 SIWE 服务端校验；CI `check`  
+- [ ] **超越 a**：`05` / `11` 中两条对照句不变量已落地（receipt 成功才算成功；unknown latch fail-closed） 
+- [ ] **超越 b**：发版钱路径 e2e 场景×断言（`09`）exit 0 
+- [ ] 合约层 codegen + 地址表；钱路径单测；有后端则 SIWE 服务端校验；CI `check` 
 
 **不**把 Sentry/第三方可观测当作超越或必勾（见元指南；`08.3` 仅参考）。
 ## 反模式速查

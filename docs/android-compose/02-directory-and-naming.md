@@ -2,41 +2,41 @@
 
 > 命名强制块：[naming-business-first.md](../meta/naming-business-first.md)。**Pass 1 业务语义先于 Pass 2 语法。**
 
-## 树（钉死词根；单/多模块可微调路径，**词根不可改**）
+## 树（写明词根；单/多模块可微调路径，**词根不可改**）
 
 ```text
 <repo>/
-  UBIQUITOUS_LANGUAGE.md
-  settings.gradle.kts
-  gradle/libs.versions.toml          # Version Catalog（推荐）
-  app/
-    src/main/AndroidManifest.xml
-    src/main/kotlin/<package>/
-      MainActivity.kt
-      <AppName>App.kt                 # 可选 Application
-      navigation/                    # NavHost、NavGraph（route 词根来自 Pass1）
-      # 单模块时 features 可放此处
-  feature/<domain>/                  # 或多模块 :feature:<domain>
-    ui/                              # Screen Composable；只收集 UiState + 发 event
-    <Domain>ViewModel.kt
-    <Domain>UiState.kt               # 不可变 data class
-    <Domain>Event.kt                 # 用户/系统事件（sealed）
-    model/                           # 纯函数 / reducer（可测）
-  core/
-    designsystem/                    # 主题、通用组件（非业务名）
-    data/                            # Repository 接口实现、网络、DataStore
-    domain/                          # 可选：跨 feature 用例纯逻辑
-  # 测试：与源码旁挂 *Test.kt / *Screenshot 等；禁平行无业务语义的 helpers 大口袋
-  # 禁：manager/、dto/、handleClick 作领域主名
+ UBIQUITOUS_LANGUAGE.md
+ settings.gradle.kts
+ gradle/libs.versions.toml # Version Catalog（推荐）
+ app/
+ src/main/AndroidManifest.xml
+ src/main/kotlin/<package>/
+ MainActivity.kt
+ <AppName>App.kt # 可选 Application
+ navigation/ # NavHost、NavGraph（route 词根来自 Pass1）
+ # 单模块时 features 可放此处
+ feature/<domain>/ # 或多模块 :feature:<domain>
+ ui/ # Screen Composable；只收集 UiState + 发 event
+ <Domain>ViewModel.kt
+ <Domain>UiState.kt # 不可变 data class
+ <Domain>Event.kt # 用户/系统事件（sealed）
+ model/ # 纯函数 / reducer（可测）
+ core/
+ designsystem/ # 主题、通用组件（非业务名）
+ data/ # Repository 接口实现、网络、DataStore
+ domain/ # 可选：跨 feature 用例纯逻辑
+ # 测试：与源码旁挂 *Test.kt / *Screenshot 等；禁平行无业务语义的 helpers 大口袋
+ # 禁：manager/、dto/、handleClick 作领域主名
 ```
 
 ## 依赖方向
 
 ```text
 app/navigation → feature/<domain>/ui → ViewModel → domain/model（纯）→ data/Repository
-                 feature/ui → core/designsystem
-                 ViewModel → Repository（接口）
-                 data → 网络 / DB / DataStore
+ feature/ui → core/designsystem
+ ViewModel → Repository（接口）
+ data → 网络 / DB / DataStore
 ```
 
 禁止：`ui` → 直接 HTTP；`data` → `ui`；Composable 持有可变业务真相当第二 SSOT。

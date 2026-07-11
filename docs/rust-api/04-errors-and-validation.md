@@ -2,9 +2,9 @@
 
 ## 不变量
 
-- 响应 JSON 统一：`{"code":"...","message":"...","fields":{optional}}`  
-- `code` ∈ INPUTS 表；HTTP status 由 code 映射（单处 `api_errors::http_status(code)`）  
-- 领域错误实现 `IntoResponse` **或** 经唯一 `api_errors::into_response`；禁止 handler 手写散落 JSON  
+- 响应 JSON 统一：`{"code":"...","message":"...","fields":{optional}}` 
+- `code` ∈ INPUTS 表；HTTP status 由 code 映射（单处 `api_errors::http_status(code)`） 
+- 领域错误实现 `IntoResponse` **或** 经唯一 `api_errors::into_response`；禁止 handler 手写散落 JSON 
 
 ## 默认映射
 
@@ -19,10 +19,10 @@
 
 ## 步骤规格
 
-1. 解码：`Json<T>` 或 `serde_json::from_slice`；未知字段策略钉死：**`#[serde(deny_unknown_fields)]`**（请求 DTO 默认开）。  
-2. 校验：手写或 `validator` — **默认手写小函数 + 表驱动**；若引入 `validator` 须全仓统一。畸形 JSON（语法错误）与未知字段一律 **`VALIDATION` 400**。  
-3. `fields`：字段 path → 人类可读或 message key（与前端约定）。  
-4. `INTERNAL`：`tracing::error!(error = ?err, ...)`；响应 `message` 固定 **`internal error`**。  
+1. 解码：`Json<T>` 或 `serde_json::from_slice`；未知字段策略写明：**`#[serde(deny_unknown_fields)]`**（请求 DTO 默认开）。 
+2. 校验：手写或 `validator` — **默认手写小函数 + 表驱动**；若引入 `validator` 须全仓统一。畸形 JSON（语法错误）与未知字段一律 **`VALIDATION` 400**。 
+3. `fields`：字段 path → 人类可读或 message key（与前端约定）。 
+4. `INTERNAL`：`tracing::error!(error = ?err, ...)`；响应 `message` 固定 **`internal error`**。 
 
 ## 单测探针
 

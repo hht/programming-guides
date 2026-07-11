@@ -12,10 +12,10 @@ submit 门闸以 **链上二次读取** 为准；后端数字可展示。
 
 [openapi-auth-claim.stub.yaml](./templates/openapi-auth-claim.stub.yaml)：
 
-- `GET /auth/nonce` · `POST /auth/verify`  
-- `POST /claim/signature` · `POST /claim/confirm`（幂等：`success` | `confirm_failed` | `already_confirmed`）  
+- `GET /auth/nonce` · `POST /auth/verify` 
+- `POST /claim/signature` · `POST /claim/confirm`（幂等：`success` | `confirm_failed` | `already_confirmed`） 
 
-业务 API 以用户提供的完整 OpenAPI 为准；本 stub 只钉登录/领取语义。
+业务 API 以用户提供的完整 OpenAPI 为准；本 stub 只约定登录/领取语义。
 
 ## 环境成对
 

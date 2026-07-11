@@ -1,45 +1,45 @@
 # 02 — 目录组织与命名
 
-> 本节刻意纠正「`components/` / `hooks/` / `utils/` 大口袋 + ABI 随处粘贴」的常见布局。  
+> 本节刻意纠正「`components/` / `hooks/` / `utils/` 大口袋 + ABI 随处粘贴」的常见布局。 
 > 命名强制块：[naming-business-first.md](../meta/naming-business-first.md)。**Pass 1 业务语义先于 Pass 2 语法。**
 
-## 树（钉死 · Vite CSR DApp）
+## 树（写明 · Vite CSR DApp）
 
 > 下列树与依赖方向为**默认且唯一**布局；禁止另起 `components/`/`hooks/`/`utils/`/`web3/` 大口袋替代本树。
 
 ```text
 src/
-  app/                     # 入口、providers、路由壳、全局 error boundary
-    bootstrap/
-    routes/
-  chain/                   # 链定义、transport、切链、explorer URL
-    chains.ts
-    transports.ts
-    wagmi-config.ts
-  contracts/               # ★ 链上合约 SSOT（见 03）
-    addresses/
-      staging/
-        56.ts              # 必含 schema 字段 env:'staging'
-      prod/
-        56.ts
-      index.ts             # 按 VITE_APP_ENV 选择表 + getWritableAddress
-    abis/                  # 手写最小 ABI 仅作过渡；优先 generated
-    generated/             # @wagmi/cli 输出（禁手改）
-    readers/               # 纯 async 读（可选，无 React）
-    writers/               # 纯 async 写 intent 构建（可选）
-    tokens.ts              # 常用 ERC20 元数据（decimals/symbol 缓存策略）
-  domain/                  # 纯业务规则：无 React、无 wagmi、无 fetch
-    <capability>/          # 与 features 同词根；例 swap / auth / rewards
-  features/                # 有 UI 的功能切片（可含 use-*）；名=<capability>（INPUTS frame 映射）
-    <capability>/          # 例 swap / genesis / rewards / community
-  widgets/                 # 跨 feature 的大块 UI（连接按钮、壳、表）
-  ui/                      # 哑组件：Button、Text、Dialog（无业务、无链）
-  api/                     # HTTP 客户端、session request、query keys
-  auth/                    # SIWE 客户端编排 + session store（无合约 ABI）
-  i18n/
-  config/                  # env、feature flags、非链配置
-  styles/
-  marketing/               # 官网；禁止 import chain/contracts/wagmi
+ app/ # 入口、providers、路由壳、全局 error boundary
+ bootstrap/
+ routes/
+ chain/ # 链定义、transport、切链、explorer URL
+ chains.ts
+ transports.ts
+ wagmi-config.ts
+ contracts/ # ★ 链上合约 SSOT（见 03）
+ addresses/
+ staging/
+ 56.ts # 必含 schema 字段 env:'staging'
+ prod/
+ 56.ts
+ index.ts # 按 VITE_APP_ENV 选择表 + getWritableAddress
+ abis/ # 手写最小 ABI 仅作过渡；优先 generated
+ generated/ # @wagmi/cli 输出（禁手改）
+ readers/ # 纯 async 读（可选，无 React）
+ writers/ # 纯 async 写 intent 构建（可选）
+ tokens.ts # 常用 ERC20 元数据（decimals/symbol 缓存策略）
+ domain/ # 纯业务规则：无 React、无 wagmi、无 fetch
+ <capability>/ # 与 features 同词根；例 swap / auth / rewards
+ features/ # 有 UI 的功能切片（可含 use-*）；名=<capability>（INPUTS frame 映射）
+ <capability>/ # 例 swap / genesis / rewards / community
+ widgets/ # 跨 feature 的大块 UI（连接按钮、壳、表）
+ ui/ # 哑组件：Button、Text、Dialog（无业务、无链）
+ api/ # HTTP 客户端、session request、query keys
+ auth/ # SIWE 客户端编排 + session store（无合约 ABI）
+ i18n/
+ config/ # env、feature flags、非链配置
+ styles/
+ marketing/ # 官网；禁止 import chain/contracts/wagmi
 ```
 
 ### 为什么这样拆
@@ -56,10 +56,10 @@ src/
 
 ### Pass 1 — 业务语义（必做）
 
-1. 第 0 周建 `UBIQUITOUS_LANGUAGE.md`：登录态、领取、授权、报价、确认失败等 **业务词 = 代码名**。  
-2. `features/` / `domain/` 目录与 Tab = **产品能力名**（`swap`/`genesis`），禁合约技术名当唯一 UI 名、禁 `web3`/`hooks` 大口袋当业务切片。  
-3. **禁** `*Dto` `*Manager` `*Helper` `handle*` `useContract` 万能 hook。  
-4. 冻结：合约字段名、React Query key、错误哨兵字面量（如 `confirm_failed`）；改名=契约变更。  
+1. 第 0 周建 `UBIQUITOUS_LANGUAGE.md`：登录态、领取、授权、报价、确认失败等 **业务词 = 代码名**。 
+2. `features/` / `domain/` 目录与 Tab = **产品能力名**（`swap`/`genesis`），禁合约技术名当唯一 UI 名、禁 `web3`/`hooks` 大口袋当业务切片。 
+3. **禁** `*Dto` `*Manager` `*Helper` `handle*` `useContract` 万能 hook。 
+4. 冻结：合约字段名、React Query key、错误哨兵字面量（如 `confirm_failed`）；改名=契约变更。 
 5. **产品名 vs 合约名**：UI 用 Genesis、链上模块可叫 `presale`——在词表写清映射，不要整库改名把 ABI 对不上。
 
 | 概念 | 推荐名 | 避免 |
@@ -95,16 +95,16 @@ src/
 | 地址表 | `<chainId>.ts` 或 `<network>.ts` | `56.ts` / `bsc.ts`（二选一，全仓统一） |
 | 测试 | 与模块同域 | `can-submit-quoted-swap.test.ts` |
 
-## 依赖方向（钉死；建议用 dependency-cruiser 固化为门禁）
+## 依赖方向（建议用 dependency-cruiser 固化为门禁）
 
 ```text
-marketing  ↛  chain | contracts | features(dapp) | wagmi | viem
-ui         ↛  domain | features | contracts | api
-domain     ↛  react | wagmi | viem | features | api
-contracts/readers|writers  →  viem, contracts/generated, chain
-features   →  domain, contracts, api, ui, auth
-auth       →  api, domain/auth（可）; ↛ features
-app        →  组装以上
+marketing ↛ chain | contracts | features(dapp) | wagmi | viem
+ui ↛ domain | features | contracts | api
+domain ↛ react | wagmi | viem | features | api
+contracts/readers|writers → viem, contracts/generated, chain
+features → domain, contracts, api, ui, auth
+auth → api, domain/auth（可）; ↛ features
+app → 组装以上
 ```
 
 ## 反例 → 正例

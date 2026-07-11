@@ -16,11 +16,11 @@
 
 跑法（与 `commands.md` / Makefile 同文）：
 
-1. 复制 `templates/docker-compose.test.yml.example` → `docker-compose.test.yml`  
-2. `export DATABASE_URL=postgresql+asyncpg://app:app@localhost:5432/app_test`  
-3. `docker compose -f docker-compose.test.yml up -d --wait`  
-4. `uv run alembic upgrade head`  
-5. `uv run pytest -m integration`（覆盖矩阵；勿使用非标准 `-count`）  
+1. 复制 `templates/docker-compose.test.yml.example` → `docker-compose.test.yml` 
+2. `export DATABASE_URL=postgresql+asyncpg://app:app@localhost:5432/app_test` 
+3. `docker compose -f docker-compose.test.yml up -d --wait` 
+4. `uv run alembic upgrade head` 
+5. `uv run pytest -m integration`（覆盖矩阵；勿使用非标准 `-count`） 
 6. `docker compose -f docker-compose.test.yml down`
 
 | # | 场景 | 何时必跑 | 断言 |
@@ -34,7 +34,7 @@
 | 7 | 缺 Idempotency-Key | 仅 §8=要 | 422 + code=VALIDATION |
 | 8 | 同 key 重放 | 仅 §8=要 | status+body 字节一致 |
 
-发版：`pytest -m integration` **收集数必须 ≥ 适用行数**（总是行 + 条件行）；收集 0 → 视为失败（在 `conftest` 用 session 钩子或显式 `assert` 计数）。  
+发版：`pytest -m integration` **收集数必须 ≥ 适用行数**（总是行 + 条件行）；收集 0 → 视为失败（在 `conftest` 用 session 钩子或显式 `assert` 计数）。 
 `11` 超越-b：所有**适用**行绿。
 
 ## CI

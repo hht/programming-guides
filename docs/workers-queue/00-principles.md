@@ -10,13 +10,13 @@
 
 ## 硬不变量
 
-1. **后端互斥**：默认 **PostgreSQL `SKIP LOCKED` 队列表**（已有 PG 权威源时钉死）；否则 **Redis Streams**。BullMQ/Sidekiq **不**作默认引擎（映射见 sources）。  
-2. **每条 Job 必有 `idempotency_key`**；冲突按 INPUTS（默认 reject）。  
-3. **可见性超时**与 **最大尝试次数** 必须钉死数字或 INPUTS 必填项；超时未 ack → 可被再次 claim。  
-4. **投递语义默认 at-least-once**；Handler **必须**按幂等设计；禁止无幂等却宣称 exactly-once。  
-5. **ack 仅在业务副作用成功提交之后**（或明确标记为可丢弃的 pure side-effect 且 INPUTS 书面）。  
-6. **超限 → 死信**（状态可查询）；禁止静默丢弃失败 Job。  
-7. **禁止**用 `setTimeout`、进程内数组、无持久化的单进程 channel 冒充生产队列。  
+1. **后端互斥**：默认 **PostgreSQL `SKIP LOCKED` 队列表**（已有 PG 权威源时写明）；否则 **Redis Streams**。BullMQ/Sidekiq **不**作默认引擎（映射见 sources）。 
+2. **每条 Job 必有 `idempotency_key`**；冲突按 INPUTS（默认 reject）。 
+3. **可见性超时**与 **最大尝试次数** 必须写明数字或 INPUTS 必填项；超时未 ack → 可被再次 claim。 
+4. **投递语义默认 at-least-once**；Handler **必须**按幂等设计；禁止无幂等却宣称 exactly-once。 
+5. **ack 仅在业务副作用成功提交之后**（或明确标记为可丢弃的 pure side-effect 且 INPUTS 写明）。 
+6. **超限 → 死信**（状态可查询）；禁止静默丢弃失败 Job。 
+7. **禁止**用 `setTimeout`、进程内数组、无持久化的单进程 channel 冒充生产队列。 
 8. **deletion-first**：无平行第二套队列产品；无 `*JobManager` 领域主名（见 `02`）。
 
 ## SSOT 表
@@ -35,13 +35,13 @@
 
 ## 禁止
 
-- 指南仓堆可运行 Worker / 队列业务模块  
-- 生产用 `setTimeout` 当队列  
-- 无幂等键入队  
-- 失败超限后无死信、静默吞错  
-- 有 PG 权威源却默认钉 BullMQ/Sidekiq 引擎（未在冲突表书面推翻）  
+- 指南仓堆可运行 Worker / 队列业务模块 
+- 生产用 `setTimeout` 当队列 
+- 无幂等键入队 
+- 失败超限后无死信、静默吞错 
+- 有 PG 权威源却默认采用 BullMQ/Sidekiq 引擎（未在冲突表中写明并推翻） 
 
 ## 超越（对照写入 11）
 
-1. `对照：B 中幂等/唯一 Job 常为可选或库扩展 → 本指南要求每条 Job 必填 idempotency_key，冲突默认 reject（见 07）`  
-2. `对照：B 中可见「进程内延时/简化演示」或未统一禁伪队列 → 本指南禁止 setTimeout/内存数组冒充生产队列，且 visibility_timeout 与 max_attempts 必须钉死或进 INPUTS（见 00/06/08）`  
+1. `对照：B 中幂等/唯一 Job 常为可选或库扩展 → 本指南要求每条 Job 必填 idempotency_key，冲突默认 reject（见 07）` 
+2. `对照：B 中可见「进程内延时/简化演示」或未统一禁伪队列 → 本指南禁止 setTimeout/内存数组冒充生产队列，且 visibility_timeout 与 max_attempts 必须写明或进 INPUTS（见 00/06/08）` 

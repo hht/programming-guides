@@ -37,7 +37,7 @@
 |------|------|
 | B 使用 `@jrichman/ink` fork | **以 P0 Ink 官方包 `ink@^7` 为准** |
 | A 未用 Pastel | 仍用 Pastel 作默认脚手架（P0 Pastel）；命令面能力对齐 A/B/C |
-| 参数解析：Pastel→Commander+Zod vs 生态 meow | **钉 Pastel+Zod**（P0 Pastel） |
+| 参数解析：Pastel→Commander+Zod vs 生态 meow | **采用 Pastel+Zod**（P0 Pastel） |
 
 ## 差距表
 

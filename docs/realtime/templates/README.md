@@ -1,6 +1,6 @@
 # templates
 
-> 仅允许：JSON Schema、env 例、scripts snippet、本 README。  
+> 仅允许：JSON Schema、env 例、scripts snippet、本 README。 
 > **禁止**可运行业务实现（无 `.ts` / `.go` / `.py` 聊天/行情/订阅服务模块）。
 
 | 文件 | 用途 |

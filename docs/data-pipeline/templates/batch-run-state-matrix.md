@@ -12,6 +12,6 @@
 | `failed` | retry 调度 | `pending` 或 `running` | attempt+1；对齐 workers-queue |
 | `failed` / `running` | 超限或 permanent | `dead` | 可查询 last_error |
 | `succeeded` | — | — | 终态；同键默认 reject 新开 |
-| `dead` | 人工重放 | 新 `pending` | **新** idempotency_key 或 INPUTS 书面 resume |
+| `dead` | 人工重放 | 新 `pending` | **新** idempotency_key 或 INPUTS 写明 resume |
 
 非法：`pending`→`succeeded`（跳过四步）；`running`→`succeeded` 且无 verify 记录。

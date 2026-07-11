@@ -4,15 +4,15 @@
 
 ```text
 # 实现仓建议落点（按应用册微调；词根不变）
-internal/realtime/           # 或 src/shared/realtime/ — 连接升级、hub、心跳（基础设施名允许）
-features/<capability>/       # 业务能力：例 orders/inbox/presence
-  <entity>/
-    subscription.ts|.go      # 订阅意图与频道名（业务词）
+internal/realtime/ # 或 src/shared/realtime/ — 连接升级、hub、心跳（基础设施名允许）
+features/<capability>/ # 业务能力：例 orders/inbox/presence
+ <entity>/
+ subscription.ts|.go # 订阅意图与频道名（业务词）
 ops/
-  realtime.md                # 可选：连接数/背压说明（非第三方 APM 必勾）
+ realtime.md # 可选：连接数/背压说明（非第三方 APM 必勾）
 ```
 
-依赖方向：`features/<业务> → realtime 连接层 → 传输`；**禁** UI 直接拼无 ACL 的裸频道字符串散落多处（频道模式集中词表 + `04`）。  
+依赖方向：`features/<业务> → realtime 连接层 → 传输`；**禁** UI 直接拼无 ACL 的裸频道字符串散落多处（频道模式集中词表 + `04`）。 
 消息字段 SSOT：`03` + schema；禁第二份「socket payload utils」分叉。
 
 UI 状态（客户端）：至少区分 `disconnected` / `connecting` / `connected` / `subscribed` / `error`（见 `08`）；矩阵写入实现仓或本册验收勾选。
@@ -21,10 +21,10 @@ UI 状态（客户端）：至少区分 `disconnected` / `connecting` / `connect
 
 ### Pass 1 — 业务语义（必做）
 
-1. 目标仓建或更新 `UBIQUITOUS_LANGUAGE.md`（Term / 含义 / 代码符号 / 禁同义词）。  
-2. **频道名、事件名、订阅操作** = 业务实体/操作词根（`order`、`inbox`、`subscribeOrder`），禁 `data`、`tmp`、`room1`、`manager`。  
-3. **禁**技术翻译名进领域模块主名：`*RealtimeManager`、`*SocketHelper`、`handleMessage*`、`*Dto`（基础设施连接层可用 `RealtimeHub` / `WebSocketConn` 等例外，见 meta）。  
-4. **禁**同义词分叉：`subscribe`/`join`/`listen` 词表只留一个（本册默认 **`subscribe`** / **`unsubscribe`**）；`event`/`message`/`push` 对外协议字段只留词表所钉（默认 envelope `type: "event"`）。  
+1. 目标仓建或更新 `UBIQUITOUS_LANGUAGE.md`（Term / 含义 / 代码符号 / 禁同义词）。 
+2. **频道名、事件名、订阅操作** = 业务实体/操作词根（`order`、`inbox`、`subscribeOrder`），禁 `data`、`tmp`、`room1`、`manager`。 
+3. **禁**技术翻译名进领域模块主名：`*RealtimeManager`、`*SocketHelper`、`handleMessage*`、`*Dto`（基础设施连接层可用 `RealtimeHub` / `WebSocketConn` 等例外，见 meta）。 
+4. **禁**同义词分叉：`subscribe`/`join`/`listen` 词表只留一个（本册默认 **`subscribe`** / **`unsubscribe`**）；`event`/`message`/`push` 对外协议字段只留词表所约定（默认 envelope `type: "event"`）。 
 5. 对外协议字段名冻结在词表；改名=契约变更。
 
 | 概念 | 正例 | 反例 |

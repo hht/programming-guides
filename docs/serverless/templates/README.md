@@ -1,6 +1,6 @@
 # templates
 
-> 仅允许：env 例、wrangler 配置例、`package-scripts.snippet.json`（仅 scripts 键名与命令字符串）、本 README。  
+> 仅允许：env 例、wrangler 配置例、`package-scripts.snippet.json`（仅 scripts 键名与命令字符串）、本 README。 
 > **禁止**可运行业务实现（无完整 Worker handler 业务模块、无可部署 app）。
 
 | 文件 | 用途 |

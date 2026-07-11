@@ -1,8 +1,8 @@
 # Object Storage — S3 兼容对象存储指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **对象上传 / 下载 / 私有桶授权**：先授权，再 put 或预签名，再校验，再读/删。  
-> **默认栈**：**S3 兼容 API**；客户端按应用语言钉 **官方/主流 SDK**（TS/JS → **AWS SDK v3** `@aws-sdk/client-s3` + `@aws-sdk/s3-request-presigner`；Go → **minio-go**；Python → **boto3**）；本地开发 **MinIO**。生产 endpoint 可为任意 S3 兼容实现（自托管 MinIO / 其它兼容服务），**禁止**把某云厂商控制台百科当本册正文。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **对象上传 / 下载 / 私有桶授权**：先授权，再 put 或预签名，再校验，再读/删。 
+> **默认栈**：**S3 兼容 API**；客户端按应用语言约定 **官方/主流 SDK**（TS/JS → **AWS SDK v3** `@aws-sdk/client-s3` + `@aws-sdk/s3-request-presigner`；Go → **minio-go**；Python → **boto3**）；本地开发 **MinIO**。生产 endpoint 可为任意 S3 兼容实现（自托管 MinIO / 其它兼容服务），**禁止**把某云厂商控制台百科当本册正文。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -17,11 +17,11 @@
 
 ## Agent 执行协议
 
-1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；按语言客户端表只读适用节  
-2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`）  
-3. 必读 [03](./03-bucket-and-object-contract.md) + [04](./04-authorize.md) + [05](./05-object-put-lifecycle.md)；落地 [06](./06-put-and-presign.md) / [07](./07-verify.md) / [08](./08-read-and-delete.md)  
-4. [commands.md](./commands.md) `check` 绿  
-5. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者）  
+1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停；按语言客户端表只读适用节 
+2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`） 
+3. 必读 [03](./03-bucket-and-object-contract.md) + [04](./04-authorize.md) + [05](./05-object-put-lifecycle.md)；落地 [06](./06-put-and-presign.md) / [07](./07-verify.md) / [08](./08-read-and-delete.md) 
+4. [commands.md](./commands.md) `check` 绿 
+5. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者） 
 
 ## 索引
 

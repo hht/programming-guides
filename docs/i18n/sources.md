@@ -13,11 +13,11 @@
 
 | ID | 仓库 | 等级 | 学什么 | 不学什么 | 品类匹配一句 |
 |----|------|------|--------|----------|--------------|
-| A | [formatjs/formatjs](https://github.com/formatjs/formatjs)（含 `react-intl`） | P1 | ICU MessageFormat SSOT、descriptor、`onError`、extract/compile | 绑死旧 Pages Router 全家桶；把 Babel 插件全集当唯一流水线 | 前端以 ICU 目录渲染文案 |
-| B | [i18next/i18next](https://github.com/i18next/i18next)（+ `react-i18next`） | P1 | namespace/懒加载、检测插件边界、插值与复数扩展面 | **钉为默认**（缺 key 常静默回退）；把 JSON 非 ICU 方言当 SSOT | 多语运行时与加载面广 |
-| C | [amannn/next-intl](https://github.com/amannn/next-intl) | P1 | App Router locale 段、RSC/CSR 消息注入、middleware 检测、ICU 消息 | 绑死某商业 CMS；把教程「宽松缺 key」当生产默认 | Next 上 locale→messages→render |
+| A | [formatjs/formatjs](https://github.com/formatjs/formatjs)（含 `react-intl`） | P1 | ICU MessageFormat SSOT、descriptor、`onError`、extract/compile | 照搬旧 Pages Router 全家桶；把 Babel 插件全集当唯一流水线 | 前端以 ICU 目录渲染文案 |
+| B | [i18next/i18next](https://github.com/i18next/i18next)（+ `react-i18next`） | P1 | namespace/懒加载、检测插件边界、插值与复数扩展面 | **定为默认**（缺 key 常静默回退）；把 JSON 非 ICU 方言当 SSOT | 多语运行时与加载面广 |
+| C | [amannn/next-intl](https://github.com/amannn/next-intl) | P1 | App Router locale 段、RSC/CSR 消息注入、middleware 检测、ICU 消息 | 照搬某商业 CMS；把教程「宽松缺 key」当生产默认 | Next 上 locale→messages→render |
 
-映射学习（非默认、不进共有必做裁决）：`lingui`、`typesafe-i18n`、`paraglide` — 仅对照类型生成；改选须 INPUTS 书面且仍映射本册 Lifecycle。
+映射学习（非默认、不进共有必做裁决）：`lingui`、`typesafe-i18n`、`paraglide` — 仅对照类型生成；改选须在 INPUTS 写明且仍映射本册 Lifecycle。
 
 ## 共有能力切条（用户可感知）
 
@@ -29,8 +29,8 @@
 | 翻译管理 SaaS / 众包平台 | 可 | 可 | 可 | **参考**（不进必勾） |
 | 自动机器翻译流水线 | — | 可 | — | **可选**（须 INPUTS；非共有） |
 
-> **共有必做**仅上表用户可感知且 ≥2 源证据的能力（加载/切换文案、可读插值句等）。  
-> **缺 key fail**、禁硬编码、CI 缺 key 红灯 → 仅进差距表 / `11` §C **超越 a1/a2**，不冒充共有。  
+> **共有必做**仅上表用户可感知且 ≥2 源证据的能力（加载/切换文案、可读插值句等）。 
+> **缺 key fail**、禁硬编码、CI 缺 key 红灯 → 仅进差距表 / `11` §C **超越 a1/a2**，不冒充共有。 
 > **禁止**把 i18next（或其它库）的静默回退 / `return key` 当作共有「失败或回退」证据。
 
 ## 差距表
@@ -52,9 +52,9 @@
 
 | 冲突 | 裁决 |
 |------|------|
-| i18next 下载量更大 | **不**钉默认；学加载/检测边界。默认钉 **ICU + FormatJS 系**（Next→`next-intl`；Vite SPA→`react-intl`），因与 P0 ICU 对齐且缺 key `onError` 一等公民 |
+| i18next 下载量更大 | **不**约定默认；学加载/检测边界。默认采用 **ICU + FormatJS 系**（Next→`next-intl`；Vite SPA→`react-intl`），因与 P0 ICU 对齐且缺 key `onError` 一等公民 |
 | 示例常 `return key` / 静默 fallback 到默认 locale | **本指南硬要求 missing-key fail**（dev 抛错；CI 红灯；prod 按 `08` 分类，禁止无日志静默） |
 | 组件内硬编码英文「先上线」 | **禁止**作用户可见 SSOT；须进目录 |
-| YAML / TS 对象 / ICU JSON 多方言并存 | **钉 JSON + ICU MessageFormat** 一种 SSOT；禁平行第二套目录格式 |
-| Next 与 Vite 是否强行同一 npm 包 | **否**：同一 **消息文件形状**；运行时按宿主表互斥钉死一行 |
+| YAML / TS 对象 / ICU JSON 多方言并存 | **采用 JSON + ICU MessageFormat** 一种 SSOT；禁平行第二套目录格式 |
+| Next 与 Vite 是否强行同一 npm 包 | **否**：同一 **消息文件形状**；运行时按宿主表互斥任选一行 |
 | PC/H5 分叉同义 key | **禁止**；同一 key 跨断点（对齐应用册文案 SSOT） |

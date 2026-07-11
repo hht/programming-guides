@@ -1,6 +1,6 @@
 # templates
 
-> 仅允许：JSON Schema、env 例、UI 状态矩阵 md、`package-scripts.snippet.json`（仅 scripts 键名与命令字符串）、本 README。  
+> 仅允许：JSON Schema、env 例、UI 状态矩阵 md、`package-scripts.snippet.json`（仅 scripts 键名与命令字符串）、本 README。 
 > **禁止**可运行上传业务实现（无 Put `.ts` / `.go` / `.py` 模块）。
 
 | 文件 | 用途 |

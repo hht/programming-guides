@@ -13,7 +13,7 @@
 | ID | 仓库 | 等级 | 学什么 | 不学什么 | 品类匹配一句 |
 |----|------|------|--------|----------|--------------|
 | A | [graphql/graphql-js](https://github.com/graphql/graphql-js) | P1 | 解析/校验/执行、错误模型、schema 运行时 | 当业务目录圣经；不学其当唯一服务框架 | GraphQL 执行与类型系统参考实现 |
-| B | [dotansimha/graphql-code-generator](https://github.com/dotansimha/graphql-code-generator) | P1 | Typed document、schema→客户端类型 | 绑死某一客户端插件全家桶 | 类型安全 operation 文档 |
+| B | [dotansimha/graphql-code-generator](https://github.com/dotansimha/graphql-code-generator) | P1 | Typed document、schema→客户端类型 | 照搬某一客户端插件全家桶 | 类型安全 operation 文档 |
 | C | [graphql-hive/graphql-yoga](https://github.com/graphql-hive/graphql-yoga) | P1 | 轻量 JS GraphQL 服务器、插件/上下文 | 抄演示业务；不学放宽鉴权 | Schema-first 可挂载 HTTP 服务 |
 
 ## 共有能力切条
@@ -25,7 +25,7 @@
 | Mutation 执行 | ✓ | — | ✓ | 必做 |
 | Document 校验 | ✓ | ✓（eslint/插件生态） | ✓ | 必做 |
 | 错误进入 `errors[]` | ✓ | — | ✓ | 必做 |
-| Typed document | — | ✓ | — | **可选（共有）** → 本册 **工程钉死升必做**（默认栈 codegen） |
+| Typed document | — | ✓ | — | **可选（共有）** → 本册 **工程写明升必做**（默认栈 codegen） |
 
 ## 差距表
 
@@ -49,8 +49,8 @@
 
 | 冲突 | 裁决 |
 |------|------|
-| Apollo Server 下载/认知更高 vs Yoga 更轻先进 | **钉 GraphQL Yoga**（先进性 > 流行度）；Apollo 仅既有仓迁移书面例外 |
+| Apollo Server 下载/认知更高 vs Yoga 更轻先进 | **采用 GraphQL Yoga**（先进性 > 流行度）；Apollo 仅既有仓迁移写明的例外 |
 | Pothos / code-first 开发体验流行 | **禁止作默认**；SDL SSOT；与「契约可评审、可多语言」一致 |
-| 仅 codegen 强具备 Typed document（共有可选） | 本册仍 **钉 codegen 必做**（工程面 / 默认栈）；acceptance B 单列升格项 |
+| 仅 codegen 强具备 Typed document（共有可选） | 本册仍 **约定 codegen 必做**（工程面 / 默认栈）；acceptance B 单列升格项 |
 | GraphQL 自动 CRUD 生成器 | **禁止**无鉴权万能 CRUD；字段显式进 SDL + Mutation 门闸 |
 | 生产开 introspection 便于调试 | **staging/prod 默认关或受控**（超越 a1） |

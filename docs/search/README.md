@@ -1,8 +1,8 @@
 # 检索（Search）指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **全文检索**（+ 可选向量检索）：索引正确、查询可授权、空结果与错误可分。  
-> **默认栈**：PostgreSQL **FTS**（`tsvector` + GIN）与 [postgres](../postgres/README.md) 对齐；**向量 = 可选 pgvector**（非默认必装）；规模触发后从 **{Elasticsearch, OpenSearch, Typesense, Meilisearch}** **钉死恰好一个**（未触发禁止引入）。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **全文检索**（+ 可选向量检索）：索引正确、查询可授权、空结果与错误可分。 
+> **默认栈**：PostgreSQL **FTS**（`tsvector` + GIN）与 [postgres](../postgres/README.md) 对齐；**向量 = 可选 pgvector**（非默认必装）；规模触发后从 **{Elasticsearch, OpenSearch, Typesense, Meilisearch}** **择一**（未触发禁止引入）。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -17,12 +17,12 @@
 
 ## Agent 执行协议
 
-1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停  
-2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`）  
-3. [03](./03-document-and-fts-index.md) / [04](./04-index-sync.md) / [05](./05-search-query-lifecycle.md)  
-4. [06](./06-ranking-hydrate-empty.md) / [07](./07-vector-optional.md) / [08](./08-scale-out-engines.md)（07/08 按 INPUTS 勾选）  
-5. [commands.md](./commands.md) `check` 绿  
-6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md)  
+1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停 
+2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`） 
+3. [03](./03-document-and-fts-index.md) / [04](./04-index-sync.md) / [05](./05-search-query-lifecycle.md) 
+4. [06](./06-ranking-hydrate-empty.md) / [07](./07-vector-optional.md) / [08](./08-scale-out-engines.md)（07/08 按 INPUTS 勾选） 
+5. [commands.md](./commands.md) `check` 绿 
+6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) 
 
 ## 索引
 

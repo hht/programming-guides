@@ -16,14 +16,14 @@
 | ID | 仓库或文档 | 等级 | 学什么 | 不学什么 | 品类匹配一句 |
 |----|------------|------|--------|----------|--------------|
 | A | [web.dev/articles/animations](https://web.dev/articles/animations) | P1w | 合成器友好属性、性能与动画关系、测量意识 | 当业务视觉规范 | 可预算的 Web 动效性能 |
-| B | [pmndrs/react-spring](https://github.com/pmndrs/react-spring) | P1 | 声明式物理/弹簧边界、可中断动画思维 | **钉为默认依赖**；无限弹簧链 | 产品 UI 动效表达 |
-| C | [Shopify/flash-list](https://github.com/Shopify/flash-list) | P1 | 列表回收、滚动性能、可测 jank 取向 | 绑死 React Native；当 Web 唯一实现 | 高性能列表/滚动 |
+| B | [pmndrs/react-spring](https://github.com/pmndrs/react-spring) | P1 | 声明式物理/弹簧边界、可中断动画思维 | **定为默认依赖**；无限弹簧链 | 产品 UI 动效表达 |
+| C | [Shopify/flash-list](https://github.com/Shopify/flash-list) | P1 | 列表回收、滚动性能、可测 jank 取向 | 照搬 React Native；当 Web 唯一实现 | 高性能列表/滚动 |
 
 ### 学习参考（不计入 3 证据源缺额；冲突表用）
 
 | 仓 | 用法 |
 |----|------|
-| [motiondivision/motion](https://github.com/motiondivision/motion) | 学 API/手势边界；**禁止**钉默认 |
+| [motiondivision/motion](https://github.com/motiondivision/motion) | 学 API/手势边界；**禁止**约定默认 |
 | [argyleink/open-props](https://github.com/argyleink/open-props) | 可学 easing/token；非动效性能标杆 |
 
 ## 共有能力切条（用户可感知）
@@ -56,9 +56,9 @@
 
 | 冲突 | 裁决 |
 |------|------|
-| 流行 Framer Motion / GSAP / Lottie vs CSS+rAF | **钉 CSS 白名单 + rAF/IO**；重库非默认（先进可测/可预算 > 下载量） |
-| react-spring / Motion 表达力强 | **可学边界，不钉默认依赖**；关键路径仍过白名单与预算 |
+| 流行 Framer Motion / GSAP / Lottie vs CSS+rAF | **采用 CSS 白名单 + rAF/IO**；重库非默认（先进可测/可预算 > 下载量） |
+| react-spring / Motion 表达力强 | **可学边界，不作默认依赖**；关键路径仍过白名单与预算 |
 | open-props vs 性能标杆 | open-props 不作证据源 C；C 用 flash-list |
 | Material Design Lite / Victory 作标杆 | **弃用**；改 flash-list（性能向） |
 | 120 fps 全面默认 | **默认 60**；120 须 INPUTS 设备档 |
-| prefers-reduced-motion 产品要「不降级」 | 允许书面例外，**仍须预算与测量**；默认仍尊重系统 |
+| prefers-reduced-motion 产品要「不降级」 | 允许写明的例外，**仍须预算与测量**；默认仍尊重系统 |

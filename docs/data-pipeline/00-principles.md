@@ -10,13 +10,13 @@
 
 ## 硬不变量
 
-1. **批处理默认**：未在 INPUTS §1 书面选 streaming 前，禁止以流式框架为默认 SSOT。  
-2. **Runner 默认 = workers-queue**：有后台执行面时对齐 [workers-queue](../workers-queue/README.md)（入队·认领·重试·死信·幂等）；**Airflow / Dagster 仅条件**（INPUTS §2）。  
-3. **每次 BatchRun 必有 `idempotency_key`**；冲突按 INPUTS（默认 reject）。  
-4. **四步不可跳**：不得「只 load 不 verify」却标 `succeeded`；verify 失败 → 不得对外发布 Dataset 为可用。  
-5. **投递/执行语义默认 at-least-once**；装载与副作用 **必须**可重入（upsert / 分区替换 / 幂等写）；禁止无幂等却宣称 exactly-once。  
-6. **成功定义**：仅当 verify **全部**通过 → `succeeded`；extract/transform/load 任一步失败 → 按 runner 重试或死信。  
-7. **禁止**裸 cron + 无持久化状态的脚本冒充生产管线（无重试上限、无死信、无 run 记录）。  
+1. **批处理默认**：未在 INPUTS §1 书面选 streaming 前，禁止以流式框架为默认 SSOT。 
+2. **Runner 默认 = workers-queue**：有后台执行面时对齐 [workers-queue](../workers-queue/README.md)（入队·认领·重试·死信·幂等）；**Airflow / Dagster 仅条件**（INPUTS §2）。 
+3. **每次 BatchRun 必有 `idempotency_key`**；冲突按 INPUTS（默认 reject）。 
+4. **四步不可跳**：不得「只 load 不 verify」却标 `succeeded`；verify 失败 → 不得对外发布 Dataset 为可用。 
+5. **投递/执行语义默认 at-least-once**；装载与副作用 **必须**可重入（upsert / 分区替换 / 幂等写）；禁止无幂等却宣称 exactly-once。 
+6. **成功定义**：仅当 verify **全部**通过 → `succeeded`；extract/transform/load 任一步失败 → 按 runner 重试或死信。 
+7. **禁止**裸 cron + 无持久化状态的脚本冒充生产管线（无重试上限、无死信、无 run 记录）。 
 8. **deletion-first**：无平行第二套「管线产品」SSOT；无 `*PipelineManager` / `*ETLService` 领域主名（见 `02`）。
 
 ## SSOT 表
@@ -37,13 +37,13 @@
 
 ## 禁止
 
-- 指南仓堆可运行 ETL 业务模块 / 真连接串  
-- 默认钉 Airflow 或 Dagster 为唯一 runner  
-- 装载成功即对外「数据已就绪」而跳过 verify  
-- 无幂等键的生产 BatchRun  
-- 批与流两套互不相干的状态机名词（须映射到同一四步）  
+- 指南仓堆可运行 ETL 业务模块 / 真连接串 
+- 默认采用 Airflow 或 Dagster 为唯一 runner 
+- 装载成功即对外「数据已就绪」而跳过 verify 
+- 无幂等键的生产 BatchRun 
+- 批与流两套互不相干的状态机名词（须映射到同一四步） 
 
 ## 超越（对照写入 11）
 
-1. `对照：B 中同步/模型跑通常即可标成功，应用级 VerifyCheck 弱或不统一 → 本指南要求 verify 硬门闸，未通过不得 succeeded（见 07/05）`  
-2. `对照：B 中编排器常为默认入口 → 本指南默认 workers-queue 承载 Batch Job，Airflow/Dagster 仅 INPUTS 条件启用（见 01/08）`  
+1. `对照：B 中同步/模型跑通常即可标成功，应用级 VerifyCheck 弱或不统一 → 本指南要求 verify 硬门闸，未通过不得 succeeded（见 07/05）` 
+2. `对照：B 中编排器常为默认入口 → 本指南默认 workers-queue 承载 Batch Job，Airflow/Dagster 仅 INPUTS 条件启用（见 01/08）` 

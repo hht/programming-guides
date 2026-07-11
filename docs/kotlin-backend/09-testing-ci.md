@@ -16,11 +16,11 @@
 
 跑法（与 `commands.md` / Makefile 同文）：
 
-1. 复制 `templates/docker-compose.test.yml.example` → `docker-compose.test.yml`  
-2. `export DATABASE_URL=jdbc:postgresql://localhost:5432/app_test?user=app&password=app`（与 compose 例同文）  
-3. `docker compose -f docker-compose.test.yml up -d --wait`  
-4. Flyway 随应用启动或 `./gradlew flywayMigrate`（钉死一种；默认与生产同：启动 migrate）  
-5. `./gradlew test -PincludeTags=integration`（或 `@Tag("integration")` 过滤；覆盖矩阵）  
+1. 复制 `templates/docker-compose.test.yml.example` → `docker-compose.test.yml` 
+2. `export DATABASE_URL=jdbc:postgresql://localhost:5432/app_test?user=app&password=app`（与 compose 例同文） 
+3. `docker compose -f docker-compose.test.yml up -d --wait` 
+4. Flyway 随应用启动或 `./gradlew flywayMigrate`（选定一种；默认与生产同：启动 migrate） 
+5. `./gradlew test -PincludeTags=integration`（或 `@Tag("integration")` 过滤；覆盖矩阵） 
 6. `docker compose -f docker-compose.test.yml down`
 
 | # | 场景 | 何时必跑 | 断言 |
@@ -34,7 +34,7 @@
 | 7 | 缺 Idempotency-Key | 仅 §8=要 | 400 + code=VALIDATION |
 | 8 | 同 key 重放 | 仅 §8=要 | status+body 字节一致 |
 
-发版：integration 测试 **收集数必须 ≥ 适用行数**；收集 0 → 视为失败。  
+发版：integration 测试 **收集数必须 ≥ 适用行数**；收集 0 → 视为失败。 
 `11` 超越-b：所有**适用**行绿。
 
 ## CI

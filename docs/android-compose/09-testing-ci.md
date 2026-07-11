@@ -31,7 +31,7 @@
 | 门禁 | 何时 |
 |------|------|
 | 单元 / Turbine | 每 PR `check` |
-| Compose UI Test（模拟器或托管） | 每 PR 或 nightly（须在 commands 写死）；**发版必绿** 矩阵 1–5 + 7 |
+| Compose UI Test（模拟器或托管） | 每 PR 或 nightly（须在 commands 写明）；**发版必绿** 矩阵 1–5 + 7 |
 | 矩阵 6 | 有鉴权则发版必绿；无则 `N/A` |
 | `check-inputs` | 每 PR（含矩阵已填） |
 | `check-acceptance` | 每 PR：核对 `11` **A+B+D**（**不含** C） |

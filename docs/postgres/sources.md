@@ -14,8 +14,8 @@
 | ID | 仓库 | 等级 | 学什么 | 不学什么 | 匹配 |
 |----|------|------|--------|----------|------|
 | A | [supabase/supabase](https://github.com/supabase/supabase) | P1 | PG+RLS 产品实践 | 整站抄业务 | 托管 PG 平台 |
-| B | [drizzle-team/drizzle-orm](https://github.com/drizzle-team/drizzle-orm) | P1 | 迁移/类型 SQL | 绑死 TS | SQL 演进 |
-| C | [launchbadge/sqlx](https://github.com/launchbadge/sqlx) | P1 | SQL 纪律 | 绑死 Rust | 查询正确性 |
+| B | [drizzle-team/drizzle-orm](https://github.com/drizzle-team/drizzle-orm) | P1 | 迁移/类型 SQL | 照搬 TS | SQL 演进 |
+| C | [launchbadge/sqlx](https://github.com/launchbadge/sqlx) | P1 | SQL 纪律 | 照搬 Rust | 查询正确性 |
 
 ## 共有
 

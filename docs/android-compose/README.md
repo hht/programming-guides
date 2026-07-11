@@ -1,8 +1,8 @@
 # Android Compose — Kotlin + Jetpack Compose 指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **Kotlin + Jetpack Compose** Android 应用：单向数据流、可测、配置变更后状态不丢。  
-> **默认栈**：**Kotlin** + **Compose BOM**（先进）+ **ViewModel** + **UiState `data class`**（禁 LiveData 作默认）+ **Navigation Compose** + **Coroutines + Flow**；测试 **Turbine** + **Compose UI Test**；DI **可选**（默认构造注入/简单工厂；若用 Hilt 须书面写入 INPUTS）。  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **Kotlin + Jetpack Compose** Android 应用：单向数据流、可测、配置变更后状态不丢。 
+> **默认栈**：**Kotlin** + **Compose BOM**（先进）+ **ViewModel** + **UiState `data class`**（禁 LiveData 作默认）+ **Navigation Compose** + **Coroutines + Flow**；测试 **Turbine** + **Compose UI Test**；DI **可选**（默认构造注入/简单工厂；若用 Hilt 须写明写入 INPUTS）。 
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -15,12 +15,12 @@
 
 ## Agent 执行协议
 
-1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停  
-2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`）  
-3. 必读 [03](./03-uistate-and-viewmodel.md) + [04](./04-compose-ui-and-state-matrix.md) + [05](./05-uistate-lifecycle.md)  
-4. 落地 [06](./06-navigation-compose.md) + [07](./07-config-change-and-savedstate.md) + [08](./08-data-layer-and-flow.md)  
-5. [commands.md](./commands.md) `check` 绿  
-6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者）  
+1. [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或停 
+2. [01](./01-stack.md) + [02](./02-directory-and-naming.md)（建 `UBIQUITOUS_LANGUAGE.md`） 
+3. 必读 [03](./03-uistate-and-viewmodel.md) + [04](./04-compose-ui-and-state-matrix.md) + [05](./05-uistate-lifecycle.md) 
+4. 落地 [06](./06-navigation-compose.md) + [07](./07-config-change-and-savedstate.md) + [08](./08-data-layer-and-flow.md) 
+5. [commands.md](./commands.md) `check` 绿 
+6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者） 
 
 ## 索引
 

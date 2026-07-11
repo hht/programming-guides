@@ -1,10 +1,10 @@
-# 04 — 模型 Artifact 版本钉死
+# 04 — 模型 Artifact 版本
 
 ## 不变量
 
-- 生产推理进程绑定 **显式** `model_id` + `artifact_version`。  
-- **`latest` 禁止**作为生产唯一解析目标（可在开发文档出现，但启动配置必须解析到具体 semver 或 digest）。  
-- 加载前校验 manifest / digest；失败 → **进程不接流量**（启动非 0）或就绪探针失败。  
+- 生产推理进程绑定 **显式** `model_id` + `artifact_version`。 
+- **`latest` 禁止**作为生产唯一解析目标（可在开发文档出现，但启动配置必须解析到具体 semver 或 digest）。 
+- 加载前校验 manifest / digest；失败 → **进程不接流量**（启动非 0）或就绪探针失败。 
 - 请求若携带 `model_id` / `artifact_version`，必须与已加载集合匹配；否则 `inference.model_mismatch`，**禁止**静默 fallback。
 
 ## Artifact 身份
@@ -19,18 +19,18 @@
 
 ```text
 artifacts/<model_id>/<artifact_version>/
-  model.onnx          # 或 runtime 约定文件名
-  MANIFEST.json
+ model.onnx # 或 runtime 约定文件名
+ MANIFEST.json
 ```
 
-对象存储 URI 等价：不可变对象键含 version/digest；覆盖写同键 **禁止**（或启用对象版本且应用钉死 version id）。
+对象存储 URI 等价：不可变对象键含 version/digest；覆盖写同键 **禁止**（或启用对象版本且应用写明 version id）。
 
 ## 启动加载步骤
 
-1. 读环境/配置：`MODEL_ID`、`ARTIFACT_VERSION`（及 URI/路径）。  
-2. 取 artifact 字节或本地文件；计算或核对 sha256。  
-3. 与 `MANIFEST.json` / INPUTS 声明一致 → `InferenceRuntime.load(...)`。  
-4. 缓存「已加载集合」`{(model_id, artifact_version)}` 供步骤 authorize/validate 使用。  
+1. 读环境/配置：`MODEL_ID`、`ARTIFACT_VERSION`（及 URI/路径）。 
+2. 取 artifact 字节或本地文件；计算或核对 sha256。 
+3. 与 `MANIFEST.json` / INPUTS 声明一致 → `InferenceRuntime.load(...)`。 
+4. 缓存「已加载集合」`{(model_id, artifact_version)}` 供步骤 authorize/validate 使用。 
 5. 多模型（INPUTS §16）：对每个条目重复 1–4；**禁止**半加载仍报就绪。
 
 ## 滚动发布
@@ -38,7 +38,7 @@ artifacts/<model_id>/<artifact_version>/
 | 策略 | 说明 |
 |------|------|
 | 蓝绿 / 新实例 | 新 `ARTIFACT_VERSION` 的新进程；流量切完再下线旧版 |
-| 同进程热换 | **默认不做**；若做须 INPUTS 书面 + 并发安全 + 旧请求仍回旧 `artifact_version` |
+| 同进程热换 | **默认不做**；若做须在 INPUTS 写明 + 并发安全 + 旧请求仍回旧 `artifact_version` |
 
 ## 失败分类
 

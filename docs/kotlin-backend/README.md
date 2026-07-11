@@ -1,9 +1,9 @@
 # Kotlin HTTP API 开发指南
 
-> **这是工程指南，不是半成品项目。**  
-> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**从零实现世界级门槛的 Kotlin HTTP API。  
-> **默认栈**：Kotlin ≥2.0 + **Gradle (Kotlin DSL)** + **Ktor** + **kotlinx.serialization** + **Exposed** + **Flyway** + **SLF4J/Logback** + JUnit 5 + detekt + ktlint。  
-> **来源**：[sources.md](./sources.md)  
+> **这是工程指南，不是半成品项目。** 
+> 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**从零实现世界级门槛的 Kotlin HTTP API。 
+> **默认栈**：Kotlin ≥2.0 + **Gradle (Kotlin DSL)** + **Ktor** + **kotlinx.serialization** + **Exposed** + **Flyway** + **SLF4J/Logback** + JUnit 5 + detekt + ktlint。 
+> **来源**：[sources.md](./sources.md) 
 > **对位**：[../go/](../go/README.md) · [../fastapi/](../fastapi/README.md)（同品类、不同语言）
 
 ## 品类一句话
@@ -16,14 +16,14 @@
 
 ## Agent 执行协议
 
-1. 校验 [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或列缺口（停）  
-2. 按 [01](./01-stack.md) 用 **Gradle** 建项目；目录按 [02](./02-directory-and-naming.md)  
-3. 按 [03](./03-http-server.md) 落地 Application/路由/超时/优雅退出  
-4. 按 [04](./04-errors-and-validation.md) / [05](./05-request-lifecycle.md) / [06](./06-persistence.md) 实现核心路径（**自写，勿抄业务模块**）  
-5. 按 [07](./07-auth.md) / [08](./08-quality.md) 接鉴权与质量  
-6. 复制 templates：`Makefile.snippet`→`Makefile`；`docker-compose.test.yml.example`→`docker-compose.test.yml`；`env.example`→`.env.example`；可选 `gradle-libs.versions.toml.example`→`gradle/libs.versions.toml`  
-7. [commands.md](./commands.md)：`make check`；发版前 **`make test-integration`**  
-8. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) 全勾  
+1. 校验 [INPUTS.md](./INPUTS.md) → `INPUTS OK` 或列缺口（停） 
+2. 按 [01](./01-stack.md) 用 **Gradle** 建项目；目录按 [02](./02-directory-and-naming.md) 
+3. 按 [03](./03-http-server.md) 落地 Application/路由/超时/优雅退出 
+4. 按 [04](./04-errors-and-validation.md) / [05](./05-request-lifecycle.md) / [06](./06-persistence.md) 实现核心路径（**自写，勿抄业务模块**） 
+5. 按 [07](./07-auth.md) / [08](./08-quality.md) 接鉴权与质量 
+6. 复制 templates：`Makefile.snippet`→`Makefile`；`docker-compose.test.yml.example`→`docker-compose.test.yml`；`env.example`→`.env.example`；可选 `gradle-libs.versions.toml.example`→`gradle/libs.versions.toml` 
+7. [commands.md](./commands.md)：`make check`；发版前 **`make test-integration`** 
+8. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) 全勾 
 
 ## 文档索引
 

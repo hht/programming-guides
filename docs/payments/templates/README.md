@@ -1,6 +1,6 @@
 # templates
 
-> 仅允许：JSON Schema、状态矩阵 md、env 例、package-scripts snippet、本 README。  
+> 仅允许：JSON Schema、状态矩阵 md、env 例、package-scripts snippet、本 README。 
 > **禁止**可运行业务实现（无 Checkout `.ts` / Stripe 教程模块）。
 
 | 文件 | 用途 |

@@ -2,31 +2,31 @@
 
 ## 不变量
 
-全文唯一主路径：`路由 → Query → 渲染 → Zod → Mutation → 缓存收敛 → UI`。  
+全文唯一主路径：`路由 → Query → 渲染 → Zod → Mutation → 缓存收敛 → UI`。 
 远程实体列表/详情 **禁止** 进 Zustand（与 `00` 一致）。
 
 超越：
 
-1. `对照：B 中未见「远程实体列表禁止进客户端全局 store」硬门闸 → Query SSOT`  
+1. `对照：B 中未见「远程实体列表禁止进客户端全局 store」硬门闸 → Query SSOT` 
 2. `对照：B 中更弱/未见「await invalidate 后再 navigate」硬顺序 → 本指南要求该顺序 + e2e#2`
 
 ## 步骤规格
 
-1. 用户打开路由 → `useQuery`（**默认**；全仓统一，不用 Suspense 除非 INPUTS 声明）。  
-2. 渲染四态：`pending` / `error` / `empty` / `success`（与 `04` 一致）。  
-3. 用户提交：RHF + `zodResolver(schema)`；`schema` 在 `api/schemas/`；与请求体同一 Zod。  
-4. `useMutation`：  
-   - `mutationFn` 只调 `api/client`  
-   - `onSuccess` **钉死顺序**：  
-     1. **默认** `await queryClient.invalidateQueries({ queryKey: queryKeys.x.all })`  
-        （例外：同实体已有完整最终值时可用 `setQueryData` 代替；须在单测断言 `setQueryData` 而非 invalidate，并在 PR 注明例外）  
-     2. 若 INPUTS 要求跳转：再 `navigate(...)`  
-     **禁止**未 await invalidate 就 navigate（避免列表页读到旧 cache）  
-   - `onError`：  
-     - `VALIDATION` + `error.fields` → `form.setError(path, { message: t(key) })`  
-     - 无 `fields` → form root 或 toast `messageKey`  
-     - 其它 code → toast  
-5. 进行中：`disabled={isPending}`；mutation 未结束禁止再 fire。  
+1. 用户打开路由 → `useQuery`（**默认**；全仓统一，不用 Suspense 除非 INPUTS 声明）。 
+2. 渲染四态：`pending` / `error` / `empty` / `success`（与 `04` 一致）。 
+3. 用户提交：RHF + `zodResolver(schema)`；`schema` 在 `api/schemas/`；与请求体同一 Zod。 
+4. `useMutation`： 
+ - `mutationFn` 只调 `api/client` 
+ - `onSuccess` **写明顺序**： 
+ 1. **默认** `await queryClient.invalidateQueries({ queryKey: queryKeys.x.all })` 
+ （例外：同实体已有完整最终值时可用 `setQueryData` 代替；须在单测断言 `setQueryData` 而非 invalidate，并在 PR 注明例外） 
+ 2. 若 INPUTS 要求跳转：再 `navigate(...)` 
+ **禁止**未 await invalidate 就 navigate（避免列表页读到旧 cache） 
+ - `onError`： 
+ - `VALIDATION` + `error.fields` → `form.setError(path, { message: t(key) })` 
+ - 无 `fields` → form root 或 toast `messageKey` 
+ - 其它 code → toast 
+5. 进行中：`disabled={isPending}`；mutation 未结束禁止再 fire。 
 
 ## 乐观更新（可选）
 
