@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "check-inputs": "echo 'implement: validate docs/realtime INPUTS predicates'",
+    "test": "echo 'implement: unit probes from 09-testing-ci.md'",
+    "test:e2e-realtime": "echo 'implement: release matrix from 09-testing-ci.md'",
+    "check-acceptance": "echo 'implement: self-check 11 A+B+D'",
+    "check": "echo 'implement: check-inputs && test && check-acceptance'"
+  }
+}

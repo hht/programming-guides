@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/saas/membership.schema.json",
+  "title": "Membership",
+  "description": "Example shape for subject↔tenant membership. status=invited must not pass Tenant Gate as active.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "tenant_id",
+    "subject",
+    "role_id",
+    "status",
+    "created_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Membership id. Prefer UUID."
+    },
+    "tenant_id": {
+      "type": "string",
+      "description": "FK to Tenant.id"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Authenticated subject id from Session Gate (align docs/auth)."
+    },
+    "role_id": {
+      "type": "string",
+      "description": "FK to Role; alternatively store role enum string if INPUTS fixed-matrix mode."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "invited", "revoked"],
+      "description": "Only active passes Tenant Gate membership step."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "revoked_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    }
+  }
+}

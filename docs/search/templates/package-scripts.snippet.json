@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "check-inputs": "echo 'Implement: validate docs/search INPUTS predicates'",
+    "migrate": "atlas migrate apply --url \"$DATABASE_URL\"",
+    "test": "echo 'Implement: search lifecycle probes (hit, scope, empty, sync)'",
+    "check-acceptance": "echo 'Implement: verify 11-world-class-acceptance checkboxes'",
+    "check": "npm run check-inputs && npm run migrate && npm run test && npm run check-acceptance"
+  }
+}

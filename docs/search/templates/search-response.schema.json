@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/search/search-response.schema.json",
+  "title": "SearchResponse",
+  "oneOf": [
+    {
+      "title": "SearchSuccess",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "hits"],
+      "properties": {
+        "status": { "const": "ok" },
+        "hits": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["entity", "id"],
+            "properties": {
+              "entity": { "type": "string" },
+              "id": { "type": "string" },
+              "score": { "type": ["number", "null"] },
+              "title": { "type": ["string", "null"] },
+              "snippet": { "type": ["string", "null"] },
+              "attributes": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        },
+        "total": { "type": ["integer", "null"], "minimum": 0 },
+        "has_more": { "type": ["boolean", "null"] },
+        "degraded": {
+          "type": "boolean",
+          "default": false,
+          "description": "True when vector path failed and FTS fallback used."
+        }
+      }
+    },
+    {
+      "title": "SearchEmpty",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "code", "hits"],
+      "properties": {
+        "status": { "const": "ok" },
+        "code": { "const": "search.empty" },
+        "hits": { "type": "array", "maxItems": 0 }
+      }
+    },
+    {
+      "title": "SearchError",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "code"],
+      "properties": {
+        "status": { "const": "error" },
+        "code": {
+          "type": "string",
+          "enum": [
+            "search.validation",
+            "search.forbidden",
+            "search.timeout",
+            "search.unavailable",
+            "search.internal"
+          ]
+        },
+        "message": { "type": "string" }
+      }
+    }
+  ]
+}

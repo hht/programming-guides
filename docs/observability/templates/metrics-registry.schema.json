@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/observability/metrics-registry.schema.json",
+  "title": "MetricsRegistry",
+  "type": "object",
+  "required": ["metrics"],
+  "properties": {
+    "metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "type", "unit", "labels", "cardinality_budget", "owner_feature"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "type": {
+            "type": "string",
+            "enum": ["counter", "updowncounter", "histogram", "gauge"]
+          },
+          "unit": { "type": "string" },
+          "labels": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "cardinality_budget": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Estimated max time series for this instrument"
+          },
+          "owner_feature": { "type": "string", "minLength": 1 },
+          "notes": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

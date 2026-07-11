@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/realtime/channel-acl.schema.json",
+  "title": "RealtimeChannelAclRegistry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "channels"],
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "channels": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["pattern", "visibility", "description"],
+        "properties": {
+          "pattern": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Business channel pattern, e.g. order:{order_id}"
+          },
+          "visibility": { "type": "string", "enum": ["public", "private"] },
+          "description": { "type": "string", "minLength": 1 },
+          "authz_predicate": {
+            "type": "string",
+            "description": "Name of authorize_subscribe predicate in ubiquitous language"
+          }
+        }
+      }
+    }
+  }
+}

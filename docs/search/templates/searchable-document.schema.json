@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/search/searchable-document.schema.json",
+  "title": "SearchableDocument",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["entity", "id", "fields"],
+  "properties": {
+    "entity": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Business entity name from ubiquitous language (e.g. topic, document)."
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable primary key as string."
+    },
+    "fields": {
+      "type": "object",
+      "description": "Searchable and display field map; keys are business attribute names.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["value", "searchable", "weight"],
+        "additionalProperties": false,
+        "properties": {
+          "value": { "type": ["string", "null"] },
+          "searchable": { "type": "boolean" },
+          "weight": {
+            "type": "string",
+            "enum": ["A", "B", "C", "D", "none"],
+            "description": "FTS setweight class; none = display-only."
+          }
+        }
+      }
+    },
+    "visibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tenant_id": { "type": ["string", "null"] },
+        "owner_id": { "type": ["string", "null"] },
+        "level": {
+          "type": "string",
+          "enum": ["public", "authenticated", "private", "custom"]
+        }
+      }
+    }
+  }
+}

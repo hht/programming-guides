@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "check-inputs": "echo 'implement: validate docs/saas INPUTS predicates'",
+    "test": "echo 'implement: unit tests per docs/saas/09'",
+    "test:e2e-saas": "echo 'implement: release matrix per docs/saas/09'",
+    "check-acceptance": "echo 'implement: checklist 11 A+B+D'",
+    "check": "echo 'implement: check-inputs && test && check-acceptance'"
+  }
+}

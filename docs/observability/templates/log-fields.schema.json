@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/observability/log-fields.schema.json",
+  "title": "StructuredLogLine",
+  "type": "object",
+  "required": ["timestamp", "level", "correlation_id", "service"],
+  "properties": {
+    "timestamp": { "type": "string", "minLength": 1 },
+    "level": {
+      "type": "string",
+      "enum": ["debug", "info", "warn", "error"]
+    },
+    "message": { "type": "string" },
+    "event": { "type": "string" },
+    "correlation_id": { "type": "string", "minLength": 1 },
+    "service": { "type": "string", "minLength": 1 },
+    "trace_id": { "type": "string" },
+    "span_id": { "type": "string" },
+    "error": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string" },
+        "message": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "anyOf": [
+    { "required": ["message"] },
+    { "required": ["event"] }
+  ],
+  "additionalProperties": true
+}

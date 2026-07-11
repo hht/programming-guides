@@ -1,0 +1,33 @@
+-- Example shape for PG SKIP LOCKED job table.
+-- Apply via Atlas (or postgres-guide migration SSOT); do not run as ad-hoc prod DDL from the guide repo.
+-- Adjust types/names only with a written migration plan.
+
+CREATE TABLE IF NOT EXISTS jobs (
+  id                uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  queue_name        text NOT NULL,
+  job_type          text NOT NULL,
+  payload           jsonb NOT NULL,
+  idempotency_key   text NOT NULL,
+  state             text NOT NULL
+                    CHECK (state IN ('pending', 'claimed', 'succeeded', 'retry_scheduled', 'dead')),
+  attempt           integer NOT NULL DEFAULT 0,
+  max_attempts      integer NOT NULL DEFAULT 5,
+  visible_at        timestamptz NOT NULL DEFAULT now(),
+  claimed_by        text,
+  claimed_at        timestamptz,
+  last_error        text,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+  updated_at        timestamptz NOT NULL DEFAULT now(),
+  CONSTRAINT jobs_idempotency_key_unique UNIQUE (queue_name, idempotency_key)
+);
+
+CREATE INDEX IF NOT EXISTS jobs_claim_idx
+  ON jobs (queue_name, state, visible_at);
+
+-- Optional execution dedupe ledger (see 07-idempotency.md)
+CREATE TABLE IF NOT EXISTS job_results (
+  idempotency_key   text PRIMARY KEY,
+  status            text NOT NULL CHECK (status IN ('succeeded')),
+  result_ref        text,
+  completed_at      timestamptz NOT NULL DEFAULT now()
+);

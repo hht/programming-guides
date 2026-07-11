@@ -28,6 +28,8 @@
 | [desktop-tauri](../desktop-tauri/README.md) | Tauri 2 跨端桌面（Command Lifecycle；备选） |
 | [expo](../expo/README.md) | Expo 跨端移动妥协层（Screen State Lifecycle） |
 
+> **Wave 4 进行中（规格已写 · 对抗未 5/5 · 勿标 DONE）**：[realtime](../realtime/README.md) · [workers-queue](../workers-queue/README.md) · [saas](../saas/README.md) · [search](../search/README.md) · [observability](../observability/README.md)
+
 ## Wave 执行序
 
 ### Wave 1 — 收口
@@ -60,11 +62,11 @@
 
 | 序 | 目录 | 说明 | 状态 |
 |----|------|------|------|
-| 12 | `realtime` | WS/SSE/订阅 | |
-| 13 | `workers-queue` | 后台任务·出队重试·幂等 | |
-| 14 | `saas` | 多租户·计费·RBAC | |
-| 15 | `search` | 全文/向量检索边界 | |
-| 16 | `observability` | 日志·指标·追踪（**可选册**；领域指南仍不把 APM 当必勾） | |
+| 12 | `realtime` | WS/SSE/订阅 | **进行中** · 勿标 DONE |
+| 13 | `workers-queue` | 后台任务·出队重试·幂等 | **进行中** · 勿标 DONE |
+| 14 | `saas` | 多租户·计费·RBAC | **进行中** · 勿标 DONE |
+| 15 | `search` | 全文/向量检索边界 | **进行中** · 勿标 DONE |
+| 16 | `observability` | 日志·指标·追踪（**可选册**；领域指南仍不把 APM 当必勾） | **进行中** · 勿标 DONE |
 
 ### Wave 5 — 云与边缘（有单再开）
 

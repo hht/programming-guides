@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/saas/tenant.schema.json",
+  "title": "Tenant",
+  "description": "Example shape for a tenant row. Default model: shared schema + tenant_id on all tenant-scoped tables.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "created_at"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Tenant primary key. Prefer UUID."
+    },
+    "slug": {
+      "type": ["string", "null"],
+      "description": "Optional URL-safe identifier for path/subdomain resolve candidates."
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name."
+    },
+    "plan_code": {
+      "type": ["string", "null"],
+      "description": "Billing plan code when billing is enabled; null if N/A."
+    },
+    "seat_limit": {
+      "type": ["integer", "null"],
+      "minimum": 1,
+      "description": "Max seats when billing/seats enabled."
+    },
+    "billing_status": {
+      "type": ["string", "null"],
+      "enum": ["trialing", "active", "past_due", "canceled", null],
+      "description": "BillingStatus; null when billing N/A."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "deleted_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Soft-delete timestamp if used."
+    }
+  }
+}
