@@ -1,5 +1,7 @@
 # 02 — 目录与命名
 
+> 命名强制块：[naming-business-first.md](../meta/naming-business-first.md)。**Pass 1 业务语义先于 Pass 2 语法。**
+
 ## 目录树（钉死）
 
 ```text
@@ -12,7 +14,7 @@
     cli.ts              # Pastel 入口（shebang）
     commands/           # Pastel 文件路由（唯一命令面）
       index.tsx         # 默认命令
-      <cmd>.tsx
+      <cmd>.tsx         # cmd = 用户说出的业务动词
       <ns>/
         index.tsx
         <sub>.tsx
@@ -40,6 +42,21 @@ cli.ts → runtime/machine-result（take）
 禁止：`domain` → `ink` | `services`；`ui` → `services` | `config` | `process.env`（展示数据由 props 注入）。
 
 ## 命名
+
+### Pass 1 — 业务语义（必做）
+
+1. 目标仓建 `UBIQUITOUS_LANGUAGE.md`（CLI 用户语言 = 命令语言）。  
+2. **命令 / 子命令 / domain 模块** = 用户任务与业务操作（`auth login`、`deploy release`），禁 `run`/`exec`/`do-stuff`/`manage`。  
+3. **禁** `*Helper` `*Manager` `process*` `handle*` 作命令或 domain 导出名。  
+4. exit 语义、错误文案与词表同根。
+
+| 概念 | 正例 | 反例 |
+|------|------|------|
+| 命令 | `auth login` | `runAuth` / `doLogin` |
+| domain | `domain/session.ts` | `domain/auth-manager.ts` |
+| 副作用 | `services/fetch-profile.ts` | `services/http-helper.ts` |
+
+### Pass 2 — 语法（后）
 
 | 种类 | 规则 |
 |------|------|

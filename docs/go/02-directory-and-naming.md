@@ -1,5 +1,7 @@
 # 02 — 目录与命名
 
+> 命名强制块：[naming-business-first.md](../meta/naming-business-first.md)。**Pass 1 业务语义先于 Pass 2 语法。**
+
 ## 树（钉死）
 
 ```text
@@ -14,9 +16,9 @@
     server/                # chi router、middleware、Listen
     apierrors/
     auth/                  # 鉴权中间件与解析
-    <bounded-context>/     # 例 users、billing
+    <bounded-context>/     # 例 users、billing —— 业务名，非 tech
       handler.go
-      service.go           # 用例
+      service.go           # 用例编排（文件名=层；导出符号用业务动词）
       # 无 SQL 字符串
     db/                    # sqlc 生成（禁手改）
   sql/
@@ -40,9 +42,25 @@ cmd/api → server → <bc>/handler → <bc>/service → db(sqlc) → pgx
 
 ## 命名
 
+### Pass 1 — 业务语义（必做）
+
+1. 目标仓建 `UBIQUITOUS_LANGUAGE.md`。  
+2. **bounded context 包名** = 业务资源/能力（`users`、`billing`、`orders`），禁 `core`/`common`/`manager`。  
+3. 导出函数/类型 = 业务操作与实体（`PlaceOrder`、`Order`），**禁** `OrderService`、`OrderDto`、`HandleCreate`、`ProcessRequest`。  
+4. HTTP path、错误码、OpenAPI `operationId` 与词表同根；改名=契约变更。  
+5. `service.go` / `handler.go` 是**层文件名**，不是给类型挂 `*Service` 后缀的借口。
+
+| 概念 | 正例 | 反例 |
+|------|------|------|
+| 包 | `internal/orders` | `internal/order_manager` |
+| 用例 | `func (s *Service) PlaceOrder(...)` | `func HandlePlace(...)` |
+| 错误码 | `ORDER_NOT_FOUND` | `ERR_404` / `ENTITY_MISSING` |
+
+### Pass 2 — 语法（后）
+
 | 种类 | 规则 |
 |------|------|
-| 包名 | 短小、无下划线；bc 用复数资源名 `users` |
-| migrate 文件 | `{version}_{name}.up.sql` / `.down.sql` |
-| sqlc query | `-- name: GetUser :one` |
-| 错误码 | `SCREAMING_SNAKE` 与 INPUTS 一致 |
+| 包名 | 短小、无下划线；bc 用复数资源名（来自 Pass 1） |
+| migrate 文件 | `{version}_{business_name}.up.sql` / `.down.sql` |
+| sqlc query | `-- name: GetUser :one`（名=业务） |
+| 错误码 | `SCREAMING_SNAKE` 与 INPUTS / 词表一致 |

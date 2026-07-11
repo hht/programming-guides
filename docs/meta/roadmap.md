@@ -32,7 +32,8 @@
 | 序 | 目录 | 说明 | 状态 |
 |----|------|------|------|
 | 2 | `nextjs` | App Router；与 Vite `react` 分册 | DONE |
-| 3 | `postgres` | 建模·迁移·事务·RLS | **进行中** |
+| 3 | `postgres` | 建模·迁移·事务·RLS | DONE |
+| 4 | `auth` | 会话/OAuth/JWT/跨端鉴权 | **进行中** |
 | 3 | `postgres` | 建模·迁移·事务·RLS |
 | 4 | `auth` | 会话/OAuth/JWT/跨端鉴权边界 |
 | 5 | `graphql` | Schema-first API（对位 REST 册） |

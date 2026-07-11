@@ -5,7 +5,7 @@
 | 维 | 勾选 | 证据 |
 |----|------|------|
 | 目录组织 | [ ] | `02` |
-| 命名 / 词表 | [ ] | query-keys / schema 名 |
+| 命名 / 词表 | [ ] | `02` Pass1 词表 + query-keys/schema |
 | 代码风格 | [ ] | `01` 钉栈 |
 | 工具链 | [ ] | Vite + pnpm lock |
 | 门禁 | [ ] | `commands.md` |

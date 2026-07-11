@@ -5,7 +5,7 @@
 - [ ] 每屏线框 + 唯一主 CTA  
 - [ ] 状态矩阵完整  
 - [ ] a11y 表 PASS  
-- [ ] Figma Auto Layout + 命名  
+- [ ] Figma Auto Layout + **Pass1 业务命名**（禁 screen-1）  
 - [ ] figma-notes.md 链接  
 - [ ] 实现清单  
 - [ ] `09` 矩阵 1–6  

@@ -23,7 +23,7 @@
 | 维度 | 要求 | 验收证据（写入领域 acceptance） |
 |------|------|----------------------------------|
 | 目录组织 | **必做** | `02` 有树 + 依赖方向；禁类型大口袋 |
-| 命名 / 词表 | **必做** | 词表或命名表；协议字段冻结说明 |
+| 命名 / 词表 | **必做** | **业务优先**：领域/实体/业务操作 = 代码与目录名；`02` 含领域词表（或指向 `UBIQUITOUS_LANGUAGE.md`）；协议字段冻结；**语法（snake/kebab）只作第二层**；禁 `*Dto`/`*Manager`/`handle*` 等技术翻译名进领域。强制块：[naming-business-first.md](./naming-business-first.md) |
 | 代码风格 | **必做** | `01` 钉栈；显式>隐式；禁无关炫技 |
 | 工具链 | **必做** | 脚手架命令 + lockfile 策略 |
 | 门禁 | **必做** | `commands.md`：PR check / 发版 e2e |
@@ -186,7 +186,7 @@ gh repo clone org/name /tmp/bench-<name> -- --depth 1
 | A | Agent 执行协议 / 闭环 |
 | B | 核心正确性路径规格 |
 | C | INPUTS / 契约 / 地址或等价 SSOT |
-| D | 目录·命名·UI 状态交付 |
+| D | 目录·**业务命名/词表**·UI 状态交付 |
 | E | 测试矩阵 / commands / acceptance |
 
 #### 粘贴用 prompt 骨架
@@ -249,7 +249,7 @@ docs(<domain>): <一句话 why>
 | `INPUTS.md` | 设计/API/环境/品类契约；缺则停 |
 | `00-principles.md` | 不变量；SSOT 表 |
 | `01-stack-*.md` | 脚手架、锁版本、Compiler/等价 |
-| `02-directory-and-naming.md` | 目录树、依赖方向 |
+| `02-directory-and-naming.md` | 目录树、依赖方向、**业务命名词表（Pass 1）**、语法表（Pass 2） |
 | `03+` | 每文件：步骤规格或契约；差距表行有落入 |
 | `09-testing-ci.md` | 单测 case→期望；e2e 场景×断言；CI 何时 |
 | `10-checklist.md` | 开工顺序勾选 |
@@ -328,9 +328,10 @@ docs(<domain>): <一句话 why>
 3. [ ] 差距表含「落入文件」列  
 4. [ ] P0≥3；默认栈已按 §3.4 钉死  
 5. [ ] `docs/<domain>/` 按 §4 齐套；templates 无业务实现  
-6. [ ] acceptance 含 §1.2 必做；运维第三方非必勾  
-7. [ ] 对抗按 §3.6 五角 5/5 PASS  
-8. [ ] 根 docs README 已挂链接  
+6. [ ] `02` 含 **Pass 1 业务词表**（见 [naming-business-first.md](./naming-business-first.md)）；语法表仅为 Pass 2  
+7. [ ] acceptance 含 §1.2 必做；运维第三方非必勾  
+8. [ ] 对抗按 §3.6 五角 5/5 PASS  
+9. [ ] 根 docs README 已挂链接  
 
 ---
 

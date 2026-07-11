@@ -1,7 +1,7 @@
 # 02 — 目录组织与命名
 
 > 本节刻意纠正「`components/` / `hooks/` / `utils/` 大口袋 + ABI 随处粘贴」的常见布局。  
-> 命名以 **业务能力** 与 **边界** 为准，不以文件类型堆文件夹。
+> 命名强制块：[naming-business-first.md](../meta/naming-business-first.md)。**Pass 1 业务语义先于 Pass 2 语法。**
 
 ## 推荐树（Vite CSR DApp）
 
@@ -55,9 +55,29 @@ src/
 | `features/` | 按产品面切片，避免 `views/dapp/swap/...` 与 `hooks/` 双口袋 |
 | `marketing/` | 强制包体隔离 |
 
-## 命名规则
+## 命名
 
-### 文件
+### Pass 1 — 业务语义（必做）
+
+1. 第 0 周建 `UBIQUITOUS_LANGUAGE.md`：登录态、领取、授权、报价、确认失败等 **业务词 = 代码名**。  
+2. `features/` / `domain/` 目录与 Tab = **产品能力名**（`swap`/`genesis`），禁合约技术名当唯一 UI 名、禁 `web3`/`hooks` 大口袋当业务切片。  
+3. **禁** `*Dto` `*Manager` `*Helper` `handle*` `useContract` 万能 hook。  
+4. 冻结：合约字段名、React Query key、错误哨兵字面量（如 `confirm_failed`）；改名=契约变更。  
+5. **产品名 vs 合约名**：UI 用 Genesis、链上模块可叫 `presale`——在词表写清映射，不要整库改名把 ABI 对不上。
+
+| 概念 | 推荐名 | 避免 |
+|------|--------|------|
+| 钱包已连接且可签名 | `walletReady` | `isAuthenticated` |
+| SIWE 会话有效 | `sessionReady` | 用 `isConnected` 代替 |
+| 需要签名登录 | `needsSignIn` | — |
+| 写链就绪（连上 + 正确链） | `writeReady` | — |
+| 业务 Tab | 产品名：`swap` / `stake` | 合约名当 Tab；`page1` |
+| 合约域 | 与 Solidity 名对齐：`PreSale` | 无词表映射的随意改名 |
+| 纯规则 | `canSubmitQuotedSwap` | `validateTx` / `processSwap` |
+
+无词表就开写 → 两周后必出现 `isAuth` / `isLogin` / `connected` 三套同义词。
+
+### Pass 2 — 语法（后）
 
 | 类型 | 模式 | 例 |
 |------|------|-----|
@@ -67,19 +87,6 @@ src/
 | 生成物 | `generated/*.ts` | `generated/swap-router.ts` |
 | 地址表 | `<chainId>.ts` 或 `<network>.ts` | `56.ts` / `bsc.ts`（二选一，全仓统一） |
 | 测试 | 与模块同域 | `can-submit-quoted-swap.test.ts` |
-
-### 符号
-
-| 概念 | 推荐名 | 避免 |
-|------|--------|------|
-| 钱包已连接且可签名 | `walletReady` | `isAuthenticated` |
-| SIWE 会话有效 | `sessionReady` | 用 `isConnected` 代替 |
-| 需要签名登录 | `needsSignIn` | — |
-| 写链就绪（连上 + 正确链） | `writeReady` | — |
-| 业务 Tab | 产品名：`swap` / `stake` | 合约名当 Tab |
-| 合约域 | 与 Solidity 名对齐：`PreSale` | 强行改成产品名导致搜不到 |
-
-> **产品名 vs 合约名**：UI 用 Genesis，链上模块可叫 `presale`——在词表里写清映射，不要整库改名把 ABI 对不上。
 
 ## 依赖方向（建议用 dependency-cruiser 固化）
 
@@ -105,12 +112,3 @@ app        →  组装以上
 ❌ src/hooks/useContract.ts 万能 hook
 ✅ contracts 层具体函数 + features 内薄 hook
 ```
-
-## Ubiquitous Language
-
-新项目第 0 周建 `UBIQUITOUS_LANGUAGE.md`：
-
-- 登录态、领取、授权、报价、确认失败等 **业务词 = 代码名**
-- 冻结：合约字段名、React Query key、错误哨兵字面量（如 `confirm_failed`）
-
-无词表就开写 → 两周后必出现 `isAuth` / `isLogin` / `connected` 三套同义词。

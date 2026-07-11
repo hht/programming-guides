@@ -2,7 +2,7 @@
 
 - [ ] INPUTS OK  
 - [ ] uv 项目 + 锁文件 + `app = create_app()`  
-- [ ] 目录树按 `02`  
+- [ ] 目录树按 `02`；**Pass1 `UBIQUITOUS_LANGUAGE.md`**  
 - [ ] healthz/readyz  
 - [ ] 错误 shape + RequestID + BodyLimit  
 - [ ] Alembic 初迁 + 主写用例  
