@@ -38,33 +38,29 @@
 | [payments](../payments/README.md) | 支付边界 · Payment Intent Lifecycle |
 | [rust-api](../rust-api/README.md) | Rust HTTP · axum + tokio + sqlx |
 | [kotlin-backend](../kotlin-backend/README.md) | Kotlin HTTP · Ktor + Exposed |
+| [cms-headless](../cms-headless/README.md) | Headless CMS · Content Publish Lifecycle |
+| [i18n](../i18n/README.md) | 文案 SSOT · Locale Resolve Lifecycle |
+| [design-tokens](../design-tokens/README.md) | Token 工程 · Token Apply Lifecycle |
+| [ml-inference](../ml-inference/README.md) | 推理服务 · Inference Request Lifecycle |
+| [data-pipeline](../data-pipeline/README.md) | ETL/批流 · Batch Job Lifecycle |
 
 ## Wave 执行序
 
-### Wave 1–4
+### Wave 1–5
 
 全部 **DONE**（见上表）。
-
-### Wave 5 — 云与边缘
-
-| 目录 | 说明 | 状态 |
-|------|------|------|
-| `serverless` | Functions/边缘运行时 | DONE |
-| `object-storage` | S3 兼容对象存储 | DONE |
-| `email-delivery` | 事务邮件·模板·投递 | DONE |
-| `payments` | 支付集成边界 | DONE |
-| `rust-api` | Rust HTTP（axum） | DONE |
-| `kotlin-backend` | Kotlin HTTP（Ktor） | DONE |
 
 ### Wave 6 — 垂直产品
 
 | 目录 | 说明 | 状态 |
 |------|------|------|
-| `cms-headless` | Headless CMS 集成 · Content Publish Lifecycle | specs 齐套（未对抗；**勿标 DONE**） |
-| `i18n` | 文案 SSOT·locale 流水线 | specs 齐套（对抗前；勿标 DONE） |
-| `design-tokens` | Token 工程（对位 ui-ux）· Token Apply Lifecycle | specs 落盘（未标 DONE） |
-| `ml-inference` | 模型推理服务边界（非训练百科）· Inference Request Lifecycle | specs 齐套（未对抗；**勿标 DONE**） |
-| `data-pipeline` | ETL/批流薄册 · Batch Job Lifecycle | specs 齐套（未对抗；**勿标 DONE**） |
+| `cms-headless` | Headless CMS 集成 | DONE |
+| `i18n` | 文案 SSOT·locale 流水线 | DONE |
+| `design-tokens` | Token 工程（对位 ui-ux） | DONE |
+| `ml-inference` | 模型推理服务边界（非训练百科） | DONE |
+| `data-pipeline` | ETL/批流薄册 | DONE |
+
+> **Roadmap Waves 1–6 所列目录均已 DONE（各册对抗 5/5 PASS）。** 候选池仍不自动开工。
 
 ## 候选池（未立项；热度高时升 Wave）
 

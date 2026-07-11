@@ -39,3 +39,8 @@
 | [**ops/**](./ops/README.md) | 部署·回滚·健康 |
 | [**node-cli/**](./node-cli/README.md) | Node TUI CLI |
 | [**defi/**](./defi/README.md) | EVM DeFi |
+| [**cms-headless/**](./cms-headless/README.md) | Headless CMS · Content Publish Lifecycle |
+| [**i18n/**](./i18n/README.md) | 文案 SSOT · Locale Resolve Lifecycle |
+| [**design-tokens/**](./design-tokens/README.md) | Design Tokens · Token Apply Lifecycle |
+| [**ml-inference/**](./ml-inference/README.md) | 推理服务 · Inference Request Lifecycle |
+| [**data-pipeline/**](./data-pipeline/README.md) | ETL/批流 · Batch Job Lifecycle |
