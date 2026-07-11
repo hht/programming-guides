@@ -18,6 +18,7 @@
 | [agent](../agent/README.md) | Tool-using Agent（Py+TS） |
 | [ops](../ops/README.md) | 部署·密钥·回滚·健康·CI |
 | [nextjs](../nextjs/README.md) | App Router 全栈 Web |
+| [postgres](../postgres/README.md) | PostgreSQL 建模·迁移·事务·RLS |
 
 ## Wave 执行序
 
@@ -34,10 +35,8 @@
 | 2 | `nextjs` | App Router；与 Vite `react` 分册 | DONE |
 | 3 | `postgres` | 建模·迁移·事务·RLS | DONE |
 | 4 | `auth` | 会话/OAuth/JWT/跨端鉴权 | **进行中** |
-| 3 | `postgres` | 建模·迁移·事务·RLS |
-| 4 | `auth` | 会话/OAuth/JWT/跨端鉴权边界 |
-| 5 | `graphql` | Schema-first API（对位 REST 册） |
-| 6 | `redis` | 缓存·锁·限流·会话存储 |
+| 5 | `graphql` | Schema-first API（对位 REST 册） | |
+| 6 | `redis` | 缓存·锁·限流·会话存储 | |
 
 ### Wave 3 — 原生 / 桌面 / 创意
 

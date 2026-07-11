@@ -24,5 +24,5 @@
 
 ## 超越
 
-1. `对照：B 中更弱/未见「写路径强制 Server Action + Zod + revalidate」硬门闸 → 本指南要求`  
-2. `对照：B 中更弱/未见「Client 边界最小化（默认 RSC）」硬门闸 → 本指南要求`
+1. `对照：B 中更弱/未见「写路径强制 Server Action + Zod + revalidate」硬门闸 → 本指南要求写路径强制 Server Action + Zod + revalidate（见 05）`  
+2. `对照：B 中更弱/未见「Client 边界最小化（默认 RSC）」硬门闸 → 本指南要求默认 RSC、Client 边界最小（见 03/05）`

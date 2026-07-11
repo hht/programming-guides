@@ -21,4 +21,4 @@
 
 ## CI
 
-PR：`check`。发版：`check` + Playwright 矩阵 1–4。
+PR：`check`。发版：`check` + Playwright 场景 1–4；场景 5–6 由 `check`/`build` 与密钥扫描覆盖（不必进 Playwright）。

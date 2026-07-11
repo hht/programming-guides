@@ -18,8 +18,8 @@
 4. `useMutation`：  
    - `mutationFn` 只调 `api/client`  
    - `onSuccess` **钉死顺序**：  
-     1. `await queryClient.invalidateQueries({ queryKey: queryKeys.x.all })`  
-        **或** 对同一实体 `setQueryData` 写完最终值（二选一；选 setQueryData 则单测断言 setQueryData 而非 invalidate）  
+     1. **默认** `await queryClient.invalidateQueries({ queryKey: queryKeys.x.all })`  
+        （例外：同实体已有完整最终值时可用 `setQueryData` 代替；须在单测断言 `setQueryData` 而非 invalidate，并在 PR 注明例外）  
      2. 若 INPUTS 要求跳转：再 `navigate(...)`  
      **禁止**未 await invalidate 就 navigate（避免列表页读到旧 cache）  
    - `onError`：  

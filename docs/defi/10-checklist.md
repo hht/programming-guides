@@ -8,4 +8,4 @@
 6. [ ] `pnpm check` / 发版 e2e  
 7. [ ] [11](./11-world-class-acceptance.md) 全勾  
 
-> 已迁至 [`10-checklist.md`](./10-checklist.md)（规范名）；本文件保留作别名。
+> 规范文件名：本文件与 `10-new-project-checklist.md` 同文；以 `10-checklist.md` 为准。

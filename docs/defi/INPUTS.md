@@ -35,6 +35,7 @@ Claim 签名包必须能绑定：`address`、`amount`（或等价）、`deadline
 | 用户调用地址 | **仅代理/入口地址**；实现合约地址若提供只作只读标注 `implementationOnly: true`，**禁止**写入 |
 | 代币表 | symbol、address、decimals、`approveResetToZero?: boolean` |
 | 默认授权策略 | 勾选其一：`exact`（推荐）/ `infinite` / `Permit2`（仅合约已集成） |
+| **写路径清单** | 对本产品实际使用的 path 逐项勾选：`swap` / `approve` / `presale` / `stake` / `reward_claim` / `other`。未用项写 `unused`。`presale`/`stake`/`other` 若勾选使用 → 须附步骤规格（或链到设计/合约调用说明）；勾 `unused` 则禁止实现该 path |
 
 ## 4. 运行密钥（可进 env，勿进 git）
 

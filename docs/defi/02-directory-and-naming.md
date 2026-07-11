@@ -3,7 +3,9 @@
 > 本节刻意纠正「`components/` / `hooks/` / `utils/` 大口袋 + ABI 随处粘贴」的常见布局。  
 > 命名强制块：[naming-business-first.md](../meta/naming-business-first.md)。**Pass 1 业务语义先于 Pass 2 语法。**
 
-## 推荐树（Vite CSR DApp）
+## 树（钉死 · Vite CSR DApp）
+
+> 下列树与依赖方向为**默认且唯一**布局；禁止另起 `components/`/`hooks/`/`utils/`/`web3/` 大口袋替代本树。
 
 ```text
 src/
@@ -27,14 +29,9 @@ src/
     writers/               # 纯 async 写 intent 构建（可选）
     tokens.ts              # 常用 ERC20 元数据（decimals/symbol 缓存策略）
   domain/                  # 纯业务规则：无 React、无 wagmi、无 fetch
-    swap/
-    auth/
-    rewards/
-  features/                # 有 UI 的功能切片（可含 use-*）
-    swap/
-    genesis/
-    rewards/
-    community/
+    <capability>/          # 与 features 同词根；例 swap / auth / rewards
+  features/                # 有 UI 的功能切片（可含 use-*）；名=<capability>（INPUTS frame 映射）
+    <capability>/          # 例 swap / genesis / rewards / community
   widgets/                 # 跨 feature 的大块 UI（连接按钮、壳、表）
   ui/                      # 哑组件：Button、Text、Dialog（无业务、无链）
   api/                     # HTTP 客户端、session request、query keys
@@ -77,6 +74,16 @@ src/
 
 无词表就开写 → 两周后必出现 `isAuth` / `isLogin` / `connected` 三套同义词。
 
+### 状态 UI 落点（DApp）
+
+| 态 | 落点 |
+|----|------|
+| disconnected / connected / sessionReady | `features/<capability>/` + [templates/page-state-matrix.md](./templates/page-state-matrix.md) |
+| 交易 pending / success / error / latch | 同 feature 写路径 UI；规则见 `05`/`07` |
+| marketing | `marketing/`（无链上态） |
+
+具体 capability 名由 INPUTS frame 映射；树中 `swap`/`genesis` 等仅为示例切片名。
+
 ### Pass 2 — 语法（后）
 
 | 类型 | 模式 | 例 |
@@ -88,7 +95,7 @@ src/
 | 地址表 | `<chainId>.ts` 或 `<network>.ts` | `56.ts` / `bsc.ts`（二选一，全仓统一） |
 | 测试 | 与模块同域 | `can-submit-quoted-swap.test.ts` |
 
-## 依赖方向（建议用 dependency-cruiser 固化）
+## 依赖方向（钉死；建议用 dependency-cruiser 固化为门禁）
 
 ```text
 marketing  ↛  chain | contracts | features(dapp) | wagmi | viem

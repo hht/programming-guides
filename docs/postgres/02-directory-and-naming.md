@@ -14,6 +14,8 @@ ops/
 
 依赖：`migrations → 应用代码`；禁应用启动时 `CREATE TABLE`。
 
+UI 状态矩阵：本品类默认 **N/A**（数据层无产品 UI）。
+
 ## 命名
 
 ### Pass 1 — 业务语义（必做）

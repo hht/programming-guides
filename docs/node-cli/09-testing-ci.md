@@ -33,4 +33,4 @@
 | 触发 | 命令 |
 |------|------|
 | PR | `pnpm check` |
-| 发版 | `pnpm check` && `pnpm build` && `pnpm test:e2e`（矩阵 1–4） |
+| 发版 | `pnpm check` && `pnpm build` && `pnpm test:e2e`（矩阵 **1–4 必跑**；**#5 取消**在可测时跑，不可测则记 `N/A — 无取消入口`） |

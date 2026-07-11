@@ -2,6 +2,8 @@
 
 > 命名强制块：[naming-business-first.md](../meta/naming-business-first.md)。**Pass 1 业务语义先于 Pass 2 语法。**
 
+## 树（钉死）
+
 ```text
 src/
   app/
@@ -43,3 +45,10 @@ src/
 | Route segment | kebab-case 文件夹（词来自 Pass 1） |
 | Action 名 | `verbNounAction`；verb/noun = 词表 |
 | Schema | `*Schema`；根 = 词表实体 |
+
+## 状态 UI 落点
+
+| 态 | 落点 |
+|----|------|
+| pending/empty/error/success | 对应 `page.tsx` + `loading.tsx`/`error.tsx`（App Router）或 segment 内组件 |
+| 未登录 | INPUTS §5 Cookie → middleware/`07`；§5 无 → N/A |

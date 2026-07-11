@@ -40,6 +40,8 @@ cmd/api → server → <bc>/handler → <bc>/service → db(sqlc) → pgx
 
 禁止：`utils/`、`models/`、`common/` 大口袋；`db` 生成包手改；`handler` 直接 `pgxpool` 绕过 service（`/healthz`/`/readyz` 除外）。
 
+UI 状态矩阵：本品类默认 **N/A**（HTTP API，无产品 UI 四态交付；a11y 裁剪见 `11`）。
+
 ## 命名
 
 ### Pass 1 — 业务语义（必做）
@@ -53,7 +55,7 @@ cmd/api → server → <bc>/handler → <bc>/service → db(sqlc) → pgx
 | 概念 | 正例 | 反例 |
 |------|------|------|
 | 包 | `internal/orders` | `internal/order_manager` |
-| 用例 | `func (s *Service) PlaceOrder(...)` | `func HandlePlace(...)` |
+| 用例 | `func (o *Orders) Place(...)`（类型=业务实体/上下文） | `func HandlePlace(...)` / `type OrderService` |
 | 错误码 | `ORDER_NOT_FOUND` | `ERR_404` / `ENTITY_MISSING` |
 
 ### Pass 2 — 语法（后）

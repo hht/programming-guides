@@ -54,6 +54,8 @@ main → api.routes → <bc>.service → models/db
 
 禁止：`utils/` 大口袋；路由内直接写业务 SQL；循环 import。
 
+UI 状态矩阵：本品类默认 **N/A**（HTTP API，无产品 UI 四态交付）。
+
 ## 命名
 
 ### Pass 1 — 业务语义（必做）

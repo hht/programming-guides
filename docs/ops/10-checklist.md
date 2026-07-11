@@ -2,7 +2,7 @@
 
 - [ ] INPUTS OK  
 - [ ] Dockerfile + compose  
-- [ ] 密钥名表（**业务用途名**）+ 无明文入库  
+- [ ] 密钥名表（**Pass1 业务用途名**）+ 无明文入库  
 - [ ] ci.yml + release.yml（action 钉 SHA）  
 - [ ] Release Lifecycle 可走通  
 - [ ] healthcheck + 回滚  

@@ -41,6 +41,8 @@ cli.ts → runtime/machine-result（take）
 
 禁止：`domain` → `ink` | `services`；`ui` → `services` | `config` | `process.env`（展示数据由 props 注入）。
 
+UI 状态矩阵：Ink 帧态按 INPUTS 命令矩阵交付；**非** Web 四态产品 UI。无 TUI 交互的纯批处理命令可标 `N/A`。
+
 ## 命名
 
 ### Pass 1 — 业务语义（必做）
