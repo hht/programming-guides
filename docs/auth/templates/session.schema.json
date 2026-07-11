@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/auth/session.schema.json",
+  "title": "Session",
+  "description": "Example shape for a server-side opaque session row. Store token_hash only — never plaintext token.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "subject",
+    "token_hash",
+    "expires_at",
+    "created_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Session id (opaque). Prefer UUID or ULID."
+    },
+    "subject": {
+      "type": "string",
+      "description": "Authenticated subject identifier (user/account id)."
+    },
+    "token_hash": {
+      "type": "string",
+      "description": "One-way hash of the cookie token (e.g. SHA-256 hex). Plaintext token MUST NOT be stored."
+    },
+    "csrf_token": {
+      "type": "string",
+      "description": "CSRF secret for double-submit; required when using default CSRF strategy."
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Absolute expiry."
+    },
+    "idle_expires_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Sliding idle expiry; optional if only absolute TTL is used."
+    },
+    "revoked_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Set on logout/revoke; null if active."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "user_agent": {
+      "type": ["string", "null"],
+      "description": "Optional audit metadata."
+    },
+    "ip": {
+      "type": ["string", "null"],
+      "description": "Optional audit metadata."
+    }
+  }
+}

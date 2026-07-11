@@ -8,6 +8,9 @@
 | [**react/**](./react/README.md) | Vite SPA |
 | [**nextjs/**](./nextjs/README.md) | Next.js App Router |
 | [**postgres/**](./postgres/README.md) | PostgreSQL 数据层 |
+| [**auth/**](./auth/README.md) | 会话 Cookie / OAuth/OIDC / Session Gate |
+| [**graphql/**](./graphql/README.md) | Schema-first GraphQL（Yoga + SDL + Typed document） |
+| [**redis/**](./redis/README.md) | 缓存 · 锁 · 限流 · 会话存储 |
 | [**go/**](./go/README.md) | Go HTTP API |
 | [**fastapi/**](./fastapi/README.md) | FastAPI |
 | [**ui-ux/**](./ui-ux/README.md) | UI/UX + Figma |
