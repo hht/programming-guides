@@ -9,7 +9,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` 树 + 依赖方向 |
 | 命名 / 词表 | [ ] | 目标仓 `UBIQUITOUS_LANGUAGE.md` = `02` Pass1 |
-| 代码风格 | [ ] | `01` 显式平台；禁双默认 |
+| 代码风格 | [ ] | §0 三准则经由 meta/language-gates/typescript.md 硬门闸落实 + commands lint 绿 |
 | 工具链 | [ ] | Workers+Wrangler+TS 或 INPUTS 备选/条件栈 |
 | 门禁 | [ ] | `commands.md` |
 | 代码极简 | [ ] | 无第二平台 SSOT；指南无业务实现 |

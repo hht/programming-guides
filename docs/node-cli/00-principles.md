@@ -1,19 +1,23 @@
-# 00 — 原则与不变量
+# 00 — 原则与框架 MUST
 
-## 不变量
+> Normative: MUST / MUST NOT（RFC 2119）  
+> 语言层 → [typescript Language Gate](../meta/language-gates/typescript.md)。本文件只含 **Node TUI/CLI 框架 MUST**。
 
-1. **指南 ≠ 项目**：本目录无业务实现；实现只在新仓。 
-2. **TTY 与管道分离**：交互 UI 仅在 `stdin.isTTY && stdout.isTTY`（或 INPUTS 另定）下全屏 TUI；否则走非交互路径或 **exit 2**。 
-3. **Exit code 是契约**：成功=0；运行失败=**1**；用法/校验=**2**；取消（Esc/SIGINT/SIGTERM）=**130**。取消不得与失败同码。 
-4. **人类 vs 机器输出**：人类提示 → stderr；机器结果 → stdout（格式由 INPUTS 约定）。 
-5. **终局挂载点**： 
- - 命令内：`setMachineResult(payload?)` → 设 `process.exitCode` → `useApp().exit()` 
- - **`source/cli.ts`**：`await app.run()` **返回后**再 `const r = takeMachineResult(); if (r != null) stdout.write(...)` 
- - 模块：`source/runtime/machine-result.ts`（仅 get/set/take，无业务） 
- - **禁止**挂载中 `process.exit()` / 挂载中写机器 stdout 
-6. **取消不写 `ERROR:`**：取消仅短提示或静默；`ERROR:<CODE>` 只用于失败。 
-7. **密钥不进仓库、不进 stdout**。 
-8. **deletion-first**；**SSOT** 见下表。
+## 框架 MUST
+
+| ID | 关键词 | 规约 | 探针 |
+|----|--------|------|------|
+| F01 | MUST NOT | 在本指南仓堆业务实现；实现只在新仓 | 目录抽检 |
+| F02 | MUST | 交互 UI 仅在 `stdin.isTTY && stdout.isTTY`（或 INPUTS 另定）下全屏 TUI | `09` case |
+| F03 | MUST | 非 TTY 走非交互路径或 **exit 2** | 同上 |
+| F04 | MUST | Exit：成功=0；运行失败=1；用法/校验=2；取消=130 | INPUTS 矩阵 + 单测 |
+| F05 | MUST NOT | 取消与失败同码 | 同上 |
+| F06 | MUST | 人类提示 → stderr；机器结果 → stdout | e2e / 单测 |
+| F07 | MUST | 终局：`setMachineResult` → `exitCode` → `useApp().exit()`；`cli.ts` 在 `app.run()` **返回后** `takeMachineResult` 再写 stdout | `09` |
+| F08 | MUST NOT | 挂载中 `process.exit()` / 挂载中写机器 stdout | 同上 |
+| F09 | MUST NOT | 取消路径写 `ERROR:`；`ERROR:<CODE>` 仅失败 | 单测 |
+| F10 | MUST NOT | 密钥进仓库或 stdout | 安全抽检 |
+| F11 | MUST | deletion-first；依赖方向见下表 | 架构 lint / 抽检 |
 
 ## SSOT 表
 
@@ -37,4 +41,4 @@ cli.ts → Pastel → commands → ui → domain
 runtime/machine-result ← commands（set）← cli.ts（take）
 ```
 
-禁止：`domain` → `ink`|`services`；`ui` → `config`|`services`|`process.env`（只收 props）。
+**MUST NOT**：`domain` → `ink`|`services`；`ui` → `config`|`services`|`process.env`（只收 props）。

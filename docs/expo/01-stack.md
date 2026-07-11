@@ -19,6 +19,9 @@
 | 构建 | EAS Build + `expo prebuild`（CNG） | **禁裸 eject 默认** |
 | 测试 | Jest + RNTL；发版可用 Maestro/Detox（INPUTS 择一写明） | 禁仅手动冒烟作主路径 |
 | 包管理 | pnpm 或 npm（实现仓选定一种 + lockfile） | 锁版本；`expo install` 对齐 peer |
+| Lint / fmt | ESLint + Prettier | 命令 SSOT → [typescript Language Gate](../meta/language-gates/typescript.md) |
+
+语言硬门闸：[typescript.md](../meta/language-gates/typescript.md)（**不**在本文件复述）。框架 MUST 见 `00`。
 
 ## 脚手架
 

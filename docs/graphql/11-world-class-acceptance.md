@@ -9,7 +9,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` 词根 + 依赖 |
 | 命名 / 词表 | [ ] | 目标仓 `UBIQUITOUS_LANGUAGE.md` = `02` Pass1 |
-| 代码风格 | [ ] | `01` 显式 SDL/Yoga |
+| 代码风格 | [ ] | §0 三准则经由 meta/language-gates/typescript.md 硬门闸落实 + commands lint 绿 |
 | 工具链 | [ ] | `01` + lockfile + codegen/eslint |
 | 门禁 | [ ] | `commands.md` |
 | 代码极简 | [ ] | 无平行 code-first SSOT；无万能 CRUD 层 |

@@ -13,7 +13,10 @@
 | 契约 | **SDL** `.graphql` | 禁 code-first 作默认；禁无 SDL 的「仅 TS 类型当契约」 |
 | 服务（TS） | **GraphQL Yoga** | **Pothos 禁止默认**；Apollo Server 仅既有仓迁移写明的例外 |
 | 执行内核 | **graphql**（graphql-js） | 与 Yoga 同进程；勿平行第二执行器 |
-| Lint / 静态 | **graphql-eslint** | PR 必跑；规则集覆盖 unused fields / known directives 等 |
+| Lint / 静态 | **graphql-eslint** + ESLint/Prettier/tsc | GraphQL 专用 lint + [typescript Language Gate](../meta/language-gates/typescript.md) |
+
+语言硬门闸：[typescript.md](../meta/language-gates/typescript.md)。
+
 | 持久化操作 | 可选；staging/prod **宜启用** | 未登记 operation → 拒绝（INPUTS §12） |
 | 客户端 | **Typed document**（graphql-codegen） | 禁主路径手写无类型字符串 |
 | 鉴权 | **docs/auth** Session Gate / Bearer | 禁 GraphQL 端点无门闸 Mutation |

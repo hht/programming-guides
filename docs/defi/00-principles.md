@@ -1,36 +1,33 @@
-# 00 — 原则与不变量
+# 00 — 原则与框架 MUST
+
+> Normative: MUST / MUST NOT（RFC 2119）  
+> 语言层 → [typescript Language Gate](../meta/language-gates/typescript.md)。  
+> SPA 工程习惯链 [react/00](../react/00-principles.md)；**本册 SSOT** 是链上钱路径不变量。
 
 ## 决策优先级
 
 **正确性 > 可验证性 > 简洁性 > 复用 > 速度**
 
-Web3 前端的「正确性」特指：
+Web3 前端正确性特指：用户资产安全；状态诚实；ABI/地址/chainId 单 owner。
 
-1. **用户资产安全**：错误金额、错误链、错误合约、重复提交、盲签。
-2. **状态诚实**：pending ≠ success；hash ≠ 上链成功；连接 ≠ 登录。
-3. **类型与边界**：ABI/地址/chainId 只有一个 owner。
+## 框架 MUST
 
-## 六条硬不变量
+| ID | 关键词 | 规约 | 探针 |
+|----|--------|------|------|
+| F01 | MUST | 需要后端身份时：SIWE（或等价）换会话；业务 API 用 `sessionReady` | `07` / e2e |
+| F02 | MUST NOT | 用 `isConnected` 驱动业务 API | 同上 |
+| F03 | MUST | 合约调用只走 typed 边界（地址表 + 生成 ABI + 薄封装） | codegen / 抽检 |
+| F04 | MUST NOT | 页面内拼 `address` + 手写 ABI 片段 | 架构 lint |
+| F05 | MUST | 写链 Simulate → Write → Wait；模拟失败不弹钱包 | `05` / e2e |
+| F06 | MUST | hash 仅表示已提交；回执确认后才改乐观 UI / 清 latch | `05` |
+| F07 | MUST | 金额用 `bigint`（链上单位）；展示层才 format | 单测 |
+| F08 | MUST NOT | 用 `number` 做 wei/金额运算 | 同上 |
+| F09 | MUST | pending 超时无回执 → latch；默认 fail-closed | `05` |
+| F10 | MUST NOT | 未知结果立即重提 / 一键解锁 | 同上 |
+| F11 | MUST NOT | 营销面加载钱包 SDK（`viem`/`wagmi`/`thirdweb`） | depcruise / lint |
+| F12 | MUST | 链/地址/ABI/env/会话/query-key 单 owner（见 SSOT 表） | 目录抽检 |
 
-1. **连接钱包 ≠ 业务登录** 
- 需要后端身份时，必须 SIWE（或等价）换会话；UI 用 `sessionReady`，不用 `isConnected` 驱动业务 API。
-
-2. **合约调用只走 typed 边界** 
- 禁止在页面里拼 `address` + 手写 ABI 片段。地址表 + 生成 ABI + 薄封装。
-
-3. **写链必须 Simulate → Write → Wait** 
- 模拟失败不弹钱包；hash 只表示「已提交」；回执确认后才改乐观 UI / 清 latch。
-
-4. **金额一律 `bigint`（链上单位）** 
- 展示层才 format；禁止用 `number` 做 wei/金额运算。
-
-5. **未知交易结果禁止立即重提** 
- pending 超时无回执 → latch；默认 fail-closed，禁止一键解锁（见 05）。
-
-6. **营销面不加载钱包 SDK** 
- 官网/Landing 与 DApp 分入口或分 chunk；Home 禁 `viem`/`wagmi`/`thirdweb`（用架构 lint 强制）。
-
-## SSOT 清单（每个项目开工时填表）
+## SSOT 清单
 
 | 真相 | Owner（示例路径） | 禁止 |
 |------|-------------------|------|
@@ -42,15 +39,14 @@ Web3 前端的「正确性」特指：
 | Query key | `src/api/query-keys.ts` | 字符串魔法散落 |
 | 文案 | `i18n/messages/` | 组件内硬编码用户可见文案（除调试） |
 
-## 成功标准（新项目「超越」— 与 [11](./11-world-class-acceptance.md) 一致）
+## 成功标准（超越）
 
-相对「能连上钱包、能点 Swap」的 demo，须同时：
+- [ ] **超越 a**：`05` / `11` 两条对照句不变量已落地  
+- [ ] **超越 b**：发版钱路径 e2e（`09`）exit 0  
+- [ ] 合约层 codegen + 地址表；钱路径单测；有后端则 SIWE 服务端校验；CI `check`  
 
-- [ ] **超越 a**：`05` / `11` 中两条对照句不变量已落地（receipt 成功才算成功；unknown latch fail-closed） 
-- [ ] **超越 b**：发版钱路径 e2e 场景×断言（`09`）exit 0 
-- [ ] 合约层 codegen + 地址表；钱路径单测；有后端则 SIWE 服务端校验；CI `check` 
+**MUST NOT** 把 Sentry/第三方可观测当作超越或必勾。
 
-**不**把 Sentry/第三方可观测当作超越或必勾（见元指南；`08.3` 仅参考）。
 ## 反模式速查
 
 | 反模式 | 后果 | 正确做法 |

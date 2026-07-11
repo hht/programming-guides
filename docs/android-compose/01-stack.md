@@ -18,6 +18,9 @@
 | DI | 构造注入 / 简单工厂 | Hilt **仅当 INPUTS §10 勾选并书面** |
 | 构建 | Gradle Kotlin DSL + Version Catalog（推荐） | 锁版本进 lock / catalog；指南不指定具体 semver 数字 |
 | 网络（若有） | **OkHttp + Retrofit**（默认）；Ktor Client 仅当 INPUTS 写明迁移理由 | 禁在 Composable 里直接 `HttpURLConnection` |
+| Lint / fmt | **detekt** + **ktlint** | 命令 SSOT → [kotlin Language Gate](../meta/language-gates/kotlin.md) |
+
+语言硬门闸：[kotlin.md](../meta/language-gates/kotlin.md)（**不**在本文件复述）。
 
 ## 脚手架
 

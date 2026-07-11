@@ -11,8 +11,10 @@
 | Command 暴露面 | `tauri::generate_handler![…]` + **`AppManifest::commands` allowlist**（`06`） |
 | 包管理前端 | **pnpm**（与 react 册一致） |
 | Rust 工具链 | `rustup` stable；`cargo` lockfile 入库 |
+| Lint / fmt | rustfmt+clippy；Prettier+ESLint | 命令 SSOT → [rust](../meta/language-gates/rust.md) + [typescript](../meta/language-gates/typescript.md) |
 
-禁止：Tauri 1 当默认；「Electron 或 Tauri 任选」开口；前端默认 Vue（Hoppscotch 映射成本记入 sources，不改默认）。
+禁止：Tauri 1 当默认；「Electron 或 Tauri 任选」开口；前端默认 Vue（Hoppscotch 映射成本记入 sources，不改默认）。  
+语言硬门闸：上表双链（**不**在本文件复述）。
 
 ## 脚手架
 

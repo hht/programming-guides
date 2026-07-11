@@ -1,4 +1,7 @@
-# 00 — 原则与不变量
+# 00 — 原则与框架 MUST
+
+> Normative: MUST / MUST NOT（RFC 2119）  
+> 语言层 → [kotlin Language Gate](../meta/language-gates/kotlin.md)。本文件只含 **Jetpack Compose 框架 MUST**。
 
 ## 品类
 
@@ -8,14 +11,20 @@
 
 **UiState Lifecycle**：event → ViewModel/reducer → UiState → Compose 重组。规格见 [05](./05-uistate-lifecycle.md)。
 
-## 硬不变量
+## 框架 MUST
 
-1. **UiState 是屏幕（或明确共享边界）的单一不可变真相**：`data class` + 不可变集合；Compose **只读** UiState 渲染，不另持业务真相副本。 
-2. **单向数据流**：用户/系统 **event** 只进 ViewModel（或纯 reducer）；禁止 Composable 直接改 Repository 再绕过 UiState 改 UI。 
-3. **默认状态载体**：`StateFlow` / `MutableStateFlow`（或等价不可变快照流）暴露 UiState；**禁 LiveData 作默认**（存量迁移须写明）。 
-4. **配置变更后状态不丢**：旋转/深色模式等 configuration change → ViewModel 存活恢复；须跨进程的键走 **SavedStateHandle** 或 INPUTS 声明的磁盘策略（见 `07`）。 
-5. **可测**：reducer/门闸纯逻辑单测；Flow 用 Turbine；关键屏 Compose UI Test；禁「只能手点」的主路径。 
-6. **本册 = Android Compose 交付 SSOT**：导航 / UiState / 测试门禁以本册为准；鉴权语义引用 [docs/auth](../auth/README.md)，不平行发明。
+| ID | 关键词 | 规约 | 探针 |
+|----|--------|------|------|
+| F01 | MUST | UiState 是屏幕（或明确共享边界）的单一不可变真相（`data class` + 不可变集合） | `05` / 单测 |
+| F02 | MUST | Compose **只读** UiState 渲染，不另持业务真相副本 | 代码抽检 |
+| F03 | MUST | 用户/系统 event 只进 ViewModel（或纯 reducer） | `05` |
+| F04 | MUST NOT | Composable 直接改 Repository 再绕过 UiState 改 UI | 同上 |
+| F05 | MUST | 默认用 `StateFlow` / `MutableStateFlow`（或等价）暴露 UiState | `01` / 抽检 |
+| F06 | MUST NOT | 以 LiveData 作默认状态载体（存量迁移须写明） | 同上 |
+| F07 | MUST | 配置变更后状态不丢（ViewModel 存活；跨进程键走 SavedStateHandle 或 INPUTS 策略） | `07` |
+| F08 | MUST | reducer/门闸可单测；Flow 用 Turbine；关键屏 Compose UI Test | `09` |
+| F09 | MUST NOT | 「只能手点」作为主路径唯一验收 | `09` / `11` |
+| F10 | MUST | 本册为 Android Compose 交付 SSOT；鉴权引用 auth 册 | 边界抽检 |
 
 ## SSOT 表
 
@@ -28,9 +37,8 @@
 | 导航 route / args | `06` + INPUTS §6 |
 | 业务词表 | 目标仓 `UBIQUITOUS_LANGUAGE.md`（Pass1 种子见 `02`） |
 
-## 禁止
+## 禁止（摘要）
 
-- 指南仓堆可运行业务 App / 完整 Feature 模块源码 
-- Composable 内发网络并本地 `mutableStateOf` 当业务真相（旁路 UiState） 
-- 默认栈用 LiveData / XML View 体系替代 Compose 
-- 未声明 Hilt 却引入全仓 Hilt「习惯性」依赖 
+- 指南仓堆可运行业务 App  
+- 默认 XML View 体系替代 Compose  
+- 未声明却全仓引入 Hilt「习惯性」依赖  

@@ -10,9 +10,11 @@
 | OpenNext（若选） | 按 INPUTS §13 选定一个目标适配器；App Router 对齐 [nextjs](../nextjs/README.md) |
 | Lambda（若选） | 运行时 **nodejs20.x**；中间件映射可学 Middy / Powertools，**规格以本册 Lifecycle 为准** |
 | 包管理 | **pnpm**（与多数 TS 册一致）；`pnpm-lock.yaml` 提交 |
+| Lint / fmt | ESLint + Prettier + tsc | 命令 SSOT → [typescript Language Gate](../meta/language-gates/typescript.md) |
 | 禁止冒充 | 长驻自建 HTTP 进程 **不得**进入本册「边缘 / Functions」验收路径（应改走 go/fastapi 等 API 册） |
 
-禁止：留下「Workers 或 Vercel 任选」开口；默认采用 Lambda；边缘默认 Express/Koa。
+禁止：留下「Workers 或 Vercel 任选」开口；默认采用 Lambda；边缘默认 Express/Koa。  
+语言硬门闸：[typescript.md](../meta/language-gates/typescript.md)。
 
 ## 脚手架
 

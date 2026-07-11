@@ -15,7 +15,10 @@
 | 颜色 | Ink `<Text color>`；**不**另加 `chalk` 依赖（Ink 已传递） | |
 | 测试 | **Vitest** + **`ink-testing-library@^4`** | 组件帧断言 |
 | 构建 | **`tsc`**（Pastel 官方路径） | `outDir=build`；`bin` 指向 `build/cli.js` |
-| Lint | **ESLint** flat + **typescript-eslint** | `pnpm check` 含 lint+typecheck+unit |
+| Lint | **ESLint** flat + **typescript-eslint**；**Prettier** | 命令 SSOT → [typescript Language Gate](../meta/language-gates/typescript.md)；`pnpm check` 含 fmt+lint+typecheck+unit |
+
+语言硬门闸：[typescript.md](../meta/language-gates/typescript.md)。
+
 
 **禁止开口**：不得写「meow 或 commander 任选」「Ink 或 Blessed 任选」。
 

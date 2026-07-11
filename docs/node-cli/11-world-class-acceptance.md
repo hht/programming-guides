@@ -6,7 +6,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` 树 + 依赖方向 |
 | 命名 / 词表 | [ ] | `02` Pass1 词表 + 命令/env/exit |
-| 代码风格 | [ ] | `01` 确定默认栈；显式配置 |
+| 代码风格 | [ ] | §0 三准则经由 meta/language-gates/typescript.md 硬门闸落实 + commands lint 绿 |
 | 工具链 | [ ] | pastel 脚手架 + pnpm lock |
 | 门禁 | [ ] | `commands.md` check / e2e |
 | 代码极简 | [ ] | 无指南内业务实现；deletion-first |

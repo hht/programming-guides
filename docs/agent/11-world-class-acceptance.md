@@ -6,7 +6,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` |
 | 命名 / 词表 | [ ] | `02` Pass1 词表 + tool_name/金标 id |
-| 代码风格 | [ ] | `01` |
+| 代码风格 | [ ] | §0 经由 language-gates/python.md 与/或 typescript.md + commands lint 绿 |
 | 工具链 | [ ] | uv 或 pnpm + lock |
 | 门禁 | [ ] | `commands.md` |
 | 代码极简 | [ ] | 指南无业务 Agent 实现 |

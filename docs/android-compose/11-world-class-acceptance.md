@@ -9,7 +9,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` 树 + 依赖方向 |
 | 命名 / 词表 | [ ] | 目标仓 `UBIQUITOUS_LANGUAGE.md` = `02` Pass1 |
-| 代码风格 | [ ] | `01`；显式 UiState；禁默认 LiveData |
+| 代码风格 | [ ] | §0 三准则经由 meta/language-gates/kotlin.md 硬门闸落实 + commands lint 绿 |
 | 工具链 | [ ] | `01` + Version Catalog/lock |
 | 门禁 | [ ] | `commands.md` |
 | 代码极简 | [ ] | 无多余 Manager/第二状态源 |

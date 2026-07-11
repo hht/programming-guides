@@ -13,7 +13,10 @@
 | Agent 框架 | **Pydantic AI** | **Vercel AI SDK**（`ai` + provider 包） |
 | Schema | Pydantic v2 | **Zod** |
 | 测试 | pytest | vitest |
-| Lint/类型 | ruff + mypy | eslint + tsc --noEmit |
+| Lint/类型 | ruff + mypy / eslint + tsc | 命令 SSOT → [python](../meta/language-gates/python.md) 与 [typescript](../meta/language-gates/typescript.md) |
+
+语言硬门闸：按 INPUTS 所选栈挂靠；**禁止**两栈命令混用不逐字。
+
 | 日志 | structlog | **pino**（JSON） |
 
 **禁止开口**：「LangChain 或随便选」；「两栈混在同一进程默认」。

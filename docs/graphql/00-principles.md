@@ -1,4 +1,7 @@
-# 00 — 原则与不变量
+# 00 — 原则与框架 MUST
+
+> Normative: MUST / MUST NOT（RFC 2119）  
+> 语言层 → [typescript Language Gate](../meta/language-gates/typescript.md)（默认 JS/TS Yoga 栈）。本文件只含 **GraphQL 框架 MUST**。
 
 ## 品类
 
@@ -8,15 +11,22 @@
 
 **Operation Lifecycle**：解析 → 校验 document → 鉴权 → resolve → 错误映射 → 响应。规格见 [05](./05-operation-lifecycle.md)。
 
-## 硬不变量
+## 框架 MUST
 
-1. **SDL = 契约 SSOT**：类型、字段、枚举、指令以 `.graphql` SDL 为准；禁把 code-first schema 当唯一真相（若生成 SDL，CI 必须以检出的 SDL 为门禁源）。 
-2. **运行时默认 GraphQL Yoga** + **graphql**（js）；**禁止 Pothos 作默认**（偏 code-first）。 
-3. **客户端 Typed document**（graphql-codegen）；禁手写无类型 `any` 操作字符串当主路径。 
-4. **写路径**：所有 Mutation **必须**经鉴权（对接 auth Session Gate 或 INPUTS 约定的 Bearer）+ 输入校验；**禁止**公开 mutation 裸奔万能 CRUD。 
-5. **Introspection**：staging/prod **默认关或受控**（INPUTS §8）。 
-6. **错误可分类**：业务/鉴权/校验失败进 `errors[]` + `extensions.code`（词表）；禁止一律 `INTERNAL` 吞掉可预期失败。 
-7. **本册 = GraphQL 契约与 Lifecycle SSOT**：应用册只接线；不平行发明第二套 schema/错误语义。
+| ID | 关键词 | 规约 | 探针 |
+|----|--------|------|------|
+| F01 | MUST | SDL 为契约 SSOT（`.graphql`）；CI 以检出 SDL 为门禁源 | `codegen` / lint:graphql |
+| F02 | MUST NOT | 以 code-first schema 为唯一真相（若生成 SDL，仍以检出 SDL 为准） | 同上 |
+| F03 | MUST | 运行时默认 GraphQL Yoga + graphql（js） | `01` |
+| F04 | MUST NOT | 以 Pothos 等作默认（偏 code-first） | `01` |
+| F05 | MUST | 客户端 Typed document（graphql-codegen） | codegen 产物 |
+| F06 | MUST NOT | 手写无类型 `any` 操作字符串当主路径 | lint / 抽检 |
+| F07 | MUST | Mutation 经鉴权 + 输入校验 | `06` / e2e |
+| F08 | MUST NOT | 公开 mutation 裸奔万能 CRUD | 同上 |
+| F09 | MUST | staging/prod introspection 默认关或受控（INPUTS §8） | 配置抽检 |
+| F10 | MUST | 可预期失败进 `errors[]` + `extensions.code` | `07` / 单测 |
+| F11 | MUST NOT | 一律 `INTERNAL` 吞掉可预期失败 | 同上 |
+| F12 | MUST | 本册为 GraphQL 契约与 Lifecycle SSOT | 边界 |
 
 ## SSOT 表
 
@@ -28,13 +38,10 @@
 | Mutation 鉴权与校验 | `06-authz-and-mutations.md` |
 | 错误映射 / introspection / 深度限制 | `07-errors-and-security.md` |
 | 与应用册 / codegen 边界 | `08-client-and-app-boundary.md` |
-| 会话语义 | [docs/auth](../auth/README.md)（本册不重定义 Cookie/Gate） |
+| 会话语义 | [docs/auth](../auth/README.md) |
 | 业务词表 | 目标仓 `UBIQUITOUS_LANGUAGE.md`（Pass1 种子见 `02`） |
 
-## 禁止
+## 禁止（摘要）
 
-- 指南仓堆可运行业务 resolver / 完整 Yoga 应用 
-- 默认 code-first（Pothos 等）或「GraphQL = 自动暴露全部 SQL/ORM」 
-- 未鉴权公开 Mutation CRUD 
-- staging/prod 对匿名公网开 introspection（除非 INPUTS 写明受控方案） 
-- 用 GraphQL 绕过 auth Session Gate 另搞一套「宽松登录」 
+- 「GraphQL = 自动暴露全部 SQL/ORM」  
+- 用 GraphQL 绕过 auth Session Gate  
