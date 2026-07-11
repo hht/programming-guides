@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://project-templates.local/ml-inference/inference-response.schema.json",
+  "$id": "https://programming-guides.local/ml-inference/inference-response.schema.json",
   "title": "InferenceResponse",
   "oneOf": [
     {

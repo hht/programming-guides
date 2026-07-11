@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://project-templates.local/desktop-tauri/command-registry.schema.json",
+  "$id": "https://programming-guides.local/desktop-tauri/command-registry.schema.json",
   "title": "Tauri command registry",
   "description": "INPUTS §5 shape — keep in sync with AppManifest::commands and generate_handler!",
   "type": "object",

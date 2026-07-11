@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://project-templates.local/saas/tenant.schema.json",
+  "$id": "https://programming-guides.local/saas/tenant.schema.json",
   "title": "Tenant",
   "description": "Example shape for a tenant row. Default model: shared schema + tenant_id on all tenant-scoped tables.",
   "type": "object",

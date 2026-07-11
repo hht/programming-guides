@@ -1,4 +1,4 @@
-# Project Templates — Docs
+# Programming Guides — Docs
 
 根契约：[**AGENTS.md**](../AGENTS.md)。写指南：[**meta/**](./meta/how-to-write-guides.md) · [**业务命名**](./meta/naming-business-first.md) · [**roadmap**](./meta/roadmap.md)。
 

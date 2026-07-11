@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://project-templates.local/realtime/message-envelope.schema.json",
+  "$id": "https://programming-guides.local/realtime/message-envelope.schema.json",
   "title": "RealtimeMessageEnvelope",
   "type": "object",
   "additionalProperties": false,

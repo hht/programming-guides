@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://project-templates.local/payments/webhook-event.schema.json",
+  "$id": "https://programming-guides.local/payments/webhook-event.schema.json",
   "title": "ProviderAgnosticPaymentWebhookEvent",
   "description": "Shape after ProviderAdapter.verifyWebhook + mapEvent. Not a raw Stripe event.",
   "type": "object",

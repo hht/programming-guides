@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://project-templates.local/graphics-creative/frame-budget.schema.json",
+  "$id": "https://programming-guides.local/graphics-creative/frame-budget.schema.json",
   "title": "MotionFrameBudget",
   "description": "One critical motion entry with numeric frame budget. Implementation repos validate their registry against this shape.",
   "type": "object",

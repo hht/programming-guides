@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://project-templates.local/saas/membership.schema.json",
+  "$id": "https://programming-guides.local/saas/membership.schema.json",
   "title": "Membership",
   "description": "Example shape for subject↔tenant membership. status=invited must not pass Tenant Gate as active.",
   "type": "object",

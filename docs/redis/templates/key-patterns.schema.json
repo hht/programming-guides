@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://project-templates.local/redis/key-patterns.schema.json",
+  "$id": "https://programming-guides.local/redis/key-patterns.schema.json",
   "title": "RedisKeyPatternRegistry",
   "description": "Register each production key pattern with TTL policy. Implementation repos keep a JSON/YAML list validating against this shape.",
   "type": "object",

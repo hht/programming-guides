@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://project-templates.local/realtime/channel-acl.schema.json",
+  "$id": "https://programming-guides.local/realtime/channel-acl.schema.json",
   "title": "RealtimeChannelAclRegistry",
   "type": "object",
   "additionalProperties": false,

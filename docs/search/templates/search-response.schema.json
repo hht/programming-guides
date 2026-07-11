@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://project-templates.local/search/search-response.schema.json",
+  "$id": "https://programming-guides.local/search/search-response.schema.json",
   "title": "SearchResponse",
   "oneOf": [
     {

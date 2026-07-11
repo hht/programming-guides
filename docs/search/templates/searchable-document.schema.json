@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://project-templates.local/search/searchable-document.schema.json",
+  "$id": "https://programming-guides.local/search/searchable-document.schema.json",
   "title": "SearchableDocument",
   "type": "object",
   "additionalProperties": false,
