@@ -1,0 +1,61 @@
+{
+  "color": {
+    "palette": {
+      "$type": "color",
+      "neutral": {
+        "0": { "$value": "#FFFFFF" },
+        "1000": { "$value": "#0A0A0A" }
+      },
+      "brand": {
+        "500": { "$value": "#111111" }
+      },
+      "danger": {
+        "500": { "$value": "#B42318" }
+      }
+    },
+    "bg": {
+      "$type": "color",
+      "$value": "{color.palette.neutral.0}",
+      "$description": "Page background (semantic; UI consumes this path)"
+    },
+    "fg": {
+      "$type": "color",
+      "$value": "{color.palette.neutral.1000}",
+      "$description": "Body text"
+    },
+    "primary": {
+      "$type": "color",
+      "$value": "{color.palette.brand.500}"
+    },
+    "danger": {
+      "$type": "color",
+      "$value": "{color.palette.danger.500}"
+    },
+    "muted": {
+      "$type": "color",
+      "$value": "#667085",
+      "$description": "Secondary text; contrast must meet AA on color.bg"
+    }
+  },
+  "space": {
+    "$type": "dimension",
+    "1": { "$value": "4px" },
+    "2": { "$value": "8px" },
+    "3": { "$value": "16px" },
+    "4": { "$value": "24px" }
+  },
+  "radius": {
+    "$type": "dimension",
+    "md": { "$value": "8px" }
+  },
+  "font": {
+    "body": {
+      "size": { "$type": "dimension", "$value": "16px" },
+      "lineHeight": { "$type": "dimension", "$value": "24px" }
+    },
+    "title": {
+      "size": { "$type": "dimension", "$value": "20px" },
+      "lineHeight": { "$type": "dimension", "$value": "28px" }
+    }
+  }
+}

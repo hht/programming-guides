@@ -6,7 +6,7 @@
 |----|------|------|
 | 设计工具 | **Figma** | Auto Layout 必开 |
 | 规范 | **HIG**（Apple）/ **M3**（Android）/ **WCAG 2.2 AA**（全平台） | Web：密度跟 M3、清晰度跟 HIG；见 `08` |
-| Token | 颜色 / 字号 / 间距 / 圆角 / 阴影 | Figma Variables 或 `design/tokens.md` |
+| Token | 颜色 / 字号 / 间距 / 圆角 / 阴影 | Figma Variables 或 `design/tokens.md`；工程流水线见 [design-tokens](../design-tokens/README.md) |
 | 组件源 | 已有 DS > shadcn 思维变体 > 平台系统组件 | 禁平行第二套 |
 | Agent 出图 | Figma MCP / Plugin API（若可用） | 产出须过 `commands check` |
 

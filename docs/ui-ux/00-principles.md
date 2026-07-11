@@ -19,7 +19,7 @@
 |------|--------|
 | 用户任务与成功标准 | INPUTS §1 |
 | 平台行为 | INPUTS §2 + `08` + HIG/M3 引用 |
-| Token | `design/tokens.md` 或 Figma Variables |
+| Token | `design/tokens.md` 或 Figma Variables；工程流水线 SSOT 见 [design-tokens](../design-tokens/README.md) |
 | 组件状态 | `design/matrices/<screen-id>.md`（列见 templates） |
 | 文案 | INPUTS / 产品文案表；H5 不另造同义 key |
 | join key | `02` 的 `screen-id` |

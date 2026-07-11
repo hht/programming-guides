@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "check-inputs": "echo 'Implement: validate docs/i18n INPUTS predicates'",
+    "check-messages": "echo 'Implement: locale key parity + ICU validate'",
+    "check-hardcoded": "echo 'Implement: no user-visible string literals in features'",
+    "test": "echo 'Implement: locale resolve lifecycle probes'",
+    "check-acceptance": "echo 'Implement: verify 11-world-class-acceptance A+B+D'",
+    "check": "npm run check-inputs && npm run check-messages && npm run check-hardcoded && npm run test && npm run check-acceptance"
+  }
+}

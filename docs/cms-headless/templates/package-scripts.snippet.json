@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "check-inputs": "echo 'implement: validate docs/cms-headless INPUTS predicates'",
+    "test": "echo 'implement: unit tests per docs/cms-headless/09'",
+    "test:e2e-cms": "echo 'implement: release matrix per docs/cms-headless/09'",
+    "check-acceptance": "echo 'implement: checklist 11 A+B+D'",
+    "check": "echo 'implement: check-inputs && test && check-acceptance'"
+  }
+}

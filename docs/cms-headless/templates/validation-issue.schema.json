@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/cms-headless/validation-issue.schema.json",
+  "title": "ValidationIssue",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["path", "code", "message"],
+  "properties": {
+    "path": {
+      "type": "string",
+      "description": "Field path within ContentDocument (e.g. title, slug, body.blocks.0)."
+    },
+    "code": {
+      "type": "string",
+      "description": "Stable machine code (e.g. REQUIRED, SLUG_CONFLICT, DANGLING_REF)."
+    },
+    "message": {
+      "type": "string",
+      "description": "Editor-visible message; may be i18n'd; code stays stable."
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["error", "warning"],
+      "description": "Default error. warning only when INPUTS allows publish with warnings."
+    }
+  }
+}

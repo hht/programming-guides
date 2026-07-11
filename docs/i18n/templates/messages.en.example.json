@@ -1,0 +1,23 @@
+{
+  "app": {
+    "name": "Example App"
+  },
+  "nav": {
+    "home": "Home",
+    "settings": "Settings"
+  },
+  "form": {
+    "submit": "Submit",
+    "cancel": "Cancel"
+  },
+  "cart": {
+    "itemCount": "{count, plural, =0 {No items} one {# item} other {# items}}"
+  },
+  "errors": {
+    "network": "Network error. Try again.",
+    "unauthorized": "Please sign in."
+  },
+  "i18n": {
+    "contentUnavailable": "This content is unavailable."
+  }
+}

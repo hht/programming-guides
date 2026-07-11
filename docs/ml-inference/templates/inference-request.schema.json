@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/ml-inference/inference-request.schema.json",
+  "title": "InferenceRequest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["input"],
+  "properties": {
+    "input": {
+      "description": "Business payload; shape constrained by model-specific schema overlay",
+      "type": ["object", "array", "string", "number", "boolean"]
+    },
+    "model_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "artifact_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "description": "semver or sha256:hex; must match loaded set when present"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "params": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {},
+      "description": "Whitelist only; extend per INPUTS with explicit properties"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/cms-headless/content-document.schema.json",
+  "title": "ContentDocument",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "content_type", "slug", "status", "updated_at"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Application business id (not necessarily the CMS id)."
+    },
+    "cms_document_id": {
+      "type": ["string", "null"],
+      "description": "External CMS document id; reference only."
+    },
+    "content_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "slug": {
+      "type": "string",
+      "minLength": 1
+    },
+    "locale": {
+      "type": ["string", "null"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "validated", "published", "archived"]
+    },
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "description": "Projected body; shape is product-defined (string or structured blocks).",
+      "type": ["string", "object", "array", "null"]
+    },
+    "published_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "extensions": {
+      "type": "object",
+      "description": "Optional bag for non-required vendor fields; must not hold required SSOT."
+    }
+  }
+}

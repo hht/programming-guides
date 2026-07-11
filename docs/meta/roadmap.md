@@ -60,11 +60,11 @@
 
 | 目录 | 说明 | 状态 |
 |------|------|------|
-| `cms-headless` | Headless CMS 集成 | |
-| `i18n` | 文案 SSOT·locale 流水线 | |
-| `design-tokens` | Token 工程（对位 ui-ux） | |
-| `ml-inference` | 模型推理服务边界（非训练百科） | |
-| `data-pipeline` | ETL/批流薄册 | |
+| `cms-headless` | Headless CMS 集成 · Content Publish Lifecycle | specs 齐套（未对抗；**勿标 DONE**） |
+| `i18n` | 文案 SSOT·locale 流水线 | specs 齐套（对抗前；勿标 DONE） |
+| `design-tokens` | Token 工程（对位 ui-ux）· Token Apply Lifecycle | specs 落盘（未标 DONE） |
+| `ml-inference` | 模型推理服务边界（非训练百科）· Inference Request Lifecycle | specs 齐套（未对抗；**勿标 DONE**） |
+| `data-pipeline` | ETL/批流薄册 · Batch Job Lifecycle | specs 齐套（未对抗；**勿标 DONE**） |
 
 ## 候选池（未立项；热度高时升 Wave）
 

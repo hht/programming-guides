@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "check-inputs": "echo 'implement: validate docs/design-tokens INPUTS predicates'",
+    "tokens:build": "echo 'implement: style-dictionary build (DTCG source)'",
+    "tokens:check-drift": "echo 'implement: rebuild diff + banned color names + optional ui-ux path parity'",
+    "test": "echo 'implement: unit tests per docs/design-tokens/09'",
+    "check-acceptance": "echo 'implement: checklist 11 A+B+D'",
+    "check": "echo 'implement: check-inputs && tokens:build && tokens:check-drift && test && check-acceptance'"
+  }
+}

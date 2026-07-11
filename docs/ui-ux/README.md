@@ -3,6 +3,7 @@
 > **这是设计决策指南，不是半成品 Figma 文件。**  
 > INPUTS 齐备时，agent 产出可验收规格与 Figma 结构，再交实现指南。  
 > **默认**：Figma + token + HIG/M3/WCAG 2.2 AA。  
+> **工程 Apply**：语义 token 进代码见 [design-tokens](../design-tokens/README.md)（DTCG → Style Dictionary → UI；路径同名）。  
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
@@ -27,3 +28,4 @@
 | 文档 | 用途 |
 |------|------|
 | INPUTS / 00–11 / commands / sources / templates | 规格与模板 |
+| [design-tokens](../design-tokens/README.md) | 工程侧 Token Apply Lifecycle（DTCG → Style Dictionary → UI）；语义路径与本册同名 |

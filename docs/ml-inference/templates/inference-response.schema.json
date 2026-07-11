@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/ml-inference/inference-response.schema.json",
+  "title": "InferenceResponse",
+  "oneOf": [
+    {
+      "title": "InferenceSuccess",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["request_id", "model_id", "artifact_version", "output"],
+      "properties": {
+        "request_id": { "type": "string", "minLength": 1 },
+        "model_id": { "type": "string", "minLength": 1 },
+        "artifact_version": { "type": "string", "minLength": 1 },
+        "output": {
+          "type": ["object", "array", "string", "number", "boolean"]
+        },
+        "latency_ms": { "type": "integer", "minimum": 0 }
+      }
+    },
+    {
+      "title": "InferenceError",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["request_id", "code", "message"],
+      "properties": {
+        "request_id": { "type": "string", "minLength": 1 },
+        "code": {
+          "type": "string",
+          "enum": [
+            "inference.unauthorized",
+            "inference.forbidden",
+            "inference.validation_failed",
+            "inference.payload_too_large",
+            "inference.quota_exceeded",
+            "inference.model_mismatch",
+            "inference.timeout",
+            "inference.unavailable",
+            "inference.internal"
+          ]
+        },
+        "message": { "type": "string", "minLength": 1, "maxLength": 512 }
+      }
+    }
+  ]
+}

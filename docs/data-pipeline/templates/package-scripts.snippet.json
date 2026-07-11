@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "check-inputs": "echo 'implement: validate data-pipeline INPUTS predicates' && exit 0",
+    "test": "echo 'implement: data-pipeline unit probes from 09' && exit 0",
+    "test:e2e-pipeline": "echo 'implement: data-pipeline release matrix from 09' && exit 0",
+    "check-acceptance": "echo 'implement: self-check 11 A+B+D' && exit 0",
+    "check": "npm run check-inputs && npm run test && npm run check-acceptance"
+  }
+}

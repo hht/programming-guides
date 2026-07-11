@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/i18n/messages.catalog.schema.json",
+  "title": "I18nMessagesCatalog",
+  "description": "One locale message catalog: nested objects with ICU MessageFormat string leaves.",
+  "type": "object",
+  "additionalProperties": {
+    "oneOf": [
+      { "type": "string", "minLength": 1 },
+      { "$ref": "#" }
+    ]
+  },
+  "minProperties": 1
+}

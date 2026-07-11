@@ -1,0 +1,47 @@
+-- Example shape only. Apply via Atlas/migrations in the implementation repo.
+-- Align naming with docs/data-pipeline/02 and 03.
+-- Default runner: link to workers-queue jobs via queue_job_id (optional FK; same idempotency_key).
+
+CREATE TABLE IF NOT EXISTS batch_runs (
+  id                uuid PRIMARY KEY,
+  pipeline_name     text NOT NULL,
+  idempotency_key   text NOT NULL,
+  state             text NOT NULL
+                    CHECK (state IN ('pending', 'running', 'succeeded', 'failed', 'dead')),
+  stage             text
+                    CHECK (stage IS NULL OR stage IN ('extract', 'transform', 'load', 'verify')),
+  attempt           int  NOT NULL DEFAULT 0,
+  max_attempts      int  NOT NULL DEFAULT 5,
+  window_start      timestamptz,
+  window_end        timestamptz,
+  staging_ref       text,
+  queue_job_id      uuid,
+  metrics           jsonb NOT NULL DEFAULT '{}'::jsonb,
+  last_error        text,
+  created_at        timestamptz NOT NULL DEFAULT now(),
+  updated_at        timestamptz NOT NULL DEFAULT now(),
+  UNIQUE (pipeline_name, idempotency_key)
+);
+
+CREATE INDEX IF NOT EXISTS batch_runs_pipeline_state_idx
+  ON batch_runs (pipeline_name, state, created_at DESC);
+
+CREATE TABLE IF NOT EXISTS pipeline_watermarks (
+  pipeline_name     text NOT NULL,
+  source_name       text NOT NULL,
+  watermark         text NOT NULL,
+  updated_at        timestamptz NOT NULL DEFAULT now(),
+  PRIMARY KEY (pipeline_name, source_name)
+);
+
+CREATE TABLE IF NOT EXISTS batch_run_checks (
+  id                uuid PRIMARY KEY,
+  run_id            uuid NOT NULL REFERENCES batch_runs (id),
+  check_name        text NOT NULL,
+  passed            boolean NOT NULL,
+  detail            text,
+  created_at        timestamptz NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS batch_run_checks_run_idx
+  ON batch_run_checks (run_id);
