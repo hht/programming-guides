@@ -13,7 +13,7 @@
 | 4 | **Token 分层** | 至少：`primitive` → `semantic`；组件层 □启用 □禁用。组件层若启用，只引用 semantic，禁直绑 primitive hex |
 | 5 | **输出平台（≥1）** | 勾选且钉产物路径：□ **css-variables**（默认 Web）□ **js/ts module** □ **ios**（Swift / asset catalog 语义）□ **android**（XML / Compose theme）□ **其它**（书面 format 名） |
 | 6 | **主题模式** | □ light-only □ light+dark 成对。dark 若要：同一语义名，值成对；禁 dark 另造色名 |
-| 7 | **与 ui-ux 对接** | □ 启用：设计侧 `design/tokens.md` 或 Figma Variables 路径与本册语义路径 **同名**（见 [ui-ux](../ui-ux/README.md)）□ **N/A — 纯工程仓无设计册**（acceptance 写裁剪；仍须完成本册 Lifecycle） |
+| 7 | **与 ui-ux 对接** | □ 启用：设计侧写 SSOT = `design/tokens.md`；Figma Variables 须同名镜像；路径与本册语义路径 **同名**（见 [ui-ux](../ui-ux/README.md) `00`）□ **N/A — 纯工程仓无设计册**（acceptance 写裁剪；仍须完成本册 Lifecycle） |
 | 8 | **品牌种子** | 主色 / 危险色 / 正文底与字：hex 或「系统」；须能映射进 §3 语义名（不得只写 hex 散落组件） |
 | 9 | **间距 / 字阶 / 圆角基线** | 钉：间距步进（默认 4）、正文字号/行高（Web 默认 16/24）、圆角档位数；与 ui-ux `01` 默认可对齐 |
 | 10 | **消费禁令确认** | 勾选：□ 组件/样式 **不**写裸品牌 hex（除 primitive 源文件）；□ **不**新增第二套色 utility；□ UI 只引用 transform 产物或映射后的语义 utility |

@@ -22,7 +22,7 @@
 | 4 | **写 / 读校验** | 按业务顺序执行 SQL；能进约束的不放应用碰运气。 |
 | 5 | **约束 / RLS 生效** | UNIQUE / FK / CHECK / RLS 拒绝 → 进入失败分类；**不得**部分提交。 |
 | 6 | **COMMIT 或 ROLLBACK** | 全部成功 → `COMMIT`。任一步失败 → **必 `ROLLBACK`**，再映射错误返回调用方。 |
-| 7 | **死锁重试（有界）** | SQLSTATE `40001`：整段事务从步骤 2 **重试 ≤2 次**（合计最多 3 次尝试）；仍失败 → `internal`（或 INPUTS 映射名）。重试前必须已 ROLLBACK。 |
+| 7 | **死锁/序列化重试（有界）** | SQLSTATE **`40P01`**（deadlock_detected）或 **`40001`**（serialization_failure）：整段事务从步骤 2 **重试 ≤2 次**（合计最多 3 次尝试）；仍失败 → `internal`（或 INPUTS 映射名）。重试前必须已 ROLLBACK。默认隔离 READ COMMITTED 时以 `40P01` 为主；升隔离后才常见 `40001`。 |
 
 ### 伪代码（规格级，非实现）
 
@@ -41,7 +41,7 @@ run_tx(work):
       return ok
     catch sql as e:
       ROLLBACK   // always
-      if e.sqlstate == '40001' and attempt <= 3:
+      if e.sqlstate in ('40P01', '40001') and attempt < 3:  // 合计最多 3 次
         continue
       return map_sqlstate(e)   // table below
     finally:
@@ -56,7 +56,7 @@ run_tx(work):
 | `23503` foreign_key_violation | `validation` | ROLLBACK；禁当 internal 吞掉 |
 | `23514` check_violation | `validation` | ROLLBACK |
 | `23502` not_null_violation | `validation` | ROLLBACK |
-| `40001` serialization_failure / deadlock | 重试后仍失败 → `internal` | 有界重试见步骤 7 |
+| `40P01` deadlock_detected / `40001` serialization_failure | 重试后仍失败 → `internal` | 有界重试见步骤 7；**禁**把死锁只写成 `40001` |
 | `57014` query_canceled（含 statement_timeout） | `timeout` | ROLLBACK；**禁止**当成功重试无界 |
 | 连接丢失 / 无法 BEGIN | `store_unavailable` | 不假装已写 |
 | 其它 | `internal` | ROLLBACK；记 SQLSTATE 供排障，禁 raw 堆栈给终端用户 |
@@ -77,7 +77,8 @@ INPUTS §9 可改「应用码」列名以对接宿主 API；**不得**删「必 
 | 事务中第二句失败 | 第一句提交后不可见（已 ROLLBACK）；无脏写 |
 | `23505` | 映射 `conflict`；连接可继续新事务 |
 | `statement_timeout` | ROLLBACK；码 `timeout`；无部分可见写 |
-| 死锁 `40001` 首次 | 自动重试；最终成功则仅最终态可见 |
-| 死锁耗尽重试 | `internal`；无脏写 |
+| 死锁 `40P01` 首次 | 自动重试；最终成功则仅最终态可见 |
+| 序列化失败 `40001`（若升隔离） | 同有界重试 |
+| 死锁/序列化耗尽重试 | `internal`；无脏写 |
 | 跨表两写省略事务 | **视为缺陷**（评审/静态约定：多语句写路径必须走 `run_tx`） |
 | RLS 租户未 set 即写（若启用） | 失败或 0 影响行；不得写入他租户（与 `06` 联测） |

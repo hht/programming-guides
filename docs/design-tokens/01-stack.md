@@ -6,7 +6,7 @@
 | **变换** | **Style Dictionary**（当前主线；DTCG 源，`usesDtcg` 可自动检测） |
 | **Web 默认产物** | `css/variables`（`:root` / 主题选择器自定义属性）→ 再映射到应用样式系统（Tailwind `@theme` / CSS 变量消费等） |
 | **可选产物** | JS/TS 模块；iOS / Android 平台文件（INPUTS §5 勾选才建） |
-| **设计侧对齐** | [ui-ux](../ui-ux/README.md)：Figma Variables 或 `design/tokens.md`；**不**另钉第二设计工具 |
+| **设计侧对齐** | [ui-ux](../ui-ux/README.md)：写 SSOT = `design/tokens.md`；Figma Variables **同名镜像**；冲突以 `tokens.md` 为准。工程 build SSOT = 本册 DTCG |
 | **禁止** | Theo / 手写多副本 hex 同步 / 组件内平行色常量文件作正式 SSOT；DTCG 与 legacy SD 格式双源 |
 
 禁止：留下「Style Dictionary 或 Tokens Studio 任选」双开口；留下「先用 JSON 任意形状」不写 DTCG。
@@ -19,7 +19,7 @@
 # 3) package.json scripts：tokens:build / tokens:check-drift（名可 INPUTS 钉）
 # 4) 跑 build → 产物进约定路径（例 src/styles/tokens.css）
 # 5) UI 只引用语义变量 / 映射 utility；加 lint：禁第二套色名、禁裸品牌 hex（07）
-# 6) 若启用 ui-ux：核对 Figma Variables / design/tokens.md 路径同名（08）
+# 6) 若启用 ui-ux：核对 design/tokens.md（写 SSOT）与 DTCG 语义路径同名；Variables 须镜像（08）
 ```
 
 ## 版本

@@ -28,7 +28,7 @@ UBIQUITOUS_LANGUAGE.md          # 含 Token 词表节
 
 ```text
 DTCG source → Style Dictionary → 产物（css/js/…）→ UI 组件 / 样式
-ui-ux design/tokens.md | Figma Variables ──同名──► semantic paths
+ui-ux `design/tokens.md`（写 SSOT；Variables 镜像）──同名──► semantic paths
 ```
 
 **禁**组件 → 自造色常量 → 反向写回源。  

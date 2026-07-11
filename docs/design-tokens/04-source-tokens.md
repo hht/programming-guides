@@ -3,7 +3,7 @@
 ## 不变量
 
 - 正式源 = **仓库内 DTCG JSON**（路径见 `02`）。  
-- Figma Variables / `design/tokens.md` 是**设计侧视图**；启用 ui-ux 时必须与 semantic 路径 **同名**，不得各写一套。  
+- `design/tokens.md`（启用 ui-ux 时的**写 SSOT**）；Figma Variables **同名镜像**；均须与 semantic 路径 **同名**，不得各写一套。  
 - 源文件不含生成物；生成物目录可 gitignore 或提交——跟 INPUTS §12，但**真相在源**。
 
 ## 步骤规格（实现自写）

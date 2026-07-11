@@ -12,8 +12,10 @@
 1. **签发**：登录成功后 `cookies().set("session", token, { httpOnly:true, secure:prod, sameSite:"lax", path:"/", maxAge })`。  
 2. **读取**：Server Component / Action / middleware 用 `cookies().get("session")`；校验签名/解密；失败视未登录。  
 3. **清除**：登出 `cookies().delete("session")` 或 `set` 空+maxAge=0。  
-4. **保护**：默认 **middleware** `matcher` 私有前缀；未登录 `redirect` 到登录 path（INPUTS 写登录 path，默认 `/login`）。  
-5. token 格式/密钥：`SESSION_SECRET` env；具体算法可自研 HMAC 或接 `docs/auth/`（若已有）。  
+4. **保护**：`middleware` `matcher` = INPUTS **§5c** 私有前缀（或「除公开 path 外」规则）；未登录 `redirect` 到 §9 登录 path（默认 `/login`）。公开 path（§2 勾「公开?=是」）不得进私有 matcher。  
+5. **授权**：§5b=仅会话全权 → Action 只验登录。§5b=有角色表 → 按表拒绝时返回 `forbidden`（见 `05`）。  
+6. token：按 INPUTS **§5d**（默认 HMAC-SHA256；claims 仅 `sub`+`exp`；`maxAge` 默认 7d）。opaque+DB 不在本册。  
+7. 登录 Action：字段按 **§5e**；身份校验按 **§5f**（得 `sub`）；成功后 `cookies().set` 步骤 1。  
 
 ## 无鉴权
 

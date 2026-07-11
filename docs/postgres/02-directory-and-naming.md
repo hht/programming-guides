@@ -7,9 +7,11 @@ db/
   migrations/           # Atlas 版本 SQL，唯一 schema SSOT
   schema/               # 可选：期望态/文档
   seeds/                # 可选非生产
+  tests/                # INPUTS §8=N/A 时：*.sql 探针（必有）
 compose.yaml
 ops/
   backup.md             # 若未裁剪备份
+UBIQUITOUS_LANGUAGE.md  # 仓根；行来自 INPUTS §1
 ```
 
 依赖：`migrations → 应用代码`；禁应用启动时 `CREATE TABLE`。
@@ -20,11 +22,12 @@ UI 状态矩阵：本品类默认 **N/A**（数据层无产品 UI）。
 
 ### Pass 1 — 业务语义（必做）
 
-1. 目标仓建 `UBIQUITOUS_LANGUAGE.md`（表/列 = 业务实体与属性）。  
+1. 目标仓建 `UBIQUITOUS_LANGUAGE.md`（表/列 = 业务实体与属性）。最小表头：`Term | 含义 | 代码符号 | 禁同义词`；行来自 INPUTS §1。  
 2. **表、列、约束、索引名**表达业务事实（`orders`、`placed_at`），禁 `data`、`tmp`、`entity`、`obj`、`val`。  
 3. **禁**同义词分叉：`customer`/`user` 指同一角色则词表只留一个。  
 4. 迁移描述用业务变更语义（`add_order_status`），禁 `update1`。  
-5. `tenant_id` 等横切列若启用，在词表钉死含义。
+5. `tenant_id` 等横切列若启用，在词表钉死含义。  
+6. **禁** `*Dto`/`*Entity`/`*Manager`/`handle*` 等技术翻译名进表/列（见 meta 命名块）。
 
 | 概念 | 正例 | 反例 |
 |------|------|------|

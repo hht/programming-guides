@@ -15,7 +15,7 @@
 2. **IA**：按 `03`；屏幕清单写入 INPUTS §3b 与 `design/screens/<screen-id>.md`。  
 3. **布局**：按 `04`；Figma 灰框 Frame 名用 `02` join key。  
 4. **状态矩阵**：按 `05`；列集合 = templates 八态（不适用填 `N/A`）；文件 `design/matrices/<screen-id>.md`。  
-5. **a11y**：按 `07` 十项全勾；写入 `figma-notes.md`：`a11y: PASS` + 对比抽检说明。  
+5. **a11y**：按 `07` 十项全勾；写入 `design/figma-notes.md`：`a11y: PASS` + 对比抽检说明。  
 6. **Figma**：按 `08`。  
 7. **实现对照**：复制 [templates/handoff.md](./templates/handoff.md) → `design/handoff.md` 填完；状态列须覆盖矩阵中非 N/A 态（勿写「四态」缩略除非仅四态适用）。  
 

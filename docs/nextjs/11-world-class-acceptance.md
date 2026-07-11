@@ -28,7 +28,9 @@
 | 类型安全 | https://github.com/t3-oss/create-t3-app · https://github.com/vercel/commerce | [ ] |
 | 部署就绪 | https://github.com/vercel/next.js · https://github.com/vercel/commerce | [ ] |
 
-## C. §1.3
+## C. §1.3 — 指南达标（维护者勾）
+
+> 交付 agent 的 `check` **不**要求本节（见 `commands` → `check-guide`）。
 
 1. [ ] 能力切条  
 2. [ ] 共有判定：能力在 \(B\) 的 ≥2 证据源出现；仅 1 源独有 → 可选  

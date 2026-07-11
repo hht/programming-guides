@@ -9,7 +9,7 @@
 
 1. 简单表单：`<form action={action}>`。  
 2. 复杂校验 UX：RHF + zod；submit 调 Action 或 `formAction`。  
-3. 四态：idle/loading/error/success 在 Client 叶或 `useActionState`。  
+3. **表单局部态**（非路由四态）：`idle`/`loading`/`error`/`success` 仅在 Client 叶或 `useActionState`（与 `02` 两层表一致；禁止把 `success` 写进 page-state-matrix）。  
 4. Toast：sonner 可选；错误须可读文本。  
 
 ## 探针

@@ -20,7 +20,7 @@
 3. [03](./03-modeling.md) / [04](./04-migrations.md) / [05](./05-transaction-lifecycle.md)  
 4. [06](./06-rls-and-tenancy.md) / [07](./07-connections-and-pooling.md) / [08](./08-observability-backup.md)  
 5. [commands.md](./commands.md) `check` 绿  
-6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md)  
+6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者）  
 
 ## 索引
 

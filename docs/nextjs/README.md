@@ -12,7 +12,7 @@
 
 ## 核心正确性路径（全文唯一）
 
-**Server Mutation Lifecycle**：`RSC 读 → 渲染 → Server Action + Zod → 写存储 → revalidate → UI/缓存一致`。
+**Server Mutation Lifecycle**：`RSC 读 → Server Action + Zod → 授权 → 写存储 → revalidate → UI/缓存一致`。
 
 ## Agent 执行协议
 
@@ -21,7 +21,7 @@
 3. [03](./03-app-router-and-layouts.md) / [04](./04-data-fetching-rsc.md) / [05](./05-server-mutation-lifecycle.md)  
 4. [06](./06-forms-and-client.md) / [07](./07-auth-env-cookies.md) / [08](./08-quality-a11y-perf.md)  
 5. [commands.md](./commands.md) `check`；发版 e2e  
-6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md)  
+6. [10](./10-checklist.md) + [11](./11-world-class-acceptance.md) **A+B+D**（C 节仅指南维护者）  
 
 ## 索引
 

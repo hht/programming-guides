@@ -14,13 +14,13 @@
 | ui-ux 产物 | 本册动作 |
 |------------|----------|
 | INPUTS 品牌 / 深色 / 密度 | 填本册 INPUTS §6–9 |
-| `design/tokens.md` 或 Figma Variables | 路径 ∈ 本册 semantic；值变更走 Apply Lifecycle |
+| `design/tokens.md`（写 SSOT）+ Variables 同名镜像 | 路径 ∈ 本册 semantic；值变更走 Apply Lifecycle |
 | handoff 中的 token 列 | 实现 agent 引用语义名，不抄 hex 进组件 |
 | 状态矩阵 | 色态（danger/disabled）用同一语义名 |
 
 ### 2. 漂移检查（启用 ui-ux 时必做）
 
-1. 导出或列出 Figma Variables / tokens.md 路径集合 `D`。  
+1. 导出或列出 `design/tokens.md`（及同名 Variables）路径集合 `D`。  
 2. 列出工程 `tokens/semantic/**` 路径集合 `E`。  
 3. 规则（默认）：`E ⊆ D` 或 `E = D`（INPUTS 钉）；设计多出的可选 token 须标 `design-only` 或尽快进工程。  
 4. `tokens:check-drift` 含此项则失败即红。

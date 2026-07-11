@@ -14,7 +14,7 @@
 2. **变换唯一**：Style Dictionary 为正式 transform；禁止手写复制 hex 到多处当「同步」。  
 3. **色名唯一**：全文一套语义色名（SSOT 见 `03` + INPUTS §3）；**禁止第二套色名**（遗留 `ink-*` / `faint` / 口语色与语义名并存）。  
 4. **分层单向**：`primitive → semantic →（可选）component`；UI **默认只绑 semantic**（或 component）；禁组件直读 primitive 除非 INPUTS 书面例外且有 lint。  
-5. **设计与工程同名**：启用 ui-ux 时，Figma Variables / `design/tokens.md` 路径与 DTCG 语义路径 **join key 同名**。  
+5. **设计与工程同名**：启用 ui-ux 时，写 SSOT = `design/tokens.md`（Variables 同名镜像），路径与 DTCG 语义路径 **join key 同名**。  
 6. **消费不发明真相**：组件、模块 CSS、调用处 `className` **不得**成为新的颜色 SSOT。  
 7. **deletion-first**：迁移期删第二套色 utility / 平行 token 文件；无 INPUTS 的 token 族不做。  
 8. **指南 ≠ 项目**：本仓不堆可运行业务皮肤或完整 DS 实现。

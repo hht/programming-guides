@@ -6,5 +6,5 @@
 - [ ] Zod + revalidate  
 - [ ] Client 边界最小  
 - [ ] env 成对  
-- [ ] `check` + e2e  
-- [ ] `11` 勾选  
+- [ ] `check` + e2e（发版）  
+- [ ] `11` **A+B+D** 勾选（C 节仅维护者）  

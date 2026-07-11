@@ -27,7 +27,9 @@
 | RLS/权限 | https://www.postgresql.org/docs/current/ddl-rowsecurity.html · https://github.com/supabase/supabase | [ ] |
 | 连接配置 | https://github.com/supabase/supabase · https://www.postgresql.org/docs/ | [ ] |
 
-## C. §1.3
+## C. §1.3 — 指南达标（维护者勾）
+
+> 交付 agent 的 `check` **不**要求本节（见 `commands` → `check-guide`）。
 
 1. [ ] 能力切条  
 2. [ ] 共有判定：能力在 \(B\) 的 ≥2 证据源出现；仅 1 源独有 → 可选  

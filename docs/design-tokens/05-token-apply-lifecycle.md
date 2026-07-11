@@ -13,7 +13,7 @@
 
 1. 确认 `INPUTS OK`；色名表已钉（`03`）。  
 2. 在 `tokens/` 写入/更新 **DTCG** 源（`04`）：primitive → semantic（→ component?）。  
-3. 若启用 ui-ux：核对 Figma Variables / `design/tokens.md` 与 semantic **路径同名**。  
+3. 若启用 ui-ux：核对 `design/tokens.md`（写 SSOT）与 semantic **路径同名**；Variables 须镜像。  
 4. 门闸：源可被 Style Dictionary 解析；alias 无环。  
 5. **本步不**直接改 UI 组件样式文件（除后续消费映射的约定入口）。
 

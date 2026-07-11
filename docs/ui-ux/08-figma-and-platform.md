@@ -13,7 +13,7 @@
 3. 状态用 Variant 或并排 Frame（名=状态列）。  
 4. 注释：主 CTA、字段、动态数据、破坏性确认。  
 5. Agent MCP 出图后必须跑 `commands check`；未过不得完成。  
-6. 写 `figma-notes.md`（URL + 列表 + `a11y: PASS`）。  
+6. 写 `design/figma-notes.md`（URL + 列表 + `a11y: PASS`）。  
 
 ## 平台适配
 

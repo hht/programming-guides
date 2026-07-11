@@ -19,7 +19,7 @@
 |---|------|------|
 | 1 | **定义 schema** | `lib/validations/<action>.ts`；与 Action 入参字段同构；禁「UI 一套、Action 再手写解析」。 |
 | 2 | **Action 入口** | `"use server"` 函数；解析 `FormData` 或 typed 入参 → `schema.safeParse`。 |
-| 3 | **校验失败** | 返回 `{ ok:false, code:"validation", error:… }`（或抛约定 `ActionError`）；**零**写库。 |
+| 3 | **校验失败** | 返回 `{ ok:false, code:"validation", error:…, fieldErrors?: Record<path, message> }`（或抛约定 `ActionError`）；**零**写库。字段级错误优先 `fieldErrors`，与模板 [action-result.schema.json](./templates/action-result.schema.json) 同构。 |
 | 4 | **授权** | INPUTS §5=无 → 跳过。否则按 `07` / [auth](../auth/README.md) 读会话；未登录 → `{ ok:false, code:"unauthorized" }`；已登录无权限 → `forbidden`。 |
 | 5 | **写入** | 单点写或显式事务（对接 [postgres](../postgres/README.md) `05`）；成功后 **默认 `revalidatePath(<钉死路径>)`**；若用 tag 缓存则 **额外** `revalidateTag`（tag 名在 Action 旁注释）。禁止只靠客户端乐观且不失效服务端缓存。 |
 | 6 | **返回** | `{ ok:true, data? }` 或 `{ ok:false, error, code }`；Client 默认 **`useActionState`**（或等价 pending 绑定）。 |
@@ -46,7 +46,7 @@ action(raw):
 
 | code | 条件 | 行为 |
 |------|------|------|
-| `validation` | Zod 失败 | 不写库；字段错误回表单 |
+| `validation` | Zod 失败 | 不写库；`fieldErrors` 映回表单字段；无字段则 `error` 汇总 |
 | `unauthorized` | 无会话 | 不写库；UI 去登录或展示未登录 |
 | `forbidden` | 已认证无权限 | 不写库；403 语义 |
 | `conflict` | 唯一约束 / 业务冲突（如 `23505`） | 不假成功；专用文案 |

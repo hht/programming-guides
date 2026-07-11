@@ -4,6 +4,7 @@
     {
       "type": "object",
       "required": ["ok"],
+      "additionalProperties": false,
       "properties": {
         "ok": { "const": true },
         "data": true
@@ -11,11 +12,19 @@
     },
     {
       "type": "object",
-      "required": ["ok", "error"],
+      "required": ["ok", "code", "error"],
+      "additionalProperties": false,
       "properties": {
         "ok": { "const": false },
+        "code": {
+          "type": "string",
+          "enum": ["validation", "unauthorized", "forbidden", "conflict", "internal"]
+        },
         "error": { "type": "string" },
-        "code": { "type": "string" }
+        "fieldErrors": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
       }
     }
   ]

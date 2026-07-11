@@ -21,7 +21,7 @@
 3. [03](./03-information-architecture.md) IA  
 4. [04](./04-layout-and-hierarchy.md) / [05](./05-components-and-states.md) / [06](./06-design-decision-lifecycle.md)  
 5. [07](./07-accessibility.md) / [08](./08-figma-and-platform.md)  
-6. [commands.md](./commands.md) `check`（**含** `11`）全绿  
+6. [commands.md](./commands.md) `check` 绿（**A+B+D**；C 节仅指南维护者）  
 
 ## 索引
 

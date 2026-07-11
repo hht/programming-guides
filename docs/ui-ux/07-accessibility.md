@@ -25,7 +25,7 @@
 
 1. 对主流程每屏跑上表。  
 2. 失败项改 token/布局后重测。  
-3. 将结果写入 `figma-notes.md`：`a11y: PASS` + 抽检说明。  
+3. 将结果写入 `design/figma-notes.md`：`a11y: PASS` + 抽检说明。  
 
 ## 探针
 

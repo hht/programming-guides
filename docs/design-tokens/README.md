@@ -3,7 +3,7 @@
 > **这是工程指南，不是半成品项目。**  
 > 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **source → transform → consume** Token 流水线。  
 > **默认栈**：**W3C Design Tokens（DTCG）** 作源格式 + **Style Dictionary**（当前主线，DTCG）作唯一变换工具链。**禁止**平行第二套色名 / 第二套 token 源 / 第二套 transform。  
-> **对位**：[ui-ux](../ui-ux/README.md) 管设计决策与 Figma；本册管工程 Apply。设计侧 `design/tokens.md` / Figma Variables 与本册 **语义 token 路径同名**。  
+> **对位**：[ui-ux](../ui-ux/README.md) 管设计决策与 Figma；本册管工程 Apply。设计侧写 SSOT = `design/tokens.md`（Variables 同名镜像），与本册 **语义 token 路径同名**。  
 > **来源**：[sources.md](./sources.md)
 
 ## 品类一句话
