@@ -1,0 +1,21 @@
+# Copy into application repo as Config/*.xcconfig — secret values never committed.
+# Pair Staging + Production for every URL/key below.
+
+// Common.xcconfig
+PRODUCT_BUNDLE_IDENTIFIER = com.example.app
+// APP_ENV injected as Info.plist key via build setting
+
+// Staging.xcconfig
+#include "Common.xcconfig"
+API_BASE_URL = https:/$()/staging-api.example.com
+APP_ENV = staging
+
+// Production.xcconfig
+#include "Common.xcconfig"
+API_BASE_URL = https:/$()/api.example.com
+APP_ENV = production
+
+// Notes:
+// - Map API_BASE_URL → Info.plist via INFOPLIST_KEY / generated Info.
+// - Auth tokens / client secrets: Keychain or CI secrets, not xcconfig committed values.
+// - Use separate Xcode configurations: Debug-Staging, Release-Production, etc.

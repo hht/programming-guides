@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/desktop-tauri/command-registry.schema.json",
+  "title": "Tauri command registry",
+  "description": "INPUTS §5 shape — keep in sync with AppManifest::commands and generate_handler!",
+  "type": "object",
+  "required": ["commands"],
+  "properties": {
+    "commands": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "intent", "side_effect", "errors"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$",
+            "description": "snake_case invoke name / Rust command"
+          },
+          "intent": {
+            "type": "string",
+            "minLength": 1,
+            "description": "One-line business intent"
+          },
+          "args": {
+            "type": "string",
+            "description": "Arg type summary (e.g. OpenLibraryInput)"
+          },
+          "ok": {
+            "type": "string",
+            "description": "Ok payload type summary"
+          },
+          "side_effect": {
+            "type": "string",
+            "enum": ["none", "read", "write", "network", "secrets"]
+          },
+          "errors": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "enum": [
+                "VALIDATION_FAILED",
+                "FORBIDDEN",
+                "NOT_FOUND",
+                "IO_FAILED",
+                "INTERNAL",
+                "COMMAND_DENIED",
+                "UNAUTHENTICATED"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

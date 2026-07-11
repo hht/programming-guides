@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/graphics-creative/frame-budget.schema.json",
+  "title": "MotionFrameBudget",
+  "description": "One critical motion entry with numeric frame budget. Implementation repos validate their registry against this shape.",
+  "type": "object",
+  "required": [
+    "id",
+    "surface",
+    "target_fps",
+    "frame_budget_ms",
+    "main_thread_budget_ms",
+    "properties",
+    "duration_ms",
+    "measure_tool",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable motion id; business term root preferred."
+    },
+    "surface": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Screen or component surface name."
+    },
+    "target_fps": {
+      "type": "integer",
+      "enum": [30, 60, 120]
+    },
+    "frame_budget_ms": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Default 16.67 @60, 8.33 @120, 33.33 @30."
+    },
+    "main_thread_budget_ms": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "description": "Default 8 @60, 4 @120, 12 @30."
+    },
+    "properties": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "transform",
+          "opacity",
+          "filter",
+          "clip-path",
+          "opacity-native",
+          "scaleEffect",
+          "offset",
+          "rotationEffect",
+          "graphicsLayer.alpha",
+          "graphicsLayer.translation",
+          "graphicsLayer.scale",
+          "graphicsLayer.rotation"
+        ]
+      }
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "trigger": {
+      "type": "string",
+      "description": "enter | exit | hover | scroll | press | other"
+    },
+    "measure_tool": {
+      "type": "string",
+      "enum": [
+        "chrome-performance",
+        "instruments",
+        "android-gpu",
+        "none-blocked"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pass", "over_budget", "degraded", "unmeasured"]
+    },
+    "degrade_tier": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Set when status=degraded; see 07-degrade-and-tier.md"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

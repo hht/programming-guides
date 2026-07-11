@@ -22,6 +22,11 @@
 | [auth](../auth/README.md) | 会话 Cookie / OAuth/OIDC / Session Gate |
 | [graphql](../graphql/README.md) | Schema-first GraphQL（Yoga + SDL + Typed document） |
 | [redis](../redis/README.md) | 缓存·锁·限流·会话存储 |
+| [apple-platforms](../apple-platforms/README.md) | iOS + Mac 原生（SwiftUI；View-State Lifecycle） |
+| [android-compose](../android-compose/README.md) | Kotlin + Jetpack Compose（UiState Lifecycle） |
+| [graphics-creative](../graphics-creative/README.md) | 动效·帧预算·掉帧可测（Frame Budget Lifecycle） |
+| [desktop-tauri](../desktop-tauri/README.md) | Tauri 2 跨端桌面（Command Lifecycle；备选） |
+| [expo](../expo/README.md) | Expo 跨端移动妥协层（Screen State Lifecycle） |
 
 ## Wave 执行序
 
@@ -43,23 +48,23 @@
 
 ### Wave 3 — 原生 / 桌面 / 创意
 
-| 序 | 目录 | 说明 |
-|----|------|------|
-| 7 | `apple-platforms` | iOS + Mac 原生（Mac 桌面专章） |
-| 8 | `android-compose` | Android 原生 |
-| 9 | `graphics-creative` | 动效/GPU/掉帧预算 |
-| 10 | `desktop-tauri` | 跨端桌面（备选；主路径仍 Mac 原生） |
-| 11 | `expo` | 跨端移动妥协层 |
+| 序 | 目录 | 说明 | 状态 |
+|----|------|------|------|
+| 7 | `apple-platforms` | iOS + Mac 原生（Mac 桌面专章） | DONE |
+| 8 | `android-compose` | Android 原生 | DONE |
+| 9 | `graphics-creative` | 动效/GPU/掉帧预算 | DONE |
+| 10 | `desktop-tauri` | 跨端桌面（备选；主路径仍 Mac 原生） | DONE |
+| 11 | `expo` | 跨端移动妥协层（Screen State Lifecycle） | DONE |
 
 ### Wave 4 — 分布式与产品形态
 
-| 序 | 目录 | 说明 |
-|----|------|------|
-| 12 | `realtime` | WS/SSE/订阅 |
-| 13 | `workers-queue` | 后台任务·出队重试·幂等 |
-| 14 | `saas` | 多租户·计费·RBAC |
-| 15 | `search` | 全文/向量检索边界 |
-| 16 | `observability` | 日志·指标·追踪（**可选册**；领域指南仍不把 APM 当必勾） |
+| 序 | 目录 | 说明 | 状态 |
+|----|------|------|------|
+| 12 | `realtime` | WS/SSE/订阅 | |
+| 13 | `workers-queue` | 后台任务·出队重试·幂等 | |
+| 14 | `saas` | 多租户·计费·RBAC | |
+| 15 | `search` | 全文/向量检索边界 | |
+| 16 | `observability` | 日志·指标·追踪（**可选册**；领域指南仍不把 APM 当必勾） | |
 
 ### Wave 5 — 云与边缘（有单再开）
 

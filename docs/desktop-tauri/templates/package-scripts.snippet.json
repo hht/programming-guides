@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "check-inputs": "echo 'implement: validate desktop-tauri INPUTS predicates'",
+    "test": "echo 'implement: unit tests per 09'",
+    "test:e2e-desktop": "echo 'implement: release matrix per OS'",
+    "check-acceptance": "echo 'implement: assert 11 A+B+D'",
+    "check": "pnpm check-inputs && pnpm test && pnpm check-acceptance",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
+  }
+}

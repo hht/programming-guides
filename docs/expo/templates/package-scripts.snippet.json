@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "check-inputs": "node ./scripts/check-inputs.mjs",
+    "test": "jest",
+    "test:ui": "jest --config jest.rntl.config.js",
+    "test:e2e-expo": "echo \"run 09 release matrix 1-5+7\"",
+    "doctor": "npx expo-doctor",
+    "check-acceptance": "node ./scripts/check-acceptance.mjs",
+    "check": "npm run check-inputs && npm run test && npm run check-acceptance",
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios"
+  }
+}

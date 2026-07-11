@@ -1,0 +1,9 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "main-capability",
+  "description": "Minimal capability for the main window — expand permissions only with INPUTS §6 rows",
+  "windows": ["main"],
+  "permissions": [
+    "core:default"
+  ]
+}
