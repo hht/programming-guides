@@ -1,0 +1,22 @@
+# Schema stub — expand in the application repo. Not runnable business API.
+# Contract SSOT = checked-in SDL (see docs/graphql/03).
+
+"""
+Example root schema. Replace ExampleType / fields with ubiquitous-language terms.
+"""
+type Query {
+  """Health / allowlist-friendly read for smoke tests. Tighten in INPUTS §6."""
+  health: String!
+}
+
+type Mutation {
+  """
+  Placeholder write field — implementors replace with real business mutations.
+  All Mutations require auth + input validation (docs/graphql/06).
+  """
+  _placeholder(note: String!): Boolean!
+}
+
+# Optional: clients may rely on extensions.code from the execution layer
+# (UNAUTHENTICATED | FORBIDDEN | VALIDATION_FAILED | NOT_FOUND | INTERNAL).
+# Do not invent a parallel error union unless product requires it in SDL.

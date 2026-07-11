@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/redis/key-patterns.schema.json",
+  "title": "RedisKeyPatternRegistry",
+  "description": "Register each production key pattern with TTL policy. Implementation repos keep a JSON/YAML list validating against this shape.",
+  "type": "object",
+  "required": ["prefix", "patterns"],
+  "additionalProperties": false,
+  "properties": {
+    "prefix": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": ".+:$",
+      "description": "Business key prefix ending with colon, e.g. acme:"
+    },
+    "patterns": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "pattern", "purpose", "ttl_seconds", "owner_feature"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Ubiquitous language term, e.g. order_cache"
+          },
+          "pattern": {
+            "type": "string",
+            "minLength": 1,
+            "description": "e.g. {prefix}order:{id}"
+          },
+          "purpose": {
+            "type": "string",
+            "enum": ["cache", "lock", "rate_limit", "session", "ephemeral"]
+          },
+          "ttl_seconds": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Default TTL; required for all purposes including locks"
+          },
+          "ttl_jitter_seconds": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Optional max positive jitter for avalanche mitigation"
+          },
+          "owner_feature": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Feature module owning this key family"
+          }
+        }
+      }
+    }
+  }
+}
