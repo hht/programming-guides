@@ -9,7 +9,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` 词根 + 依赖 |
 | 命名 / 词表 | [ ] | 目标仓 `UBIQUITOUS_LANGUAGE.md` = `02` Pass1 |
-| 代码风格 | [ ] | `01`；显式预算、禁无关炫技库 |
+| 代码风格 | [ ] | `00` 框架 MUST + [typescript Language Gate](../meta/language-gates/typescript.md)（宿主）；`01` 预算 |
 | 工具链 | [ ] | `01` + 应用册 lockfile |
 | 门禁 | [ ] | `commands.md` |
 | 代码极简 | [ ] | 无默认重动效库；deletion-first |

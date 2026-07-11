@@ -9,7 +9,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` 树 + 依赖方向 |
 | 命名 / 词表 | [ ] | 目标仓 `UBIQUITOUS_LANGUAGE.md` = `02` Pass1 |
-| 代码风格 | [ ] | `01` 显式 Runner；禁裸 cron 伪管线 |
+| 代码风格 | [ ] | `00` 框架 MUST + [python Language Gate](../meta/language-gates/python.md)（常见宿主）；`01` Runner |
 | 工具链 | [ ] | PG≥16 + workers-queue（或条件编排书面） |
 | 门禁 | [ ] | `commands.md` |
 | 代码极简 | [ ] | 无第二套管线 SSOT；指南无业务实现 |

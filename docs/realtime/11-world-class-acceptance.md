@@ -9,7 +9,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` 树 + 依赖方向 |
 | 命名 / 词表 | [ ] | 目标仓 `UBIQUITOUS_LANGUAGE.md` = `02` Pass1 |
-| 代码风格 | [ ] | `01` 显式传输；禁双默认 / 禁默认 Socket.IO |
+| 代码风格 | [ ] | `00` 框架 MUST；`01` 显式传输 |
 | 工具链 | [ ] | WebSocket + JSON envelope + Go/`coder/websocket`（或映射册内约定库） |
 | 门禁 | [ ] | `commands.md` |
 | 代码极简 | [ ] | 无平行协议 / 无业务堆进指南 |

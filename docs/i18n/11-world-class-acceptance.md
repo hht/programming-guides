@@ -9,7 +9,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` 树 + 依赖方向 |
 | 命名 / 词表 | [ ] | 目标仓 `UBIQUITOUS_LANGUAGE.md` = `02` Pass1 |
-| 代码风格 | [ ] | `01` 显式宿主运行时；禁双 SSOT |
+| 代码风格 | [ ] | `00` 框架 MUST + [typescript Language Gate](../meta/language-gates/typescript.md)（宿主）；`01` 显式运行时 |
 | 工具链 | [ ] | JSON/ICU + next-intl 或 react-intl |
 | 门禁 | [ ] | `commands.md` |
 | 代码极简 | [ ] | 无第二套文案格式 SSOT；指南无业务实现 |

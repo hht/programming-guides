@@ -1,5 +1,7 @@
 # 01 — 栈
 
+> 框架 MUST 见 [`00`](./00-principles.md)。语言硬门闸：[python Language Gate](../meta/language-gates/python.md)（常见宿主；不在本文件复述）。
+
 | 层 | 选择 |
 |----|------|
 | **执行模式** | **Batch**（默认）；Streaming 仅 INPUTS §1 |

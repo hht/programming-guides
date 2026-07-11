@@ -1,5 +1,7 @@
 # 01 — 栈
 
+> 框架 MUST 见 [`00`](./00-principles.md)。本册无独立 Language Gate；实现语言的 fmt/lint 跟宿主应用册。
+
 | 层 | 选择 |
 |----|------|
 | 全文默认 | **PostgreSQL FTS**：`tsvector` + **GIN**；配置 = INPUTS §3；与 [postgres](../postgres/README.md) 同库同迁移纪律 |

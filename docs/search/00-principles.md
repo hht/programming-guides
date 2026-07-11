@@ -1,26 +1,41 @@
-# 00 — 原则
+# 00 — 原则与框架 MUST
 
-决策序：正确性 > 可验证性 > 简洁性 > 复用 > 速度。
+> Normative: MUST / MUST NOT（RFC 2119）  
+> 语言层：随宿主应用册 Language Gate（本册不另开语言百科；实现语言的 fmt/lint 跟宿主 `commands`）。
 
-1. **真检索**：命中必须来自索引查询（FTS / 专用引擎 / 可选向量），**禁止**把「前端对已加载列表做 `filter`/`includes`」当搜索实现。 
-2. **先授权再查索引**：`authorize scope` 在 `query index` 之前；不可先返回不可见文档 id 再过滤。 
-3. **源数据 SSOT**：展示字段从权威存储 **hydrate**；索引只服务匹配与排序信号。 
-4. **空 ≠ 错**：零命中是成功路径；引擎/超时/权限失败走错误分类。 
-5. **同步策略显式**：同事务一致或异步+SLA，禁止静默最终一致。 
-6. **deletion-first**：无规模证据不引入第二套检索引擎。
+## 品类
+
+类型安全检索：真检索来自索引；先授权再查；空命中≠错误。
+
+## 核心正确性路径（全文唯一）
+
+**Search Query Lifecycle**：authorize scope → query index → hydrate → respond。规格见 [05](./05-search-query-lifecycle.md)。
+
+## 框架 MUST
+
+| ID | 关键词 | 规约 | 探针 |
+|----|--------|------|------|
+| F01 | MUST | 命中来自索引查询 | `05` |
+| F02 | MUST NOT | 前端对已加载列表 filter 冒充搜索 | `11` |
+| F03 | MUST | authorize scope 在 query index 之前 | `05` |
+| F04 | MUST | 展示字段从权威源 hydrate | `05`/`06` |
+| F05 | MUST | 零命中是成功路径；失败分码 | `06` |
+| F06 | MUST | 同步策略显式 | INPUTS |
+| F07 | MUST NOT | 无证据引入第二检索引擎 | `08` |
+| F08 | MUST | deletion-first | 目录 |
 
 ## SSOT
 
 | 真相 | Owner |
 |------|--------|
 | 可检索字段与权重 | INPUTS §1 + `03` |
-| FTS schema / 迁移 | [postgres](../postgres/README.md) `db/migrations/` |
+| FTS schema / 迁移 | [postgres](../postgres/README.md) |
 | 查询生命周期 | `05` |
-| 可见性谓词 | INPUTS §5 + auth 册 |
+| 可见性谓词 | INPUTS §5 + auth |
 | 向量（若启用） | INPUTS §10 + `07` |
 | 专用引擎（若触发） | INPUTS §11 + `08` |
 
 ## 超越
 
-1. `对照：B 中更弱/未见「authorize 必须在 query index 之前且不可靠事后滤 id」硬门闸 → 本指南要求 scope 谓词进入查询或等价 scoped token，并有泄漏探针（见 05）` 
-2. `对照：B 中更弱/未见「空命中与系统错误强制分码 + 发版矩阵」→ 本指南要求 empty/error 分码与场景×断言（见 06、09）`
+1. `对照：B 中更弱/未见「authorize 必须在 query index 之前」硬门闸 → 本指南要求（见 05）`
+2. `对照：B 中更弱/未见「空命中与系统错误强制分码」→ 本指南要求（见 06、09）`

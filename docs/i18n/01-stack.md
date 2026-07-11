@@ -1,5 +1,7 @@
 # 01 — 栈
 
+> 框架 MUST 见 [`00`](./00-principles.md)。语言硬门闸：[typescript Language Gate](../meta/language-gates/typescript.md)（宿主；不在本文件复述）。
+
 | 层 | 选择 |
 |----|------|
 | **文案目录** | **JSON + ICU MessageFormat**（Unicode / FormatJS 语法） |
@@ -52,4 +54,4 @@
 
 - **流行度（i18next）不单独定胜负**；**ICU SSOT + 缺 key 可强制失败**优先 → 默认 FormatJS 系。 
 - Next 生态以 **`next-intl`** 为 App Router 先进默认（RSC 消息、middleware）；非「下载量第一」改判。 
-- Vite SPA 约定 **`react-intl`**，与 next-intl **共享消息文件形状**，避免两套目录方言。 
+- Vite SPA 约定 **`react-intl`**，与 next-intl **共享消息文件形状**，避免两套目录方言。

@@ -1,6 +1,8 @@
 # 01 — 默认栈
 
 > 选栈：**先进优先**（可测、可预算、合成层友好）> 流行度。冲突见 [sources.md](./sources.md)。
+>
+> 框架 MUST 见 [`00`](./00-principles.md)。语言硬门闸：[typescript Language Gate](../meta/language-gates/typescript.md)（宿主；不在本文件复述）。
 
 ## 一句话默认栈
 

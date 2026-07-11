@@ -78,6 +78,8 @@
 升 `PASS`：该语言主挂靠应用册对「gate 挂靠 + commands 逐字 + 框架 MUST」变更跑 Full 5/5 后改 README。  
 **不设**语言百科 Wave；**不开** `framework-gates/` 平行树（框架 MUST 在应用册）。
 
+横切能力册（auth / postgres / redis / saas / payments / …）的 **框架 MUST** 已落在各自 `00`；语言层跟宿主 Language Gate，不另开闸。
+
 ## 候选池（未立项；热度高时升 Wave）
 
 `sveltekit` · `vue-nuxt` · `elixir-phoenix` · `dotnet-api` · `laravel` · `django`（与 fastapi 分册时再约定）· `terraform-opentofu` · `kubernetes-app`（应用部署面，非云百科）· `wasm` · `cli-rust` · `browser-extension` · `shopify-app` · `telegram-bot` · `discord-bot`

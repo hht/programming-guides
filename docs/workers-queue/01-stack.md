@@ -1,5 +1,7 @@
 # 01 — 栈
 
+> 框架 MUST 见 [`00`](./00-principles.md)。本册无独立 Language Gate；实现语言的 fmt/lint 跟宿主应用册。
+
 | 层 | 选择 |
 |----|------|
 | **默认队列后端** | **PostgreSQL ≥16** 队列表 + **`SELECT … FOR UPDATE SKIP LOCKED`**（应用已有 PG 权威源时优先采用；对齐 [postgres](../postgres/README.md)：迁移 **Atlas**、本地 Compose） |

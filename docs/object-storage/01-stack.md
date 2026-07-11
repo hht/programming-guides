@@ -1,5 +1,7 @@
 # 01 — 栈
 
+> 框架 MUST 见 [`00`](./00-principles.md)。本册无独立 Language Gate；实现语言的 fmt/lint 跟宿主应用册。
+
 | 层 | 选择 |
 |----|------|
 | **对象 API** | **S3 兼容**（PutObject / GetObject / DeleteObject；预签名 Get/Put；可选 Multipart） |
@@ -49,4 +51,4 @@
 
 - 云厂商托管流行度 **不**单独定胜负；**S3 兼容 API + 可本地 MinIO 验证**优先。 
 - TS 生态 minio-js 可用，但 **默认采用 AWS SDK v3**（与 S3 官方客户端形状一致、预签名一等公民）；改选须 INPUTS。 
-- Go 默认 **minio-go**（对 MinIO/兼容 endpoint 摩擦更低）；需要 aws-sdk-go-v2 时 INPUTS 互斥改选。 
+- Go 默认 **minio-go**（对 MinIO/兼容 endpoint 摩擦更低）；需要 aws-sdk-go-v2 时 INPUTS 互斥改选。

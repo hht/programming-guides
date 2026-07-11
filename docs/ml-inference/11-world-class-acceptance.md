@@ -9,7 +9,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` 树 + 依赖方向 |
 | 命名 / 词表 | [ ] | 目标仓 `UBIQUITOUS_LANGUAGE.md` = `02` Pass1 |
-| 代码风格 | [ ] | `01` 单 runtime；禁训练百科进主路径 |
+| 代码风格 | [ ] | `00` 框架 MUST + [python Language Gate](../meta/language-gates/python.md)；`01` 单 runtime |
 | 工具链 | [ ] | FastAPI + lockfile；artifact 版本配置 |
 | 门禁 | [ ] | `commands.md` |
 | 代码极简 | [ ] | 无第二套推理 SSOT；指南无业务实现 |

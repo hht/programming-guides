@@ -6,7 +6,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` |
 | 命名 / 词表 | [ ] | `02` Pass1 业务 task/screen-id + join key |
-| 代码风格 | [ ] | token 一致 `01` |
+| 代码风格 | [ ] | `00` 框架 MUST；token 一致见 `01`/design-tokens |
 | 工具链 | [ ] | Figma |
 | 门禁 | [ ] | `commands.md` |
 | 代码极简 | [ ] | 指南无业务实现 |

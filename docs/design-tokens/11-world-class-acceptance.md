@@ -9,7 +9,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` 树 + 依赖方向 |
 | 命名 / 词表 | [ ] | 目标仓 `UBIQUITOUS_LANGUAGE.md` = `02` Pass1；色名 SSOT |
-| 代码风格 | [ ] | `01` 显式 DTCG + SD；禁双 SSOT |
+| 代码风格 | [ ] | `00` 框架 MUST；`01` DTCG + SD |
 | 工具链 | [ ] | Style Dictionary + `tokens:build` |
 | 门禁 | [ ] | `commands.md` |
 | 代码极简 | [ ] | 无第二套色名/平行源；指南无业务皮肤实现 |

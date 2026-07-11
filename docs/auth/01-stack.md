@@ -1,6 +1,8 @@
 # 01 — 默认栈
 
 > 选栈：**先进优先**；流行度仅佐证。冲突见 [sources.md](./sources.md)。
+>
+> 框架 MUST 见 [`00`](./00-principles.md)。本册无独立 Language Gate；实现语言的 fmt/lint 跟宿主应用册。
 
 ## 一句话默认栈
 

@@ -1,5 +1,7 @@
 # 01 — 栈
 
+> 框架 MUST 见 [`00`](./00-principles.md)。本册无独立 Language Gate；实现语言的 fmt/lint 跟宿主应用册。
+
 | 层 | 选择 |
 |----|------|
 | **模板** | 版本化 **HTML + plain text**（或 MJML→HTML 构建步，INPUTS 写明）；变量契约 JSON Schema / 类型；**仓库或 DB 版本表二选一写明**（默认：仓库 `templates/email/<template_id>/vN/`） |

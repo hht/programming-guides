@@ -1,5 +1,7 @@
 # 01 — 栈
 
+> 框架 MUST 见 [`00`](./00-principles.md)。语言硬门闸：[python Language Gate](../meta/language-gates/python.md)（默认宿主；不在本文件复述）。
+
 | 层 | 选择 |
 |----|------|
 | **语言** | **Python 3.12+**（推理服务默认；与 [fastapi](../fastapi/README.md) 对齐） |
