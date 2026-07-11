@@ -1,0 +1,24 @@
+# Example only — copy into implementation repo as wrangler.toml / wrangler.jsonc.
+# Pin compatibility_date in INPUTS; do not commit account-specific secrets.
+
+name = "app-functions"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+# compatibility_flags = ["nodejs_compat"]  # only if INPUTS written
+
+[vars]
+APP_ENV = "development"
+FUNCTION_WALL_TIMEOUT_SECONDS = "30"
+
+# Bindings: declare names that match INPUTS §11; resources provisioned per env.
+# [[kv_namespaces]]
+# binding = "IDEMPOTENCY_KV"
+# id = "<staging-or-prod-id>"
+
+# [[d1_databases]]
+# binding = "APP_DB"
+# database_name = "app"
+# database_id = "<id>"
+
+# [triggers]
+# crons = ["0 0 * * *"]

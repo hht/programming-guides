@@ -15,7 +15,7 @@
 | 身份 | [docs/auth](../auth/README.md) Opaque Cookie session（Web） | 本册不重钉会话 |
 | 授权 | 角色+权限表（或 INPUTS 固定矩阵） | 前端藏按钮当授权 |
 | 租户解析 | 头/路径/子域名 **候选** + Membership 校验 | 仅 DNS/Host 猜测 |
-| 计费 | 计划码 + 席位 + 状态机 | 本册不钉 Stripe SDK 版本；支付百科 → 未来 payments |
+| 计费 | 计划码 + 席位 + 状态机 | 本册不钉 Stripe SDK 版本；Intent/Webhook → [payments](../payments/README.md) |
 | 迁移 | 对齐 [docs/postgres](../postgres/README.md)（默认 Atlas+SQL） | 应用内手工改 prod schema |
 | 审计 | 追加写 audit 事件（成员/权限/计费） | 无审计却声称合规默认 |
 

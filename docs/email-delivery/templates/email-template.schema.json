@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/email-delivery/email-template.schema.json",
+  "title": "EmailTemplate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["template_id", "template_version", "subject", "body_html", "body_text", "variables_schema"],
+  "properties": {
+    "template_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Business-rooted id, e.g. password.reset"
+    },
+    "template_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "locale": {
+      "type": "string",
+      "description": "Optional BCP-47 tag when multi-locale"
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1
+    },
+    "body_html": {
+      "type": "string",
+      "minLength": 1
+    },
+    "body_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "variables_schema": {
+      "type": "object",
+      "description": "JSON Schema for compose variables; fail closed on mismatch"
+    }
+  }
+}

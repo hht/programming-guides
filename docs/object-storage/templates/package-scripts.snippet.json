@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "check-inputs": "echo 'Implement: validate docs/object-storage INPUTS predicates'",
+    "storage-up": "echo 'Implement: docker compose up MinIO + healthcheck'",
+    "test": "echo 'Implement: object put lifecycle probes (authorize, put, verify, get, delete)'",
+    "check-acceptance": "echo 'Implement: verify 11-world-class-acceptance A+B+D'",
+    "check": "npm run check-inputs && npm run storage-up && npm run test && npm run check-acceptance"
+  }
+}

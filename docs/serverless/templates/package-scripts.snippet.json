@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "check-inputs": "node -e \"console.log('Implement INPUTS predicate checks per docs/serverless/INPUTS.md')\"",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e-invoke": "vitest run --config vitest.e2e.config.ts",
+    "check-acceptance": "node -e \"console.log('Self-check 11 A+B+D')\"",
+    "check": "pnpm check-inputs && pnpm typecheck && pnpm test && pnpm check-acceptance",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  }
+}

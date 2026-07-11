@@ -27,67 +27,44 @@
 | [graphics-creative](../graphics-creative/README.md) | 动效·帧预算·掉帧可测（Frame Budget Lifecycle） |
 | [desktop-tauri](../desktop-tauri/README.md) | Tauri 2 跨端桌面（Command Lifecycle；备选） |
 | [expo](../expo/README.md) | Expo 跨端移动妥协层（Screen State Lifecycle） |
-
-> **Wave 4 进行中（规格已写 · 对抗未 5/5 · 勿标 DONE）**：[realtime](../realtime/README.md) · [workers-queue](../workers-queue/README.md) · [saas](../saas/README.md) · [search](../search/README.md) · [observability](../observability/README.md)
+| [realtime](../realtime/README.md) | WebSocket 订阅 · Subscription Lifecycle |
+| [workers-queue](../workers-queue/README.md) | 后台任务·入队出队·重试幂等死信 |
+| [saas](../saas/README.md) | 多租户 SaaS · Tenant Gate / RBAC / 计费边界 |
+| [search](../search/README.md) | 全文检索·可选向量 · Search Query Lifecycle |
+| [observability](../observability/README.md) | 日志·指标·追踪（**可选册**；Telemetry Correlate Lifecycle） |
+| [serverless](../serverless/README.md) | Functions/边缘 · Invocation Lifecycle |
+| [object-storage](../object-storage/README.md) | S3 兼容 · Object Put Lifecycle |
+| [email-delivery](../email-delivery/README.md) | 事务邮件 · Transactional Send Lifecycle |
+| [payments](../payments/README.md) | 支付边界 · Payment Intent Lifecycle |
+| [rust-api](../rust-api/README.md) | Rust HTTP · axum + tokio + sqlx |
+| [kotlin-backend](../kotlin-backend/README.md) | Kotlin HTTP · Ktor + Exposed |
 
 ## Wave 执行序
 
-### Wave 1 — 收口
+### Wave 1–4
 
-| 序 | 目录 | 说明 | 状态 |
-|----|------|------|------|
-| 1 | `ops` | Compose+Kamal+GHA | DONE |
+全部 **DONE**（见上表）。
 
-### Wave 2 — Web / 数据 / 身份
+### Wave 5 — 云与边缘
 
-| 序 | 目录 | 说明 | 状态 |
-|----|------|------|------|
-| 2 | `nextjs` | App Router；与 Vite `react` 分册 | DONE |
-| 3 | `postgres` | 建模·迁移·事务·RLS | DONE |
-| 4 | `auth` | 会话/OAuth/JWT/跨端鉴权 | DONE |
-| 5 | `graphql` | Schema-first API（对位 REST 册） | DONE |
-| 6 | `redis` | 缓存·锁·限流·会话存储 | DONE |
+| 目录 | 说明 | 状态 |
+|------|------|------|
+| `serverless` | Functions/边缘运行时 | DONE |
+| `object-storage` | S3 兼容对象存储 | DONE |
+| `email-delivery` | 事务邮件·模板·投递 | DONE |
+| `payments` | 支付集成边界 | DONE |
+| `rust-api` | Rust HTTP（axum） | DONE |
+| `kotlin-backend` | Kotlin HTTP（Ktor） | DONE |
 
-### Wave 3 — 原生 / 桌面 / 创意
+### Wave 6 — 垂直产品
 
-| 序 | 目录 | 说明 | 状态 |
-|----|------|------|------|
-| 7 | `apple-platforms` | iOS + Mac 原生（Mac 桌面专章） | DONE |
-| 8 | `android-compose` | Android 原生 | DONE |
-| 9 | `graphics-creative` | 动效/GPU/掉帧预算 | DONE |
-| 10 | `desktop-tauri` | 跨端桌面（备选；主路径仍 Mac 原生） | DONE |
-| 11 | `expo` | 跨端移动妥协层（Screen State Lifecycle） | DONE |
-
-### Wave 4 — 分布式与产品形态
-
-| 序 | 目录 | 说明 | 状态 |
-|----|------|------|------|
-| 12 | `realtime` | WS/SSE/订阅 | **进行中** · 勿标 DONE |
-| 13 | `workers-queue` | 后台任务·出队重试·幂等 | **进行中** · 勿标 DONE |
-| 14 | `saas` | 多租户·计费·RBAC | **进行中** · 勿标 DONE |
-| 15 | `search` | 全文/向量检索边界 | **进行中** · 勿标 DONE |
-| 16 | `observability` | 日志·指标·追踪（**可选册**；领域指南仍不把 APM 当必勾） | **进行中** · 勿标 DONE |
-
-### Wave 5 — 云与边缘（有单再开）
-
-| 目录 | 说明 |
-|------|------|
-| `serverless` | Functions/边缘运行时 |
-| `object-storage` | S3 兼容对象存储 |
-| `email-delivery` | 事务邮件·模板·投递 |
-| `payments` | 支付集成边界（非某家 SDK 百科） |
-| `rust-api` | Rust HTTP（先进后端备选） |
-| `kotlin-backend` | JVM/Ktor 或 Spring 薄册（按先进裁决） |
-
-### Wave 6 — 垂直产品（按需）
-
-| 目录 | 说明 |
-|------|------|
-| `cms-headless` | Headless CMS 集成 |
-| `i18n` | 文案 SSOT·locale 流水线 |
-| `design-tokens` | Token 工程（对位 ui-ux） |
-| `ml-inference` | 模型推理服务边界（非训练百科） |
-| `data-pipeline` | ETL/批流薄册 |
+| 目录 | 说明 | 状态 |
+|------|------|------|
+| `cms-headless` | Headless CMS 集成 | |
+| `i18n` | 文案 SSOT·locale 流水线 | |
+| `design-tokens` | Token 工程（对位 ui-ux） | |
+| `ml-inference` | 模型推理服务边界（非训练百科） | |
+| `data-pipeline` | ETL/批流薄册 | |
 
 ## 候选池（未立项；热度高时升 Wave）
 

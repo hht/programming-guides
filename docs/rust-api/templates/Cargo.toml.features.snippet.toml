@@ -1,0 +1,14 @@
+# Snippet — merge into target Cargo.toml [dependencies]（非完整业务 crate）
+# axum = { version = "0.8" }          # 钉仓内最新稳定；勿留「actix 或 axum」
+# tokio = { version = "1", features = ["rt-multi-thread", "macros", "signal", "net", "time"] }
+# tower = "0.5"
+# tower-http = { version = "0.6", features = ["trace", "cors", "limit", "request-id", "set-header", "util"] }
+# sqlx = { version = "0.8", features = ["runtime-tokio", "postgres", "migrate", "macros", "uuid", "chrono", "json"] }
+# serde = { version = "1", features = ["derive"] }
+# serde_json = "1"
+# tracing = "0.1"
+# tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+# thiserror = "2"
+# uuid = { version = "1", features = ["v4", "serde"] }
+# chrono = { version = "0.4", features = ["serde"] }
+# jsonwebtoken = "9"                   # 仅 Bearer / IdP

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://project-templates.local/payments/webhook-event.schema.json",
+  "title": "ProviderAgnosticPaymentWebhookEvent",
+  "description": "Shape after ProviderAdapter.verifyWebhook + mapEvent. Not a raw Stripe event.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_id", "provider", "transition", "provider_intent_id"],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Provider event id for idempotent processing"
+    },
+    "provider": {
+      "type": "string",
+      "minLength": 1
+    },
+    "transition": {
+      "type": "string",
+      "enum": ["settled", "failed", "refunded", "partially_refunded", "ignore"]
+    },
+    "provider_intent_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "payment_intent_id": {
+      "type": "string",
+      "description": "Application PaymentIntent id if present in metadata"
+    },
+    "amount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Minor units; required when transition is settled or refund*"
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "failure_code": {
+      "type": "string"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

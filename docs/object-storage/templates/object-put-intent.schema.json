@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "object-put-intent.schema.json",
+  "title": "ObjectPutIntent",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bucket",
+    "object_key",
+    "content_type",
+    "max_bytes",
+    "principal_id",
+    "purpose"
+  ],
+  "properties": {
+    "intent_id": { "type": "string", "minLength": 1 },
+    "bucket": { "type": "string", "minLength": 1 },
+    "object_key": { "type": "string", "minLength": 1 },
+    "content_type": { "type": "string", "minLength": 1 },
+    "content_length": { "type": "integer", "minimum": 0 },
+    "max_bytes": { "type": "integer", "minimum": 1 },
+    "principal_id": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
+    "expires_at": { "type": "string", "format": "date-time" }
+  }
+}

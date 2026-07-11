@@ -1,7 +1,7 @@
 # 06 — 计费边界
 
 > **本册钉计划/席位/状态机与「能否写」门闸，不是支付百科。**  
-> Stripe 等提供商、Webhook 验签细节、对账 → 未来 `docs/payments/`；未齐套前实现仓可自写最小 webhook，但**状态机与门闸以本文件为准**。
+> Checkout / PaymentIntent / 签名 Webhook / settle·fail·refund → [`docs/payments/`](../payments/README.md)（Payment Intent Lifecycle）。本文件仍为 **BillingStatus / 席位门闸 SSOT**；payments 只经显式映射写入状态转移。
 
 ## 不变量
 
@@ -17,8 +17,8 @@
 2. **状态枚举（最小）**：`trialing` → `active` → `past_due` → `canceled`（可加 `paused`）；转移表见 [templates/billing-state-matrix.md](./templates/billing-state-matrix.md)。  
 3. **写门闸**：Tenant Gate 步骤 3：若 `isWrite` 且 status ∈ 阻断集（默认 `past_due` 超宽限期、`canceled`）→ `BILLING_INACTIVE`。读是否允许：INPUTS 钉（默认读允许）。  
 4. **席位**：`active` 成员数（+ pending invite 是否计入：INPUTS）≤ `seat_limit`；超限拒绝 Invite。  
-5. **外部事件**：支付商 webhook → **验签** → 映射到状态转移函数（纯函数可测）→ 落库 → 审计。验签失败 → 拒收，不改状态。  
-6. **禁止**：业务代码直接调支付 SDK 绕过状态机；指南仓堆完整 Stripe Checkout UI。
+5. **外部事件**：支付商 webhook → **验签**（细节 SSOT：[payments `06`](../payments/06-webhook-verify.md)）→ 映射到状态转移函数（纯函数可测）→ 落库 → 审计。验签失败 → 拒收，不改状态。  
+6. **禁止**：业务代码直接调支付 SDK 绕过状态机；指南仓堆完整 Stripe Checkout UI（支付实现走 [payments](../payments/README.md)）。
 
 ## 失败分类 / 默认值
 

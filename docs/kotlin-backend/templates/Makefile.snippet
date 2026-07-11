@@ -1,0 +1,19 @@
+# Snippet — adapt in target repo Makefile（命令字符串与 ../commands.md 同文）
+.PHONY: test lint check build migrate test-integration run
+test:
+	./gradlew test -PexcludeTags=integration
+lint:
+	./gradlew detekt ktlintCheck
+check: lint test
+build:
+	./gradlew installDist
+migrate:
+	@echo "Flyway runs on application start (see docs 03/06); optional: ./gradlew flywayMigrate"
+# 集成测：compose → integration tests → down（DATABASE_URL 见 09 / env.example）
+test-integration:
+	export DATABASE_URL=jdbc:postgresql://localhost:5432/app_test?user=app&password=app && \
+	docker compose -f docker-compose.test.yml up -d --wait && \
+	./gradlew test -PincludeTags=integration && \
+	docker compose -f docker-compose.test.yml down
+run:
+	./gradlew run

@@ -16,7 +16,7 @@
 | 7 | **会话对齐** | 须勾选并遵守 [docs/auth](../auth/README.md)：Subject 来自 Session Gate；Tenant Gate **在** Session Gate 之后（或同请求管道明确顺序） |
 | 8 | **Postgres / RLS** | §1=A：对齐 [docs/postgres](../postgres/README.md) `06` — `ENABLE`+`FORCE` RLS；`set_config('app.tenant_id', …, true)`。§1=B：书面 N/A RLS + schema 切换策略 |
 | 9 | **计费边界** | □ 启用计划/席位/状态机（见 `06`）□ **N/A — 无计费**（acceptance 写裁剪理由）。启用时：计划码、席位上限字段、状态枚举（至少 `trialing`/`active`/`past_due`/`canceled`） |
-| 10 | **支付商** | 计费启用时：□ Stripe □ 其它（须钉 webhook 签名校验 URL/密钥名）。**不**把某家钉为指南唯一默认；细节可 defer 未来 payments 册，但本仓须有「状态机谁写、谁读」 |
+| 10 | **支付商** | 计费启用时：□ Stripe □ 其它（须钉 webhook 签名校验 URL/密钥名）。**不**把某家钉为指南唯一默认；Intent/验签细节对齐 [docs/payments](../payments/README.md)；本仓须有「BillingStatus 谁写、谁读」 |
 | 11 | **环境成对** | staging/prod：`APP_ENV`、`DATABASE_URL`、租户解析密钥/域名表（若子域名）、计费 webhook secret（若启用）；**值不入库** |
 | 12 | **错误码表** | 至少：`UNAUTHENTICATED` / `TENANT_NOT_FOUND` / `TENANT_MISMATCH` / `NOT_A_MEMBER` / `FORBIDDEN` / `BILLING_INACTIVE`（无计费则后一项 N/A）→ HTTP status |
 | 13 | **审计** | □ 写路径记 audit（谁/哪租户/何动作/何时）□ 裁剪书面理由。默认：**必做**成员变更 + 权限变更 + 计费状态变更 |

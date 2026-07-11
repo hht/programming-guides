@@ -19,7 +19,7 @@
 | Subject / Cookie / Session Gate | 引用 | **auth** SSOT |
 | `tenant_id` 列、RLS、`app.tenant_id` | 本册 `03` + 引用 | **postgres** `06` 机制 SSOT |
 | Tenant Gate 步骤 / RBAC / 计费门闸 | **SSOT** | 应用册只接线 |
-| 支付商 webhook 验签百科 | 边界 + 状态机 | 未来 **payments**；未齐套前最小实现仍服从 `06` |
+| 支付商 webhook 验签 / Intent Lifecycle | Billing 映射输入 | **[payments](../payments/README.md)** SSOT；本册 `06` 仍为 BillingStatus 门闸 |
 | UI 样式 | 不写 | ui-ux / 应用册 |
 
 ## 对接要点（实现自写）

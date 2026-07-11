@@ -4,7 +4,7 @@
 > 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **多租户隔离、成员/RBAC、计费边界**。  
 > **默认栈**：**共享 schema + `tenant_id` 行级** + **Postgres RLS**（对齐 [docs/postgres](../postgres/README.md) `06`）；**角色+权限表** RBAC（禁前端藏按钮当授权）；计费 = **计划/席位/状态机边界**（Stripe 等仅 INPUTS，不钉唯一支付商）；会话对齐 [docs/auth](../auth/README.md) Session Gate；**租户不得仅靠子域名猜测无校验**。  
 > **来源**：[sources.md](./sources.md)  
-> **支付细节**：本册只钉计费边界；卡支付/Webhook/对账见未来 `docs/payments/`（未齐套前勿臆造支付百科）。
+> **支付细节**：本册只钉计费边界；卡支付/Webhook/Intent 见 [`docs/payments/`](../payments/README.md)（非某家 SDK 百科）。
 
 ## 品类一句话
 

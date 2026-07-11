@@ -1,0 +1,47 @@
+-- Example shape only — migrate via Atlas / golang-migrate / Alembic in the app repo.
+-- Align async enqueue with docs/workers-queue templates when using a queue.
+
+CREATE TABLE email_messages (
+  message_id          text PRIMARY KEY,
+  idempotency_key     text NOT NULL,
+  template_id         text NOT NULL,
+  template_version    integer NOT NULL,
+  to_addresses        text[] NOT NULL,
+  from_address        text NOT NULL,
+  subject             text NOT NULL,
+  body_html           text,
+  body_text           text,
+  provider_message_id text,
+  state               text NOT NULL,
+  last_error          text,
+  created_at          timestamptz NOT NULL DEFAULT now(),
+  updated_at          timestamptz NOT NULL DEFAULT now(),
+  CONSTRAINT email_messages_idempotency_key_unique UNIQUE (idempotency_key),
+  CONSTRAINT email_messages_state_check CHECK (
+    state IN (
+      'composed',
+      'queued',
+      'submitted',
+      'delivered',
+      'bounced',
+      'complained',
+      'failed',
+      'suppressed'
+    )
+  )
+);
+
+CREATE INDEX email_messages_provider_message_id_idx
+  ON email_messages (provider_message_id)
+  WHERE provider_message_id IS NOT NULL;
+
+CREATE TABLE email_suppressions (
+  email            text PRIMARY KEY,
+  reason           text NOT NULL,
+  source_message_id text,
+  created_at       timestamptz NOT NULL DEFAULT now(),
+  expires_at       timestamptz,
+  CONSTRAINT email_suppressions_reason_check CHECK (
+    reason IN ('hard_bounce', 'complaint')
+  )
+);
