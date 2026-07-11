@@ -1,6 +1,6 @@
 # Headless CMS — 内容发布集成边界指南
 
-> **这是工程指南，不是半成品项目。**（**specs-only**；对抗前 **勿标 DONE**）  
+> **这是工程指南，不是半成品项目。**  
 > 在 [INPUTS.md](./INPUTS.md) 齐备时，agent 按本文在**新仓库**落地世界级 **Headless CMS 集成边界**：草稿 → 校验 → 发布 → **Content Delivery API 消费**。  
 > **默认栈**：**抽象 ContentDocument + ContentStatus（应用库为本仓真相）** + **CmsAdapter 薄适配** + **Delivery 只读消费契约**；供应商由 INPUTS **互斥钉死恰好一家**（Sanity / Contentful / Payload / 自建）。**禁止**把本册写成某家 CMS 安装 / Studio / Admin 百科；**钉死面 = Content Delivery API 消费与发布门闸**，不是 CMS 产品全功能目录。  
 > **对齐**（可选挂接）：[nextjs](../nextjs/README.md) · [react](../react/README.md) · [go](../go/README.md) · [fastapi](../fastapi/README.md)（应用册保留路由/页面 SSOT；**Content Publish Lifecycle 以本册为准**）。  
