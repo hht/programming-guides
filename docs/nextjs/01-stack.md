@@ -13,8 +13,10 @@
 | 数据访问（DB） | **Drizzle ORM** + 官方 driver（INPUTS§3 含 DB） |
 | 数据访问（HTTP） | `fetch` + Zod |
 | 会话 Cookie | 名=`session`；HttpOnly+Secure+SameSite=Lax |
+| Lint / fmt | ESLint + Prettier；命令 SSOT → [typescript Language Gate](../meta/language-gates/typescript.md) |
 
-**禁止开口**：Pages vs App；tRPC vs Action（默认 Actions）；Prisma vs Drizzle（默认 Drizzle）。
+**禁止开口**：Pages vs App；tRPC vs Action（默认 Actions）；Prisma vs Drizzle（默认 Drizzle）。  
+语言硬门闸：[typescript.md](../meta/language-gates/typescript.md)。客户端重叠规则链 [react/00](../react/00-principles.md)，**不**复制全文。
 
 ## 脚手架
 

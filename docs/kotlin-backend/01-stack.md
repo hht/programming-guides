@@ -14,12 +14,13 @@
 | 迁移 | **Flyway** | `db/migration/`；`V{n}__{name}.sql` |
 | 日志 | **SLF4J** + **Logback** | 生产 JSON；MDC 绑 `request_id` |
 | 测试 | **JUnit 5** + **ktor-server-test-host** | |
-| Lint/格式 | **detekt** + **ktlint** | 配置入库 |
+| Lint/格式 | **detekt** + **ktlint** | 命令 SSOT → [kotlin Language Gate](../meta/language-gates/kotlin.md) |
 | JWT（仅 Bearer） | **com.auth0:java-jwt** | 无鉴权/Session 不引入 |
 | 密码（仅 Session） | **at.favre.lib:bcrypt**（或 argon2-jvm） | 默认 **bcrypt**；与 INPUTS 表一致 |
 | UUID | `java.util.UUID` | RequestID |
 
-**禁止开口**：Spring Boot / WebFlux 任选、Jackson 默认、Hibernate/JPA 默认、jdbi 默认、ktor CIO 作默认引擎（生产约定 Netty）、无理由第二套 lint。
+**禁止开口**：Spring Boot / WebFlux 任选、Jackson 默认、Hibernate/JPA 默认、jdbi 默认、ktor CIO 作默认引擎（生产约定 Netty）、无理由第二套 lint。  
+语言硬门闸：[kotlin.md](../meta/language-gates/kotlin.md)（**不**在本文件复述）。
 
 ## 冲突裁决（先进优先）
 

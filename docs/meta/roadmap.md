@@ -62,6 +62,22 @@
 
 > **Roadmap Waves 1–6 所列目录均已 DONE（各册对抗 5/5 PASS）。** 候选池仍不自动开工。
 
+## Language Gates（语言薄闸；非百科 Wave）
+
+契约：[language-engineering-contract.md](./language-engineering-contract.md) · 索引：[language-gates/README.md](./language-gates/README.md)。
+
+| 序 | 语言 | 状态 | 主挂靠 |
+|----|------|------|--------|
+| 1 | typescript | FOCUSED | react / nextjs |
+| 2 | go | FOCUSED | go |
+| 3 | python | FOCUSED | fastapi |
+| 4 | rust | FOCUSED | rust-api |
+| 5 | kotlin | FOCUSED | kotlin-backend |
+| 6 | swift | FOCUSED | apple-platforms |
+
+升 `PASS`：该语言主挂靠应用册对「gate 挂靠 + commands 逐字 + 框架 MUST」变更跑 Full 5/5 后改 README。  
+**不设**语言百科 Wave；**不开** `framework-gates/` 平行树（框架 MUST 在应用册）。
+
 ## 候选池（未立项；热度高时升 Wave）
 
 `sveltekit` · `vue-nuxt` · `elixir-phoenix` · `dotnet-api` · `laravel` · `django`（与 fastapi 分册时再约定）· `terraform-opentofu` · `kubernetes-app`（应用部署面，非云百科）· `wasm` · `cli-rust` · `browser-extension` · `shopify-app` · `telegram-bot` · `discord-bot`
@@ -76,7 +92,9 @@
 - 拆开的 `agent-py` / `agent-ts` 
 - K8s/云厂商**百科**（应用面可另开薄册） 
 - 同品类第二后端框架「跟风本」 
-- 把 Sentry 等 APM 写进**非 ops/observability** 指南的必勾验收 
+- 把 Sentry 等 APM 写进**非 ops/observability** 指南的必勾验收  
+- 语言百科平行册 / Google Style 全书入库  
+- `meta/framework-gates/` 平行树（框架 MUST 只进应用册）
 
 ## 执行纪律
 

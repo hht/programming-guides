@@ -24,7 +24,7 @@
 |------|------|----------------------------------|
 | 目录组织 | **必做** | `02` 有树 + 依赖方向；禁类型大口袋 |
 | 命名 / 词表 | **必做** | **业务优先**：领域/实体/业务操作 = 代码与目录名；`02` 含领域词表（或指向 `UBIQUITOUS_LANGUAGE.md`）；协议字段冻结；**语法（snake/kebab）只作第二层**；禁 `*Dto`/`*Manager`/`handle*` 等技术翻译名进领域。强制块：[naming-business-first.md](./naming-business-first.md) |
-| 代码风格 | **必做** | `01` 确定默认栈；显式>隐式；禁无关炫技 |
+| 代码风格 | **必做** | 默认栈语言经 [language-gates/<lang>.md](./language-gates/README.md) 落实 §0 三准则（MUST/MUST NOT）+ `commands` lint 绿；`01` 只链 gate、不抄全文；显式>隐式；禁无关炫技 |
 | 工具链 | **必做** | 脚手架命令 + lockfile 策略 |
 | 门禁 | **必做** | `commands.md`：PR check / 发版 e2e |
 | 代码极简 | **必做** | 禁令：指南无业务实现；deletion-first |

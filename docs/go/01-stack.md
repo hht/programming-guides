@@ -12,12 +12,13 @@
 | 迁移 | **github.com/golang-migrate/migrate/v4** | 文件在 `migrations/` |
 | 日志 | **log/slog** | 生产 JSON |
 | 测试 | **testing** + **testify** | |
-| Lint | **golangci-lint** | 配置入库（最小：`linters.enable: [errcheck, govet, staticcheck, unused]`） |
+| Lint / fmt | **golangci-lint** + **gofmt** | 命令 SSOT → [go Language Gate](../meta/language-gates/go.md)；`.golangci.yml` 最小：`errcheck, govet, staticcheck, unused` |
 | JWT（仅 Bearer） | **github.com/golang-jwt/jwt/v5** | 无鉴权/Session 不引入 |
 | UUID | **github.com/google/uuid** | RequestID |
 | 热重载（可选） | air | 不进必做 |
 
-**禁止开口**：Gin/Echo/Fiber 任选、GORM/ent 任选、zap 默认、JWT 库任选。
+**禁止开口**：Gin/Echo/Fiber 任选、GORM/ent 任选、zap 默认、JWT 库任选。  
+语言硬门闸：[go.md](../meta/language-gates/go.md)（**不**在本文件复述）。
 
 ## 脚手架
 

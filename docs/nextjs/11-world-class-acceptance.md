@@ -6,7 +6,7 @@
 |----|------|------|
 | 目录 | [ ] | `02` |
 | 命名 / 词表 | [ ] | `02` Pass1 词表 + segment/action |
-| 风格 | [ ] | `01` |
+| 风格 | [ ] | §0 三准则经由 meta/language-gates/typescript.md 硬门闸落实 + commands lint 绿 |
 | 工具链 | [ ] | create-next-app + lock |
 | 门禁 | [ ] | `commands` |
 | 极简 | [ ] | 无业务堆模板 |

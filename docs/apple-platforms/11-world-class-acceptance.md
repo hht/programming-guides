@@ -9,7 +9,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` 树 + 依赖方向 |
 | 命名 / 词表 | [ ] | 目标仓 `UBIQUITOUS_LANGUAGE.md` = `02` Pass1 |
-| 代码风格 | [ ] | `01` SwiftUI + Observation |
+| 代码风格 | [ ] | §0 三准则经由 meta/language-gates/swift.md 硬门闸落实 + commands lint 绿 |
 | 工具链 | [ ] | `01` + Xcode / SPM lock |
 | 门禁 | [ ] | `commands.md` |
 | 代码极简 | [ ] | 无上帝 Store；无平行 UIKit 主路径 |

@@ -1,17 +1,24 @@
-# 00 — 原则
+# 00 — 原则与框架 MUST
+
+> Normative: MUST / MUST NOT（RFC 2119）  
+> 语言层 → [typescript Language Gate](../meta/language-gates/typescript.md)。  
+> 客户端 React 习惯若与 SPA 重叠 → **以 [react/00](../react/00-principles.md) 为 SSOT**，本册只写 App Router 增量。
 
 ## 决策优先级
 
 正确性 > 可验证性 > 简洁性 > 复用 > 速度。
 
-## 硬不变量
+## 框架 MUST（App Router）
 
-1. **默认 Server Component**；`"use client"` 仅交互边界。 
-2. **写操作走 Server Action**（或 Route Handler 若 INPUTS 明示）；禁默认「纯客户端 fetch 写库」。 
-3. **Zod 校验**在 Action 入口；失败返回可辨错误，不假成功。 
-4. **变更后 revalidate**（`revalidatePath`/`revalidateTag`）写明，禁只靠客户端乐观却不失效服务端缓存。 
-5. **密钥不进 `NEXT_PUBLIC_*`**。 
-6. **deletion-first**；与 Vite SPA 指南边界清晰，不抄 Router 栈。
+| ID | 关键词 | 规约 | 探针 |
+|----|--------|------|------|
+| N01 | MUST | 默认 Server Component；`"use client"` 仅交互边界 | 目录抽检；`03`/`05` |
+| N02 | MUST | 写操作走 Server Action（或 INPUTS 明示的 Route Handler） | `05` + e2e |
+| N03 | MUST NOT | 默认「纯客户端 fetch 写库」 | 同上 |
+| N04 | MUST | Action 入口 Zod 校验；失败可辨，不假成功 | 单测 case→期望 |
+| N05 | MUST | 变更后 `revalidatePath` / `revalidateTag` 写明 | `05` + e2e |
+| N06 | MUST NOT | 密钥进入 `NEXT_PUBLIC_*` | env 抽检 |
+| N07 | MUST | deletion-first；与 Vite SPA（react 册）边界清晰，不抄 Router 栈 | `01` + INPUTS |
 
 ## SSOT
 
@@ -24,5 +31,5 @@
 
 ## 超越
 
-1. `对照：B 中更弱/未见「写路径强制 Server Action + Zod + revalidate」硬门闸 → 本指南要求写路径强制 Server Action + Zod + revalidate（见 05）` 
-2. `对照：B 中更弱/未见「Client 边界最小化（默认 RSC）」硬门闸 → 本指南要求默认 RSC、Client 边界最小（见 03/05）`
+1. `对照：B 中更弱/未见「写路径强制 Server Action + Zod + revalidate」硬门闸 → 本指南要求`  
+2. `对照：B 中更弱/未见「Client 边界最小化（默认 RSC）」硬门闸 → 本指南要求`

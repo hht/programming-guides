@@ -6,7 +6,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` |
 | 命名 / 词表 | [ ] | `02` Pass1 词表 + 错误码/路由同根 |
-| 代码风格 | [ ] | `01` + detekt/ktlint |
+| 代码风格 | [ ] | §0 三准则经由 meta/language-gates/kotlin.md 硬门闸落实 + commands lint 绿 |
 | 工具链 | [ ] | Gradle + Exposed + Flyway |
 | 门禁 | [ ] | `commands.md` |
 | 代码极简 | [ ] | 无指南业务实现 |

@@ -6,7 +6,7 @@
 |----|------|------|
 | 目录组织 | [ ] | `02` |
 | 命名 / 词表 | [ ] | `02` Pass1 词表 + query-keys/schema |
-| 代码风格 | [ ] | `01` 确定默认栈 |
+| 代码风格 | [ ] | §0 三准则经由 meta/language-gates/typescript.md 硬门闸落实 + commands lint 绿 |
 | 工具链 | [ ] | Vite + pnpm lock |
 | 门禁 | [ ] | `commands.md` |
 | 代码极简 | [ ] | 无指南业务实现 |

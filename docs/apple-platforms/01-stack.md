@@ -21,6 +21,9 @@
 | 包管理 | **Swift Package Manager**（优先）± Xcode project | CocoaPods 非默认 |
 | Mac | 同一 SwiftUI 代码基 + `#if os(macOS)` / `@available` | **禁** Catalyst 当默认 Mac 交付 |
 | 架构参考 | 可学 TCA **边界**（标杆 B）；**不**强制引入 TCA | EhPanda/TCA 模式 ≠ 默认栈 |
+| Lint / fmt | **SwiftLint** + **swift-format** | 命令 SSOT → [swift Language Gate](../meta/language-gates/swift.md) |
+
+语言硬门闸：[swift.md](../meta/language-gates/swift.md)（**不**在本文件复述框架 Lifecycle）。
 
 ## 脚手架
 

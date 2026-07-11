@@ -16,13 +16,14 @@
 | 日志 | **structlog** | 生产 JSON |
 | HTTP 出站 | **httpx** | |
 | 测试 | **pytest** + **pytest-asyncio** + **httpx** | `asyncio_mode=auto` |
-| Lint/格式 | **ruff** | check + format |
-| 类型 | **mypy** | `strict = true`（可按生成代码放宽） |
+| Lint/格式 | **ruff** | check + format；命令 SSOT → [python Language Gate](../meta/language-gates/python.md) |
+| 类型 | **mypy** | `strict = true`（可按生成代码放宽）；命令见 gate |
 | JWT（仅 Bearer/IdP） | **PyJWT** | |
 | 密码（仅 Session） | **argon2-cffi** | |
 | UUID | stdlib `uuid` | Request ID |
 
-**禁止开口**：Django/Flask 任选、同步 SQLAlchemy Session 默认、Poetry 默认、SQLModel 默认、flake8 平行第二套。
+**禁止开口**：Django/Flask 任选、同步 SQLAlchemy Session 默认、Poetry 默认、SQLModel 默认、flake8 平行第二套。  
+语言硬门闸：[python.md](../meta/language-gates/python.md)（**不**在本文件复述）。
 
 ## 脚手架
 

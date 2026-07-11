@@ -20,9 +20,10 @@
 | 日期 | **date-fns** | 禁 moment |
 | 工具 | **es-toolkit** | 禁新增 lodash |
 | 测试 | **Vitest** + **@testing-library/react** + **Playwright** | |
-| Lint | ESLint flat + typescript-eslint | |
+| Lint / fmt | ESLint flat + typescript-eslint；Prettier | 命令字符串 SSOT → [typescript Language Gate](../meta/language-gates/typescript.md) |
 
-**禁止开口**：Next.js / Remix / React Router 与 TanStack Router 任选 — **只约定本表**。
+**禁止开口**：Next.js / Remix / React Router 与 TanStack Router 任选 — **只约定本表**。  
+语言硬门闸：见 [typescript.md](../meta/language-gates/typescript.md)（**不**在本文件复述）。
 
 ## 脚手架（按序）
 

@@ -14,12 +14,13 @@
 | 序列化 | **serde** + **serde_json** | |
 | 日志 | **tracing** + **tracing-subscriber** | 生产 JSON；`EnvFilter` |
 | 测试 | **cargo test** + **axum::Router` 挂 `oneshot` / `tower::ServiceExt`** | 集成测见 `09` |
-| Lint / 格式 | **clippy** + **rustfmt** | CI 必跑 |
+| Lint / 格式 | **clippy** + **rustfmt** | 命令 SSOT → [rust Language Gate](../meta/language-gates/rust.md) |
 | JWT（仅 Bearer） | **jsonwebtoken** | 无鉴权/Session 不引入 |
 | UUID | **uuid**（`v4`） | RequestID |
 | 错误类型 | **thiserror**（领域） | `anyhow` 仅 `main` 接线可选；禁泄漏到 JSON body |
 
-**禁止开口**：Actix / Axum 任选、Diesel / SeaORM / sqlx 任选、warp / rocket 默认、`println!` 当生产日志、JWT 库任选。
+**禁止开口**：Actix / Axum 任选、Diesel / SeaORM / sqlx 任选、warp / rocket 默认、`println!` 当生产日志、JWT 库任选。  
+语言硬门闸：[rust.md](../meta/language-gates/rust.md)（**不**在本文件复述）。
 
 ## 脚手架
 
